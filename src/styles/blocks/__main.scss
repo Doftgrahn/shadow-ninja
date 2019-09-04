@@ -1,1 +1,20 @@
-@import '../../components/langinpage/landingpage.scss';
+// Main imports from blocks
+
+
+//Header
+@import '../../components/general/header/header.scss';
+
+//Landingpage
+@import '../../components/landingpage/landingPage.scss';
+
+//Games
+@import '../../components/games/games.scss';
+
+//Social
+@import '../../components/social/social.scss';
+
+//Checkout
+@import '../../components/checkout/checkout.scss';
+
+//Footer
+@import '../../components/general/footer/footer.scss';
