@@ -1,5 +1,5 @@
 
-const {insertMongoDB} = require('./database/Database');
+const {insertMongoDB} = require('./database/AddProduct');
 const express = require('express');
 const server = express();
 
@@ -11,7 +11,7 @@ const server = express();
 // error handling
 // starta servern
 
-
+// // function call for AddProduct
 // insertMongoDB()
 
 server.use(express.static(__dirname + '/../build/'));
