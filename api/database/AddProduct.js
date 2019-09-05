@@ -1,4 +1,5 @@
-const {uri, settings} = require('../secrets/mongoDB.config')
+const {uri} = require('../secrets/mongoDB.config')
+const {settings} = require('../settings/Settings.config')
 const MongoClient = require('mongodb').MongoClient;
 const shadowDB = 'shadowDB';
 
@@ -17,7 +18,7 @@ const insertMongoDB = () => {
 
     			let productDocs = [];
 
-          for(let i=0; i<10; i++) {
+          for(let i=0; i<2; i++) {
               let randomName = Math.floor(Math.random() * name.length);
               let randomPrice = Math.floor(Math.random() * price.length);
               let randomCategory = Math.floor(Math.random() * category.length);
