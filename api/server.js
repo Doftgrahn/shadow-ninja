@@ -2,11 +2,6 @@ const express = require('express');
 const server = express();
 
 
-// Konfigurera webbservern:
-// middleware
-// routes
-// error handling
-// starta servern
 
 server.use(express.static(__dirname + '/../build/'));
 server.use(express.json());
@@ -24,10 +19,31 @@ server.get('/test', (request, response) => {
 	response.send('Testing!');
 })
 
-server.get('/game', (request, response) => {
+server.get('/games', (request, response) => {
 	console.log('Received GET request to /test');
-	response.send('Testing game!');
+	response.send(fakeProducts);
 })
+
+
+
+// server.get('/word/', (req, res) => {
+// 	let searchWordMatched = [];
+//   if (req.query.sw) {
+// 		wordsData.filter(function(value, index, arr){
+// 			if (value.searchWord.includes(req.query.sw)) {
+// 				searchWordMatched.push(wordsData[index])
+// 			}
+// 			 else {
+// 				 console.log('No search matched database')
+// 			}
+// 		});
+// 			console.log(searchWordMatched)
+// 			res.send(JSON.stringify(searchWordMatched))
+//   } else {
+//     //Om det inte finns querystring som matchar retunera 404
+// 		res.send(fakeProducts)
+//   }
+// })
 
 
 const port = process.env.PORT || 1337;
