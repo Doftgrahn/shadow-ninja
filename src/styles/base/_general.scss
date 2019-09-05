@@ -1,13 +1,23 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding:0;
 }
+
+html {
+    margin:0;
+    padding:0;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 
 body {
     margin: 0;
     padding: 0;
 }
 
-main {
+.route_wrapper {
     min-height: 100vh;
 }
 
@@ -25,4 +35,9 @@ a {
 
 button {
     cursor: pointer;
+}
+
+
+img {
+    max-width: 100%;
 }

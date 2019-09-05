@@ -1,9 +1,9 @@
 import React from 'react';
 
 const LandingPage = () => {
-    return (<section>
+    return (<main>
         <h1>This is LandingPage</h1>
-    </section>)
+    </main>)
 }
 
 export default LandingPage;

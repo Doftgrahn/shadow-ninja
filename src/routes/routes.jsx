@@ -1,10 +1,10 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
 
-import LandingPage from '../components/landingpage/landingpage';
-import Games from '../components/games/games';
-import Social from '../components/social/social';
-import Checkout from '../components/checkout/checkout';
+import LandingPage from '../containers/landingpage/landingpage';
+import Games from '../containers/games/games';
+import Social from '../containers/social/social';
+import Checkout from '../containers/checkout/checkout';
 
 const Routes = () => {
 
@@ -12,23 +12,23 @@ const Routes = () => {
         {
             exact: true,
             path: '/',
-            component: LandingPage
+            Component: LandingPage
         }, {
             exact: false,
             path: '/games',
-            component: Games
+            Component: Games
         }, {
             exact: false,
             path: '/social',
-            component: Social
+            Component: Social
         }, {
             exact: false,
             path: '/checkout',
-            component: Checkout
+            Component: Checkout
         }
     ]
 
-    const renderRoutes = allRoutes.map((r, index) => <Route key={index} exact={r.exact} path={r.path} render={(props) => <r.component {...props}/>}/>)
+    const renderRoutes = allRoutes.map((r, index) => <Route key={index} exact={r.exact} path={r.path} render={(props) => <r.Component {...props}/>}/>)
 
     return (<Switch>
         {renderRoutes}

@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Social = () => {
-    return (<section>
+    return (<main>
         <h1>This is Social</h1>
-    </section>)
+    </main>)
 }
 
 export default Social;

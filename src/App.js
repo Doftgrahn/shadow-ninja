@@ -12,7 +12,7 @@ const App = () => {
     return (<div className="App">
         <Router>
             <Header/>
-            <main>
+            <main className="route_wrapper">
                 <Routes/>
             </main>
             <Footer/>

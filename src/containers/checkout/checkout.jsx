@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Checkout = () => {
-    return (<section>
+    return (<main>
         <h1>This is Checkout</h1>
-    </section>)
+    </main>)
 }
 
 export default Checkout;

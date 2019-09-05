@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Games = () => {
-    return (<section>
+    return (<main>
         <h1>This is Games</h1>
-    </section>)
+    </main>)
 }
 
 export default Games;
