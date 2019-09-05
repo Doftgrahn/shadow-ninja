@@ -1,0 +1,20 @@
+.game__container {
+    display: flex;
+    width: 320px;
+    flex-direction: column;
+    margin: $regular-spacing;
+    border: 5px solid white;
+
+    figure {
+        position: relative;
+        width: 100%;
+        height: 200px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+        }
+    }
+}

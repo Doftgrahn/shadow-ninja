@@ -1,8 +1,11 @@
 import React from 'react';
 
-const Games = () => {
-    return (<main>
-        <h1>This is Games</h1>
+import AllGames from './components/allGames';
+
+const Games = ({match}) => {
+    return (<main className="games">
+        <h1>STORE</h1>
+        <AllGames match={match}/>
     </main>)
 }
 

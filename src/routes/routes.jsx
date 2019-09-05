@@ -3,6 +3,7 @@ import {Route, Switch} from "react-router-dom";
 
 import LandingPage from '../containers/landingpage/landingpage';
 import Games from '../containers/games/games';
+import SingleGame from '../containers/singleGame/singleGame';
 import Social from '../containers/social/social';
 import Checkout from '../containers/checkout/checkout';
 
@@ -14,9 +15,13 @@ const Routes = () => {
             path: '/',
             Component: LandingPage
         }, {
-            exact: false,
+            exact: true,
             path: '/games',
             Component: Games
+        }, {
+            exact: false,
+            path: '/games/:id',
+            Component: SingleGame
         }, {
             exact: false,
             path: '/social',
@@ -32,7 +37,6 @@ const Routes = () => {
 
     return (<Switch>
         {renderRoutes}
-
     </Switch>)
 }
 
