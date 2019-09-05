@@ -1,6 +1,14 @@
+const {insertMongoDB} = require('./database/AddProduct');
+const {getProductMongoDB} = require('./database/GetProduct');
 const express = require('express');
 const server = express();
 
+
+// // function call for AddProduct
+// insertMongoDB()
+
+// // function call for getProduct
+ // getProductMongoDB()
 
 
 server.use(express.static(__dirname + '/../build/'));

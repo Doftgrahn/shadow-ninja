@@ -10,7 +10,6 @@ import Routes from './routes/routes';
 
 const App = () => {
     return (<div className="App">
-    <a href="/auth/google">Sign In with Google</a>
         <Router>
             <Header/>
             <main className="route_wrapper">
