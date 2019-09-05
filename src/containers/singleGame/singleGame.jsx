@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 
 import {Route} from "react-router-dom";
 
+import RegularButton from '../../components/buttons/regular-button';
+
 import {dummyData} from '../../functions/dummyData';
 
 //// Holds routing for SingleGAME
@@ -20,18 +22,20 @@ const Game = ({data, match, history}) => {
     const goBack = history.goBack;
 
     const filterdata = game
-        .filter(e => String(e._id) === String(match.params.id))
+        .filter(e => e._id === match.params.id)
         .map(f => <section key={f._id} className="singleGame__container">
             <figure>
                 <img src={f.imgURL} alt={f.title}/>
             </figure>
+            <h3>{f.title}</h3>
+            <div className="singleGame__container-description">
+                <p>Category: {f.category}</p>
+                <p>price: €{f.price}</p>
+                <p>rating: {f.rating}</p>
+                <p>info: {f.info}</p>
+            </div>
 
-            <p>Title: {f.title}</p>
-            <p>Category: {f.category}</p>
-            <p>{f.price}</p>
-            <p>rating: {f.rating}</p>
-            <p>info: {f.info}</p>
-            <button onClick={goBack}>Back</button>
+            <RegularButton click={goBack} title="Go back"/>
         </section>)
 
     return (<main>

@@ -3,6 +3,7 @@
     flex-direction: column;
     width: 100%;
     justify-content: center;
+    padding: 20px;
 
     &__container {
         margin: 0 auto;
@@ -10,8 +11,7 @@
         border: 2px solid white;
         display: flex;
         flex-direction: column;
-        align-items: center;
-
+        //align-items: center;
         figure {
             position: relative;
             height: 440px;
@@ -24,9 +24,22 @@
                 position: absolute;
             }
         }
+
+        
+
+        &-description {
+            padding: 20px;
+
+            p {
+                margin: 0 10px 10px;
+                text-align: left;
+            }
+        }
     }
 }
 
 button {
+    margin: 0 auto 10px;
+    width: 120px;
     color: black;
 }

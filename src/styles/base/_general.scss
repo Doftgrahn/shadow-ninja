@@ -1,28 +1,34 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding:0;
+    padding: 0;
 }
 
 html {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
-
 body {
     margin: 0;
     padding: 0;
-
 }
+
 .App {
     background-image: $color-background;
 }
 
 .route_wrapper {
     min-height: 100vh;
+}
+
+h3 {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 5px solid white;
 }
 
 a {
@@ -40,7 +46,6 @@ a {
 button {
     cursor: pointer;
 }
-
 
 img {
     max-width: 100%;

@@ -1,5 +1,7 @@
 .game__wrapper {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    flex-direction: row;
+    //align-items: center;
+    width: 100%;
 }
