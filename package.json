@@ -37,5 +37,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "School project",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Doftgrahn/shadow-ninja.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Doftgrahn/shadow-ninja/issues"
+  },
+  "homepage": "https://github.com/Doftgrahn/shadow-ninja#readme"
 }
