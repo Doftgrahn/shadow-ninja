@@ -1,9 +1,11 @@
+const {insertMongoDB} = require('./database/Database')
+
 console.log('HEJ');
 
 console.log('test')
 
 
-
+// insertMongoDB()
 
 
 const product = {
