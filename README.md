@@ -20,5 +20,3 @@ _id:'Lägger mongodb till automatiskt',
  image: 'STRING',
  info: 'STRING'
 }
-
-sdjfsdjkfsbdkjghs
