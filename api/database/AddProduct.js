@@ -1,6 +1,7 @@
 const {uri} = require('../secrets/mongoDB.config');
 const {settings, MongoClient, shadowDB} = require('../settings/Settings.config');
 
+
 const insertMongoDB = () => {
     // start MongoClient
     // and generate product
