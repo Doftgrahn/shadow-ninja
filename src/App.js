@@ -3,8 +3,8 @@ import {BrowserRouter as Router} from "react-router-dom";
 //import styles
 import './styles/main.scss';
 //Header and Footer
-import Header from './components/general/header/header';
-import Footer from './components/general/footer/footer';
+import Header from './containers/general/header/header';
+import Footer from './containers/general/footer/footer';
 //Routes
 import Routes from './routes/routes';
 
