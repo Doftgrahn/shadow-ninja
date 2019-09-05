@@ -3,6 +3,7 @@ const {settings} = require('../settings/Settings.config')
 const MongoClient = require('mongodb').MongoClient;
 const shadowDB = 'shadowDB';
 
+
 const insertMongoDB = () => {
     // start MongoClient
     // and generate product
