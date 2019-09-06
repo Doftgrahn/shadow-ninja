@@ -1,0 +1,18 @@
+.sort {
+    display: flex;
+    width: 100%;
+    padding-top: 10px;
+    padding-right: 10px;
+
+    &__wrapper {
+        display: flex;
+        margin-left: auto;
+        span {
+            margin-right: 5px;
+        }
+
+        & select {
+            padding: 5px;
+        }
+    }
+}
