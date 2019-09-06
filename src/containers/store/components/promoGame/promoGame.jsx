@@ -6,6 +6,7 @@ const PromoGame = ({products, match}) => {
 
     const randomPromo = products.map((game, index, array) => {
 
+console.log('hej');
         return (
         <div className="promo__wrapper">
             <Link to={`${match.url}/${game._id}`}>More info...</Link>

@@ -28,7 +28,7 @@ const dummyData = [
     price: "60",
     rating: 5,
     imgURL:
-      "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/God_of_War_4_cover.jpg/220px-God_of_War_4_cover.jpg",
+      "https://media.playstation.com/is/image/SCEA/god-of-war-listing-thumb-01-ps4-us-12jun17?$facebook$",
     info:
       "God of War is a mythology-based action-adventure video game franchise. Created by David Jaffe at Sony's Santa Monica Studio, the series debuted in 2005 on the PlayStation 2 (PS2) video game console, and has become a flagship title for the PlayStation brand, consisting of eight games across multiple platforms. The story is about Kratos, a Spartan warrior tricked into killing his wife and daughter by his former master, the Greek God of War Ares. Kratos seeks to rid himself of the nightmares by serving the other Olympian gods, but soon finds himself in confrontation with them due to their machinations. Years after the destruction of ancient Greece, Kratos ends up in ancient Norway with a young son named Atreus. The two journey throughout several realms to fulfill a promise to the boy's recently deceased mother, inadvertently making enemies of the Norse gods."
   },

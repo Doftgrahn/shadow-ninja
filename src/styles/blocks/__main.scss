@@ -6,8 +6,16 @@
 //Landingpage
 @import '../../containers/landingpage/landingPage.scss';
 
-//Games
+//Store
+
 @import '../../containers/store/store.scss';
+/*Components under STORE*/
+@import '../../containers/store/components/allGames/allGames.scss';
+@import '../../containers/store/components/oneGame/oneGame.scss';
+@import '../../containers/store/components/promoGame/promoGame.scss';
+@import '../../containers/store/components/sortGames/sortGames.scss';
+/**/
+
 
 //Single Game
 @import '../../containers/singleGame/singleGame.scss';
