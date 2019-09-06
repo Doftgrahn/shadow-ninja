@@ -51,6 +51,17 @@ const dummyData = [
     imgURL: "https://i.ytimg.com/vi/QRB6Likh478/maxresdefault.jpg",
     info:
       "Grim Fandango is an adventure game, directed by Tim Schafer, developed and published by LucasArts in 1998 for Windows. It is the first adventure game by LucasArts to use 3D computer graphics overlaid on pre-rendered static backgrounds. As with other LucasArts adventure games, the player must converse with characters and examine, collect, and use objects to solve puzzles."
+  },
+  {
+    _id: "5",
+    title: "The Legend of Zelda",
+    category: "Adventure",
+    price: "60",
+    rating: 10,
+    imgURL:
+      "https://i.ebayimg.com/23/!!d-zp1wBWM~$(KGrHqV,!lkEy+jC2UPRBM7Dv9jWWg~~_35.JPG?set_id=89040003C1",
+    info:
+      "The Legend of Zelda: Ocarina of Time[a] is an action-adventure game developed and published by Nintendo for the Nintendo 64. It was released in Japan and North America in November 1998, and in Europe, Australia and New Zealand the following month. Ocarina of Time is the fifth game in The Legend of Zelda series, and the first with 3D graphics. Originally developed for the 64DD peripheral, it was instead released on a 256-megabit (32-megabyte) cartridge, the largest-capacity cartridge Nintendo produced at that time."
   }
 ];
 

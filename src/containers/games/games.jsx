@@ -1,10 +1,16 @@
 import React from 'react';
 
-import AllGames from './components/allGames';
+import {dummyData} from '../../functions/dummyData';
 
+// All Games
+import PromoGame from './components/promogame/promoGame';
+import AllGames from './components/allGames/allGames';
+
+// General Wrapper for GAMES
 const Games = ({match}) => {
     return (<main className="games">
-        <h1>STORE</h1>
+        <h1>store</h1>
+        <PromoGame products={dummyData}/>
         <AllGames match={match}/>
     </main>)
 }

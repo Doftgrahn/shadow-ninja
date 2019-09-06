@@ -1,10 +1,13 @@
-@import './components/allGames.scss';
-@import './components/oneGame.scss';
+@import './components/allGames/allGames.scss';
+@import './components/oneGame/oneGame.scss';
+@import './components/promogame/promoGame.scss';
 
 .games {
     width: 100%;
+    display: block;
 
     h1 {
         text-align: center;
+        text-transform: uppercase;
     }
 }

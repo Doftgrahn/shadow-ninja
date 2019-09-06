@@ -1,0 +1,39 @@
+.promo {
+    height: 90vh;
+    position: relative;
+
+    &__wrapper {
+        position: relative;
+        height: 100%;
+
+        h1 {
+            z-index: 1;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        h3 {
+            position: absolute;
+            z-index: 1;
+            border: none;
+            font-size: 50px;
+            right: 0;
+            bottom: 0;
+            display: inline-block;
+        }
+
+        figure {
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
