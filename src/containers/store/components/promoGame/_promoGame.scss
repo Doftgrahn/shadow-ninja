@@ -6,6 +6,13 @@
         position: relative;
         height: 100%;
 
+        a {
+            position: absolute;
+            z-index: 1;
+            top:0;
+            color:white;
+        }
+
         h1 {
             z-index: 1;
             position: absolute;

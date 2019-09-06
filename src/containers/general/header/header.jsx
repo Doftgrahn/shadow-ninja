@@ -9,8 +9,8 @@ const Header = () => {
             name: 'Home',
             to: '/'
         }, {
-            name: 'Games',
-            to: '/games'
+            name: 'Store',
+            to: '/store'
         }, {
             name: 'Social',
             to: '/social'
