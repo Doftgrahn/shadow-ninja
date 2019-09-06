@@ -1,10 +1,9 @@
 import React from "react";
 
-const RegularButton = ({click, title}) => (
-  <button className="btn-regular" onClick={click}>
+const RegularButton = ({title, click, param}) => (
+  <button className="btn-regular" onClick={() => click(param)}>
     {title}
   </button>
 );
 
 export default RegularButton;
-    
