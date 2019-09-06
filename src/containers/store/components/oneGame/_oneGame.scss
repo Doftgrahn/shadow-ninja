@@ -4,8 +4,10 @@
     justify-content: space-around;
     width: 100%;
     margin: $regular-spacing;
-    border: 5px solid white;
     transition: 0.4s;
+    min-height: 320px;
+    position: relative;
+    background: white;
     @media screen and (min-width: 800px) {
         width: 100%;
         max-width: 260px;
@@ -18,7 +20,7 @@
     figure {
         position: relative;
         width: 100%;
-        height: 200px;
+        height: 157px;
 
         img {
             width: 100%;
@@ -28,15 +30,27 @@
         }
     }
 
+    h3 {
+        color: black;
+        background: gray;
+    }
+
     &-description {
         padding: 10px;
+        color: black;
 
         p {
+            color: black;
             margin: 0 0 10px;
         }
 
-        a {
-            color: white;
+        .linktoGame {
+            color: black;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: none;
+            }
         }
     }
 }

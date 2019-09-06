@@ -10,19 +10,24 @@ const OneGame = ({gameinfo, match}) => {
     const clickMe = (product) => console.log('PLACEHOLDER', product);
 
     return (<section className="game__container">
-        <figure>
-            <img src={gameinfo.imgURL} alt={gameinfo.name}/>
-        </figure>
 
-        <h3>{gameinfo.title}</h3>
+        <Link className="linktoGame" to={`${match.url}/${gameinfo._id}`}>
 
-        <div className="game__container-description">
-            <p>Category: {gameinfo.category}</p>
-            <p>Price: €{gameinfo.price}</p>
-            <p>Rating: {gameinfo.rating}</p>
-            <Link to={`${match.url}/${gameinfo._id}`}>More info...</Link>
-        </div>
+            <figure>
+                <img src={gameinfo.imgURL} alt={gameinfo.name}/>
+            </figure>
+
+            <h3>{gameinfo.title}</h3>
+            <div className="game__container-description">
+                <p>Category: {gameinfo.category}</p>
+                <p>Price: €{gameinfo.price}</p>
+                <p>Rating: {gameinfo.rating}</p>
+            </div>
+
+        </Link>
+
         <RegularButton title="buy" click={() => clickMe(gameinfo)}/>
+        
     </section>)
 }
 
