@@ -17,13 +17,13 @@ const insertMongoDB = () => {
 
     			let productDocs = [];
 
-          for(let i=0; i<2; i++) {
-              let randomName = Math.floor(Math.random() * name.length);
-              let randomPrice = Math.floor(Math.random() * price.length);
-              let randomCategory = Math.floor(Math.random() * category.length);
-
-              productDocs.push({name: name[Math.floor(randomName)], price: price[Math.floor(randomPrice)], category: category[Math.floor(randomCategory)]})
-          }
+          // for(let i=0; i<2; i++) {
+          //     let randomName = Math.floor(Math.random() * name.length);
+          //     let randomPrice = Math.floor(Math.random() * price.length);
+          //     let randomCategory = Math.floor(Math.random() * category.length);
+          //
+          //     productDocs.push({name: name[Math.floor(randomName)], price: price[Math.floor(randomPrice)], category: category[Math.floor(randomCategory)]})
+          // }
 
           collection.insertMany(productDocs, (error, response) => {
               if(error) {
