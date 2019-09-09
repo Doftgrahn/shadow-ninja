@@ -28,7 +28,7 @@ const dummyData = [
     price: "60",
     rating: 5,
     imgURL:
-      "https://media.playstation.com/is/image/SCEA/god-of-war-listing-thumb-01-ps4-us-12jun17?$facebook$",
+      "https://d.newsweek.com/en/full/895239/god-war-4-trophy-guide-complete-list-all-how-get-gold-silver-bronze-platinum.jpg",
     info:
       "God of War is a mythology-based action-adventure video game franchise. Created by David Jaffe at Sony's Santa Monica Studio, the series debuted in 2005 on the PlayStation 2 (PS2) video game console, and has become a flagship title for the PlayStation brand, consisting of eight games across multiple platforms. The story is about Kratos, a Spartan warrior tricked into killing his wife and daughter by his former master, the Greek God of War Ares. Kratos seeks to rid himself of the nightmares by serving the other Olympian gods, but soon finds himself in confrontation with them due to their machinations. Years after the destruction of ancient Greece, Kratos ends up in ancient Norway with a young son named Atreus. The two journey throughout several realms to fulfill a promise to the boy's recently deceased mother, inadvertently making enemies of the Norse gods."
   },
@@ -62,6 +62,17 @@ const dummyData = [
       "https://i.ebayimg.com/23/!!d-zp1wBWM~$(KGrHqV,!lkEy+jC2UPRBM7Dv9jWWg~~_35.JPG?set_id=89040003C1",
     info:
       "The Legend of Zelda: Ocarina of Time[a] is an action-adventure game developed and published by Nintendo for the Nintendo 64. It was released in Japan and North America in November 1998, and in Europe, Australia and New Zealand the following month. Ocarina of Time is the fifth game in The Legend of Zelda series, and the first with 3D graphics. Originally developed for the 64DD peripheral, it was instead released on a 256-megabit (32-megabyte) cartridge, the largest-capacity cartridge Nintendo produced at that time."
+  },
+  {
+    _id: "6",
+    title: "The Legend of Zelda: Links Awakening",
+    category: "Adventure",
+    price: "56",
+    rating: 5,
+    imgURL:
+      "https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_TheLegendOfZeldaLinksAwakening_image1600w.jpg",
+    info:
+      "The Legend of Zelda: Links Awakening[a] is a 1993 action-adventure game developed and published by Nintendo for the Game Boy. It was the first installment in The Legend of Zelda series for a handheld game console."
   }
 ];
 

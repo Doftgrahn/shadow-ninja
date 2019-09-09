@@ -1,11 +1,15 @@
 import {dummyData} from "../functions/dummyData";
 
-import {FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE} from './constants';
-
+import {
+  FETCH_PRODUCTS_BEGIN,
+  FETCH_PRODUCTS_SUCCESS,
+  FETCH_PRODUCTS_FAILURE
+} from "./constants";
 
 /*
 const getProducts = () => {
-  return fetch("/api/games")
+const url = '/api/games';
+  return fetch(url)
     .then(handleErrors)
     .then(res => res.json());
 };
@@ -13,7 +17,7 @@ const getProducts = () => {
 
 const fakeGetProcuts = () => {
   return new Promise(resolve => {
-    setTimeout(() => resolve({products: dummyData}), 2000);
+    setTimeout(() => resolve({products: dummyData}), 500);
   });
 };
 
@@ -37,8 +41,6 @@ const handleErrors = response => {
   }
   return response;
 };
-
-
 
 export const fetchProductsBegin = () => ({
   type: FETCH_PRODUCTS_BEGIN
