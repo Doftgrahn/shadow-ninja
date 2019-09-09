@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 
 const PromoGame = ({products, match}) => {
 
-    const randomPromo = products.map((game, index, array) => {
 
+    const randomPromo = products.map((game, index) => {
         return (<div className="promo__wrapper">
             <Link to={`${match.url}/${game._id}`}>More info...</Link>
             <h1>{game.title}</h1>

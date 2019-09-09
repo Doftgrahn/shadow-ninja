@@ -12,11 +12,20 @@ import AllGames from './components/allGames/allGames';
 import StoreNavbar from './components/storenavbar/storenavbar';
 
 // General Wrapper for GAMES
-const Store = ({dispatch, products, match}) => {
+const Store = ({dispatch, products, loading, error, match}) => {
 
+    console.log(products);
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
+
+    if (error) {
+        return (<div>Error, no connection</div>)
+    }
+
+    if (loading) {
+        return <div>Loading....</div>
+    }
 
     return (<main className="games">
         <PromoGame match={match} products={products}/>

@@ -10,6 +10,9 @@ const initialState = {
   error: null
 };
 
+
+
+
 export default function productReducer(
     state = initialState,
     action

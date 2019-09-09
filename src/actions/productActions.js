@@ -6,27 +6,32 @@ import {
   FETCH_PRODUCTS_FAILURE
 } from "./constants";
 
-/*
+
 const getProducts = () => {
-const url = '/api/games';
+    const url = "http://localhost:1337";
+ // const url = "/api/games";
   return fetch(url)
     .then(handleErrors)
-    .then(res => res.json());
+    .then(res => res.json()
+    );
 };
-*/
 
-const fakeGetProcuts = () => {
+/*
+ const fakeGetProducts = () => {
   return new Promise(resolve => {
     setTimeout(() => resolve({products: dummyData}), 500);
   });
 };
 
+*/
+
 export const fetchProducts = () => {
   return dispatch => {
     dispatch(fetchProductsBegin());
-    return fakeGetProcuts()
+    return getProducts()
       .then(json => {
         dispatch(fetchProductsSuccess(json.products));
+        console.log(json);
         return json.products;
       })
       .catch(error => {
