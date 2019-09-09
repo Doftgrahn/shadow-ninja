@@ -3,7 +3,6 @@ const {getProductMongoDB} = require('./database/GetProduct');
 const express = require('express');
 const server = express();
 
-
 // // function call for AddProduct
 // insertMongoDB()
 
@@ -21,8 +20,7 @@ server.use(function(req, res, next) {
 });
 
 
-
-server.get('/test', (request, response) => {
+server.get('/', (request, response) => {
 	console.log('Received GET request to /test');
 	response.send('Testing!');
 })
@@ -31,7 +29,6 @@ server.get('/games', (request, response) => {
 	console.log('Received GET request to /test');
 	response.send(fakeProducts);
 })
-
 
 
 // server.get('/word/', (req, res) => {

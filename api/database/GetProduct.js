@@ -1,5 +1,5 @@
 const {uri} = require('../secrets/mongoDB.config')
-const {settings, MongoClient, shadowDB} = require('../settings/Settings.config')
+const {settings, MongoClient, shadowDB} = require('../settings/Settings.js')
 
 
 const getProductMongoDB = (getProduct) => {
