@@ -1,23 +1,26 @@
-//import {dummyData} from "../functions/dummyData";
+import {dummyData} from "../functions/dummyData";
 
+import {FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE} from './constants';
+
+
+/*
 const getProducts = () => {
   return fetch("/api/games")
     .then(handleErrors)
     .then(res => res.json());
 };
+*/
 
-/*
 const fakeGetProcuts = () => {
   return new Promise(resolve => {
-    setTimeout(() => resolve({products: dummyData}), 1000);
+    setTimeout(() => resolve({products: dummyData}), 2000);
   });
 };
-*/
 
 export const fetchProducts = () => {
   return dispatch => {
     dispatch(fetchProductsBegin());
-    return getProducts()
+    return fakeGetProcuts()
       .then(json => {
         dispatch(fetchProductsSuccess(json.products));
         return json.products;
@@ -35,9 +38,7 @@ const handleErrors = response => {
   return response;
 };
 
-export const FETCH_PRODUCTS_BEGIN = "FETCH_PRODUCTS_BEGIN";
-export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
-export const FETCH_PRODUCTS_FAILURE = "FETCH_PRODUCTS_FAILURE";
+
 
 export const fetchProductsBegin = () => ({
   type: FETCH_PRODUCTS_BEGIN

@@ -1,37 +1,56 @@
-const {insertMongoDB} = require('./database/AddProduct');
-const {getProductMongoDB} = require('./database/GetProduct');
 const express = require('express');
 const server = express();
+/*DATABASE*/
+const {insertMongoDB} = require('./database/AddProduct');
+const {getProductMongoDB} = require('./database/GetProduct');
+const db = require("./secrets/keys").mongoURI;
+/*DATABASE*/
+/* AUTH / LOGIN */
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const users = require("./routes/users");
+/* AUTH / LOGIN */
 
 
 // // function call for AddProduct
 // insertMongoDB()
 
-// // function call for getProduct
- // getProductMongoDB()
+server.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+server.use(bodyParser.json());
+
+// Connect to MongoDB
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
+const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 
 
-server.use(express.static(__dirname + '/../build/'));
-server.use(express.json());
 
-server.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-});
-
-
-
-server.get('/test', (request, response) => {
+server.get('/', (request, response) => {
 	console.log('Received GET request to /test');
 	response.send('Testing!');
 })
+
+// Passport middleware
+server.use(passport.initialize());
+// Passport config
+require("./secrets/passport")(passport);
+// Routes
+server.use("/api/users", users);
 
 server.get('/games', (request, response) => {
 	console.log('Received GET request to /test');
 	response.send(fakeProducts);
 })
-
 
 
 // server.get('/word/', (req, res) => {
@@ -60,15 +79,6 @@ server.listen(port, () => {
 })
 
 
-const product = {
-_id:'Lägger mongodb till automatiskt',
- title: 'STRING',
- category: 'STRING',
- price: 'NUMBER',
- rating: 'NUMBER',
- image: 'STRING',
- info: 'STRING'
-}
 
 const fakeProducts = [
   { _id:'Lägger mongodb till automatiskt', title: 'STRING', category: 'STRING', price: 'NUMBER', rating: 'NUMBER', image: 'STRING', info: 'STRING' },
