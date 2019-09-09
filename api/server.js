@@ -14,7 +14,16 @@ const users = require("./routes/users");
 require("./secrets/passport")(passport);
 /* AUTH / LOGIN */
 
+
 // 1 middleware
+server.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Methods", "*")
+  next();
+});
+server.use(express.json())
+
 /* Handle Auth / Login */
 server.use(
   bodyParser.urlencoded({
@@ -24,21 +33,27 @@ server.use(
 server.use(bodyParser.json());
 server.use(passport.initialize());
 /* Handle Auth / Login */
+// middleware
 
-// 2 Routes
+
+/* Routing */
+server.get('/', (request, response) => {
+  console.log('Received GET request to /');
+  response.send('You made a request to /');
+})
+server.use("/api/users", users);
+server.get('/api/games', (request, response) => {
+  getProductMongoDB(data => {
+    response.send(JSON.stringify(data))
+  })
+})
+/* Routing */
 
 
 
 // 3 felhantering
-// 4 starta serven
 
 
-server.get('/games', (request, response) => {
-	console.log('Received GET request to /test');
-	response.send(fakeProducts);
-})
-
-// Connect to MongoDB
 mongoose
   .connect(
     db,
@@ -48,23 +63,9 @@ mongoose
   .catch(err => console.log(err));
 
 
-// Routes
-server.use("/api/users", users);
 
-
-
-
-const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
-server.listen(port, () => console.log(`Server up and running on port ${port} !`));
-
-
-
-
-const fakeProducts = [
-  { _id:'Lägger mongodb till automatiskt', title: 'STRING', category: 'STRING', price: 'NUMBER', rating: 'NUMBER', image: 'STRING', info: 'STRING' },
-  { _id:'Lägger mongodb till automatiskt', title: 'STRING', category: 'STRING', price: 'NUMBER', rating: 'NUMBER', image: 'STRING', info: 'STRING' },
-  { _id:'Lägger mongodb till automatiskt', title: 'STRING', category: 'STRING', price: 'NUMBER', rating: 'NUMBER', image: 'STRING', info: 'STRING' },
-  { _id:'Lägger mongodb till automatiskt', title: 'STRING', category: 'STRING', price: 'NUMBER', rating: 'NUMBER', image: 'STRING', info: 'STRING' },
-  { _id:'Lägger mongodb till automatiskt', title: 'STRING', category: 'STRING', price: 'NUMBER', rating: 'NUMBER', image: 'STRING', info: 'STRING' },
-  { _id:'Lägger mongodb till automatiskt', title: 'STRING', category: 'STRING', price: 'NUMBER', rating: 'NUMBER', image: 'STRING', info: 'STRING' },
-]
+// 4 starta serven
+const port = process.env.PORT || 1337;
+server.listen(port, () => {
+	console.log('Server listening on port ' + port);
+})

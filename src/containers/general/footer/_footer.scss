@@ -1,0 +1,18 @@
+.footer {
+    padding: 20px;
+    text-align: center;
+    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &__wrapper {
+        max-width: 800px;
+        width: 100%;
+        border-top: 10px solid black;
+
+        h1 {
+            padding: 20px;
+        }
+    }
+}

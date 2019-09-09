@@ -1,0 +1,56 @@
+.game__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    margin: $regular-spacing;
+    transition: 0.4s;
+    min-height: 320px;
+    position: relative;
+    background: white;
+    @media screen and (min-width: 800px) {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    &:hover {
+        box-shadow: 8px 8px 8px black;
+    }
+
+    figure {
+        position: relative;
+        width: 100%;
+        height: 157px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+        }
+    }
+
+    h3 {
+        color: black;
+        background: gray;
+    }
+
+    &-description {
+        padding: 10px;
+        color: black;
+
+        p {
+            color: black;
+            margin: 0 0 10px;
+        }
+
+        .linktoGame {
+            color: black;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

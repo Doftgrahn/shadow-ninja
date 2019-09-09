@@ -1,12 +1,12 @@
 import React from 'react';
 
 const Footer = () => {
-    return (<footer>
-
-<h1>This is a footer</h1>
+    return (
+    <footer className="footer">
+        <div className="footer__wrapper">
+            <h1>This is a footer</h1>
+        </div>
     </footer>)
 }
-
-
 
 export default Footer;

@@ -1,0 +1,36 @@
+.singleGame {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1100px;
+    justify-content: center;
+    padding: 20px;
+    margin: 0 auto;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        //align-items: center;
+        figure {
+            position: relative;
+            height: 600px;
+            width: 100%;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                position: absolute;
+            }
+        }
+
+        &-description {
+            padding: 20px;
+
+            p {
+                margin: 0 10px 10px;
+                text-align: left;
+            }
+        }
+    }
+}

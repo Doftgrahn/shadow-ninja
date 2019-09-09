@@ -1,15 +1,25 @@
 // Main imports from blocks
 
-
 //Header
 @import '../../containers/general/header/header.scss';
 
 //Landingpage
 @import '../../containers/landingpage/landingPage.scss';
 
-//Games
-@import '../../containers/games/games.scss';
+//Store
 
+@import '../../containers/store/store.scss';
+/*Components under STORE*/
+@import '../../containers/store/components/allGames/allGames.scss';
+@import '../../containers/store/components/oneGame/oneGame.scss';
+@import '../../containers/store/components/promoGame/promoGame.scss';
+@import '../../containers/store/components/sortGames/sortGames.scss';
+@import '../../containers/store/components/storenavbar/storeNavbar.scss';
+/**/
+
+
+//Single Game
+@import '../../containers/singleGame/singleGame.scss';
 //Social
 @import '../../containers/social/social.scss';
 

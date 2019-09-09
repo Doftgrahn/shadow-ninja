@@ -1,5 +1,7 @@
 * {
-    font-size: 18px;
+    font-size: 16px;
+    font-family: $font-basic;
+    color: $color-white;
 }
 
 h1,
@@ -19,11 +21,4 @@ h2 {
 
 h3 {
     font-size: 1.17em;
-}
-
-p {
-    font-size: 16px;
-    @media screen and (min-width: 800px) {
-        font-size: 18px;
-    }
 }
