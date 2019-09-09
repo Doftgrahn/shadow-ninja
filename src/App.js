@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 //import styles
 import './styles/main.scss';
@@ -8,7 +8,13 @@ import Footer from './containers/general/footer/footer';
 //Routes
 import Routes from './routes/routes';
 
-const App = () => {
+const App = (props) => {
+
+    useEffect(() => {
+        console.log(props);
+    })
+
+console.log(props);
     return (<div className="App">
         <Router>
             <Header/>
