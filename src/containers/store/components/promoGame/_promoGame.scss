@@ -1,45 +1,61 @@
 .promo {
+    margin : 0 auto;
     display: block;
+    height: 90vh;
+    border-bottom: 30px solid purple;
+    max-width: 1100px;
+    width: 100%;
 
     &__wrapper {
         position: relative;
         height: 100%;
+        display: flex;
+        flex-direction: column;
 
         a {
+            display: inline-block;
+            font-size: 30px;
             position: absolute;
             z-index: 1;
-            top:0;
-            color:white;
+            top: 150px;
+            left:50px;
+            color: white;
+            background: purple;
+
         }
 
         h1 {
             z-index: 1;
             position: absolute;
-            left: 0;
-            bottom: 0;
+            left: 200px;
+            bottom: 150px;
+            display: inline-block;
+            background: purple;
+            padding: 20px;
         }
 
         h3 {
             position: absolute;
             z-index: 1;
             border: none;
-            font-size: 50px;
-            right: 0;
-            bottom: 0;
+            font-size: 45px;
+            right: 150px;
+            top: 50px;
             display: inline-block;
+            background: purple;
+            padding: 20px;
         }
 
         & figure {
-            display: block;
-            height: 100vh;
-            width:100%;
+            width: 100%;
+            height: 100%;
             position: relative;
 
             img {
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                object-fit:  cover;
+                object-fit: cover;
             }
         }
     }

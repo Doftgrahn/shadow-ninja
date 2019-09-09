@@ -1,6 +1,13 @@
-
 .games {
     display: block;
+    display: flex;
+    flex-direction: column;
+
+    .gameswrapper {
+        display: flex;
+        flex-direction: row;
+    }
+
 
     h1 {
         text-align: center;

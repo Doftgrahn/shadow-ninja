@@ -28,7 +28,6 @@ const SortGames = (props) => {
         return <option  key={index} value={option.value}>{option.title}</option>
     })
 
-    console.log(sortValue);
     return (<div className="sort">
         <div className="sort__wrapper">
             <span>Sort by:</span>
