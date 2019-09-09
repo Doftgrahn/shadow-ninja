@@ -31,7 +31,8 @@
     "start": "react-scripts start",
     "server": "nodemon api/server.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "now-build": "react-scripts build && mv build dist"
   },
   "proxy": "http://localhost:1337",
   "eslintConfig": {

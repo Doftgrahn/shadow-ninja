@@ -1,4 +1,4 @@
-import {dummyData} from "../functions/dummyData";
+//import {dummyData} from "../functions/dummyData";
 
 import {
   FETCH_PRODUCTS_BEGIN,
