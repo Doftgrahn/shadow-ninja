@@ -14,7 +14,6 @@ import StoreNavbar from './components/storenavbar/storenavbar';
 // General Wrapper for GAMES
 const Store = ({dispatch, products, loading, error, match}) => {
 
-    console.log(products);
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
@@ -27,7 +26,8 @@ const Store = ({dispatch, products, loading, error, match}) => {
         return <div>Loading....</div>
     }
 
-    return (<main className="games">
+    return (
+    <main className="games">
         <PromoGame match={match} products={products}/>
         <StoreNavbar/>
         <SortGames/>

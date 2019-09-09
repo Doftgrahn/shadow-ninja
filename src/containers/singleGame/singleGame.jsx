@@ -1,49 +1,35 @@
-import React, {useState} from 'react';
-
+import React, {useEffect} from 'react';
 import {Route} from "react-router-dom";
 
-import RegularButton from '../../components/buttons/regular-button';
+import Game from './game';
 
-import {dummyData} from '../../functions/dummyData';
+import {connect} from "react-redux";
+import {fetchProducts} from '../../actions/productActions'
 
-//// Holds routing for SINGLEGAME
+//// Holds routing for GAME
 
-const SingleGame = ({match}) => {
+const SingleGame = ({match, dispatch, products, loading, error}) => {
+
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [dispatch])
+
+    if (error) {
+        return (<div>...Something Went Wrong</div>)
+    }
+    if (loading) {
+        return <div>Loading....</div>
+    }
+
     return (<div className="singleGame">
-        <Route path={`${match.path}`} render={(props) => <Game {...props} data={dummyData}/>}/>
+        <Route path={`${match.path}`} render={(props) => <Game {...props} data={products}/>}/>
     </div>)
 }
 
-export default SingleGame;
+const mapStateToProps = state => ({
+    products: state.products.items,
+    loading: state.products.loading,
+    error: state.products.error
+});
 
-/* --    ////    ACUTAL CONTENT FOR SINGLE GAME
-______________________________________________________
--- */
-
-const Game = ({data, match, history}) => {
-    const [game] = useState(dummyData);
-
-    const goBack = history.goBack;
-
-    const filterdata = game
-        .filter(e => e._id === match.params.id)
-        .map(f => <section key={f._id} className="singleGame__container">
-            <figure>
-                <img src={f.imgURL} alt={f.title}/>
-            </figure>
-
-            <h3>{f.title}</h3>
-            <div className="singleGame__container-description">
-                <p>Category: {f.category}</p>
-                <p>price: €{f.price}</p>
-                <p>rating: {f.rating}</p>
-                <p>info: {f.info}</p>
-            </div>
-
-            <RegularButton click={goBack} title="Go back"/>
-        </section>)
-
-    return (<main>
-        {filterdata}
-    </main>)
-}
+export default connect(mapStateToProps)(SingleGame);

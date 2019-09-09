@@ -1,4 +1,4 @@
-const {uri} = require('../secrets/mongoDB.config');
+const {uri} = require('../secrets/mongoDB.config.js');
 const {settings, MongoClient, shadowDB} = require('../settings/Settings.js');
 
 
@@ -27,8 +27,8 @@ const insertMongoDB = () => {
 
           collection.insertMany(productDocs, (error, response) => {
               if(error) {
-                  throw error;
                   console.log('error insertMany');
+                  throw error;
               }
               console.log('succsess insertMany: ', 'response');
               client.close()
