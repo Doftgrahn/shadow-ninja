@@ -16,6 +16,13 @@ const users = require("./routes/users");
 // // function call for AddProduct
 // insertMongoDB()
 
+// function call for GetProduct from database
+server.get('/api/games', (request, response) => {
+   getProductMongoDB(data => {
+     response.send(JSON.stringify(data))
+   })
+})
+
 server.use(
   bodyParser.urlencoded({
     extended: false
@@ -31,7 +38,6 @@ mongoose
   )
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
-const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 
 
 
