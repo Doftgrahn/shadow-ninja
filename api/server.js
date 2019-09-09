@@ -12,16 +12,20 @@ const passport = require("passport");
 const users = require("./routes/users");
 /* AUTH / LOGIN */
 
+server.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Methods", "*")
+	next();
+});
+
+server.use(express.json())
+
 
 // // function call for AddProduct
 // insertMongoDB()
 
-// function call for GetProduct from database
-server.get('/api/games', (request, response) => {
-   getProductMongoDB(data => {
-     response.send(JSON.stringify(data))
-   })
-})
+
 
 server.use(
   bodyParser.urlencoded({
@@ -44,6 +48,13 @@ mongoose
 server.get('/', (request, response) => {
 	console.log('Received GET request to /test');
 	response.send('Testing!');
+})
+
+// function call for GetProduct from database
+server.get('/api/games', (request, response) => {
+   getProductMongoDB(data => {
+     response.send(JSON.stringify(data))
+   })
 })
 
 // Passport middleware
