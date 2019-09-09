@@ -6,14 +6,13 @@ import {
   FETCH_PRODUCTS_FAILURE
 } from "./constants";
 
-
 const getProducts = () => {
-    const url = "http://localhost:1337";
- // const url = "/api/games";
+  const url = "/api/games";
   return fetch(url)
     .then(handleErrors)
-    .then(res => res.json()
-    );
+    .then(res => {
+      return res.json();
+    });
 };
 
 /*
@@ -22,7 +21,6 @@ const getProducts = () => {
     setTimeout(() => resolve({products: dummyData}), 500);
   });
 };
-
 */
 
 export const fetchProducts = () => {
@@ -30,9 +28,8 @@ export const fetchProducts = () => {
     dispatch(fetchProductsBegin());
     return getProducts()
       .then(json => {
-        dispatch(fetchProductsSuccess(json.products));
-        console.log(json);
-        return json.products;
+        dispatch(fetchProductsSuccess(json));
+        return json;
       })
       .catch(error => {
         dispatch(fetchProductsFailure(error));

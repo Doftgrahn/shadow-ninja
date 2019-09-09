@@ -47,7 +47,7 @@ mongoose
 
 server.get('/', (request, response) => {
 	console.log('Received GET request to /test');
-	response.send('Testing!');
+	response.send('"Testing!"');
 })
 
 // function call for GetProduct from database
