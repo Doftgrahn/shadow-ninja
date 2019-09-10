@@ -6,6 +6,8 @@ import Store from '../containers/store/store';
 import SingleGame from '../containers/singleGame/singleGame';
 import Social from '../containers/social/social';
 import Checkout from '../containers/checkout/checkout';
+import Register from '../containers/login-Handler/Register';
+import Login from '../containers/login-Handler/Login';
 
 const Routes = () => {
 
@@ -35,7 +37,17 @@ const Routes = () => {
             exact: false,
             path: '/checkout',
             Component: Checkout
-        }
+        }, {
+            _id:5,
+            exact: false,
+            path: '/register',
+            Component: Register
+        }, {
+            _id:6,
+            exact: false,
+            path: '/login',
+            Component: Login
+        },
     ]
 
     const renderRoutes = allRoutes.map(r => {
