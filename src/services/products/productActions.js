@@ -15,7 +15,7 @@ const getProducts = () => {
     });
 };
 
-/*
+/* FAKE_PRODUCTS
  const fakeGetProducts = () => {
   return new Promise(resolve => {
     setTimeout(() => resolve({products: dummyData}), 500);
