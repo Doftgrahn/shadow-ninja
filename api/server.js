@@ -3,6 +3,7 @@ const server = express();
 /*DATABASE*/
 const {insertMongoDB} = require('./database/AddProduct');
 const {getProductMongoDB} = require('./database/GetProduct');
+const {filterByNameMongoDB} = require('./database/filterByName')
 const db = require("./secrets/keys").mongoURI;
 /*DATABASE*/
 
@@ -15,7 +16,7 @@ require("./secrets/passport")(passport);
 /* AUTH / LOGIN */
 
 server.use(express.static(__dirname + '/../build/'));
-server.use(express.static(__dirname + '/../dist/'));
+//server.use(express.static(__dirname + '/../dist/'));
 
 server.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -32,7 +33,6 @@ server.use(
   })
 );
 
-
 // Connect to MongoDB
 mongoose
   .connect(
@@ -43,8 +43,30 @@ mongoose
   .catch(err => console.log(err));
 
 
-// function call for GetProduct from database
+
+
+
 server.get('/api/games', (request, response) => {
+
+  if(request.query.filter == '') {
+      getProductMongoDB(data => {
+        response.send(JSON.stringify(data))
+      })
+  } else if (request.query.filter ==  'lowestPrice') {
+      console.log('inside lowest price query');
+      filterProduct = {price: 1}
+      filterByNameMongoDB(filterProduct, result => {
+        response.send(JSON.stringify(result))
+      })
+  } else {
+      console.log('nothing match filter');
+  }
+
+
+})
+// function call for GetProduct from database
+server.get('/api/games/', (request, response) => {
+  console.log('server.get request.query: ', request );
   getProductMongoDB(data => {
     response.send(JSON.stringify(data))
   })
