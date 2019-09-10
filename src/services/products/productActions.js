@@ -4,7 +4,7 @@ import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from "./constants";
+} from './actionTypes';
 
 const getProducts = () => {
   const url = "/api/games";
@@ -15,7 +15,7 @@ const getProducts = () => {
     });
 };
 
-/*
+/* FAKE_PRODUCTS
  const fakeGetProducts = () => {
   return new Promise(resolve => {
     setTimeout(() => resolve({products: dummyData}), 500);

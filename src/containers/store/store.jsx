@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 
 // Redux ..
 import {connect} from "react-redux";
-import {fetchProducts} from '../../actions/productActions'
+import {fetchProducts} from '../../services/products/productActions';
 
 // All Games
 import PromoGame from './components/promoGame/promoGame';
