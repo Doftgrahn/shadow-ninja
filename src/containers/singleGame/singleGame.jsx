@@ -4,7 +4,7 @@ import {Route} from "react-router-dom";
 import Game from './game';
 
 import {connect} from "react-redux";
-import {fetchProducts} from '../../actions/productActions'
+import {fetchProducts} from '../../services/products/productActions';
 
 //// Holds routing for GAME
 
