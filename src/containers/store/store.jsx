@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 
 // Redux ..
 import {connect} from "react-redux";
-import {fetchProducts} from '../../actions/productActions'
+import {fetchProducts} from '../../services/products/productActions';
 
 // All Games
 import PromoGame from './components/promoGame/promoGame';
@@ -12,20 +12,26 @@ import AllGames from './components/allGames/allGames';
 import StoreNavbar from './components/storenavbar/storenavbar';
 
 // General Wrapper for GAMES
-const Store = (props) => {
-    const {dispatch, products} = props;
-
+const Store = ({dispatch, products, loading, error, match}) => {
 
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
 
+    if (error) {
+        return (<div>Error, no connection</div>)
+    }
 
-    return (<main className="games">
-        <PromoGame match={props.match} products={products}/>
+    if (loading) {
+        return <div>Loading....</div>
+    }
+
+    return (
+    <main className="games">
+        <PromoGame match={match} products={products}/>
         <StoreNavbar/>
         <SortGames/>
-        <AllGames products={products} match={props.match}/>
+        <AllGames products={products} match={match}/>
     </main>)
 }
 

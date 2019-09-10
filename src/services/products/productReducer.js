@@ -2,7 +2,9 @@ import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from '../actions/constants.js'
+} from './actionTypes';
+
+
 
 const initialState = {
   items: [],

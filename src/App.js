@@ -9,7 +9,7 @@ import Footer from './containers/general/footer/footer';
 //Routes
 import Routes from './routes/routes';
 
-const App = (props) => {
+const App = () => {
     return (<div className="App">
         <Router>
             <Header/>

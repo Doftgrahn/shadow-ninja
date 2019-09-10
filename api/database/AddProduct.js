@@ -27,8 +27,8 @@ const insertMongoDB = () => {
 
           collection.insertMany(productDocs, (error, response) => {
               if(error) {
-                  throw error;
                   console.log('error insertMany');
+                  throw error;
               }
               console.log('succsess insertMany: ', 'response');
               client.close()

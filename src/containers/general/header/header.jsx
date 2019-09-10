@@ -17,6 +17,9 @@ const Header = () => {
         }, {
             name: 'Checkout',
             to: '/checkout'
+        }, {
+            name: 'Signup / Login',
+            to: '/register'
         }
     ]
 
