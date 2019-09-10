@@ -49,11 +49,16 @@ server.get('/api/games', (request, response) => {
 })
 /* Routing */
 
+<<<<<<< HEAD
 
 
 // 3 felhantering
 
 
+=======
+// 3 felhantering
+
+>>>>>>> dev
 mongoose
   .connect(
     db,

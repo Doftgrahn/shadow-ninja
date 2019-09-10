@@ -1,29 +1,35 @@
-import {dummyData} from "../functions/dummyData";
+//import {dummyData} from "../functions/dummyData";
 
-import {FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE} from './constants';
+import {
+  FETCH_PRODUCTS_BEGIN,
+  FETCH_PRODUCTS_SUCCESS,
+  FETCH_PRODUCTS_FAILURE
+} from './actionTypes';
 
-
-/*
 const getProducts = () => {
-  return fetch("/api/games")
+  const url = "/api/games";
+  return fetch(url)
     .then(handleErrors)
-    .then(res => res.json());
+    .then(res => {
+      return res.json();
+    });
 };
-*/
 
-const fakeGetProcuts = () => {
+/* FAKE_PRODUCTS
+ const fakeGetProducts = () => {
   return new Promise(resolve => {
-    setTimeout(() => resolve({products: dummyData}), 2000);
+    setTimeout(() => resolve({products: dummyData}), 500);
   });
 };
+*/
 
 export const fetchProducts = () => {
   return dispatch => {
     dispatch(fetchProductsBegin());
-    return fakeGetProcuts()
+    return getProducts()
       .then(json => {
-        dispatch(fetchProductsSuccess(json.products));
-        return json.products;
+        dispatch(fetchProductsSuccess(json));
+        return json;
       })
       .catch(error => {
         dispatch(fetchProductsFailure(error));
@@ -37,8 +43,6 @@ const handleErrors = response => {
   }
   return response;
 };
-
-
 
 export const fetchProductsBegin = () => ({
   type: FETCH_PRODUCTS_BEGIN
