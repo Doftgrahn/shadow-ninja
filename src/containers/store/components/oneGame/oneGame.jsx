@@ -1,13 +1,14 @@
 import React from 'react';
-
 import {Link} from "react-router-dom";
-
 import RegularButton from '../../../../components/buttons/regular-button';
 
-// Renders ONE game, this loop out with map in ALLGAMES component.
-const OneGame = ({gameinfo, match}) => {
+// Redux
+import { connect } from 'react-redux';
+import { addProduct } from '../../../../services/cart/cartAction';
 
-    const clickMe = (product) => console.log('PLACEHOLDER', product);
+// Renders ONE game, this loop out with map in ALLGAMES component.
+const OneGame = ({gameinfo, match, addProduct}) => {
+
 
     return (<section className="game__container">
 
@@ -26,9 +27,11 @@ const OneGame = ({gameinfo, match}) => {
 
         </Link>
 
-        <RegularButton title="buy" click={() => clickMe(gameinfo)}/>
-        
+        <RegularButton title="buy" click={() => addProduct(gameinfo)}/>
+
     </section>)
 }
 
-export default OneGame;
+
+
+export default connect(null, {addProduct})(OneGame);

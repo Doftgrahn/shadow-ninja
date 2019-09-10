@@ -1,4 +1,4 @@
-import {LOAD_CART, ADD_PRODUCT, REMOVE_PRODUCT} from './actionTypes';
+import {LOAD_CART, ADD_PRODUCT, REMOVE_PRODUCT} from "./actionTypes";
 
 const initialState = {
   products: []
@@ -12,9 +12,10 @@ export default function cartReducer(state = initialState, action) {
         products: action.payload
       };
     case ADD_PRODUCT:
+    console.log(state);
       return {
         ...state,
-        productAdd: Object.assign({}, action.payload)
+        productAdd:Object.assign({}, action.payload)
       };
     case REMOVE_PRODUCT:
       return {
