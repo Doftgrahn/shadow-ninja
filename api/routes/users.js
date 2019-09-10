@@ -10,15 +10,11 @@ const validateLoginInput = require("../validation/login");
 const User = require("../models/User");
 
 
-// HANDLE REGISTRATE --------------------------------------------------------
-// @route POST api/users/register
-// @desc Register user
-// @access Public
+
 router.post("/register", (req, res) => {
-  // Form validation
+
 const { errors, isValid } = validateRegisterInput(req.body);
-// Check validation
-  if (!isValid) {
+// Check validation  if (!isValid) {
     return res.status(400).json(errors);
   }
 User.findOne({ email: req.body.email }).then(user => {
@@ -30,7 +26,7 @@ User.findOne({ email: req.body.email }).then(user => {
         email: req.body.email,
         password: req.body.password
       });
-// Hash password before saving in database
+
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
@@ -44,11 +40,7 @@ User.findOne({ email: req.body.email }).then(user => {
     }
   });
 });
-// HANDLE REGISTRATE --------------------------------------------------------
-// HANDLE LOGIN -------------------------------------------------------------
-// @route POST api/users/login
-// @desc Login user and return JWT token
-// @access Public
+
 router.post("/login", (req, res) => {
   // Form validation
 const { errors, isValid } = validateLoginInput(req.body);
@@ -95,5 +87,4 @@ const email = req.body.email;
     });
   });
 });
-// HANDLE LOGIN -------------------------------------------------------------
 module.exports = router;
