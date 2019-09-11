@@ -1,9 +1,11 @@
 import React, {useEffect} from 'react';
 import {Route} from "react-router-dom";
 
-import Game from './game';
-
 import {connect} from "react-redux";
+
+import Game from './game';
+import Loader from '../../components/loader/loader';
+
 import {fetchProducts} from '../../services/products/productActions';
 
 //// Holds routing for GAME
@@ -15,10 +17,10 @@ const SingleGame = ({match, dispatch, products, loading, error}) => {
     }, [dispatch])
 
     if (error) {
-        return (<div>...Something Went Wrong</div>)
+        return (<div>...Something Went Wrong, go out and get som sun.</div>)
     }
     if (loading) {
-        return <div>Loading....</div>
+        return <Loader/>
     }
 
     return (<div className="singleGame">

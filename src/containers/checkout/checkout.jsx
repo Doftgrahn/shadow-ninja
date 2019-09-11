@@ -10,11 +10,11 @@ const Checkout = ({cartProducts, newProduct}) => {
         .map(game => game.price * game.quantity)
         .reduce((biggest, p) => biggest + p, 0)
 
-    const renderCartProducts = cartProducts.map(product => <CartProduct key={product._id} product={product}/>)
-
     const totalNumberOfProducts = cartProducts
         .map((game,) => game.quantity)
-        .reduce((a, b) => a + b, 0)
+        .reduce((a, b) => a + b, 0);
+
+    const renderCartProducts = cartProducts.map(product => <CartProduct key={product._id} product={product}/>)
 
     return (<main className="checkout">
         {
@@ -25,7 +25,8 @@ const Checkout = ({cartProducts, newProduct}) => {
                     </h1>
         }
 
-        <div className="checkout__wrapper">{renderCartProducts}
+        <div className="checkout__wrapper">
+            {renderCartProducts}
         </div>
 
         {
