@@ -1,9 +1,9 @@
 const express = require('express');
 const server = express();
 /*DATABASE*/
-//const {insertMongoDB} = require('./database/AddProduct');
-const {getProductMongoDB} = require('./database/GetProduct');
+const {insertMongoDB} = require('./database/AddProduct');
 const {filterByNameMongoDB} = require('./database/filterByName')
+const {getSingleProductMongoDB} = require('./database/getSingleProduct')
 const db = require("./secrets/keys").mongoURI;
 /*DATABASE*/
 
@@ -48,8 +48,8 @@ mongoose
 
 
 
-
-
+// ready to connect with React
+// filter and get funtion for games product from MongoDB
 let lastFilter = '';
 let filterProduct = '';
 server.get('/api/games', (request, response) => {
@@ -85,17 +85,20 @@ server.get('/api/games', (request, response) => {
 	filterByNameMongoDB(filterProduct, result => {
 		response.send(JSON.stringify(result))
 	})
-	console.log('2 filterProduct: ', filterProduct);
-	console.log('2 lastFilter: ', lastFilter);
 
 })
-// function call for GetProduct from database
-server.get('/api/games/', (request, response) => {
-	console.log('server.get request.query: ', request );
-	getProductMongoDB(data => {
-		response.send(JSON.stringify(data))
+
+// ready to connect with React
+// get request for singleProduct based on ID
+server.get('/api/games/product', (request, response) => {
+	let queryid = request.query.id;
+	let idSingleProduct = queryid;
+
+	getSingleProductMongoDB(idSingleProduct, result => {
+		response.send(JSON.stringify(result))
 	})
 })
+
 /* Routing */
 
 
@@ -109,19 +112,11 @@ server.use("/api/users", users);
 server.get('/error', (req, res) => {
 	throw Error('User error');
 })
-
+// send 500 error change to 500 page later
 server.use((error, request, response, next) => {
 	response.status(500).send('error 500 error')
 })
 
-// server.get('/games', (request, response) => {
-// 	console.log('Received GET request to /test');
-// 	response.send(fakeProducts);
-// })
-
-
-
-// 3 felhantering
 
 mongoose
 .connect(
