@@ -1,7 +1,7 @@
 const express = require('express');
 const server = express();
 /*DATABASE*/
-const {insertMongoDB} = require('./database/AddProduct');
+//const {insertMongoDB} = require('./database/AddProduct');
 const {getProductMongoDB} = require('./database/GetProduct');
 const {filterByNameMongoDB} = require('./database/filterByName')
 const db = require("./secrets/keys").mongoURI;
@@ -17,6 +17,10 @@ require("./secrets/passport")(passport);
 
 server.use(express.static(__dirname + '/../build/'));
 //server.use(express.static(__dirname + '/../dist/'));
+
+
+//If you want to insert, uncomment this function.
+//insertMongoDB()
 
 server.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
