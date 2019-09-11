@@ -6,6 +6,8 @@ import {useDispatch} from 'react-redux'
 
 import {removeProduct} from '../../../services/cart/cartAction';
 
+import {ReactComponent as Delete} from '../../../components/SVG_Icons/clear.svg';
+
 const CartProduct = ({product}) => {
     const dispatch = useDispatch();
     //const totalValue = product.price * product.quantity;
@@ -22,11 +24,13 @@ const CartProduct = ({product}) => {
             <div className="desc__info">
                 <p>PRICE:{product.price}</p>
                 <p>QUANTITY:{product.quantity}</p>
-    </div>
+            </div>
 
         </div>
-
-        <button onClick={remove}>X</button>
+        
+        <div className="btn-container">
+            <button onClick={remove}><Delete/></button>
+        </div>
 
     </div>)
 }
