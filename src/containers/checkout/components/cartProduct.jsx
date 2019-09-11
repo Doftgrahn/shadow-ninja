@@ -2,20 +2,27 @@ import React from 'react';
 
 //Redux
 import {connect} from 'react-redux';
+import { useDispatch } from 'react-redux'
+
 
 import {removeProduct} from '../../../services/cart/cartAction';
 
 const CartProduct = ({product}) => {
+    const dispatch = useDispatch();
     //const totalValue = product.price * product.quantity;
-
-    return (<div className="product__container">
+    const remove = () => dispatch(removeProduct(product))
+    return (
+    <div className="product__container">
         <p>TITLE:{product.title}</p>
-        <p>QUANTITY:{product.quantity}
-        </p>
+        <p>QUANTITY:{product.quantity}</p>
         <p>PRICE:{product.price}</p>
-        <button onClick={() => removeProduct(product)}>DELETE</button>
+        <button onClick={remove}>DELETE</button>
         <br/>
     </div>)
 }
 
-export default connect(null, {removeProduct})(CartProduct);
+const mapStateToProps = state => ({
+
+})
+
+export default connect()(CartProduct);
