@@ -15,10 +15,10 @@ const CartProduct = ({product}) => {
             <img src={product.imgURL} alt={product.title}/>
         </figure>
         <div className="desc">
-        <p>TITLE:{product.title}</p>
-        <p>QUANTITY:{product.quantity}</p>
-        <p>PRICE:{product.price}</p>
-        <button onClick={remove}>DELETE</button>
+            <p>TITLE:{product.title}</p>
+            <p>QUANTITY:{product.quantity}</p>
+            <p>PRICE:{product.price}</p>
+            <button onClick={remove}>DELETE</button>
         </div>
     </div>)
 }

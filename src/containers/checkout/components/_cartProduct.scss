@@ -21,8 +21,14 @@
         padding: 10px;
 
         & button {
+            margin-top: 5px;
             color: black;
-            padding: 3px;
+            padding: 5px;
+            border:0;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }

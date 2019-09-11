@@ -4,6 +4,8 @@ import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {fetchProducts} from '../../services/products/productActions';
 
+import Loader from '../../components/loader/loader';
+
 // All Games
 import PromoGame from './components/promoGame/promoGame';
 import SortGames from './components/sortGames/sortGames';
@@ -23,7 +25,7 @@ const Store = ({dispatch, products, loading, error, match}) => {
     }
 
     if (loading) {
-        return <div>Loading....</div>
+        return <Loader/>
     }
 
     return (
