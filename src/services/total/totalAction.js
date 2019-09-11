@@ -12,7 +12,7 @@ export const updateCart = cartProducts => dispatch => {
     return sum;
   }, 0);
 
-  let installements = cartProducts.preduce((greater, p) => {
+  let installements = cartProducts.reduce((greater, p) => {
     greater = p.installements > greater ? p.installements : greater;
     return greater;
   });

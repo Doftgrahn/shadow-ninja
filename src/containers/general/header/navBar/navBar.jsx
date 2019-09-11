@@ -2,15 +2,15 @@ import React from 'react';
 
 import {Link} from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({toggle, turnOff}) => {
 
       const navBarData = [
           {
               name: 'Home',
               to: '/'
           }, {
-              name: 'Games',
-              to: '/games'
+              name: 'Store',
+              to: '/store'
           }, {
               name: 'Social',
               to: '/social'
@@ -20,12 +20,12 @@ const NavBar = () => {
           }
       ]
 
-      const navBar = navBarData.map((nav, index) => <Link key={index} to={nav.to}>{nav.name}</Link>)
+      const navBar = navBarData.map((nav, index) => <Link onClick={turnOff} key={index} to={nav.to}>{nav.name}</Link>)
 
 
 
   return(
-    <nav className='navMenu'> {navBar}</nav>
+    <nav className={`navMenu ${toggle ? 'activeNav': ''}`}> {navBar}</nav>
   )
 }
 

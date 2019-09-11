@@ -14,27 +14,34 @@ const Checkout = ({cartProducts, newProduct}) => {
         .map((game,) => game.quantity)
         .reduce((a, b) => a + b, 0);
 
+    const checkout = () => {
+        alert(`Total Price : € ${totalPrice}`)
+    }
+
     const renderCartProducts = cartProducts.map(product => <CartProduct key={product._id} product={product}/>)
 
     return (<main className="checkout">
-        {
-            cartProducts.length !== 0
-                ? <h1>You have {totalNumberOfProducts}
-                        items in le ShoppingCart</h1>
-                : <h1>you have no items
-                    </h1>
-        }
-
         <div className="checkout__wrapper">
-            {renderCartProducts}
+            {
+                cartProducts.length !== 0
+                    ? <h1>You have {totalNumberOfProducts} items in le Shopping Cart</h1>
+                    : <h1>you have no items</h1>
+            }
+            <div className="checkout__container">
+                {renderCartProducts}
+            </div>
+            <div className="checkout__totalSum">
+                {
+                    cartProducts.length !== 0
+                        ? <h3>Total sum: €{totalPrice}
+                            </h3>
+                        : <h3>Your Shopping Cart is Empty!</h3>
+                }
+            </div>
+
+            <button className="checkout-btn" onClick={checkout}>Checkout</button>
         </div>
 
-        {
-            cartProducts.length !== 0
-                ? <h1>TOTALPRICE: €{totalPrice}
-                    </h1>
-                : <h1>Your Shopping Cart is Empty!</h1>
-        }
     </main>)
 }
 

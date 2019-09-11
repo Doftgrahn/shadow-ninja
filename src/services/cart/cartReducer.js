@@ -19,10 +19,9 @@ export default function cartReducer(state = initialState, action) {
       }
 
     case REMOVE_PRODUCT:
-      let newArray = state.slice();
-      newArray.splice(action.index, 1);
+      let newArray = state.filter(game => game._id !== action.payload._id);
       return newArray;
-
+      
     default:
       return state;
   }

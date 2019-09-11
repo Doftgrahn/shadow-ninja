@@ -11,15 +11,23 @@ const CartProduct = ({product}) => {
     //const totalValue = product.price * product.quantity;
     const remove = () => dispatch(removeProduct(product))
     return (<div className="product__container">
+
         <figure>
             <img src={product.imgURL} alt={product.title}/>
         </figure>
+
         <div className="desc">
-            <p>TITLE:{product.title}</p>
-            <p>QUANTITY:{product.quantity}</p>
-            <p>PRICE:{product.price}</p>
-            <button onClick={remove}>DELETE</button>
+            <h3>{product.title}</h3>
+
+            <div className="desc__info">
+                <p>PRICE:{product.price}</p>
+                <p>QUANTITY:{product.quantity}</p>
+    </div>
+
         </div>
+
+        <button onClick={remove}>X</button>
+
     </div>)
 }
 

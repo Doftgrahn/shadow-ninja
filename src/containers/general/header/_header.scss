@@ -1,15 +1,19 @@
 @import './navBar/navBar.scss';
 
-header {
-  color:red;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 10px solid purple;
-  //padding: 0 20px;
-  a{
-    margin: 0 10px;
-    color: white;
-  }
+.header {
+    overflow: hidden;
+    color: red;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    //padding: 0 20px;
+    h1 {
+        display: block;
+        width: 100%;
+    }
+
+    a {
+        margin: 0 10px;
+        color: white;
+    }
 }
-  

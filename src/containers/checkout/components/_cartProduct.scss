@@ -1,13 +1,16 @@
 .product__container {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
     padding: 20px;
+    border-bottom: 3px solid black;
 
     figure {
         position: relative;
-        width: 320px;
-        height: 200px;
+        width: 140px;
+        height: 100px;
 
         img {
             position: absolute;
@@ -18,17 +21,42 @@
     }
 
     .desc {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        position: relative;
         padding: 10px;
+        text-transform: uppercase;
 
-        & button {
-            margin-top: 5px;
-            color: black;
-            padding: 5px;
-            border:0;
+        &__info {
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-around;
 
-            &:hover {
-                text-decoration: underline;
+            p {
+                padding-left: 10px;
+                color: black;
             }
+        }
+
+        h3 {
+            font-weight: 800;
+            width: 100%;
+            color: black;
+            border: 0;
+        }
+    }
+
+    & button {
+        background: 0;
+        color: red;
+        font-size: 30px;
+        //margin-top: 5px;
+        padding: 5px;
+        border: 0;
+
+        &:hover {
+            text-decoration: underline;
         }
     }
 }

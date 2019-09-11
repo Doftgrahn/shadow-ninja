@@ -8,13 +8,15 @@ const toggleState = () => setToggle(!toggle)
 const turnOff = () => setToggle(false);
 
 
-    return (<header>
+    return (<header className="header">
         <h1>xXShadowNinjaXx</h1>
         <Hamburger
         toggleState={toggleState}
         toggle={toggle}/>
 
         <NavBar
+        toggle={toggle}
+        turnOff={turnOff}
         />
 
     </header>)
