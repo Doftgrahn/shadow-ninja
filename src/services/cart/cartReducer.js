@@ -19,10 +19,22 @@ export default function cartReducer(state = initialState, action) {
       }
 
     case REMOVE_PRODUCT:
-      console.log("HEJ", action.payload);
-      return [...state]
+      let newArray = state.slice();
+      newArray.splice(action.index, 1)
+      return newArray
 
     default:
       return state;
   }
 }
+
+
+
+/*
+
+let newArray = state.slice();
+ newArray.splice(action.index, 1);
+ return newArray;
+
+
+*/
