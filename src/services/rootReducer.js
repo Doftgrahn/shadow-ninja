@@ -5,7 +5,7 @@ import cart from './cart/cartReducer';
 import totalReducer from './total/totalReducer';
 
 export default combineReducers({
-  products,
-  cart,
+  products:products,
+  cart: cart,
   total: totalReducer
 });

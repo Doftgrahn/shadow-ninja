@@ -19,6 +19,7 @@ export default initialState => {
   store.subscribe(() => {
     const state = store.getState();
     const persist = {
+      products: state.products,
       cart: state.cart,
       total: state.total
     };

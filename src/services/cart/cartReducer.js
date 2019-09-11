@@ -1,27 +1,30 @@
-import {LOAD_CART, ADD_PRODUCT, REMOVE_PRODUCT} from "./actionTypes";
+import {ADD_PRODUCT, REMOVE_PRODUCT} from "./actionTypes";
 
-const initialState = {
-  products: []
-};
+const initialState = [];
 
 export default function cartReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_CART:
-      return {
-        ...state,
-        products: action.payload
-      };
     case ADD_PRODUCT:
-    console.log(state);
-      return {
-        ...state,
-        productAdd:Object.assign({}, action.payload)
-      };
+    //Find id of product
+      const product = state.find(el => el._id === action.payload._id);
+      if (product) {
+        // det finns redan minst en produkt i kundvagnen
+        return state.map(p => {
+          if (p._id === action.payload._id)
+            return {...p, quantity: p.quantity + 1};
+          else return p;
+        });
+      } else {
+        return [...state, {...action.payload, quantity: 1}];
+      }
+
     case REMOVE_PRODUCT:
+    console.log('HEJ');
       return {
         ...state,
-        productRemove: Object.assign({}, action.payload)
+        products: [...state.products, action.payload]
       };
+
     default:
       return state;
   }

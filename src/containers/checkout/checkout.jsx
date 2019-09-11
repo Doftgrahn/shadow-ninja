@@ -1,49 +1,27 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-
-import { loadCart, removeProduct } from '../../services/cart/cartAction';
-import { updateCart } from '../../services/total/totalAction';
+import {updateCart} from '../../services/total/totalAction';
 //import { updateCart } from '../../services/total/totalActions';
 
-const Checkout = ({cartProducts, newProduct,productToRemove, cartTotal}) => {
+import CartProduct from './components/cartProduct';
 
+const Checkout = ({cartProducts, newProduct}) => {
 
-    const addProduct = product => {
-        let productAlreadyInCart = false;
+    const totalPrice = cartProducts.map(game => game.price * game.quantity).reduce((biggest, p) => biggest + p, 0)
 
-        cartProducts.forEach(cp => {
-            if(cp._id === product._id) {
-                cp.quantity += product.quantity;
-                productAlreadyInCart = true;
-            }
-        })
+    const renderCartProducts = cartProducts.map(product => <CartProduct key={product._id} product={product}/>)
 
-        if(!productAlreadyInCart) {
-            cartProducts.push(product)
-        }
-
-        updateCart(cartProducts)
-    }
-
-    console.log(cartTotal);
-    return (<main>
-        <h1>This is Checkout</h1>
+    return (
+    <main>
+        <div>{renderCartProducts}
+            <h1>TOTALPRICE: {totalPrice}</h1>
+        </div>
     </main>)
 }
 
+const mapStateToProps = state => ({cartProducts: state.cart, cartTotal: state.total.data})
 
 
-
-const mapStateToProps = state => ({
-cartProducts: state.cart.products,
-newProduct: state.cart.productToAdd,
-productToRemove : state.cart.productToRemove,
-cartTotal: state.total.data
-})
-
-
-
-
-export default connect(mapStateToProps, {loadCart, updateCart, removeProduct})(Checkout);
+export default connect(mapStateToProps, {updateCart})(Checkout);
