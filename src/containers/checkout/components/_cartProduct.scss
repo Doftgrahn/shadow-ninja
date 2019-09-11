@@ -1,0 +1,28 @@
+.product__container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+
+    figure {
+        position: relative;
+        width: 320px;
+        height: 200px;
+
+        img {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .desc {
+        padding: 10px;
+
+        & button {
+            color: black;
+            padding: 3px;
+        }
+    }
+}

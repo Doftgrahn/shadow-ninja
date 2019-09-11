@@ -20,21 +20,10 @@ export default function cartReducer(state = initialState, action) {
 
     case REMOVE_PRODUCT:
       let newArray = state.slice();
-      newArray.splice(action.index, 1)
-      return newArray
+      newArray.splice(action.index, 1);
+      return newArray;
 
     default:
       return state;
   }
 }
-
-
-
-/*
-
-let newArray = state.slice();
- newArray.splice(action.index, 1);
- return newArray;
-
-
-*/

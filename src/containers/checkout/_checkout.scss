@@ -1,7 +1,14 @@
-.product__container {
-    margin-top: 20px;
+.checkout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    button {
-        color: black;
+    &__wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        @media screen and (min-width: 800px) {
+            display: column;
+        }
     }
 }
