@@ -1,30 +1,21 @@
-import React from 'react';
-
-import {Link} from "react-router-dom";
+import React ,{useState} from 'react';
+import NavBar from './navBar/navBar';
+import Hamburger from './hamburger/hamburger';
 
 const Header = () => {
+const [toggle, setToggle] = useState(false);
+const toggleState = () => setToggle(!toggle)
+const turnOff = () => setToggle(false);
 
-    const navBarData = [
-        {
-            name: 'Home',
-            to: '/'
-        }, {
-            name: 'Games',
-            to: '/games'
-        }, {
-            name: 'Social',
-            to: '/social'
-        }, {
-            name: 'Checkout',
-            to: '/checkout'
-        }
-    ]
-
-    const navBar = navBarData.map((nav, index) => <Link key={index} to={nav.to}>{nav.name}</Link>)
 
     return (<header>
         <h1>xXShadowNinjaXx</h1>
-        <nav> {navBar}</nav>
+        <Hamburger
+        toggleState={toggleState}
+        toggle={toggle}/>
+
+        <NavBar
+        />
 
     </header>)
 }
