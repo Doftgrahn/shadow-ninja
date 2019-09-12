@@ -1,18 +1,91 @@
 .miniMeny {
+    z-index: 2;
     position: fixed;
-    right:0;
-    top:60%;
-    background: tomato;
-    padding:20px;
-    transition: 0.5;
+    right: 0;
+    top: 60%;
+    background: gray;
+    padding: 10px;
+    transition: 0.5s cubic-bezier(0.5, 0, 0.5, 1);
+    border-radius: 20px 0 0 20px;
+
+    &__wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .total {
+            text-align: center;
+            line-height: 0.9;
+        }
+    }
 }
 
-
-.active {
+.closed {
     position: absolute;
-    right:4000px;
+    right: -90px;
 }
 
 .isOpen {
-    right:0;
+    right: 0;
+}
+
+.shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.shake2 {
+    animation: shake2 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+@keyframes shake2 {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
 }

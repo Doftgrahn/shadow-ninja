@@ -13,15 +13,16 @@ const Game = ({data, match, history}) => {
                 <img src={f.imgURL} alt={f.title}/>
             </figure>
 
-            <h3>{f.title}</h3>
             <div className="singleGame__container-description">
-                <p>Category: {f.category}</p>
-                <p>price: €{f.price}</p>
-                <p>rating: {f.rating}</p>
-                <p>info: {f.info}</p>
+                <h3>{f.title}</h3>
+                <p>Category:<br/> {f.category}</p>
+                <p>price:<br/>
+                    €{f.price}</p>
+                <p>rating:<br/> {f.rating}</p>
+                <p>info:<br/> {f.info}</p>
+                <RegularButton click={goBack} title="Go back"/>
             </div>
 
-            <RegularButton click={goBack} title="Go back"/>
         </section>)
 
     return (<main>
