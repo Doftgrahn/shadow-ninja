@@ -6,16 +6,29 @@ import CartProduct from './components/cartProduct';
 
 const Checkout = ({cartProducts, newProduct}) => {
 
+    //Total Price for products
     const totalPrice = cartProducts
         .map(game => game.price * game.quantity)
         .reduce((biggest, p) => biggest + p, 0)
 
+    // Total Number of Products
     const totalNumberOfProducts = cartProducts
         .map((game,) => game.quantity)
-        .reduce((a, b) => a + b, 0);
+        .reduce((biggest, b) => biggest + b, 0);
 
+    // Checkout Functuin
     const checkout = () => {
-        alert(`Total Price : € ${totalPrice}`)
+        if (cartProducts.length) {
+            alert(`
+                RECIEPT
+                ____________
+                Total Price : € ${totalPrice}
+                Total Number of Products: ${totalNumberOfProducts}
+                ${cartProducts.map(e => e.title)}
+                `)
+        } else {
+            alert('Fill that shiet!')
+        }
     }
 
     const renderCartProducts = cartProducts.map(product => <CartProduct key={product._id} product={product}/>)
@@ -24,8 +37,10 @@ const Checkout = ({cartProducts, newProduct}) => {
         <div className="checkout__wrapper">
             {
                 cartProducts.length !== 0
-                    ? <h1>You have {totalNumberOfProducts} items in le Shopping Cart</h1>
-                    : <h1>you have no items</h1>
+                    ? <h1>You have {totalNumberOfProducts}
+                            items in the Shopping Cart</h1>
+                    : null
+
             }
             <div className="checkout__container">
                 {renderCartProducts}
@@ -41,7 +56,7 @@ const Checkout = ({cartProducts, newProduct}) => {
             </div>
 
             <button className="checkout-btn" onClick={checkout}>Checkout</button>
-            
+
         </div>
 
     </main>)
