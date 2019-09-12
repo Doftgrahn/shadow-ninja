@@ -7,13 +7,12 @@ import {ReactComponent as ShoppingCart} from '../SVG_Icons/shoppingCart/shopping
 const MiniMeny = ({cart}) => {
     const [animation, setAnimation] = useState(false);
 
+    // Checks in state for updates, renders animation.
     useEffect(() => {
         if (cart)
             setAnimation(animation => !animation)
     }, [cart])
 
-
-    console.log(animation);
     // Gets total numberOf products
     const totalNumberOfProducts = cart
         .map((game,) => game.quantity)
