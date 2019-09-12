@@ -1,8 +1,16 @@
 import React, {useState} from 'react';
 
+import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux'
+
+import {clearProducts} from '../../../../services/cart/cartAction';
+
 const CheckoutFinal = ({cart, totalPrice, totalProducts}) => {
+    const dispatch = useDispatch();
     const [hasAccepted, setHasAccepted] = useState(false);
     const [isValid, setIsValid] = useState(true);
+
+    const removeAll = () => (dispatch(clearProducts()))
 
     const checkout = () => {
         if (cart.length && hasAccepted) {
@@ -15,6 +23,7 @@ const CheckoutFinal = ({cart, totalPrice, totalProducts}) => {
                 Total Number of Products: ${totalProducts}
                 ${cart.map(e => e.title)}
                 `)
+            removeAll()
         } else if (!cart.length) {
             alert('Fill that shiet!')
         } else {
@@ -26,7 +35,10 @@ const CheckoutFinal = ({cart, totalPrice, totalProducts}) => {
         <div className="checkout-wrapper">
             <span>By clicking here you agree to our terms and permission</span>
             <label className="checkbox-label">
-                <input checked={hasAccepted} onChange={e => setHasAccepted(e.target.checked)} type="checkbox"/>
+                <input checked={hasAccepted} onChange={e => {
+                        setHasAccepted(e.target.checked)
+                        setIsValid(true)
+                    }} type="checkbox"/>
                 <span className="checkbox-custom rectangular"/>
             </label>
 
@@ -42,4 +54,4 @@ const CheckoutFinal = ({cart, totalPrice, totalProducts}) => {
     </div>)
 }
 
-export default CheckoutFinal;
+export default connect()(CheckoutFinal);
