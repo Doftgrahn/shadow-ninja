@@ -7,7 +7,6 @@ import CartInfo from './cart/cartInfo';
 const MiniMeny = ({cart}) => {
     const [animation, setAnimation] = useState(false);
 
-    console.log();
     // Checks in state for updates, renders animation.
     useEffect(() => {
         if (cart)
@@ -16,9 +15,7 @@ const MiniMeny = ({cart}) => {
 
     // Gets total numberOf products
 
-    return (<main className={`miniMeny ${cart.length <= 0
-            ? 'closed'
-            : 'isOpen'}`}>
+    return (<main>
         <CartInfo cart={cart} animation={animation}/>
     </main>)
 }

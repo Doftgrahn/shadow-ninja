@@ -14,7 +14,8 @@ const PromoGame = ({products, match}) => {
             <div className="promo__wrapper--desc">
                 <h1>{game.title}</h1>
                 <h3>€{game.price}</h3>
-                <h3>PROMO €{game.price/2} 50% off</h3>
+                <h3>PROMO €{game.price / 2}
+                    50% off</h3>
 
                 <Link to={`${match.url}/${game._id}`}>More info...</Link>
             </div>
@@ -26,9 +27,9 @@ const PromoGame = ({products, match}) => {
 
     //   [Math.floor(Math.random() * products.length)]
 
-    return <section className="promo">
+    return (<section className="promo">
         {randomPromo}
-    </section>
+    </section>)
 }
 
 export default PromoGame;

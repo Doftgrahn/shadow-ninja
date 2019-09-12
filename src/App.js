@@ -13,8 +13,8 @@ import Routes from './routes/routes';
 
 const App = () => {
     return (<div className="App">
-        <MiniMeny/>
         <Router>
+            <MiniMeny/>
             <Header/>
             <main className="route_wrapper">
                 <Routes/>

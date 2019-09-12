@@ -18,17 +18,22 @@ import StoreNavbar from './components/storenavbar/storenavbar';
 // General Wrapper for GAMES
 const Store = ({dispatch, products, loading, error, match}) => {
 
+
+// Dispatch on launch, shows all products via Redux.
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
 
 
 
+//If Theres an error loading the page.
 
     if (error) {
         return (<div>Error, no connection</div>)
     }
 
+
+// If Connection is slow, or when loading. This will show.
     if (loading) {
         return <Loader/>
     }
@@ -42,6 +47,7 @@ const Store = ({dispatch, products, loading, error, match}) => {
     </main>)
 }
 
+//fakes a state, can be retrieved through props or destructuring.
 const mapStateToProps = state => ({products: state.products.items, loading: state.products.loading, error: state.products.error});
 
 export default connect(mapStateToProps)(Store);
