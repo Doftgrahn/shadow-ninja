@@ -12,8 +12,6 @@ const Game = ({data, match, history}) => {
     const dispatch = useDispatch();
     const goBack = history.goBack;
 
-    const add = () => dispatch(addProduct(data))
-
     const filterdata = data
         .filter(e => e._id === match.params.id)
         .map(f => <section key={f._id} className="singleGame__container">
@@ -29,7 +27,7 @@ const Game = ({data, match, history}) => {
                 <p>rating:<br/> {f.rating}</p>
                 <p>info:<br/> {f.info}</p>
                 <RegularButton click={goBack} title="Go back"/>
-                <button onClick={add} className="btn-regular">Buy</button>
+                <button onClick={() => dispatch(addProduct(f))} className="btn-regular">Buy</button>
             </div>
 
         </section>)

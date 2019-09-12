@@ -3,6 +3,8 @@ import {ADD_PRODUCT, REMOVE_PRODUCT, CLEAR_PRODUCTS} from "./actionTypes";
 const initialState = [];
 
 export default function cartReducer(state = initialState, action) {
+    console.log(state);
+
   switch (action.type) {
     case ADD_PRODUCT:
       //Find id of product
