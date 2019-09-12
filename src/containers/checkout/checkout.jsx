@@ -3,6 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import CartProduct from './components/cartProduct/cartProduct';
+import CheckoutFinal from './components/checkoutFinal/CheckoutFinal';
 
 const Checkout = ({cartProducts}) => {
 
@@ -17,19 +18,6 @@ const Checkout = ({cartProducts}) => {
         .reduce((biggest, b) => biggest + b, 0);
 
     // Checkout Functuin
-    const checkout = () => {
-        if (cartProducts.length) {
-            alert(`
-                RECIEPT
-                ____________
-                Total Price : € ${totalPrice}
-                Total Number of Products: ${totalNumberOfProducts}
-                ${cartProducts.map(e => e.title)}
-                `)
-        } else {
-            alert('Fill that shiet!')
-        }
-    };
 
     //Renders cartProducts
     const renderCartProducts = cartProducts.map(product => {
@@ -40,24 +28,22 @@ const Checkout = ({cartProducts}) => {
         <div className="checkout__wrapper">
             {
                 cartProducts.length !== 0
-                    ? <h1>You have {totalNumberOfProducts}
-                            items in the Shopping Cart</h1>
-                    : null
+                    ? <h1>You have {totalNumberOfProducts} items in the Shopping Cart</h1>: null
             }
+
             <div className="checkout__container">
                 {renderCartProducts}
             </div>
 
             <div className="checkout__totalSum">
-                {
-                    cartProducts.length !== 0
-                        ? <h3>Total sum: €{totalPrice}
-                            </h3>
-                        : <h3>Your Shopping Cart is Empty!</h3>
-                }
+                {cartProducts.length !== 0 ? <h3>Total sum: €{totalPrice} </h3>: <h3>Your Shopping Cart is Empty!</h3>}
             </div>
 
-            <button className="checkout-btn" onClick={checkout}>Checkout</button>
+            <CheckoutFinal
+                cart={cartProducts}
+                totalPrice={totalPrice}
+                totalProducts={totalNumberOfProducts}
+                />
 
         </div>
 
