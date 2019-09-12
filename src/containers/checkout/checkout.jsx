@@ -39,11 +39,11 @@ const Checkout = ({cartProducts}) => {
                 {cartProducts.length !== 0 ? <h3>Total sum: €{totalPrice} </h3>: <h3>Your Shopping Cart is Empty!</h3>}
             </div>
 
-            <CheckoutFinal
+            {cartProducts.length ? <CheckoutFinal
                 cart={cartProducts}
                 totalPrice={totalPrice}
                 totalProducts={totalNumberOfProducts}
-                />
+                /> : null}
 
         </div>
 

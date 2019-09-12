@@ -7,6 +7,7 @@ const CheckoutFinal = ({cart, totalPrice, totalProducts}) => {
     const checkout = () => {
         if (cart.length && hasAccepted) {
             setIsValid(true)
+            setHasAccepted(false);
             alert(`
                 RECIEPT
                 ____________
