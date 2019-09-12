@@ -28,7 +28,7 @@ const OneGame = ({gameinfo, match, addProduct}) => {
         </Link>
 
         {/*<button onClick={() => addProduct(gameinfo)}>Buy</button>*/}
-         <RegularButton title="buy" click={() => addProduct(gameinfo)}/> 
+         <RegularButton title="buy" click={() => addProduct(gameinfo)}/>
 
     </section>)
 }

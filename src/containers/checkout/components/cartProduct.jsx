@@ -4,6 +4,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {useDispatch} from 'react-redux'
 
+
+//Redux
 import {removeProduct} from '../../../services/cart/cartAction';
 
 import {ReactComponent as Delete} from '../../../components/SVG_Icons/clear.svg';
@@ -27,7 +29,7 @@ const CartProduct = ({product}) => {
             </div>
 
         </div>
-        
+
         <div className="btn-container">
             <button onClick={remove}><Delete/></button>
         </div>

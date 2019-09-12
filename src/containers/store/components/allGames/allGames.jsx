@@ -10,7 +10,8 @@ const AllGames = ({match, dispatch, products}) => {
         return <OneGame match={match} key={game._id} gameinfo={game}/>
     })
 
-    return (<section className="game__wrapper">
+    return (
+    <section className="game__wrapper">
         {renderAllGames}
     </section>)
 }

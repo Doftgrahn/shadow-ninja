@@ -4,6 +4,8 @@ import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {fetchProducts} from '../../services/products/productActions';
 
+
+// Spinner
 import Loader from '../../components/loader/loader';
 
 // All Games
@@ -19,6 +21,9 @@ const Store = ({dispatch, products, loading, error, match}) => {
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
+
+
+
 
     if (error) {
         return (<div>Error, no connection</div>)

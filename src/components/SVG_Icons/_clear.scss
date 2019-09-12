@@ -1,7 +1,10 @@
+$color-weird-red: #e76e54;
+
 .clear {
     width: 100%;
     height: 20px;
     transition: 0.4s;
+    fill: $color-weird-red;
 
     &:hover {
         transform: scale(1.4);

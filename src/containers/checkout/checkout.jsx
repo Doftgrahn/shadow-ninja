@@ -30,6 +30,7 @@ const Checkout = ({cartProducts, newProduct}) => {
             <div className="checkout__container">
                 {renderCartProducts}
             </div>
+
             <div className="checkout__totalSum">
                 {
                     cartProducts.length !== 0
@@ -40,6 +41,7 @@ const Checkout = ({cartProducts, newProduct}) => {
             </div>
 
             <button className="checkout-btn" onClick={checkout}>Checkout</button>
+            
         </div>
 
     </main>)
