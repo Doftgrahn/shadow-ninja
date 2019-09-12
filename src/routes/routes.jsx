@@ -8,6 +8,9 @@ import Social from '../containers/social/social';
 import Checkout from '../containers/checkout/checkout';
 import Register from '../containers/login-Handler/Register';
 import Login from '../containers/login-Handler/Login';
+import Profile from '../containers/userProfile/Profile'
+
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = () => {
 
@@ -48,6 +51,7 @@ const Routes = () => {
             path: '/login',
             Component: Login
         },
+
     ]
 
     const renderRoutes = allRoutes.map(r => {
@@ -59,7 +63,8 @@ const Routes = () => {
     })
 
     return (<Switch>
-        {renderRoutes}
+          {renderRoutes}
+          <PrivateRoute exact path="/userProfile" component={Profile} />
     </Switch>)
 }
 

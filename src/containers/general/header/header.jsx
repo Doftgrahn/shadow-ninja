@@ -20,7 +20,10 @@ const Header = () => {
         }, {
             name: 'Signup / Login',
             to: '/register'
-        }
+        }, {
+            name: 'Account',
+            to: '/userProfile'
+       },
     ]
 
     const navBar = navBarData.map((nav, index) => <Link key={index} to={nav.to}>{nav.name}</Link>)
