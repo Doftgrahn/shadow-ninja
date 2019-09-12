@@ -4,8 +4,7 @@ import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {fetchProducts} from '../../services/products/productActions';
 
-
-// Spinner
+// Spinner, uses for loading Animation.
 import Loader from '../../components/loader/loader';
 
 // All Games
@@ -47,7 +46,8 @@ const Store = ({dispatch, products, loading, error, match}) => {
     </main>)
 }
 
-//fakes a state, can be retrieved through props or destructuring.
+// state, can be retrieved through props or destructuring.
 const mapStateToProps = state => ({products: state.products.items, loading: state.products.loading, error: state.products.error});
+
 
 export default connect(mapStateToProps)(Store);

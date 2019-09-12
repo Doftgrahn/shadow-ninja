@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 //Redux
 import {connect} from 'react-redux';
+
 
 
 // Imported components.
@@ -10,17 +11,18 @@ import CartProduct from './components/cartProduct/cartProduct';
 import TotalPrice from './components/totalPrice/totalPrice';
 import CheckoutFinal from './components/checkoutFinal/CheckoutFinal';
 
-const Checkout = ({cartProducts}) => {
 
-    //Total Price for products
-    const totalPrice = cartProducts
-        .map(game => game.price * game.quantity)
-        .reduce((biggest, p) => biggest + p, 0)
+import {updateCart} from '../../services/total/totalAction';
 
-    // Total Number of Products
-    const totalNumberOfProducts = cartProducts
-        .map((game,) => game.quantity)
-        .reduce((biggest, b) => biggest + b, 0);
+const Checkout = ({cartProducts, total, dispatch}) => {
+
+
+// updates state with productQuantity and price.
+    useEffect(()=> {
+        dispatch(updateCart(cartProducts))
+    },[dispatch, cartProducts])
+
+
 
     //Renders Products that exists in cartProducts.
     const renderCartProducts = cartProducts.map(product => {
@@ -30,17 +32,17 @@ const Checkout = ({cartProducts}) => {
     return (<main className="checkout">
 
         <div className="checkout__wrapper">
-            <AmountInCart cart={cartProducts} totalNumberOfProducts={totalNumberOfProducts}/>
+            <AmountInCart cart={cartProducts} productQuantity={total.productQuantity}/>
 
             <div className="checkout__container">
                 {renderCartProducts}
             </div>
 
-            <TotalPrice cart={cartProducts} totalPrice={totalPrice}/>
+            <TotalPrice cart={cartProducts} total={total.totalPrice}/>
 
             {
                 cartProducts.length
-                    ? <CheckoutFinal cart={cartProducts} totalPrice={totalPrice} totalProducts={totalNumberOfProducts}/>
+                    ? <CheckoutFinal cart={cartProducts} totalPrice={total.totalPrice} totalProducts={total.productQuantity}/>
                     : null
             }
         </div>
@@ -50,6 +52,6 @@ const Checkout = ({cartProducts}) => {
 
 
 // mapStateToProps, "fakes a state."
-const mapStateToProps = state => ({cartProducts: state.cart})
+const mapStateToProps = state => ({cartProducts: state.cart, total: state.total.data})
 
 export default connect(mapStateToProps)(Checkout);

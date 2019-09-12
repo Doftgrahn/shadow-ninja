@@ -1,9 +1,12 @@
 //import settings like colors and fonts
 @import './settings/_main.scss';
+
 //import Base stuff, cursor in buttons, transformation 0.4 on anchors.
 @import './base/_main.scss';
-//General weirdstuff
+
+//General stuff, Loaders, General Buttons and so on.
 @import './parts/_main.scss';
+
 //Components Big Blocks
 @import './blocks/_main.scss';
 

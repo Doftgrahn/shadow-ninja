@@ -9,6 +9,7 @@ export default function cartReducer(state = initialState, action) {
     case ADD_PRODUCT:
       //Find id of product. Find returns the first array, use FILTER otherwise.
       const product = state.find(el => el._id === action.payload._id);
+
       if (product) {
         // if it already exists in the state, it will get quantity: quantity + 1.
         return state.map(p => {
