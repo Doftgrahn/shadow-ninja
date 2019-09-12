@@ -2,8 +2,8 @@ const express = require('express');
 const server = express();
 /*DATABASE*/
 const {insertMongoDB} = require('./database/AddProduct');
-const {getProductMongoDB} = require('./database/GetProduct');
 const {filterByNameMongoDB} = require('./database/filterByName')
+const {getSingleProductMongoDB} = require('./database/getSingleProduct')
 const db = require("./secrets/keys").mongoURI;
 /*DATABASE*/
 
@@ -18,59 +18,87 @@ require("./secrets/passport")(passport);
 server.use(express.static(__dirname + '/../build/'));
 //server.use(express.static(__dirname + '/../dist/'));
 
+
+//If you want to insert, uncomment this function.
+//insertMongoDB()
+
 server.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  res.header("Access-Control-Allow-Methods", "*")
-  next();
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "*");
+	res.header("Access-Control-Allow-Methods", "*")
+	next();
 });
 server.use(express.json())
 
 /* Handle Auth / Login */
 server.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
+	bodyParser.urlencoded({
+		extended: false
+	})
 );
 
 // Connect to MongoDB
 mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+.connect(
+	db,
+	{ useNewUrlParser: true }
+)
+.then(() => console.log("MongoDB successfully connected"))
+.catch(err => console.log(err));
 
 
 
-
-
+// ready to connect with React
+// filter and get funtion for games product from MongoDB
+let lastFilter = '';
+let filterProduct = '';
 server.get('/api/games', (request, response) => {
+	let queryFilter = request.query.filter;
 
-  if(request.query.filter == '') {
-      getProductMongoDB(data => {
-        response.send(JSON.stringify(data))
-      })
-  } else if (request.query.filter ==  'lowestPrice') {
-      console.log('inside lowest price query');
-      filterProduct = {price: 1}
-      filterByNameMongoDB(filterProduct, result => {
-        response.send(JSON.stringify(result))
-      })
-  } else {
-      console.log('nothing match filter');
-  }
+	if (queryFilter == '') {
+		filterProduct = {}
+	}
+	if (queryFilter ==  'lowestPrice') {
+		if(lastFilter ) {
+			filterProduct = {price: 1}
+		}
+		else {
+			filterProduct = {price: -1}
+		}
+	} else if(queryFilter == 'category'){
+		if(lastFilter) {
+			filterProduct = {category: 1}
+		} else {
+			filterProduct = {category: -1}
+		}
+	} else if(queryFilter == 'rating'){
+		if(lastFilter) {
+			filterProduct = {rating: 1}
+		} else {
+			filterProduct = {rating: -1}
+		}
 
+	}
+
+	lastFilter = !lastFilter;
+
+	filterByNameMongoDB(filterProduct, result => {
+		response.send(JSON.stringify(result))
+	})
 
 })
-// function call for GetProduct from database
-server.get('/api/games/', (request, response) => {
-  console.log('server.get request.query: ', request );
-  getProductMongoDB(data => {
-    response.send(JSON.stringify(data))
-  })
+
+// ready to connect with React
+// get request for singleProduct based on ID
+server.get('/api/games/product', (request, response) => {
+	let queryid = request.query.id;
+	let idSingleProduct = queryid;
+
+	getSingleProductMongoDB(idSingleProduct, result => {
+		response.send(JSON.stringify(result))
+	})
 })
+
 /* Routing */
 
 
@@ -84,27 +112,19 @@ server.use("/api/users", users);
 server.get('/error', (req, res) => {
 	throw Error('User error');
 })
-
+// send 500 error change to 500 page later
 server.use((error, request, response, next) => {
-  response.status(500).send('error 500 error')
+	response.status(500).send('error 500 error')
 })
 
-// server.get('/games', (request, response) => {
-// 	console.log('Received GET request to /test');
-// 	response.send(fakeProducts);
-// })
-
-
-
-// 3 felhantering
 
 mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+.connect(
+	db,
+	{ useNewUrlParser: true }
+)
+.then(() => console.log("MongoDB successfully connected"))
+.catch(err => console.log(err));
 
 
 

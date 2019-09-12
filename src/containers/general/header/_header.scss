@@ -1,11 +1,20 @@
-header {
+@import './navBar/navBar.scss';
+
+.header {
+    overflow-x: hidden;
+    color: red;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 0 20px;
+    padding: 20px;
+
+    h1 {
+        display: block;
+        width: 100%;
+    }
 
     a {
         margin: 0 10px;
+        color: white;
     }
 }

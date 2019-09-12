@@ -1,49 +1,46 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
-import { connect } from 'react-redux';
+//Redux
+import {connect} from 'react-redux';
+
+// Imported components.
+import AmountInCart from './components/amountInCart/amountinCart'
+import CartProduct from './components/cartProduct/cartProduct';
+import TotalPrice from './components/totalPrice/totalPrice';
+import CheckoutFinal from './components/checkoutFinal/CheckoutFinal';
+
+//import {updateCart} from '../../services/total/totalAction';
+
+const Checkout = ({cartProducts, total}) => {
+    // Gets total value from Cart.
+    const {productQuantity, totalPrice} = total;
 
 
-import { loadCart, removeProduct } from '../../services/cart/cartAction';
-import { updateCart } from '../../services/total/totalAction';
-//import { updateCart } from '../../services/total/totalActions';
+    //Renders Products that exists in cartProducts.
+    const renderCartProducts = cartProducts.map(product => {
+        return <CartProduct key={product._id} {...product} product={product}/>
+    });
 
-const Checkout = ({cartProducts, newProduct,productToRemove, cartTotal}) => {
+    return (<main className="checkout">
 
+        <div className="checkout__wrapper">
+            <AmountInCart cart={cartProducts} productQuantity={productQuantity}/>
 
-    const addProduct = product => {
-        let productAlreadyInCart = false;
+            <div className="checkout__container">
+                {renderCartProducts}
+            </div>
 
-        cartProducts.forEach(cp => {
-            if(cp._id === product._id) {
-                cp.quantity += product.quantity;
-                productAlreadyInCart = true;
+            <TotalPrice cart={cartProducts} total={totalPrice}/> {
+                cartProducts.length
+                    ? <CheckoutFinal cart={cartProducts} totalPrice={totalPrice} totalProducts={productQuantity}/>
+                    : null
             }
-        })
+        </div>
 
-        if(!productAlreadyInCart) {
-            cartProducts.push(product)
-        }
-
-        updateCart(cartProducts)
-    }
-
-    console.log(cartTotal);
-    return (<main>
-        <h1>This is Checkout</h1>
     </main>)
 }
 
+// mapStateToProps, "fakes a state."
+const mapStateToProps = state => ({cartProducts: state.cart, total: state.total.data})
 
-
-
-const mapStateToProps = state => ({
-cartProducts: state.cart.products,
-newProduct: state.cart.productToAdd,
-productToRemove : state.cart.productToRemove,
-cartTotal: state.total.data
-})
-
-
-
-
-export default connect(mapStateToProps, {loadCart, updateCart, removeProduct})(Checkout);
+export default connect(mapStateToProps)(Checkout);

@@ -1,9 +1,8 @@
-import { UPDATE_CART } from "./actionTypes";
+import {UPDATE_CART} from "./actionTypes";
 
 const initialState = {
   data: {
     productQuantity: 0,
-    installements: 0,
     totalPrice: 0
   }
 };

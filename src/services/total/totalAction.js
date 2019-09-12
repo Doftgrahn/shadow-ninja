@@ -1,24 +1,17 @@
 import {UPDATE_CART} from "./actionTypes";
 
 export const updateCart = cartProducts => dispatch => {
-  let productQuantity = cartProducts.reduce((sum, p) => {
-    sum += p.quantity;
-    return sum;
-  });
 
-  let totalPrice = cartProducts.reduce((sum, p) => {
-    sum += p.price * p.quantity;
-    return sum;
-  }, 0);
+  const productQuantity = cartProducts
+    .map(game => game.quantity)
+    .reduce((biggest, b) => biggest + b, 0);
 
-  let installements = cartProducts.preduce((greater, p) => {
-    greater = p.installements > greater ? p.installements : greater;
-    return greater;
-  });
+  const totalPrice = cartProducts
+    .map(game => game.price * game.quantity)
+    .reduce((sum, p) => sum + p, 0);
 
-  let cartTotal = {
+  const cartTotal = {
     productQuantity,
-    installements,
     totalPrice
   };
 
