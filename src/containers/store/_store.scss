@@ -2,12 +2,13 @@
     display: block;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 
     .gameswrapper {
         display: flex;
         flex-direction: row;
+        overflow: hidden;
     }
-
 
     h1 {
         text-align: center;

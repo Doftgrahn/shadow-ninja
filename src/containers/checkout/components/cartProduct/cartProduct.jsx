@@ -6,9 +6,9 @@ import {useDispatch} from 'react-redux'
 
 
 //Redux
-import {removeProduct} from '../../../services/cart/cartAction';
+import {removeProduct} from '../../../../services/cart/cartAction';
 
-import {ReactComponent as Delete} from '../../../components/SVG_Icons/clear/clear.svg';
+import {ReactComponent as Delete} from '../../../../components/SVG_Icons/clear/clear.svg';
 
 const CartProduct = ({product}) => {
     const dispatch = useDispatch();

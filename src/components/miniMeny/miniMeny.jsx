@@ -2,11 +2,12 @@ import React, {useEffect, useState} from 'react';
 
 import {connect} from 'react-redux';
 
-import {ReactComponent as ShoppingCart} from '../SVG_Icons/shoppingCart/shopping-cart.svg';
+import CartInfo from './cart/cartInfo';
 
 const MiniMeny = ({cart}) => {
     const [animation, setAnimation] = useState(false);
 
+    console.log();
     // Checks in state for updates, renders animation.
     useEffect(() => {
         if (cart)
@@ -14,20 +15,11 @@ const MiniMeny = ({cart}) => {
     }, [cart])
 
     // Gets total numberOf products
-    const totalNumberOfProducts = cart
-        .map((game,) => game.quantity)
-        .reduce((a, b) => a + b, 0);
 
     return (<main className={`miniMeny ${cart.length <= 0
             ? 'closed'
             : 'isOpen'}`}>
-        <div className="miniMeny__wrapper">
-            <p className={`total ${animation
-                    ? 'shake'
-                    : 'shake2'}`}>{totalNumberOfProducts}
-            </p>
-            <ShoppingCart/>
-        </div>
+        <CartInfo cart={cart} animation={animation}/>
     </main>)
 }
 

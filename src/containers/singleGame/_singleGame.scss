@@ -4,20 +4,30 @@
     width: 100%;
     max-width: $width-content;
     justify-content: center;
-    padding: 20px;
+    padding: 0;
     margin: 0 auto;
+    @media screen and (min-width: 800px) {
+        padding: 20px;
+    }
 
     &__container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
+        @media screen and (min-width: 800px) {
+            flex-direction: row;
+        }
 
         figure {
             display: block;
             position: relative;
             height: 200px;
             width: 100%;
-            flex:1;
+            @media screen and (min-width: 800px) {
+                height: 600px;
+                width: 100%;
+                flex: 1;
+            }
 
             img {
                 height: 100%;
@@ -28,9 +38,8 @@
         }
 
         &-description {
-            padding: 20px;
-            flex:1;
-
+            padding: 10px;
+            flex: 1;
 
             h3 {
                 display: inline-block;
@@ -39,6 +48,10 @@
             p {
                 margin: 0 10px 10px;
                 text-align: left;
+            }
+
+            button {
+                margin: 0 0 10px;
             }
         }
     }

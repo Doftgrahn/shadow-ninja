@@ -1,6 +1,7 @@
 .miniMeny {
     z-index: 2;
     position: fixed;
+    overflow: hidden;
     right: 0;
     top: 60%;
     background: gray;
@@ -9,6 +10,7 @@
     border-radius: 20px 0 0 20px;
 
     &__wrapper {
+        overflow: hidden;
         position: relative;
         display: flex;
         justify-content: center;
@@ -23,8 +25,8 @@
 }
 
 .closed {
-    position: absolute;
-    right: -90px;
+    //position: fixed;
+    right: -100px;
 }
 
 .isOpen {
@@ -66,7 +68,6 @@
         transform: translate3d(4px, 0, 0);
     }
 }
-
 @keyframes shake2 {
     10%,
     90% {

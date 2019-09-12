@@ -13,10 +13,10 @@ import Routes from './routes/routes';
 
 const App = () => {
     return (<div className="App">
+        <MiniMeny/>
         <Router>
             <Header/>
             <main className="route_wrapper">
-                <MiniMeny/>
                 <Routes/>
             </main>
             <Footer/>

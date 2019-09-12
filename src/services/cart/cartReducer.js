@@ -3,6 +3,7 @@ import {ADD_PRODUCT, REMOVE_PRODUCT} from "./actionTypes";
 const initialState = [];
 
 export default function cartReducer(state = initialState, action) {
+    console.log(state);
   switch (action.type) {
     case ADD_PRODUCT:
       //Find id of product
@@ -21,7 +22,7 @@ export default function cartReducer(state = initialState, action) {
     case REMOVE_PRODUCT:
       let newArray = state.filter(game => game._id !== action.payload._id);
       return newArray;
-      
+
     default:
       return state;
   }

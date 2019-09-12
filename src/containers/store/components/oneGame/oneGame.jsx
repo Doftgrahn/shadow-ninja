@@ -11,8 +11,7 @@ const OneGame = ({gameinfo, match, addProduct}) => {
     //gameinfo.quantity = 1;
 
     return (<section className="game__container">
-
-        <Link className="linktoGame" to={`${match.url}/${gameinfo._id}`}>
+        <Link to={`${match.url}/${gameinfo._id}`}>
 
             <figure>
                 <img src={gameinfo.imgURL} alt={gameinfo.name}/>
@@ -24,12 +23,8 @@ const OneGame = ({gameinfo, match, addProduct}) => {
                 <p>Price: €{gameinfo.price}</p>
                 <p>Rating: {gameinfo.rating}</p>
             </div>
-
         </Link>
-
-        {/*<button onClick={() => addProduct(gameinfo)}>Buy</button>*/}
-         <RegularButton title="buy" click={() => addProduct(gameinfo)}/>
-
+        <RegularButton title="buy" click={() => addProduct(gameinfo)}/>
     </section>)
 }
 

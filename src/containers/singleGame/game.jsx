@@ -1,10 +1,18 @@
 import React from 'react';
 
+//Redux
+import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux'
+
+import {addProduct} from '../../services/cart/cartAction';
+
 import RegularButton from '../../components/buttons/regular-button';
 
 const Game = ({data, match, history}) => {
-
+    const dispatch = useDispatch();
     const goBack = history.goBack;
+
+    const add = () => dispatch(addProduct(data))
 
     const filterdata = data
         .filter(e => e._id === match.params.id)
@@ -21,6 +29,7 @@ const Game = ({data, match, history}) => {
                 <p>rating:<br/> {f.rating}</p>
                 <p>info:<br/> {f.info}</p>
                 <RegularButton click={goBack} title="Go back"/>
+                <RegularButton click={add} title="Buy"/>
             </div>
 
         </section>)
@@ -30,4 +39,4 @@ const Game = ({data, match, history}) => {
     </main>)
 }
 
-export default Game;
+export default connect()(Game);

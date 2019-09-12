@@ -8,19 +8,29 @@ html {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    //max-width: 100%;
     overflow-x: hidden;
 }
 
 body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 .App {
-    background-image: $color-background;
+    background: $color-background;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .route_wrapper {
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: block;
     min-height: 100vh;
 }
 

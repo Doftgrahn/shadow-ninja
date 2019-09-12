@@ -2,9 +2,9 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 
-import CartProduct from './components/cartProduct';
+import CartProduct from './components/cartProduct/cartProduct';
 
-const Checkout = ({cartProducts, newProduct}) => {
+const Checkout = ({cartProducts}) => {
 
     //Total Price for products
     const totalPrice = cartProducts
@@ -29,9 +29,12 @@ const Checkout = ({cartProducts, newProduct}) => {
         } else {
             alert('Fill that shiet!')
         }
-    }
+    };
 
-    const renderCartProducts = cartProducts.map(product => <CartProduct key={product._id} product={product}/>)
+    //Renders cartProducts
+    const renderCartProducts = cartProducts.map(product => {
+        return <CartProduct key={product._id} {...product} product={product}/>
+    });
 
     return (<main className="checkout">
         <div className="checkout__wrapper">
@@ -40,7 +43,6 @@ const Checkout = ({cartProducts, newProduct}) => {
                     ? <h1>You have {totalNumberOfProducts}
                             items in the Shopping Cart</h1>
                     : null
-
             }
             <div className="checkout__container">
                 {renderCartProducts}
@@ -62,6 +64,6 @@ const Checkout = ({cartProducts, newProduct}) => {
     </main>)
 }
 
-const mapStateToProps = state => ({cartProducts: state.cart, cartTotal: state.total.data})
+const mapStateToProps = state => ({cartProducts: state.cart})
 
 export default connect(mapStateToProps)(Checkout);

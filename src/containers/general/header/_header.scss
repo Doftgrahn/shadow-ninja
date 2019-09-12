@@ -1,12 +1,13 @@
 @import './navBar/navBar.scss';
 
 .header {
-    overflow: hidden;
+    overflow-x: hidden;
     color: red;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding:  20px;
+    padding: 20px;
+
     h1 {
         display: block;
         width: 100%;
