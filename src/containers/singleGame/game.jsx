@@ -29,7 +29,7 @@ const Game = ({data, match, history}) => {
                 <p>rating:<br/> {f.rating}</p>
                 <p>info:<br/> {f.info}</p>
                 <RegularButton click={goBack} title="Go back"/>
-                <RegularButton click={add} title="Buy"/>
+                <button onClick={add} className="btn-regular">Buy</button>
             </div>
 
         </section>)
