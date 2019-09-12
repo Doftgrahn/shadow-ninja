@@ -8,6 +8,7 @@ h1,
 h2,
 h3,
 h4 {
+    font-family: $font-headline;
     margin-top: 0;
 }
 
@@ -21,4 +22,11 @@ h2 {
 
 h3 {
     font-size: 1.17em;
+}
+
+a {
+    font-family: $font-headline;
+    &:hover {
+        text-decoration: underline;
+    }
 }
