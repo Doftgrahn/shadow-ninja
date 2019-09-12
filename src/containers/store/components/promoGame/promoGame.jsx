@@ -14,8 +14,7 @@ const PromoGame = ({products, match}) => {
             <div className="promo__wrapper--desc">
                 <h1>{game.title}</h1>
                 <h3>€{game.price}</h3>
-                <h3>PROMO €{game.price / 2}
-                    50% off</h3>
+                <h3>PROMO €{game.price / 2} 50% off</h3>
 
                 <Link to={`${match.url}/${game._id}`}>More info...</Link>
             </div>

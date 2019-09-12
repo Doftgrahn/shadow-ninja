@@ -17,7 +17,7 @@ const CartInfo = ({cart, total, dispatch}) => {
         }
 
 
-// updates Cart with sum, productQuantity.
+        // updates Cart with sum, productQuantity.
         dispatch(updateCart(cart))
 
     }, [cart, dispatch])
