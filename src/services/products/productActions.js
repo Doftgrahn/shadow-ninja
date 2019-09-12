@@ -23,6 +23,8 @@ const getProducts = () => {
 };
 */
 
+
+// Function for Fetching.
 export const fetchProducts = () => {
   return dispatch => {
     dispatch(fetchProductsBegin());
