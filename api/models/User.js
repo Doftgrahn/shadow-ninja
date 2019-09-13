@@ -18,6 +18,14 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  currency: {
+    type: Number,
+    required: true
+  },
+  gameLibrary: {
+    type: Array,
+    required: true
+  }
 
 
 });

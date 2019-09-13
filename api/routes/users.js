@@ -23,7 +23,11 @@ User.findOne({ email: req.body.email }).then(user => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        currency: 1000,
+        gameLibrary: [{ id: '5d7777ff330d496ae524c180', title: "Age of Empires II", category: "Strategy", price: "45", rating: '8', imgURL: "https://www.dsogaming.com/wp-content/uploads/2019/04/Age-of-Empires-II...",
+        info: "Age of Empires II: The Age of Kings is a real-time strategy video game..."
+         }]
       });
 
       bcrypt.genSalt(10, (err, salt) => {
@@ -62,7 +66,9 @@ const email = req.body.email;
         // Create JWT Payload
         const payload = {
           id: user.id,
-          name: user.name
+          name: user.name,
+          currency: user.currency,
+          gameLibrary: user.gameLibrary
         };
         // Sign token
         jwt.sign(
