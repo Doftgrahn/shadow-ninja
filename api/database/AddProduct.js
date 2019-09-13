@@ -1,5 +1,5 @@
 const {uri} = require('../secrets/mongoDB.config');
-const {settings, MongoClient, shadowDB} = require('../settings/Settings.js');
+const {settings, MongoClient} = require('../settings/Settings.js');
 
 
 const insertMongoDB = () => {

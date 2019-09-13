@@ -1,11 +1,9 @@
 import React from 'react';
 
-import {connect} from 'react-redux';
-
 import CartInfo from './cart/cartInfo';
 import Chat from '../chat/chat';
 
-const MiniMeny = ({cart}) => {
+const MiniMeny = () => {
 
     return (<main>
         <CartInfo/>
@@ -13,6 +11,4 @@ const MiniMeny = ({cart}) => {
     </main>)
 }
 
-const mapStateToProps = state => ({cart: state.cart})
-
-export default connect(mapStateToProps)(MiniMeny);
+export default MiniMeny;
