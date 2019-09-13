@@ -15,6 +15,7 @@ html {
 body {
     margin: 0;
     padding: 0;
+
 }
 
 .route_wrapper {
@@ -40,4 +41,23 @@ button {
 
 img {
     max-width: 100%;
+}
+
+
+
+element.style {
+    
+     height: 100vh; 
+     display: flex; 
+     flex-direction: column; 
+     justify-content: center; 
+     align-items: center; 
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+*{
+    font-size: 18px;
 }

@@ -2,8 +2,12 @@ import React from 'react';
 
 const Footer = () => {
     return (<footer>
+        <div class="imail">
+            Imail adrese : <br/>
+            ninja@gmail.com
+        </div>
 
-<h1>This is a footer</h1>
+
     </footer>)
 }
 

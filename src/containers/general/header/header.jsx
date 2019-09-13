@@ -18,15 +18,18 @@ const Header = () => {
             name: 'Checkout',
             to: '/checkout'
         }
+        
     ]
-
+      
     const navBar = navBarData.map((nav, index) => <Link key={index} to={nav.to}>{nav.name}</Link>)
 
     return (<header>
-        <h1>xXShadowNinjaXx</h1>
+      <h1>xXShadowNinjaXx</h1>
         <nav> {navBar}</nav>
-
+        <div class="route"></div>
+    
     </header>)
+    
 }
 
 export default Header;
