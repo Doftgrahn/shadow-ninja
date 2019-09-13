@@ -1,5 +1,6 @@
 const express = require('express');
 const server = express();
+const httpServer = require('http').createServer(server);
 /*DATABASE*/
 //const {insertMongoDB} = require('./database/AddProduct');
 const {filterByNameMongoDB} = require('./database/filterByName')
@@ -15,9 +16,15 @@ const users = require("./routes/users");
 require("./secrets/passport")(passport);
 /* AUTH / LOGIN */
 
+
+
+
 server.use(express.static(__dirname + '/../build/'));
 //server.use(express.static(__dirname + '/../dist/'));
 
+
+//Socket
+require('./sockets/sockets')(httpServer);
 
 //If you want to insert, uncomment this function.
 //insertMongoDB()
@@ -38,6 +45,7 @@ server.use(
 );
 
 // Connect to MongoDB
+/*
 mongoose
 .connect(
 	db,
@@ -45,7 +53,7 @@ mongoose
 )
 .then(() => console.log("MongoDB successfully connected"))
 .catch(err => console.log(err));
-
+*/
 
 
 // ready to connect with React
@@ -128,8 +136,9 @@ mongoose
 
 
 
+
 // 4 starta serven
 const port = process.env.PORT || 1337;
-server.listen(port, () => {
+httpServer.listen(port, () => {
 	console.log('Server listening on port ' + port);
 })
