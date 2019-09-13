@@ -20,12 +20,13 @@ const UserSchema = new Schema({
   },
   currency: {
     type: Number,
-    default: 1000
+    required: true
   },
   gameLibrary: {
     type: Array,
-    default: []
+    required: true
   }
+
 
 });
 module.exports = User = mongoose.model("users", UserSchema);

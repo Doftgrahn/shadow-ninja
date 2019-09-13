@@ -4,7 +4,7 @@ import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from './actionTypes';
+} from "./actionTypes";
 
 const getProducts = () => {
   const url = "/api/games";
@@ -15,6 +15,13 @@ const getProducts = () => {
     });
 };
 
+const handleErrors = response => {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
+};
+
 /* FAKE_PRODUCTS
  const fakeGetProducts = () => {
   return new Promise(resolve => {
@@ -23,6 +30,7 @@ const getProducts = () => {
 };
 */
 
+// Function for Fetching.
 export const fetchProducts = () => {
   return dispatch => {
     dispatch(fetchProductsBegin());
@@ -35,13 +43,6 @@ export const fetchProducts = () => {
         dispatch(fetchProductsFailure(error));
       });
   };
-};
-
-const handleErrors = response => {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  return response;
 };
 
 export const fetchProductsBegin = () => ({

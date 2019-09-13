@@ -1,9 +1,15 @@
 import React from 'react';
 
+//Redux
+import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux'
+
+import {addProduct} from '../../services/cart/cartAction';
+
 import RegularButton from '../../components/buttons/regular-button';
 
 const Game = ({data, match, history}) => {
-
+    const dispatch = useDispatch();
     const goBack = history.goBack;
 
     const filterdata = data
@@ -13,15 +19,17 @@ const Game = ({data, match, history}) => {
                 <img src={f.imgURL} alt={f.title}/>
             </figure>
 
-            <h3>{f.title}</h3>
             <div className="singleGame__container-description">
-                <p>Category: {f.category}</p>
-                <p>price: €{f.price}</p>
-                <p>rating: {f.rating}</p>
-                <p>info: {f.info}</p>
+                <h3>{f.title}</h3>
+                <p>Category:<br/> {f.category}</p>
+                <p>price:<br/>
+                    €{f.price}</p>
+                <p>rating:<br/> {f.rating}</p>
+                <p>info:<br/> {f.info}</p>
+                <RegularButton click={goBack} title="Go back"/>
+                <button onClick={() => dispatch(addProduct(f))} className="btn-regular">Buy</button>
             </div>
 
-            <RegularButton click={goBack} title="Go back"/>
         </section>)
 
     return (<main>
@@ -29,4 +37,4 @@ const Game = ({data, match, history}) => {
     </main>)
 }
 
-export default Game;
+export default connect()(Game);

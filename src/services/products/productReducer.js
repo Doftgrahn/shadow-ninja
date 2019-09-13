@@ -18,12 +18,14 @@ export default function productReducer(
 ) {
   switch (action.type) {
     case FETCH_PRODUCTS_BEGIN:
+    //When loading.
       return {
         ...state,
         loading: true,
         error: null
       };
     case FETCH_PRODUCTS_SUCCESS:
+    // When sucess
       return {
         ...state,
         items: action.payload.products,
@@ -31,6 +33,7 @@ export default function productReducer(
         error: null
       };
     case FETCH_PRODUCTS_FAILURE:
+    // If failure.
       return {
         ...state,
         loading: false,
