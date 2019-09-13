@@ -1,7 +1,7 @@
 const express = require('express');
 const server = express();
 /*DATABASE*/
-const {insertMongoDB} = require('./database/AddProduct');
+//const {insertMongoDB} = require('./database/AddProduct');
 const {filterByNameMongoDB} = require('./database/filterByName')
 const {getSingleProductMongoDB} = require('./database/getSingleProduct')
 const db = require("./secrets/keys").mongoURI;
@@ -55,23 +55,23 @@ let filterProduct = '';
 server.get('/api/games', (request, response) => {
 	let queryFilter = request.query.filter;
 
-	if (queryFilter == '') {
+	if (queryFilter === '') {
 		filterProduct = {}
 	}
-	if (queryFilter ==  'lowestPrice') {
+	if (queryFilter ===  'lowestPrice') {
 		if(lastFilter ) {
 			filterProduct = {price: 1}
 		}
 		else {
 			filterProduct = {price: -1}
 		}
-	} else if(queryFilter == 'category'){
+	} else if(queryFilter === 'category'){
 		if(lastFilter) {
 			filterProduct = {category: 1}
 		} else {
 			filterProduct = {category: -1}
 		}
-	} else if(queryFilter == 'rating'){
+	} else if(queryFilter === 'rating'){
 		if(lastFilter) {
 			filterProduct = {rating: 1}
 		} else {

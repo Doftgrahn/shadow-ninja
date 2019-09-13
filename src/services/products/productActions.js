@@ -4,7 +4,7 @@ import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from './actionTypes';
+} from "./actionTypes";
 
 const getProducts = () => {
   const url = "/api/games";
@@ -14,7 +14,6 @@ const getProducts = () => {
       return res.json();
     });
 };
-
 
 const handleErrors = response => {
   if (!response.ok) {
@@ -31,7 +30,6 @@ const handleErrors = response => {
 };
 */
 
-
 // Function for Fetching.
 export const fetchProducts = () => {
   return dispatch => {
@@ -46,7 +44,6 @@ export const fetchProducts = () => {
       });
   };
 };
-
 
 export const fetchProductsBegin = () => ({
   type: FETCH_PRODUCTS_BEGIN
