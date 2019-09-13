@@ -18,14 +18,7 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  currency: {
-    type: Number,
-    default: 1000
-  },
-  gameLibrary: {
-    type: Array,
-    default: []
-  }
+
 
 });
 module.exports = User = mongoose.model("users", UserSchema);

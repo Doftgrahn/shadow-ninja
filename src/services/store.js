@@ -22,12 +22,13 @@ export default initialState => {
 // Listens to changes in state, saves in localStorage.
   store.subscribe(() => {
     const state = store.getState();
-
+    console.log('state', state)
     // States that will be saved in localStorage. Add your state here, if you want it to be saved.
     const persist = {
       products: state.products,
       cart: state.cart,
-      total: state.total
+      total: state.total,
+      auth: state.auth,
     };
     window.localStorage.setItem("state", JSON.stringify(persist));
   });
