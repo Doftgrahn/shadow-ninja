@@ -15,6 +15,14 @@ const getProducts = () => {
     });
 };
 
+
+const handleErrors = response => {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
+};
+
 /* FAKE_PRODUCTS
  const fakeGetProducts = () => {
   return new Promise(resolve => {
@@ -39,12 +47,6 @@ export const fetchProducts = () => {
   };
 };
 
-const handleErrors = response => {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  return response;
-};
 
 export const fetchProductsBegin = () => ({
   type: FETCH_PRODUCTS_BEGIN
