@@ -1,9 +1,20 @@
 import React from 'react';
-
+import { connect } from "react-redux";
 import {Link} from "react-router-dom";
 
-const NavBar = ({toggle, turnOff}) => {
-
+const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
+  let toggleLogin = {};
+  if(isAuthenticated) {
+    toggleLogin = {
+      name: 'Account',
+      to: '/userProfile'
+    };
+  } else {
+    toggleLogin = {
+      name: 'Login / Register',
+      to: '/register'
+    }
+  }
     const navBarData = [
         {
             name: 'Home',
@@ -17,13 +28,7 @@ const NavBar = ({toggle, turnOff}) => {
         }, {
             name: 'Checkout',
             to: '/checkout'
-        }, {
-            name: 'Login/Register',
-            to: '/register'
-        }, {
-             name: 'Login / Account',
-             to: '/userProfile'
-           }
+        }, toggleLogin,
     ]
 
     const navBar = navBarData.map((nav, index) => <Link onClick={turnOff} key={index} to={nav.to}>{nav.name}</Link>)
@@ -32,6 +37,12 @@ const NavBar = ({toggle, turnOff}) => {
             ? 'activeNav'
             : ''}`}>
         {navBar}</nav>)
-}
+};
 
-export default NavBar;
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps)(NavBar);

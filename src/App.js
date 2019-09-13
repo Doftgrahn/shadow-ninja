@@ -8,6 +8,8 @@ import store from "./services/store";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./services/login/utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./services/login/actions/authActions";
+// import { Provider } from "react-redux";
+
 //Authentication
 
 //import styles
@@ -24,7 +26,6 @@ import Routes from './routes/routes';
 
 
 /*Refactor later!*/
-console.log('hej', localStorage.jwtToken)
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -36,9 +37,9 @@ if (localStorage.jwtToken) {
   // Set user and isAuthenticated
   console.log('set current user: ',setCurrentUser(decoded))
   console.log('this is store', store)
-  // store.dispatch(setCurrentUser(decoded));
+  setCurrentUser(decoded);
 // Check for expired token
-  const currentTime = Date.now() / 1000; // to get in milliseconds
+  const currentTime = Date.now() / 1000000; // to get in milliseconds
   if (decoded.exp < currentTime) {
     // Logout user
     console.log('run this when logging out', currentTime)
