@@ -26,6 +26,7 @@ server.use(express.static(__dirname + '/../build/'));
 //Socket
 require('./sockets/sockets')(httpServer);
 
+
 //If you want to insert, uncomment this function.
 //insertMongoDB()
 

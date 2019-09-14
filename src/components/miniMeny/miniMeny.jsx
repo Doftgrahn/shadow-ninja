@@ -5,7 +5,7 @@ import Chat from '../chat/chat';
 
 const MiniMeny = () => {
 
-    return (<main>
+    return (<main className="mini">
         <CartInfo/>
         <Chat/>
     </main>)
