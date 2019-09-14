@@ -32,6 +32,11 @@ return (
             >
               Logout
             </button>
+
+
+            <div>
+              <button style={{ color: 'black' }}>Click me to add currency to your account</button>
+            </div>
           </div>
         </div>
       </div>

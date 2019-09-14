@@ -5,6 +5,7 @@ const httpServer = require('http').createServer(server);
 //const {insertMongoDB} = require('./database/AddProduct');
 const {filterByNameMongoDB} = require('./database/filterByName')
 const {getSingleProductMongoDB} = require('./database/getSingleProduct')
+const {editUserCurrencyMongoDB} = require('./database/handleProfiles/editUserCurrency')
 const db = require("./secrets/keys").mongoURI;
 /*DATABASE*/
 
@@ -45,16 +46,6 @@ server.use(
 	})
 );
 
-// Connect to MongoDB
-/*
-mongoose
-.connect(
-	db,
-	{ useNewUrlParser: true }
-)
-.then(() => console.log("MongoDB successfully connected"))
-.catch(err => console.log(err));
-*/
 
 
 // ready to connect with React
@@ -104,6 +95,18 @@ server.get('/api/games/product', (request, response) => {
 	let idSingleProduct = queryid;
 
 	getSingleProductMongoDB(idSingleProduct, result => {
+		response.send(JSON.stringify(result))
+	})
+})
+
+
+
+//add currency to account based on id
+server.post('/api/addcurrency', (request, response) => {
+	let queryid = request.query.id;
+	let userId = queryid;
+
+	editUserCurrencyMongoDB(userId, result => {
 		response.send(JSON.stringify(result))
 	})
 })
