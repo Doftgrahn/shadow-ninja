@@ -61,6 +61,20 @@
         }
     }
 
+    .quantiy {
+        flex:1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            margin-top:20px;
+            background: 0;
+            border: none;
+        }
+    }
+
     .btn-container {
         margin-right: auto;
         width: 100%;

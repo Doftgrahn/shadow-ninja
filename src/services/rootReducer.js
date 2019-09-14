@@ -10,8 +10,8 @@ import errorReducer from "./login/reducers/errorReducers";
 //AUTH
 
 export default combineReducers({
-  products,
-  cart,
+  products: products,
+  cart: cart,
   auth: authReducer,
   errors: errorReducer,
   total: totalReducer
