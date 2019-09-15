@@ -11,6 +11,9 @@ import {updateCart} from '../../../services/total/totalAction';
 const CartInfo = ({cart, total, dispatch}) => {
     const [animation, setAnimation] = useState(false);
 
+
+    const {productQuantity} = total;
+
     useEffect(() => {
         if (cart) {
             setAnimation(animation => !animation)
@@ -29,7 +32,7 @@ const CartInfo = ({cart, total, dispatch}) => {
             <div className="miniMeny__wrapper">
                 <p className={`total ${animation
                         ? 'shake'
-                        : 'shake2'}`}>{total.productQuantity}
+                        : 'shake2'}`}>{productQuantity}
                 </p>
                 <ShoppingCart/>
             </div>
