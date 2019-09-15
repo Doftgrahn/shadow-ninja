@@ -102,7 +102,7 @@ server.get('/api/games/product', (request, response) => {
 
 
 //add currency to account based on id
-server.post('/api/addcurrency', (request, response) => {
+server.put('/api/addcurrency', (request, response) => {
 	let queryid = request.query.id;
 	let userId = queryid;
 

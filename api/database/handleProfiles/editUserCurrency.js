@@ -10,7 +10,7 @@ const {settings, MongoClient, ObjectId} = require('../../settings/Settings.js');
 
 	  let collection = client.db('shadowDB').collection('users');
 
-    collection.updateOne({_id: ObjectId(`${userId}`)}, {$set:{currency: 10000}}, function(err, response) {
+    collection.updateOne({_id: ObjectId(`${userId}`)}, {$set:{currency: 20000}}, function(err, response) {
     if (err) {
       throw error
     } else {

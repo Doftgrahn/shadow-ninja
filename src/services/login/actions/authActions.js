@@ -4,7 +4,8 @@ import jwt_decode from "jwt-decode";
 import {
   GET_ERRORS,
   SET_CURRENT_USER,
-  USER_LOADING
+  USER_LOADING,
+  UPDATE_USER_CURRENCY
 } from "./types";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -36,6 +37,25 @@ export const loginUser = userData => dispatch => {
       })
     );
 };
+
+//TEST
+export const updateCurrency = (url, userData) => dispatch => {
+  postData(`http://localhost:3000/api/addcurrency?id=${url}`)
+  .then(res => {
+    console.log('userdata to update.. ', userData)
+    dispatch(setUserCurrency(userData))
+  })
+  .catch(error => {console.error(error)});
+
+  function postData(url = '') {
+    return fetch(url, {
+      method: 'PUT',
+    })
+    .then(response => response.json());
+  }
+};
+
+//TEST
 // Set logged in user
 export const setCurrentUser = decoded => {
   return {
@@ -49,6 +69,16 @@ export const setUserLoading = () => {
     type: USER_LOADING
   };
 };
+// updateUserCurrency
+export const setUserCurrency = newCurrency => {
+  return {
+    type: UPDATE_USER_CURRENCY,
+    payload: newCurrency
+  };
+};
+
+
+// updateUserCurrency
 // Log user out
 export const logoutUser = () => dispatch => {
   localStorage.removeItem("jwtToken");
