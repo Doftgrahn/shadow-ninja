@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from "react-router-dom";
+import {Route} from "react-router-dom";
 
 import LandingPage from '../containers/landingpage/landingpage';
 import Store from '../containers/store/store';
@@ -11,6 +11,9 @@ import Login from '../containers/login-Handler/Login';
 import Profile from '../containers/userProfile/Profile'
 import PrivateRoute from "./PrivateRoute";
 
+
+import AnimatedRoute from './animatedRoute';
+import AnimatedSwitch from './animatedSwitch';
 
 const Routes = () => {
 
@@ -56,17 +59,21 @@ const Routes = () => {
     ]
 
     const renderRoutes = allRoutes.map(r => {
-        return <Route
+        return <AnimatedRoute
                 key={r._id}
                 exact={r.exact}
                 path={r.path}
                 render={(props) => <r.Component {...props}/>}/>
     })
 
-    return (<Switch>
+    return ( <AnimatedSwitch
+        animationClassName="page-slide"
+        animationTimeout={300}
+      >
           {renderRoutes}
           <PrivateRoute exact path="/userProfile" component={Profile} />
-    </Switch>)
+          </AnimatedSwitch>
+)
 }
 
 
