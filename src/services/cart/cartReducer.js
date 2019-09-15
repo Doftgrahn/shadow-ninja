@@ -31,14 +31,12 @@ export default function cartReducer(state = initialState, action) {
     case REMOVE_PRODUCT:
       // state contains an _id of matching action.payload._id, that _id will be removed.
       // I used filter to make a new array, not modify the old one.
-      let newArray = state.filter(game => game._id !== action.payload._id);
+      const newArray = state.filter(game => game._id !== action.payload._id);
       return newArray;
 
     case SUB_QUANT:
       const productExists = state.find(el => el._id === action.payload._id);
-      let deleteItem = state.filter(game => game._id !== action.payload._id);
-
-      console.log(productExists.quantity);
+      const deleteItem = state.filter(game => game._id !== action.payload._id);
 
       if (productExists.quantity === 1) {
         return deleteItem;
