@@ -1,8 +1,10 @@
+
 import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
 import {useDispatch} from 'react-redux';
 
 import {sendMessage, recivingMessage} from '../../services/socket/socketActions';
+
 
 const Chat = ({chat}) => {
     const [input, setInput] = useState('')
