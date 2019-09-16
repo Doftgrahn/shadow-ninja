@@ -4,6 +4,8 @@ import {useDispatch} from 'react-redux';
 
 import {sendMessage, recivingMessage} from '../../services/socket/socketActions';
 
+import {ReactComponent as Send} from '../../components/SVG_Icons/send/send.svg';
+
 import io from "socket.io-client";
 
 const socket = io();
@@ -15,21 +17,20 @@ const Chat = ({chat, user}) => {
     const {name} = user.user;
 
     useEffect(() => {
-        socket.open();
+        //socket.open();
 
         socket.on('chat message', message => {
             dispatch(recivingMessage(message))
         })
 
-        return() => socket.close()
+        //socket.close()
     }, [dispatch])
 
-
-    
-
     const send = () => {
-        dispatch(sendMessage(input, name))
-        setInput('')
+        if (input) {
+            dispatch(sendMessage(input, name))
+            setInput('')
+        }
     }
 
     let showMessages;
@@ -37,7 +38,9 @@ const Chat = ({chat, user}) => {
         showMessages = chat
             .data
             .map((e, i) => <div className="chat__content" key={i}>
-                <p>{e.user}</p>
+
+                <p>{e.user}:</p>
+
                 <p>{e.message}</p>
                 <p>{e.time}</p>
             </div>)
@@ -46,8 +49,10 @@ const Chat = ({chat, user}) => {
         <div className="chat__wrapper   ">
             {showMessages}
         </div>
-        <input type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
-        <button onClick={send}>Send</button>
+        <div className="sendInput">
+            <input placeholder="Write Something..." type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
+            <button onClick={send}><Send/></button>
+        </div>
     </main>)
 }
 

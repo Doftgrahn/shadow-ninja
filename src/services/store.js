@@ -27,7 +27,7 @@ export default initialState => {
       cart: state.cart,
       total: state.total,
       auth: state.auth,
-      /*chat:state.chat,*/
+      chat:state.chat
     };
 
     window.localStorage.setItem("state", JSON.stringify(persist));

@@ -1,0 +1,23 @@
+.message {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    button {
+        margin-left: auto;
+        width: 50px;
+        color: black;
+    }
+
+    &__container {
+        transition: 0.4s cubic-bezier(0.5, 0, 0.5, 1);
+    }
+}
+
+.show {
+    transform: translate(300px);
+}
+
+.hide {
+    transform: translate(0);
+}

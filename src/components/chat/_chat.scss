@@ -4,6 +4,7 @@
     min-height: 320px;
     background: tomato;
     padding: 10px;
+    border-radius: 20px 0 0 20px;
 
     &__wrapper {
         height: 320px;
@@ -18,22 +19,42 @@
         border-bottom: 1px solid black;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+
+        p {
+            color: black;
+
+            &:first-child {
+                text-decoration: underline;
+                display: block;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .sendInput {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
     }
 
     input {
-        margin-top: 10px;
         color: black;
         padding: 5px;
+        outline: none;
+        border: none;
     }
 
     button {
-        background: gray;
+        background: 0;
         border: 0;
-        color: black;
-        height:100%;
-    }
-
-    p {
-        color: black;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        outline: none;
     }
 }
