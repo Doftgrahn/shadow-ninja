@@ -1,26 +1,39 @@
 import React, {useState, useEffect} from 'react';
+import {connect} from "react-redux";
+import {useDispatch} from 'react-redux';
 
-import io from 'socket.io-client';
+import {sendMessage, recivingMessage} from '../../services/socket/socketActions';
 
-//const socket = io();
+const Chat = ({chat}) => {
+    const [input, setInput] = useState('')
+    const dispatch = useDispatch()
 
-const Chat = () => {
-    /*
-    const [chat, setChat] = useState([]);
+    const send = () => {
+        dispatch(sendMessage(input))
+        setInput('')
+    }
 
+console.log(chat);
     useEffect(() => {
-        socket.on('chat message', data => {
-            setChat(data)
-        })
-    })
 
-    socket.emit('chat message', 'sup')
+        dispatch(recivingMessage())
+    }, [dispatch, chat])
 
-    console.log(chat);
-    */
-    return (<main className="chat">Chat
-        <p></p>
+    let showMessages;
+    if (chat.length)
+        showMessages = chat
+            .data
+            .map((e, i) => <div key={i}>
+                <p>{e.message}</p>
+                <p>{e.time}</p>
+            </div>)
+
+    return (<main className="chat">Chat {showMessages}
+        <input type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
+        <button onClick={send}>Send</button>
     </main>)
 }
 
-export default Chat;
+const mapStateToProps = state => ({chat: state.chat});
+
+export default connect(mapStateToProps, {sendMessage})(Chat);

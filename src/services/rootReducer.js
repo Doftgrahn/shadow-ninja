@@ -10,9 +10,12 @@ import totalReducer from "./total/totalReducer";
 //AUTH
 import authReducer from "./login/reducers/authReducers";
 import errorReducer from "./login/reducers/errorReducers";
+
+import socketHandler from "./socket/socketReducer";
 //AUTH
 
 export default combineReducers({
+  chat: socketHandler,
   products: products,
   cart: cart,
   total: totalReducer,

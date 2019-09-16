@@ -11,6 +11,7 @@ module.exports = server => {
     });
 
     socket.on(CHAT_MESSAGE, message => {
+        console.log('message:' + message);
       io.emit(CHAT_MESSAGE, message);
     });
 
