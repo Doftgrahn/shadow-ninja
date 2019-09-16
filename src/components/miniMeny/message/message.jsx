@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Message = () => {
-    return (<main>Small</main>)
+    return (<main className="message">
+
+    </main>)
 }
 
 export default Message;
