@@ -1,5 +1,3 @@
-//import {dummyData} from "../functions/dummyData";
-
 import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
@@ -14,15 +12,6 @@ const getProducts = () => {
       return res.json();
     });
 };
-
-/* FAKE_PRODUCTS
- const fakeGetProducts = () => {
-  return new Promise(resolve => {
-    setTimeout(() => resolve({products: dummyData}), 500);
-  });
-};
-*/
-
 
 // Function for Fetching.
 export const fetchProducts = () => {

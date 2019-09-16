@@ -4,8 +4,6 @@ import {
   FETCH_PRODUCTS_FAILURE
 } from './actionTypes';
 
-
-
 const initialState = {
   items: [],
   loading: false,

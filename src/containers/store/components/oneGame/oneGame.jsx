@@ -12,7 +12,6 @@ const OneGame = ({gameinfo, match, addProduct}) => {
 
     return (<section className="game__container">
         <Link to={`${match.url}/${gameinfo._id}`}>
-
             <figure>
                 <img src={gameinfo.imgURL} alt={gameinfo.name}/>
             </figure>
