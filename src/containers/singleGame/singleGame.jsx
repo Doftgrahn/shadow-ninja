@@ -24,7 +24,7 @@ const SingleGame = ({match, dispatch, products, loading, error}) => {
     }
 
     return (<div className="singleGame">
-        <Route path={`${match.path}`} render={(props) => <Game {...props} data={products}/>}/>
+        <Route path={`${match.path}`} render={(props) => <Game {...props} game={products}/>}/>
     </div>)
 }
 

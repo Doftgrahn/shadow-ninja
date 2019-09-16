@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 
 import LandingPage from '../containers/landingpage/landingpage';
 import Store from '../containers/store/store';
@@ -59,20 +59,20 @@ const Routes = () => {
     ]
 
     const renderRoutes = allRoutes.map(r => {
-        return <AnimatedRoute
+        return <Route
                 key={r._id}
                 exact={r.exact}
                 path={r.path}
                 render={(props) => <r.Component {...props}/>}/>
     })
 
-    return ( <AnimatedSwitch
+    return ( <Switch
         animationClassName="page-slide"
         animationTimeout={300}
       >
           {renderRoutes}
           <PrivateRoute exact path="/userProfile" component={Profile} />
-          </AnimatedSwitch>
+          </Switch>
 )
 }
 

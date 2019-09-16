@@ -3,6 +3,9 @@ import React from 'react';
 
 import {BrowserRouter as Router} from "react-router-dom";
 
+import './styles/main.scss';
+
+
 //Authentication
 import store from "./services/store";
 import jwt_decode from "jwt-decode";
@@ -13,7 +16,6 @@ import { setCurrentUser, logoutUser } from "./services/login/actions/authActions
 //Authentication
 
 //import styles
-import './styles/main.scss';
 
 //Header and Footer
 import Header from './containers/general/header/header';

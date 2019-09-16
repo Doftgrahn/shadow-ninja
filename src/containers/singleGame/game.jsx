@@ -8,11 +8,11 @@ import {addProduct} from '../../services/cart/cartAction';
 
 import RegularButton from '../../components/buttons/regular-button';
 
-const Game = ({data, match, history}) => {
+const Game = ({game, match, history}) => {
     const dispatch = useDispatch();
     const goBack = history.goBack;
 
-    const filterdata = data
+    const filterdata = game
         .filter(e => e._id === match.params.id)
         .map(f => <section key={f._id} className="singleGame__container">
             <figure>
