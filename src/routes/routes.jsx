@@ -12,8 +12,8 @@ import Profile from '../containers/userProfile/Profile'
 import PrivateRoute from "./PrivateRoute";
 
 
-import AnimatedRoute from './animatedRoute';
-import AnimatedSwitch from './animatedSwitch';
+// import AnimatedRoute from './animatedRoute';
+// import AnimatedSwitch from './animatedSwitch';
 
 const Routes = () => {
 
