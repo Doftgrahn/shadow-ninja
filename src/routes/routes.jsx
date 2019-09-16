@@ -8,6 +8,12 @@ import Social from '../containers/social/social';
 import Checkout from '../containers/checkout/checkout';
 import Register from '../containers/login-Handler/Register';
 import Login from '../containers/login-Handler/Login';
+import Profile from '../containers/userProfile/Profile'
+import PrivateRoute from "./PrivateRoute";
+
+
+// import AnimatedRoute from './animatedRoute';
+// import AnimatedSwitch from './animatedSwitch';
 
 const Routes = () => {
 
@@ -48,6 +54,8 @@ const Routes = () => {
             path: '/login',
             Component: Login
         },
+
+
     ]
 
     const renderRoutes = allRoutes.map(r => {
@@ -58,9 +66,16 @@ const Routes = () => {
                 render={(props) => <r.Component {...props}/>}/>
     })
 
-    return (<Switch>
-        {renderRoutes}
-    </Switch>)
+    return ( <Switch
+        animationClassName="page-slide"
+        animationTimeout={300}
+      >
+          {renderRoutes}
+          <PrivateRoute exact path="/userProfile" component={Profile} />
+          </Switch>
+)
 }
+
+
 
 export default Routes;

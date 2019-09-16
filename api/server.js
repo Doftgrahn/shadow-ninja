@@ -1,9 +1,11 @@
 const express = require('express');
 const server = express();
+const httpServer = require('http').createServer(server);
 /*DATABASE*/
-const {insertMongoDB} = require('./database/AddProduct');
+//const {insertMongoDB} = require('./database/AddProduct');
 const {filterByNameMongoDB} = require('./database/filterByName')
 const {getSingleProductMongoDB} = require('./database/getSingleProduct')
+const {editUserCurrencyMongoDB} = require('./database/handleProfiles/editUserCurrency')
 const db = require("./secrets/keys").mongoURI;
 /*DATABASE*/
 
@@ -15,8 +17,15 @@ const users = require("./routes/users");
 require("./secrets/passport")(passport);
 /* AUTH / LOGIN */
 
+
+
+
 server.use(express.static(__dirname + '/../build/'));
 //server.use(express.static(__dirname + '/../dist/'));
+
+
+//Socket
+require('./sockets/sockets')(httpServer);
 
 
 //If you want to insert, uncomment this function.
@@ -37,14 +46,6 @@ server.use(
 	})
 );
 
-// Connect to MongoDB
-mongoose
-.connect(
-	db,
-	{ useNewUrlParser: true }
-)
-.then(() => console.log("MongoDB successfully connected"))
-.catch(err => console.log(err));
 
 
 
@@ -55,23 +56,23 @@ let filterProduct = '';
 server.get('/api/games', (request, response) => {
 	let queryFilter = request.query.filter;
 
-	if (queryFilter == '') {
+	if (queryFilter === '') {
 		filterProduct = {}
 	}
-	if (queryFilter ==  'lowestPrice') {
+	if (queryFilter ===  'lowestPrice') {
 		if(lastFilter ) {
 			filterProduct = {price: 1}
 		}
 		else {
 			filterProduct = {price: -1}
 		}
-	} else if(queryFilter == 'category'){
+	} else if(queryFilter === 'category'){
 		if(lastFilter) {
 			filterProduct = {category: 1}
 		} else {
 			filterProduct = {category: -1}
 		}
-	} else if(queryFilter == 'rating'){
+	} else if(queryFilter === 'rating'){
 		if(lastFilter) {
 			filterProduct = {rating: 1}
 		} else {
@@ -95,6 +96,18 @@ server.get('/api/games/product', (request, response) => {
 	let idSingleProduct = queryid;
 
 	getSingleProductMongoDB(idSingleProduct, result => {
+		response.send(JSON.stringify(result))
+	})
+})
+
+
+
+//add currency to account based on id
+server.put('/api/addcurrency', (request, response) => {
+	let queryid = request.query.id;
+	let userId = queryid;
+
+	editUserCurrencyMongoDB(userId, result => {
 		response.send(JSON.stringify(result))
 	})
 })
@@ -128,8 +141,9 @@ mongoose
 
 
 
+
 // 4 starta serven
 const port = process.env.PORT || 1337;
-server.listen(port, () => {
+httpServer.listen(port, () => {
 	console.log('Server listening on port ' + port);
 })

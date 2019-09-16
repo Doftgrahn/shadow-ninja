@@ -6,10 +6,15 @@ import {useDispatch} from 'react-redux'
 
 
 //Redux
-import {removeProduct} from '../../../../services/cart/cartAction';
+import {removeProduct, addProduct , subQuant} from '../../../../services/cart/cartAction';
+
 
 //SVG ICON
 import {ReactComponent as Delete} from '../../../../components/SVG_Icons/clear/clear.svg';
+
+import {ReactComponent as Plus} from '../../../../components/SVG_Icons/plus/plus.svg';
+import {ReactComponent as Minus} from '../../../../components/SVG_Icons/minus/minus.svg';
+
 
 const CartProduct = ({product}) => {
     const dispatch = useDispatch();
@@ -17,6 +22,15 @@ const CartProduct = ({product}) => {
 
     // Removes product from Cart.
     const remove = () => dispatch(removeProduct(product))
+
+
+// Adds quantity in shoppingCart
+    const addQuantity = () => dispatch(addProduct(product))
+
+
+    // decreases quantiy in ShoppingCart
+
+    const decreaseQuant = () => dispatch(subQuant(product))
 
     return (<div className="product__container">
 
@@ -32,6 +46,11 @@ const CartProduct = ({product}) => {
                 <p>QUANTITY:{product.quantity}</p>
             </div>
 
+        </div>
+
+        <div className="quantiy">
+<button onClick={addQuantity}><Plus/></button>
+<button onClick={decreaseQuant}><Minus/></button>
         </div>
 
         <div className="btn-container">
