@@ -11,14 +11,12 @@ import {updateCart} from '../../../services/total/totalAction';
 const CartInfo = ({cart, total, dispatch}) => {
     const [animation, setAnimation] = useState(false);
 
-
     const {productQuantity} = total;
 
     useEffect(() => {
         if (cart) {
             setAnimation(animation => !animation)
         }
-
 
         // updates Cart with sum, productQuantity.
         dispatch(updateCart(cart))

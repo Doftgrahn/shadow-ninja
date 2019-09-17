@@ -11,10 +11,14 @@ module.exports = server => {
     });
 
     socket.on(CHAT_MESSAGE, message => {
+      const data = {
+        user: message.user,
+        time: message.time,
+        message: message.message
+      };
+
+      console.log("user:", data.user, "message:", data.message);
       io.emit(CHAT_MESSAGE, message);
     });
-
-
   });
-
 };

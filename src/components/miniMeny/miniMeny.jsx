@@ -1,13 +1,13 @@
 import React from 'react';
 
 import CartInfo from './cart/cartInfo';
-import Chat from '../chat/chat';
+import Messenger from './message/message';
 
 const MiniMeny = () => {
 
     return (<main className="mini">
         <CartInfo/>
-        <Chat/>
+        <Messenger/>
     </main>)
 }
 

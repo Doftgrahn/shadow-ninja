@@ -9,6 +9,7 @@ import {
 const initialState = [];
 
 export default function cartReducer(state = initialState, action) {
+
   switch (action.type) {
     case ADD_PRODUCT:
       const product = state.find(el => el._id === action.payload._id);
