@@ -29,11 +29,11 @@ const Chat = ({chat, user}) => {
     }, [dispatch])
 
     const scrollToBottom = () => {
-        console.log(messageChatEnd.current);
-        messageChatEnd
-            .current
-            .scrollIntoView({behavior: 'smooth'})
-    }
+        if (messageChatEnd.current)
+            messageChatEnd
+                .current
+                .scrollIntoView({behavior: 'smooth'})
+        }
 
     const send = () => {
         if (input) {
