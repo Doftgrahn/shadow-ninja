@@ -9,6 +9,7 @@
     "classnames": "^2.2.6",
     "concurrently": "^4.1.2",
     "express": "^4.17.1",
+    "http-proxy-middleware": "^0.20.0",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
@@ -54,17 +55,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "School project",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Doftgrahn/shadow-ninja.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Doftgrahn/shadow-ninja/issues"
-  },
-  "homepage": "https://github.com/Doftgrahn/shadow-ninja#readme"
+  }
 }
