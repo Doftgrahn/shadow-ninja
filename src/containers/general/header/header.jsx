@@ -1,6 +1,7 @@
 import React ,{useState} from 'react';
 import NavBar from './navBar/navBar';
 import Hamburger from './hamburger/hamburger';
+import StoreNavbar from '../../store/components/storenavbar/storenavbar'
 
 const Header = () => {
 const [toggle, setToggle] = useState(false);
@@ -14,6 +15,12 @@ const turnOff = () => setToggle(false);
         <Hamburger
         toggleState={toggleState}
         toggle={toggle}/>
+
+        
+        <StoreNavbar
+        toggle={toggle}
+        turnOff={turnOff}
+        />
 
         <NavBar
         toggle={toggle}
