@@ -7,10 +7,12 @@ import {sendMessage, recivingMessage} from '../../services/socket/socketActions'
 import {ReactComponent as Send} from '../../components/SVG_Icons/send/send.svg';
 
 import io from "socket.io-client";
+import {getRandomColor} from '../../functions/randomColor';
 
 const socket = io();
 
 const Chat = ({chat, user}) => {
+    const messageChatEnd = React.createRef()
 
     const [input, setInput] = useState('');
     const dispatch = useDispatch();
@@ -26,10 +28,19 @@ const Chat = ({chat, user}) => {
         //socket.close()
     }, [dispatch])
 
+    const scrollToBottom = () => {
+        console.log(messageChatEnd.current);
+        messageChatEnd
+            .current
+            .scrollIntoView({behavior: 'smooth'})
+    }
+
     const send = () => {
         if (input) {
             dispatch(sendMessage(input, name))
             setInput('')
+            scrollToBottom()
+
         }
     }
 
@@ -37,16 +48,14 @@ const Chat = ({chat, user}) => {
     if (chat)
         showMessages = chat
             .data
-            .map((e, i) => <div className="chat__content" key={i}>
-
-                <p>{e.user}:</p>
-
+            .map((e, i) => <div className="chat__content" key={i} ref={messageChatEnd}>
+                <p style={getRandomColor()} className="user">{e.user}:</p>
                 <p>{e.message}</p>
                 <p>{e.time}</p>
             </div>)
 
     return (<main className="chat">
-        <div className="chat__wrapper   ">
+        <div className="chat__wrapper">
             {showMessages}
         </div>
         <div className="sendInput">

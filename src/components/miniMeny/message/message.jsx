@@ -8,11 +8,10 @@ const Message = () => {
     const hideShow = () => setToggleChat(!toggleChat);
 
     return (<main className="message">
-        <button onClick={hideShow}>Chat</button>
+        <button onClick={hideShow}>{toggleChat ? 'Close' : 'Chat'}</button>
         <div className={`message__container ${ !toggleChat
                 ? 'show'
                 : 'hide'}`}>
-                <h2>General Chat</h2>
             <Chat/>
         </div>
     </main>)

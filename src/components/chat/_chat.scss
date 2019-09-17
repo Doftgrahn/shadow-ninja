@@ -1,13 +1,13 @@
 .chat {
     width: 100%;
     padding-top: 10px;
-    min-height: 320px;
-    background: tomato;
-    padding: 10px;
+    //min-height: 320px;
+    //background: tomato;
+    //padding: 10px;
     border-radius: 20px 0 0 20px;
 
     &__wrapper {
-        height: 320px;
+        max-height: 320px;
         background: white;
         border: 2px solid black;
         padding: 5px;
@@ -23,13 +23,13 @@
 
         p {
             color: black;
+        }
 
-            &:first-child {
-                text-decoration: underline;
-                display: block;
-                width: 100%;
-                margin-bottom: 5px;
-            }
+        .user {
+            text-decoration: underline;
+            display: block;
+            width: 100%;
+            margin-bottom: 5px;
         }
     }
 

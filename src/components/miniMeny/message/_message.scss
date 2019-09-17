@@ -7,6 +7,7 @@
         margin-left: auto;
         width: 50px;
         color: black;
+        background: white;
     }
 
     &__container {
@@ -15,7 +16,7 @@
 }
 
 .show {
-    transform: translate(300px);
+    transform: translate(350px);
 }
 
 .hide {
