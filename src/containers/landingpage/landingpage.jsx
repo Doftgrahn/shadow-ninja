@@ -1,21 +1,18 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 const LandingPage = () => {
-    return (    <div className="box">
+    return (<div className="box">
 
-    <div className="title">
+        <div className="title">
 
-    <div className="green-box">xX~ShadowNinja~Xx</div>
-   
-    
-            <Link to={'/store'}> <button>Store</button>
+            <h1>xX~ShadowNinja~Xx</h1>
+
+            <Link to={'/store'}>
+                <button>Store</button>
             </Link>
-              
-    </div>
-</div>
 
-)
+        </div>
+    </div>)
 }
-
 
 export default LandingPage;

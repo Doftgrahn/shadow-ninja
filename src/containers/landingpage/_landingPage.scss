@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
 
-.box{
+.box {
     background-image: url("/images/ninjaa.jpg");
     width: 100%;
     min-height: 100vh;
@@ -9,37 +9,37 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+h1 {
+    font-size: 90px;
+    margin-bottom: 20px;
+}
 
-.title{
+.title {
     display: flexbox;
-    justify-content: center; 
+    justify-content: center;
     text-align: center;
     padding-top: 20%;
 
-    div{
+    div {
         font-size: 100px;
     }
-    button{
-    margin: 5px;
-    padding: 15px;
-    width: 200px;
-    background-color: darkgrey;
-    border-radius: 5px;
-    font-size: 20px;
-    font-weight: bold;
-    border: inset 1px #e1e1e1;
-    outline: none;
-   
+
+    button {
+        margin: 5px;
+        padding: 15px;
+        width: 200px;
+        background-color: darkgrey;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        border: inset 1px #e1e1e1;
+        outline: none;
     }
 }
+
 button:hover {
-    background-color:rgba(34, 2, 41, 0.4);
-  }
-
-
-
-
-
+    background-color: rgba(34, 2, 41, 0.4);
+}
 
 body:before {
     content: "";
@@ -53,11 +53,5 @@ body:before {
     border-radius: 100%;
     background: transparent;
     display: block;
-    box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.4),
-      200px 0 200px 150px rgba(255, 255, 255, 0.4),
-      -250px 0 300px 150px rgba(255, 255, 255, 0.4),
-      550px 0 300px 200px rgba(255, 255, 255, 0.4),
-      -550px 0 300px 200px rgba(255, 255, 255, 0.4);
-  }
-
-
+    box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.4), 200px 0 200px 150px rgba(255, 255, 255, 0.4), -250px 0 300px 150px rgba(255, 255, 255, 0.4), 550px 0 300px 200px rgba(255, 255, 255, 0.4), -550px 0 300px 200px rgba(255, 255, 255, 0.4);
+}

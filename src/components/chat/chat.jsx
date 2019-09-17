@@ -18,6 +18,7 @@ const Chat = ({chat, user}) => {
 
     useEffect(() => {
         const socket = io();
+        socket.connect();
 
         socket.on('chat message', message => {
             console.log('MESSAGE:', message);
@@ -25,9 +26,7 @@ const Chat = ({chat, user}) => {
 
         })
 
-        return() => {
-            socket.disconnect()
-        }
+        return() => socket.disconnect()
 
     }, [dispatch])
 

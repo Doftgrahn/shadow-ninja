@@ -1,5 +1,4 @@
 .footer {
-    
     text-align: left;
     display: block;
     display: flex;
@@ -7,62 +6,64 @@
     justify-content: center;
     padding: 30px;
     background-color: 0 0 150px 100px rgba95, 54, 105, 0.6;
-  
-    
+
     &__wrapper {
         max-width: 800px;
         width: 100%;
-        
-        flex: 1 0 auto; 
+        flex: 1 0 auto;
+
         h4 {
-            padding: 0px;
+            padding: 0;
             text-align: left;
             padding-top: 20px;
         }
     }
 }
-.icont{
-  margin-left: 290px;
 
-
-}
-.iconf{
-   margin-left: 50px;
-   
-   
-}
-.iconi{
-   margin-left: 50px; 
-   
+.iconWrapper {
+    display: flex;
+    justify-content: center;
+    .icon {
+        margin: 0 20px;
+    }
 
 }
-.a{
+/*
+.icont {
+    margin-left: 290px;
+}
+
+.iconf {
+    margin-left: 50px;
+}
+
+.iconi {
+    margin-left: 50px;
+}
+*/
+.a {
     color: white;
 }
+
 .footer:before {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     width: 10px;
-    height:  0;
+    height: 0;
     margin: auto;
     border-radius: 50%;
     background: transparent;
     display: block;
-    box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.2),
-      200px 0 200px 150px rgba(255, 255, 255, 0.2),
-      -250px 0 300px 150px rgba(255, 255, 255, 0.2),
-      550px 0 300px 200px rgba(255, 255, 255, 0.2),
-      -550px 0 300px 200px rgba(255, 255, 255, 0.2);
-  }
-  @media only screen and (max-width: 850px) {
-
-    .iconWrapper{
-      display: flex;
-      justify-content: center;
+    box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.2), 200px 0 200px 150px rgba(255, 255, 255, 0.2), -250px 0 300px 150px rgba(255, 255, 255, 0.2), 550px 0 300px 200px rgba(255, 255, 255, 0.2), -550px 0 300px 200px rgba(255, 255, 255, 0.2);
+}
+@media only screen and (max-width: 850px) {
+    .iconWrapper {
+        display: flex;
+        justify-content: center;
     }
-  }
+}
 //   @media only screen and (min-width: 601px) {
 //     .box {
 //       font-size: 80px;
