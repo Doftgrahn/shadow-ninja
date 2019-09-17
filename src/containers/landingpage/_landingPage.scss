@@ -4,21 +4,20 @@
     background-image: url("/images/ninjaa.jpg");
     width: 100%;
     min-height: 100vh;
-    background-attachment: fixed;
+    //background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .big {
-    font-size: 90px;
+    font-size: 100px;
     margin-bottom: 20px;
 }
 
 .title {
     text-align: center;
     padding-top: 20%;
-
-    
 
     button {
         margin: 5px;
@@ -31,23 +30,8 @@
         border: inset 1px #e1e1e1;
         outline: none;
     }
-}
 
-button:hover {
-    background-color: rgba(34, 2, 41, 0.4);
-}
-
-body:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    margin: auto;
-    border-radius: 100%;
-    background: transparent;
-    display: block;
-    box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.4), 200px 0 200px 150px rgba(255, 255, 255, 0.4), -250px 0 300px 150px rgba(255, 255, 255, 0.4), 550px 0 300px 200px rgba(255, 255, 255, 0.4), -550px 0 300px 200px rgba(255, 255, 255, 0.4);
+    button:hover {
+        background-color: rgba(34, 2, 41, 0.4);
+    }
 }
