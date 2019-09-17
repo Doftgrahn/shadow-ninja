@@ -1,7 +1,6 @@
 const {CONNECTION, DISCONNECT, CHAT_MESSAGE} = require("./contants");
 
-module.exports = server => {
-  const io = require("socket.io")(server);
+module.exports = io => {
 
   io.on(CONNECTION, socket => {
     console.log("connected to Socket");

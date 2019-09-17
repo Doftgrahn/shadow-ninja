@@ -9,23 +9,26 @@ import {ReactComponent as Send} from '../../components/SVG_Icons/send/send.svg';
 import io from "socket.io-client";
 import {getRandomColor} from '../../functions/randomColor';
 
-const socket = io();
-
 const Chat = ({chat, user}) => {
     const messageChatEnd = React.createRef()
-
     const [input, setInput] = useState('');
     const dispatch = useDispatch();
     const {name} = user.user;
+    console.log('CHAT.DATA -- STATE:', chat.data);
 
     useEffect(() => {
-        //socket.open();
+        const socket = io();
 
         socket.on('chat message', message => {
+            console.log('MESSAGE:', message);
             dispatch(recivingMessage(message))
+
         })
 
-        //socket.close()
+        return() => {
+            socket.disconnect()
+        }
+
     }, [dispatch])
 
     const scrollToBottom = () => {

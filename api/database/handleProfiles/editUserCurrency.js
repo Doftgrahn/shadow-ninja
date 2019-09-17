@@ -1,4 +1,4 @@
-const {uri} = require('../../secrets/mongoDB.config')
+const {uri} = require('../../secrets/mongoDB.config.js')
 const {settings, MongoClient, ObjectId} = require('../../settings/Settings.js');
 
 //edit currency to fixed amount, fix to be based on different values later.
