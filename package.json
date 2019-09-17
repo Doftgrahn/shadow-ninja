@@ -12,6 +12,7 @@
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
+    "lottie-web": "^5.5.9",
     "mongod": "^2.0.0",
     "mongodb": "^3.3.2",
     "mongoose": "^5.6.13",
@@ -20,10 +21,13 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "react": "^16.9.0",
+    "react-blob": "^1.0.1",
     "react-dom": "^16.9.0",
+    "react-polygon": "^0.2.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "react-svg": "^10.0.20",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "socket.io": "^2.2.0",
@@ -64,5 +68,9 @@
   "bugs": {
     "url": "https://github.com/Doftgrahn/shadow-ninja/issues"
   },
-  "homepage": "https://github.com/Doftgrahn/shadow-ninja#readme"
+  "homepage": "https://github.com/Doftgrahn/shadow-ninja#readme",
+  "devDependencies": {
+    "@svgr/cli": "^4.3.2",
+    "react-social-icons": "^4.1.0"
+  }
 }
