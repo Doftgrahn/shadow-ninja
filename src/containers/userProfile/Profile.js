@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logoutUser } from "../../services/login/actions/authActions";
 import { updateCurrency } from "../../services/login/actions/authActions";
+import { updateGames } from "../../services/login/actions/authActions";
 
 
 import PropTypes from "prop-types";
@@ -18,6 +19,12 @@ class Profile extends Component {
     let url = this.props.auth.user.id
     let userData = this.props.auth.user
     this.props.updateCurrency(url, userData)
+  }
+
+  updateGameLibrary = () => {
+    let url = this.props.auth.user.id
+    let userData = this.props.auth.user
+    this.props.updateGames(url, userData)
   }
 
 
@@ -41,6 +48,7 @@ return (
 
 
             <button
+              style={{ color: 'black' }}
               onClick={this.onLogoutClick}
             >
               Logout
@@ -48,8 +56,9 @@ return (
 
 
             <div>
-              <button onClick={this.onUpdateClick} style={{ color: 'black' }} >Click me to add currency to your account</button>
-              <button onClick={this.updateCurrency}>click me</button>
+              <button onClick={this.onUpdateClick} style={{ color: 'black' }} >Add currency</button>
+              <button onClick={this.updateGameLibrary} style={{ color: 'black' }}>Add game</button>
+
             </div>
           </div>
         </div>
@@ -73,5 +82,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { logoutUser, updateCurrency },
+  { logoutUser, updateCurrency, updateGames },
 )(Profile);

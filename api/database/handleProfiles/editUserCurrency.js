@@ -18,8 +18,6 @@ const {settings, MongoClient, ObjectId} = require('../../settings/Settings.js');
     }
     });
     client.close()
-
-
     })
 }
 

@@ -6,6 +6,8 @@ const httpServer = require('http').createServer(server);
 const {filterByNameMongoDB} = require('./database/filterByName')
 const {getSingleProductMongoDB} = require('./database/getSingleProduct')
 const {editUserCurrencyMongoDB} = require('./database/handleProfiles/editUserCurrency')
+const {editUserLibraryMongoDB} = require('./database/handleProfiles/editUserGameLibrary')
+
 const db = require("./secrets/keys").mongoURI;
 /*DATABASE*/
 
@@ -110,8 +112,19 @@ server.put('/api/addcurrency', (request, response) => {
 	editUserCurrencyMongoDB(userId, result => {
 		response.send(JSON.stringify(result))
 	})
-})
+});
 
+server.put('/api/addGameLibrary', (request, response) => {
+	let queryid = request.query.id;
+	let userId = queryid;
+
+	editUserCurrencyMongoDB(userId, result => {
+		response.send(JSON.stringify(result))
+	})
+});
+
+
+editUserLibraryMongoDB
 /* Routing */
 
 
