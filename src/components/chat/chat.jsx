@@ -17,7 +17,9 @@ const Chat = ({chat, user}) => {
     console.log('CHAT.DATA -- STATE:', chat.data);
 
     useEffect(() => {
-        const socket = io();
+        const host = window.location.origin;
+        const socket = io('/' || 'https://' + host);
+        console.log(socket);
         socket.connect();
 
         socket.on('chat message', message => {
