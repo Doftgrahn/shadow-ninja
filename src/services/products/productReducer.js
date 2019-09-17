@@ -7,7 +7,8 @@ import {
 const initialState = {
   items: [],
   loading: false,
-  error: null
+  error: null,
+  filteredState: []
 };
 
 export default function productReducer(
