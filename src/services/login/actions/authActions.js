@@ -5,7 +5,8 @@ import {
   GET_ERRORS,
   SET_CURRENT_USER,
   USER_LOADING,
-  UPDATE_USER_CURRENCY
+  UPDATE_USER_CURRENCY,
+  UPDATE_USER_LIBRARY
 } from "./types";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -38,11 +39,11 @@ export const loginUser = userData => dispatch => {
     );
 };
 
-//TEST
+//Update user currency ---------------------------------------------------------
 export const updateCurrency = (url, userData) => dispatch => {
   postData(`http://localhost:3000/api/addcurrency?id=${url}`)
   .then(res => {
-    console.log('userdata to update.. ', userData)
+
     dispatch(setUserCurrency(userData))
   })
   .catch(error => {console.error(error)});
@@ -51,11 +52,40 @@ export const updateCurrency = (url, userData) => dispatch => {
     return fetch(url, {
       method: 'PUT',
     })
-    .then(response => response.json());
+    .then(response => console.log('final resp', response.json()));
+  }
+};
+//Update user currency --------------------------------------------------------
+
+//Update user library
+export const updateGames = (url, userData, cart) => dispatch => {
+
+  postData(`http://localhost:3000/api/addGameLibrary?id=${url}`)
+  .then(res => {
+    dispatch(setUserGames(userData))
+  })
+  .catch(error => {console.error(error)});
+  function postData(url = '') {
+    return fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify(cart), // data can be `string` or {object}!
+      headers:{
+      'Content-Type': 'application/json'
+      }
+    })
+    .then(response => console.log('final resp', response.json()));
   }
 };
 
-//TEST
+//Update user library
+
+
+
+
+
+
+
+
 // Set logged in user
 export const setCurrentUser = decoded => {
   return {
@@ -70,10 +100,21 @@ export const setUserLoading = () => {
   };
 };
 // updateUserCurrency
-export const setUserCurrency = newCurrency => {
+export const setUserCurrency = userData => {
+  console.log('this is newCurrency', userData)
+  userData.currency = 20000
   return {
     type: UPDATE_USER_CURRENCY,
-    payload: newCurrency
+    payload: userData
+  };
+};
+
+export const setUserGames = userData => {
+  console.log('this is userData in setUserGames', userData)
+
+  return {
+    type: UPDATE_USER_CURRENCY,
+    payload: userData
   };
 };
 

@@ -28,6 +28,7 @@ import Routes from './routes/routes';
 
 
 /*Refactor later!*/
+
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
