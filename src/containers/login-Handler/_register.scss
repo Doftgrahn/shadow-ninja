@@ -1,0 +1,71 @@
+*{
+  font-size: 20px;
+}
+.LogInWrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+
+  h2{
+    color: black;
+    font-weight: 400;
+
+  }
+}
+
+.inerWrapper{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  background-color: #9A979D;
+  padding: 50px;
+  border-radius: 50px;
+  height: 500px;
+  width: 500px;
+    input{
+      padding: 10px;
+      border-radius: 10px;
+      margin: 20px;
+      width: 300px;
+    }
+
+    button{
+      background-color: snow;
+      padding: 10px;
+      width: 100px;
+      border-radius: 5px;
+
+    }
+
+    .dontHaveLogin{
+      margin-top: 20px;
+      border-top: solid 1px;
+      width: 100%;
+      text-align: center;
+
+        i{
+          margin: 20px;
+        }
+
+        p{
+          margin: 20px;
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.regWrapper{
+  justify-content: center;
+  display:flex;
+}

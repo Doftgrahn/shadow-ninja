@@ -54,7 +54,7 @@ render() {
       color: 'black'
     }
 return (
-      <div style={colorDark}>
+      <div className="regWrapper">
         <div>
           <div>
             <Link to="/">

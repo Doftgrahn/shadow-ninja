@@ -19,12 +19,15 @@ class Profile extends Component {
     let url = this.props.auth.user.id
     let userData = this.props.auth.user
     this.props.updateCurrency(url, userData)
+    console.log('this is props', this.props)
   }
 
   updateGameLibrary = () => {
     let url = this.props.auth.user.id
     let userData = this.props.auth.user
-    this.props.updateGames(url, userData)
+    let cart = this.props.cart
+    this.props.updateGames(url, userData, cart)
+    console.log('this is props', this.props.cart)
   }
 
 
@@ -78,7 +81,9 @@ Profile.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  cart: state.cart,
+  total: state.totalReducer,
 });
 export default connect(
   mapStateToProps,

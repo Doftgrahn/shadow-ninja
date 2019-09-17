@@ -4,8 +4,11 @@
 //Landingpage
 @import '../../containers/landingpage/landingPage.scss';
 
-//Store
+// login
+@import '../../containers/login-Handler/register.scss';
 
+
+//Store
 @import '../../containers/store/store.scss';
 /*Components under STORE*/
 @import '../../containers/store/components/allGames/allGames.scss';

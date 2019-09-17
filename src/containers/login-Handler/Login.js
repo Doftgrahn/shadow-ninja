@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../services/login/actions/authActions";
 import classnames from "classnames";
+
 class Login extends Component {
   constructor() {
     super();
@@ -43,23 +44,19 @@ render() {
       color: 'black'
     }
 return (
-      <div>
-        <div>
-          <div>
-            <Link to="/">
-              <i>Back to home</i>
-            </Link>
+  <div className="LogInWrapper">
+      <div className="inerWrapper">
+          <div className="inerOfInerWrapper">
+
             <div>
-              <h4>
-                <b>Login</b> below
-              </h4>
-              <p>
-                Don't have an account? <Link to="/register">Register</Link>
-              </p>
+              <h2>
+                Login
+              </h2>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
               <div>
                 <input
+                  placeHolder="Email"
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.email}
@@ -70,7 +67,7 @@ return (
                   invalid: errors.email || errors.emailnotfound
                   })}
                 />
-                <label htmlFor="email">Email</label>
+
                 <span className="red-text">
                 {errors.email}
                 {errors.emailnotfound}
@@ -78,6 +75,7 @@ return (
               </div>
               <div>
                 <input
+                  placeHolder="Password"
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password}
@@ -86,9 +84,9 @@ return (
                   type="password"
                   className={classnames("", {
                   invalid: errors.password || errors.passwordincorrect
-                  })}
+                }) }
                 />
-                <label htmlFor="password">Password</label>
+
                 <span className="red-text">
                 {errors.password}
                 {errors.passwordincorrect}
@@ -99,7 +97,15 @@ return (
                   Login
                 </button>
               </div>
-            </form>
+              </form>
+              <div className="dontHaveLogin">
+                  <p>
+                    Don't have an account? <Link to="/register">Register</Link>
+                  </p>
+                  <Link to="/">
+                    <i>Back to home</i>
+                  </Link>
+              </div>
           </div>
         </div>
       </div>

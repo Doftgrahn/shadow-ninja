@@ -1,11 +1,4 @@
-/*
-let express = require('express');
-let app = express();
-let http = require('http').Server(app);
-let io = require('socket.io')(http);
-// this is the culprit:
-app.listen(port);
-*/
+
 
 const express = require("express");
 const server = express();
@@ -112,25 +105,26 @@ server.get("/api/games/product", (request, response) => {
 });
 
 //add currency to account based on id
-server.put("/api/addcurrency", (request, response) => {
-  let queryid = request.query.id;
-  let userId = queryid;
 
-  editUserCurrencyMongoDB(userId, result => {
-    response.send(JSON.stringify(result));
-  });
+server.put('/api/addcurrency', ( request, response) => {
+	let queryid = request.query.id;
+	let userId = queryid;
+	editUserCurrencyMongoDB(userId, result => {
+		response.send(JSON.stringify(result))
+	})
 });
 
-server.put("/api/addGameLibrary", (request, response) => {
-  let queryid = request.query.id;
-  let userId = queryid;
-
-  editUserCurrencyMongoDB(userId, result => {
-    response.send(JSON.stringify(result));
-  });
+server.put('/api/addGameLibrary', (request, response) => {
+	let queryid = request.query.id;
+	let userId = queryid;
+	let gamesToAdd = JSON.stringify(request.body)
+	editUserLibraryMongoDB(userId, gamesToAdd, result => {
+		response.send(JSON.stringify(result))
+	})
 });
 
-//editUserLibraryMongoDB
+
+
 /* Routing */
 
 // Passport middleware
@@ -140,27 +134,6 @@ server.use(passport.initialize());
 require("./secrets/passport")(passport);
 // Routes
 server.use("/api/users", users);
-
-/*
-server.get("*", (req, res) => {
-  res.sendFile(`${__dirname}/../build/index.html`);
-});
-*/
-
-/*
-server.get('*', (req, res) =>  {
-  res.sendFile('index.html', {root: path.join(__dirname, '../build/')});
-});
-*/
-
-// Error Handling
-
-/*
-server.get("/error", (req, res) => {
-  throw Error("User error");
-});
-*/
-// send 500 error change to 500 page later
 
 
 server.use((error, request, response, next) => {
