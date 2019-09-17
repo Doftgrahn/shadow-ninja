@@ -105,10 +105,9 @@ server.get('/api/games/product', (request, response) => {
 
 
 //add currency to account based on id
-server.put('/api/addcurrency', (request, response) => {
+server.put('/api/addcurrency', ( request, response) => {
 	let queryid = request.query.id;
 	let userId = queryid;
-
 	editUserCurrencyMongoDB(userId, result => {
 		response.send(JSON.stringify(result))
 	})
@@ -117,14 +116,13 @@ server.put('/api/addcurrency', (request, response) => {
 server.put('/api/addGameLibrary', (request, response) => {
 	let queryid = request.query.id;
 	let userId = queryid;
-
-	editUserCurrencyMongoDB(userId, result => {
+	let gamesToAdd = JSON.stringify(request.body)
+	editUserLibraryMongoDB(userId, gamesToAdd, result => {
 		response.send(JSON.stringify(result))
 	})
 });
 
 
-editUserLibraryMongoDB
 /* Routing */
 
 

@@ -58,17 +58,20 @@ export const updateCurrency = (url, userData) => dispatch => {
 //Update user currency --------------------------------------------------------
 
 //Update user library
-export const updateGames = (url, userData) => dispatch => {
-  postData(`http://localhost:3000/api/addcurrency?id=${url}`)
+export const updateGames = (url, userData, cart) => dispatch => {
+
+  postData(`http://localhost:3000/api/addGameLibrary?id=${url}`)
   .then(res => {
-    console.log('do i run?')
     dispatch(setUserGames(userData))
   })
   .catch(error => {console.error(error)});
-
   function postData(url = '') {
     return fetch(url, {
       method: 'PUT',
+      body: JSON.stringify(cart), // data can be `string` or {object}!
+      headers:{
+      'Content-Type': 'application/json'
+      }
     })
     .then(response => console.log('final resp', response.json()));
   }
@@ -107,7 +110,7 @@ export const setUserCurrency = userData => {
 };
 
 export const setUserGames = userData => {
-  console.log('this is newCurrency', userData)
+  console.log('this is userData in setUserGames', userData)
 
   return {
     type: UPDATE_USER_CURRENCY,
