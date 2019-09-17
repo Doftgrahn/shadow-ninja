@@ -1,4 +1,3 @@
-//Button Component
 @import '../../components/buttons/regular-button.scss';
 //Input Component
 @import '../../components/input/input.scss';
@@ -11,12 +10,23 @@
 @import '../../containers/general/header/hamburger/hamburger.scss';
 
 
+// chat
+@import '../../components/chat/chat.scss';
+
+
 
 // MiniMeny
 @import '../../components/miniMeny/miniMeny.scss';
+@import '../../components/miniMeny/message/message.scss';
 
 
 
 //SVG_Icons
 @import '../../components/SVG_Icons/clear/clear.scss';
 @import '../../components/SVG_Icons/shoppingCart/shoppingCart.scss';
+@import '../../components/SVG_Icons/minus/minus.scss';
+@import '../../components/SVG_Icons/plus/plus.scss';
+@import '../../components/SVG_Icons/send/send.scss';
+
+
+@import './routerAnimation.scss';

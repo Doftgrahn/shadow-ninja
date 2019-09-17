@@ -1,44 +1,23 @@
-// const express = require('express');
-// const expressServer = require('express');
-// let httpServer = require('http').createServer(expressServer);
-// let io = require('socket.io')(httpServer);
-// const port = 1337;
-//
-// // 1 middleware
-// // 2 Routes
-// // 3 felhantering
-// // 4 starta servern
-//
-// expressServer.use(express.static(__dirname + '/../public'));
-//
-// expressServer.listen(port, () => {
-//   console.log('server listen to port: ', 1337);
-// })
-// // io.on('connection', (client) => {
-// //   client.on('subscribeToTimer', (interval) => {
-// //     console.log('client is subscribing to timer with interval ', interval);
-// //     setInterval(() => {
-// //       client.emit('timer', new Date());
-// //     }, interval);
-// //   });
-// // });
-// //
-// // const port = 1337;
-// // httpServer.listen(port);
-// // console.log('listening on port ', port);
-//
-//
-//
-// /*
-//
-// // io.on('connection', socket => {
-// //   console.log('a user connected');
-// // });
-//
-// // socket.on("disconnect", () => console.log("Client disconnected"));
-//
-// // socket.on('disconnect', function(){
-// //   console.log('user disconnected');
-// // });
-//
-// */
+const {CONNECTION, DISCONNECT, CHAT_MESSAGE} = require("./contants");
+
+module.exports = io => {
+
+  io.on(CONNECTION, socket => {
+    console.log("connected to Socket");
+
+    socket.on(DISCONNECT, () => {
+      console.log("removed from server");
+    });
+
+    socket.on(CHAT_MESSAGE, message => {
+      const data = {
+        user: message.user,
+        time: message.time,
+        message: message.message
+      };
+
+      console.log("user:", data.user, "message:", data.message);
+      io.emit(CHAT_MESSAGE, message);
+    });
+  });
+};

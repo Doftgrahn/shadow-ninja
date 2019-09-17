@@ -4,6 +4,7 @@ import Hamburger from './hamburger/hamburger';
 
 const Header = () => {
 const [toggle, setToggle] = useState(false);
+
 const toggleState = () => setToggle(!toggle)
 const turnOff = () => setToggle(false);
 

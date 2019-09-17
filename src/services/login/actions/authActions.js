@@ -4,7 +4,9 @@ import jwt_decode from "jwt-decode";
 import {
   GET_ERRORS,
   SET_CURRENT_USER,
-  USER_LOADING
+  USER_LOADING,
+  UPDATE_USER_CURRENCY,
+  UPDATE_USER_LIBRARY
 } from "./types";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -36,6 +38,51 @@ export const loginUser = userData => dispatch => {
       })
     );
 };
+
+//Update user currency ---------------------------------------------------------
+export const updateCurrency = (url, userData) => dispatch => {
+  postData(`http://localhost:3000/api/addcurrency?id=${url}`)
+  .then(res => {
+
+    dispatch(setUserCurrency(userData))
+  })
+  .catch(error => {console.error(error)});
+
+  function postData(url = '') {
+    return fetch(url, {
+      method: 'PUT',
+    })
+    .then(response => console.log('final resp', response.json()));
+  }
+};
+//Update user currency --------------------------------------------------------
+
+//Update user library
+export const updateGames = (url, userData) => dispatch => {
+  postData(`http://localhost:3000/api/addcurrency?id=${url}`)
+  .then(res => {
+    console.log('do i run?')
+    dispatch(setUserGames(userData))
+  })
+  .catch(error => {console.error(error)});
+
+  function postData(url = '') {
+    return fetch(url, {
+      method: 'PUT',
+    })
+    .then(response => console.log('final resp', response.json()));
+  }
+};
+
+//Update user library
+
+
+
+
+
+
+
+
 // Set logged in user
 export const setCurrentUser = decoded => {
   return {
@@ -49,6 +96,27 @@ export const setUserLoading = () => {
     type: USER_LOADING
   };
 };
+// updateUserCurrency
+export const setUserCurrency = userData => {
+  console.log('this is newCurrency', userData)
+  userData.currency = 20000
+  return {
+    type: UPDATE_USER_CURRENCY,
+    payload: userData
+  };
+};
+
+export const setUserGames = userData => {
+  console.log('this is newCurrency', userData)
+
+  return {
+    type: UPDATE_USER_CURRENCY,
+    payload: userData
+  };
+};
+
+
+// updateUserCurrency
 // Log user out
 export const logoutUser = () => dispatch => {
   localStorage.removeItem("jwtToken");

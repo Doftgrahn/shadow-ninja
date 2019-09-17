@@ -12,6 +12,9 @@ import Profile from '../containers/userProfile/Profile'
 import PrivateRoute from "./PrivateRoute";
 
 
+// import AnimatedRoute from './animatedRoute';
+// import AnimatedSwitch from './animatedSwitch';
+
 const Routes = () => {
 
     const allRoutes = [
@@ -63,10 +66,14 @@ const Routes = () => {
                 render={(props) => <r.Component {...props}/>}/>
     })
 
-    return (<Switch>
+    return ( <Switch
+        animationClassName="page-slide"
+        animationTimeout={300}
+      >
           {renderRoutes}
           <PrivateRoute exact path="/userProfile" component={Profile} />
-    </Switch>)
+          </Switch>
+)
 }
 
 

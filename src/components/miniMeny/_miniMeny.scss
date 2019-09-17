@@ -1,13 +1,21 @@
-.miniMeny {
-    z-index: 2;
+.mini {
+    z-index: 10;
     position: fixed;
-    overflow: hidden;
+    //overflow: hidden;
     right: 0;
-    top: 60%;
+    top: 20%;
+    //padding: 20px;
+    border-radius: 20px 0 0 20px;
+}
+
+.miniMeny {
     background: tomato;
-    padding: 10px;
     transition: 0.5s cubic-bezier(0.5, 0, 0.5, 1);
     border-radius: 20px 0 0 20px;
+    padding: 10px;
+    position: relative;
+    width: 60px;
+    margin-left: auto;
 
     &__wrapper {
         overflow: hidden;
@@ -27,10 +35,12 @@
 .closed {
     //position: fixed;
     right: -100px;
+    transform: translate(300px);
 }
 
 .isOpen {
     right: 0;
+    transform: translate(0);
 }
 
 .shake {
