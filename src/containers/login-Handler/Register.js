@@ -71,6 +71,7 @@ return (
             <form noValidate onSubmit={this.onSubmit}>
               <div>
                 <input
+                  placeholder='Enter your nickname'
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.name}
@@ -86,6 +87,7 @@ return (
               </div>
               <div>
                 <input
+                  placeholder='Enter a valid Email'
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.email}
@@ -101,6 +103,7 @@ return (
               </div>
               <div>
                 <input
+                  placeholder='min 6 characters'
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password}
@@ -116,6 +119,7 @@ return (
               </div>
               <div>
                 <input
+                  placeholder='same as password'
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password2}

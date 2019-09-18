@@ -64,8 +64,26 @@
 
 
 
-
 .regWrapper{
   justify-content: center;
   display:flex;
+}
+
+
+
+
+
+
+//sass for profile
+.gameContainer {
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+.singlegame {
+  text-align: center;
+  border: 2px solid black;
+}
+.test {
+  border: 1px solid black;
 }
