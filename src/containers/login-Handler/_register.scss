@@ -11,6 +11,8 @@ h2{
   display: flex;
   justify-content: center;
   margin-top: 100px;
+
+
 }
 
 .inerWrapper{
@@ -20,7 +22,7 @@ h2{
   background-color: #9A979D;
   padding: 50px;
   border-radius: 50px;
-  height: 500px;
+  height: 50%;
   width: 500px;
 
     input{
@@ -53,16 +55,22 @@ h2{
         }
     }
 
+
+
 }
+
 
 
 
 
 // Here starts the scss for the register
 
+
+
 .regWrapper{
   justify-content: center;
   display:flex;
+
 
   input{
     padding: 10px;
@@ -87,24 +95,28 @@ h2{
     margin: 20px;
   }
 
-  .inerRegWrapper{
-    background-color: gray;
+
+  
+
+
+}
+
+.inerRegWrapper{
+  background-color: gray;
+  text-align: center;
+  margin-top: 100px;
+  background-color: #9A979D;
+  padding: 50px;
+  border-radius: 50px;
+  height: 80%;
+  width: 500px;
+
+
+
+  .logIn{
+    margin-top: 20px;
+    border-top: solid 1px;
+    width: 100%;
     text-align: center;
-    margin-top: 100px;
-    background-color: #9A979D;
-    padding: 50px;
-    border-radius: 50px;
-    height: 650px;
-    width: 500px;
-
-
-
-    .logIn{
-      margin-top: 20px;
-      border-top: solid 1px;
-      width: 100%;
-      text-align: center;
-    }
   }
-
 }

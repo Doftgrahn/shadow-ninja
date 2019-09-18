@@ -74,7 +74,7 @@ return (
                   invalid: errors.name
                   })}
                 />
-
+                <br/>
                 <span className="red-text">{errors.name}</span>
               </div>
               <div>
@@ -90,7 +90,7 @@ return (
                   invalid: errors.email
                   })}
                 />
-
+                <br/>
                 <span className="red-text">{errors.email}</span>
               </div>
               <div>
@@ -106,7 +106,7 @@ return (
                   invalid: errors.password
                   })}
                 />
-
+                <br/>
                 <span className="red-text">{errors.password}</span>
               </div>
               <div>
@@ -122,7 +122,7 @@ return (
                   invalid: errors.password2
                   })}
                 />
-
+                <br/>
                 <span className="red-text">{errors.password2}</span>
               </div>
               <div>
@@ -133,7 +133,7 @@ return (
             </form>
             <div className="logIn">
             <p>
-            Already have an account? <Link to="/login">Log in</Link>
+            Already have an account? <Link to="/login">Login</Link>
             </p>
             <Link to="/">
             <i>Back to home</i>

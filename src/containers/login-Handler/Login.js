@@ -67,7 +67,7 @@ return (
                   invalid: errors.email || errors.emailnotfound
                   })}
                 />
-
+                <br/>
                 <span className="red-text">
                 {errors.email}
                 {errors.emailnotfound}
@@ -86,7 +86,7 @@ return (
                   invalid: errors.password || errors.passwordincorrect
                 }) }
                 />
-
+                <br/>
                 <span className="red-text">
                 {errors.password}
                 {errors.passwordincorrect}
