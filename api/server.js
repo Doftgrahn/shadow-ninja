@@ -62,7 +62,10 @@ let filterProduct = '';
 let lastFilter = '';
 server.get('/api/games', (request, response) => {
 	let findProduct = {};
+	let queryFind = request.query.find;
 	let queryFilter = request.query.filter;
+	console.log('up queryFind', request.query.find);
+	console.log('up queryFilter: ', request.query.filter);
 
 	if (queryFilter === '' || queryFilter === {}) {
 		filterProduct = {}
@@ -88,10 +91,13 @@ server.get('/api/games', (request, response) => {
 		}
 
 	}
-
-	if(findProduct !== {}) {
-		findProduct = {category: request.query.find};
+	if(queryFind === 'all') {
+		findProduct = {};
 	}
+	else if(queryFind !== 'all') {
+		findProduct = {category: queryFind};
+	}
+	console.log('2 findProduct', findProduct);
 
 	lastFilter = !lastFilter;
 	filterByNameMongoDB(filterProduct, findProduct, result => {

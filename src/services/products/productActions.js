@@ -5,7 +5,7 @@ import {
 } from "./actionTypes";
 
 const getProducts = () => {
-  const url = "/api/games";
+  const url = `/api/games?find=${'all'}&filter=${''}`;
   return fetch(url)
     .then(handleErrors)
     .then(res => {
