@@ -55,22 +55,15 @@ render() {
     }
 return (
       <div className="regWrapper">
-        <div>
+        <div className="inerRegWrapper">
           <div>
-            <Link to="/">
-              <i>Back to home</i>
-            </Link>
-            <div>
-              <h4>
-                <b>Register</b> below
-              </h4>
-              <p>
-                Already have an account? <Link to="/login">Log in</Link>
-              </p>
-            </div>
+          <h2>
+            Register
+          </h2>
             <form noValidate onSubmit={this.onSubmit}>
               <div>
                 <input
+                  placeholder="Name"
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.name}
@@ -81,11 +74,12 @@ return (
                   invalid: errors.name
                   })}
                 />
-                <label htmlFor="name">Name</label>
+
                 <span className="red-text">{errors.name}</span>
               </div>
               <div>
                 <input
+                  placeholder="Email"
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.email}
@@ -96,11 +90,12 @@ return (
                   invalid: errors.email
                   })}
                 />
-                <label htmlFor="email">Email</label>
+
                 <span className="red-text">{errors.email}</span>
               </div>
               <div>
                 <input
+                  placeholder="Password"
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password}
@@ -111,11 +106,12 @@ return (
                   invalid: errors.password
                   })}
                 />
-                <label htmlFor="password">Password</label>
+
                 <span className="red-text">{errors.password}</span>
               </div>
               <div>
                 <input
+                  placeholder="Confirm Password"
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password2}
@@ -126,7 +122,7 @@ return (
                   invalid: errors.password2
                   })}
                 />
-                <label htmlFor="password2">Confirm Password</label>
+
                 <span className="red-text">{errors.password2}</span>
               </div>
               <div>
@@ -135,6 +131,14 @@ return (
                 </button>
               </div>
             </form>
+            <div className="logIn">
+            <p>
+            Already have an account? <Link to="/login">Log in</Link>
+            </p>
+            <Link to="/">
+            <i>Back to home</i>
+            </Link>
+            </div>
           </div>
         </div>
       </div>
