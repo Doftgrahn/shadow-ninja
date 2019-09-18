@@ -43,7 +43,7 @@ require("./secrets/passport")(passport);
 /* AUTH / LOGIN */
 
 //Socket
-require("./sockets/sockets")(io);
+require("./sockets/sockets")(io, server);
 
 //If you want to insert, uncomment this function.
 //insertMongoDB()
