@@ -1,10 +1,10 @@
-import {SEND_MESSAGE, RECIEVE_MESSAGE} from "./actionTypes";
+import {SEND_MESSAGE, RECIEVE_MESSAGE, CHANGE_ROOM} from "./actionTypes";
 
 import io from "socket.io-client";
 
 const socket = io();
 
-export const sendMessage = (message, user) => dispatch => {
+export const sendMessage = (message, user, room) => dispatch => {
   const today = new Date();
   const time =
     today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -12,10 +12,11 @@ export const sendMessage = (message, user) => dispatch => {
   const data = {
     user: user,
     time: time,
-    message: message
+    message: message,
+    room: room
   };
 
-  socket.emit("chat message", data);
+  socket.emit("send", data);
 
   dispatch({
     type: SEND_MESSAGE,
@@ -27,3 +28,10 @@ export const recivingMessage = message => ({
   type: RECIEVE_MESSAGE,
   payload: message
 });
+
+export const changeRoom = room => dispatch => {
+
+  socket.emit("subscribe", room);
+
+  dispatch({type: CHANGE_ROOM, room: room});
+};

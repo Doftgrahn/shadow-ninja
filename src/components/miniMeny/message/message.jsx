@@ -3,7 +3,8 @@ import React, {useState} from 'react';
 import Chat from '../../chat/chat';
 
 const Message = () => {
-    const [toggleChat, setToggleChat] = useState(false);
+    //only true during testing
+    const [toggleChat, setToggleChat] = useState(true);
 
     const hideShow = () => setToggleChat(!toggleChat);
 
