@@ -58,42 +58,48 @@ server.use(
 
 // ready to connect with React
 // filter and get funtion for games product from MongoDB
-let lastFilter = "";
-let filterProduct = "";
-server.get("/api/games", (request, response) => {
-  let queryFilter = request.query.filter;
+let filterProduct = '';
+let lastFilter = '';
+server.get('/api/games', (request, response) => {
+	let findProduct = {};
+	let queryFilter = request.query.filter;
 
-  if (queryFilter === "") {
-    filterProduct = {};
-  }
-  if (queryFilter === "lowestPrice") {
-    if (lastFilter) {
-      filterProduct = {price: 1};
-    } else {
-      filterProduct = {price: -1};
-    }
-  } else if (queryFilter === "category") {
-    if (lastFilter) {
-      filterProduct = {category: 1};
-    } else {
-      filterProduct = {category: -1};
-    }
-  } else if (queryFilter === "rating") {
-    if (lastFilter) {
-      filterProduct = {rating: 1};
-    } else {
-      filterProduct = {rating: -1};
-    }
-  }
+	if (queryFilter === '' || queryFilter === {}) {
+		filterProduct = {}
+	}
+	else if(queryFilter === 'lowestPrice') {
+		filterProduct = {price: 1};
+	}
+	else if(queryFilter === 'highestPrice') {
+		filterProduct = {price: -1}
+	}
+	else if(queryFilter === 'category'){
+		if(lastFilter) {
+			filterProduct = {category: 1}
+		} else {
+			filterProduct = {category: -1}
+		}
+	}
+	else if(queryFilter === 'rating'){
+		if(lastFilter) {
+			filterProduct = {rating: 1}
+		} else {
+			filterProduct = {rating: -1}
+		}
 
-  lastFilter = !lastFilter;
+	}
 
-  filterByNameMongoDB(filterProduct, result => {
-    response.send(JSON.stringify(result));
-  });
-});
+	if(findProduct !== {}) {
+		findProduct = {category: request.query.find};
+	}
 
-// ready to connect with React
+	lastFilter = !lastFilter;
+	filterByNameMongoDB(filterProduct, findProduct, result => {
+		response.send(JSON.stringify(result))
+	})
+
+})
+
 // get request for singleProduct based on ID
 server.get("/api/games/product", (request, response) => {
   let queryid = request.query.id;
