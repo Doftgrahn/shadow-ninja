@@ -77,13 +77,14 @@
 //sass for profile
 .gameContainer {
   border: 2px solid black;
-  display: flex;
-  justify-content: space-between;
 }
-.singlegame {
+.singlegames {
   text-align: center;
   border: 2px solid black;
+  display: flex;
 }
 .test {
   border: 1px solid black;
+  margin: 3px;
+  padding: 3px;
 }

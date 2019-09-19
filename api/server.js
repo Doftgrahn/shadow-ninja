@@ -121,7 +121,8 @@ server.get("/api/games/product", (request, response) => {
 server.put('/api/addcurrency', ( request, response) => {
 	let queryid = request.query.id;
 	let userId = queryid;
-	editUserCurrencyMongoDB(userId, result => {
+  let currency = JSON.stringify(request.body)
+	editUserCurrencyMongoDB(userId, currency, result => {
 		response.send(JSON.stringify(result))
 	})
 });
