@@ -3,6 +3,8 @@ import NavBar from './navBar/navBar';
 import Hamburger from './hamburger/hamburger';
 import StoreNavbar from '../../store/components/storenavbar/storenavbar'
 
+
+
 const Header = () => {
 const [toggle, setToggle] = useState(false);
 
@@ -11,7 +13,7 @@ const turnOff = () => setToggle(false);
 
 
     return (<header className="header">
-        <h1>xXShadowNinjaXx</h1>
+        <h5>xXShadowNinjaXx</h5>
         <Hamburger
         toggleState={toggleState}
         toggle={toggle}/>
@@ -26,6 +28,7 @@ const turnOff = () => setToggle(false);
         toggle={toggle}
         turnOff={turnOff}
         />
+      
 
     </header>)
 }

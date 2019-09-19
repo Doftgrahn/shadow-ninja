@@ -12,6 +12,7 @@
 h1 {
     font-size: 90px;
     margin-bottom: 20px;
+ 
 }
 
 .title {
@@ -19,10 +20,24 @@ h1 {
     justify-content: center;
     text-align: center;
     padding-top: 20%;
+    text-shadow:   1px 0px rgb(128, 127, 127), 0px 1px rgb(53, 52, 52),
+    2px 1px rgb(128, 127, 127), 1px 2px rgb(53, 52, 52),
+    3px 2px rgb(128, 127, 127), 2px 3px rgb(53, 52, 52),
+    4px 3px rgb(128, 127, 127), 3px 4px rgb(53, 52, 52),
+    5px 4px rgb(128, 127, 127), 4px 5px rgb(53, 52, 52),
+    6px 5px rgb(128, 127, 127), 5px 6px rgb(53, 52, 52),
+    7px 6px rgb(128, 127, 127), 6px 7px rgb(53, 52, 52),
+    8px 7px rgb(128, 127, 127), 7px 8px rgb(53, 52, 52),
+    8px 8px rgb(128, 127, 127);
 
     div {
         font-size: 100px;
     }
+    /*h1:hover {
+        color: rgba(34, 32, 34, 0.4);
+        cursor: pointer;
+    
+    }*/
 
     button {
         margin: 5px;
@@ -38,7 +53,8 @@ h1 {
 }
 
 button:hover {
-    background-color: rgba(34, 2, 41, 0.4);
+    background-color: rgba(34, 32, 34, 0.4);
+    clear: both;
 }
 
 body:before {

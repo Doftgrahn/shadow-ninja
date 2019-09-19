@@ -1,9 +1,11 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+
+
 const LandingPage = () => {
     return (<div className="box">
 
-        <div className="title">
+        <div className="title" beat={true}>
 
             <h1>xX~ShadowNinja~Xx</h1>
 
