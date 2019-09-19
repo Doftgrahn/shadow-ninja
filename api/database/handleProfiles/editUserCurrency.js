@@ -3,14 +3,13 @@ const {settings, MongoClient, ObjectId} = require('../../settings/Settings.js');
 
 //edit currency to fixed amount, fix to be based on different values later.
 
-  function editUserCurrencyMongoDB (userId, singleUser) {
-
+  function editUserCurrencyMongoDB (userId, user, singleUser) {
     MongoClient.connect(uri, settings, (error, client) => {
       if(error) { throw error }
 
 	  let collection = client.db('shadowDB').collection('users');
-
-    collection.updateOne({_id: ObjectId(`${userId}`)}, {$set:{currency: 20000}}, function(err, response) {
+    let userToEdit = JSON.parse(user)
+    collection.updateOne({_id: ObjectId(`${userId}`)}, {$set:{currency: `${userToEdit.currency}`}}, function(err, response) {
     if (err) {
       throw error
     } else {

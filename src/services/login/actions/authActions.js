@@ -40,17 +40,28 @@ export const loginUser = userData => dispatch => {
 };
 
 //Update user currency ---------------------------------------------------------
-export const updateCurrency = (url, userData) => dispatch => {
+export const updateCurrency = (url, userData, amountToAdd, amountToLower) => dispatch => {
+  if (amountToAdd) {
+    userData.currency = userData.currency + amountToAdd
+  }
+  if(amountToLower) {
+    userData.currency = userData.currency - amountToLower
+  }
+
+  dispatch(setUserCurrency(userData))
+
   postData(`http://localhost:3000/api/addcurrency?id=${url}`)
   .then(res => {
-
-    dispatch(setUserCurrency(userData))
   })
   .catch(error => {console.error(error)});
 
   function postData(url = '') {
     return fetch(url, {
       method: 'PUT',
+      body: JSON.stringify(userData), 
+      headers:{
+        'Content-Type': 'application/json'
+      }
     })
     .then(response => console.log('final resp', response.json()));
   }
@@ -58,23 +69,49 @@ export const updateCurrency = (url, userData) => dispatch => {
 //Update user currency --------------------------------------------------------
 
 //Update user library
-export const updateGames = (url, userData, cart) => dispatch => {
+export const updateGames = (url, userData, cart, total) => dispatch => {
+  let amountToLower = 0;
+  let amountToAdd = false;
 
-  postData(`http://localhost:3000/api/addGameLibrary?id=${url}`)
-  .then(res => {
-    dispatch(setUserGames(userData))
-  })
-  .catch(error => {console.error(error)});
-  function postData(url = '') {
-    return fetch(url, {
-      method: 'PUT',
-      body: JSON.stringify(cart), // data can be `string` or {object}!
-      headers:{
-      'Content-Type': 'application/json'
-      }
-    })
-    .then(response => console.log('final resp', response.json()));
-  }
+  cart.forEach(game => {
+    let number = parseInt(game.price)
+    amountToLower += number
+  });
+  console.log(amountToLower)
+  console.log(userData.currency)
+  if(userData.currency < amountToLower) {
+    console.log('not enough dineros!')
+    //DO somthing if users currency is to low
+    return;
+  } else {
+    let newData = {
+      ...userData,
+      gameLibrary: [...userData.gameLibrary, ...cart]
+    }
+
+    dispatch(setUserGames(newData))
+    dispatch(updateCurrency(url, newData, amountToAdd, amountToLower))
+
+
+    // Total price is the amount to cut from the userData.currency
+    postData(`http://localhost:3000/api/addGameLibrary?id=${url}`)
+      .then(res => {
+        })
+        .catch(error => {console.error(error)});
+        function postData(url = '') {
+          return fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(cart), // data can be `string` or {object}!
+            headers:{
+              'Content-Type': 'application/json'
+            }
+          })
+            .then(response => console.log('final resp', response.json()));
+        }
+    };
+
+
+
 };
 
 //Update user library
@@ -101,8 +138,6 @@ export const setUserLoading = () => {
 };
 // updateUserCurrency
 export const setUserCurrency = userData => {
-  console.log('this is newCurrency', userData)
-  userData.currency = 20000
   return {
     type: UPDATE_USER_CURRENCY,
     payload: userData
@@ -110,10 +145,8 @@ export const setUserCurrency = userData => {
 };
 
 export const setUserGames = userData => {
-  console.log('this is userData in setUserGames', userData)
-
   return {
-    type: UPDATE_USER_CURRENCY,
+    type: UPDATE_USER_LIBRARY,
     payload: userData
   };
 };

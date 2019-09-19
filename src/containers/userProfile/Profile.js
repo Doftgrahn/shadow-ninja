@@ -18,16 +18,16 @@ class Profile extends Component {
   onUpdateClick = e => {
     let url = this.props.auth.user.id
     let userData = this.props.auth.user
-    this.props.updateCurrency(url, userData)
-    console.log('this is props', this.props)
+    let amountToAdd = 20000;
+    this.props.updateCurrency(url, userData, amountToAdd)
   }
 
   updateGameLibrary = () => {
     let url = this.props.auth.user.id
     let userData = this.props.auth.user
     let cart = this.props.cart
-    this.props.updateGames(url, userData, cart)
-    console.log('this is props', this.props.cart)
+    let total = this.props.totalReducer
+    this.props.updateGames(url, userData, cart, total)
   }
 
 
@@ -46,7 +46,9 @@ return (
             </h5>
               <div>
                 <b>Here is your gameLibrary</b>
-                <GameLibrary />
+                <div className='gameContainer'>
+                  <GameLibrary />
+                </div>
               </div>
 
 
