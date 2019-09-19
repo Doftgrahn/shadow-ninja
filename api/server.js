@@ -2,7 +2,7 @@
 
 const express = require("express");
 const server = express();
-const httpServer = require("http").Server(server);
+const httpServer = require("http").createServer(server);
 const io = require("socket.io")(httpServer);
 
 /*DATABASE*/
@@ -43,7 +43,6 @@ require("./secrets/passport")(passport);
 /* AUTH / LOGIN */
 
 //Socket
-require("./sockets/sockets")(io, server);
 
 //If you want to insert, uncomment this function.
 //insertMongoDB()
@@ -165,3 +164,5 @@ const port = process.env.PORT || 1337;
 httpServer.listen(port, () => {
   console.log("Server listening on port " + port);
 });
+
+require("./sockets/sockets")(io, server);

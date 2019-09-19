@@ -1,76 +1,90 @@
 module.exports = (io, server) => {
-  const users = [];
-
   const rooms = ["general", "party", "trade"];
+
+  const users = [];
 
   io.on("connection", socket => {
     // add username to chat
-    socket.room = rooms[0];
-
-    console.log("CONNECTED TO SOCKET in channel", socket.room);
+    socket.rooms = 'general';
 
     socket.on("adduser", username => {
       socket.username = username;
-
       users.push(username);
 
-      socket.room = "general";
+      //socket.rooms = 'general';
 
       //users[username] = username;
 
-      socket.join("general");
+      socket.join('general');
 
-      socket.emit("updatechat","SERVER", username + " You have connected to " + socket.room + " chat");
+      socket.emit(
+        "updatechat",
+        "SERVER",
+        `You are now connected to ${socket.rooms} room`
+      );
 
-      socket.broadcast
-        .to("general")
-        .emit("updatechat", "SERVER", username + " has connected to this room");
+      io.in(socket.rooms)
+        .emit(
+          "updatechat",
+          "SERVER",
+          socket.username + " has connected to this room" + socket.rooms
+        );
 
       socket.emit("updaterooms", rooms, rooms[0]);
 
       socket.once("disconnect", () => {
-        const pos = users.indexOf(username);
+        const pos = users.indexOf(socket.username);
         users.splice(pos, 1);
       });
     });
 
     //send
-    socket.on("send", data => {
-      io.in(socket.room).emit("updatechat", users, data);
+    socket.on("send", (user, data) => {
+      io.in(socket.rooms).emit("updatechat", users, data);
     });
 
-    socket.on("typing", room => {
+    socket.on("typing", typing => {
       return;
     });
 
     // Switch Rooms
 
     socket.on("switchRoom", newroom => {
-      socket.leave(socket.room);
+        console.log(socket.rooms);
 
+//  socket.to('game').emit('nice game', "let's play a game");
+
+        socket.to(socket.rooms).emit(
+          "updatechat",
+          "SERVER",
+          `${users} has left the ${socket.rooms} room`
+        );
+
+
+      socket.leave(socket.rooms);
+
+
+
+     // socket.rooms = newroom;
       socket.join(newroom);
-      socket.emit("updatechat", "SERVER", "You are in " + newroom);
 
-      io.in(socket.room).emit(
+
+      socket.in(socket.rooms).emit("updatechat", "SERVER", "You are in " + newroom);
+
+
+      io.in(socket.rooms).emit(
         "updatechat",
         "SERVER",
-        users + "has left this room"
-      );
-
-      socket.room = newroom;
-
-      io.in(newroom).emit(
-        "updatechat",
-        "SERVER",
-        users + "has joined the room"
+        `${users} has joined ${newroom} room`
       );
 
       socket.emit("updaterooms", rooms, newroom);
     });
 
     // on disconnect
+
     socket.on("disconnect", () => {
-      console.log("removed from server");
+      console.log(`${users} was removed from the server`);
 
       delete users[socket.username];
 
@@ -81,7 +95,7 @@ module.exports = (io, server) => {
         "SERVER",
         socket.username + "has disconnected"
       );
-      socket.leave(socket.room);
+      socket.leave(socket.rooms);
     });
   });
 };

@@ -10,17 +10,15 @@ import {
 import io from "socket.io-client";
 
 const host = window.location.origin;
-const socket = io.connect('/' || 'https://' + host);
+const socket = io.connect();
 
 export const sendMessage = (message, name) => dispatch => {
+  const data = {
+    user: name,
+    message: message
+  };
 
-    const data = {
-    user:name,
-      message: message
-    };
-
-
-  socket.emit("send", message);
+  socket.emit("send", name, message);
 
   dispatch({
     type: SEND_MESSAGE,
@@ -40,10 +38,7 @@ export const updatechat = (username, message) => dispatch => {
   });
 };
 
-
 export const currentRoom = room => dispatch => {
-
-
   dispatch({
     type: CURRENT_ROOM,
     room: room
@@ -55,7 +50,6 @@ export const getAllRooms = rooms => ({
 });
 
 export const switchRoom = room => dispatch => {
-    console.log(room);
   socket.emit("switchRoom", room);
 
   dispatch({
@@ -64,7 +58,7 @@ export const switchRoom = room => dispatch => {
   });
 };
 
-export const clearChat = (room) => ({
-    type: CLEAR_ROOMS,
-    room
-})
+export const clearChat = room => ({
+  type: CLEAR_ROOMS,
+  room
+});

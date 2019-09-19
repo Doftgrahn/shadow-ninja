@@ -1,8 +1,7 @@
-/*
 import React, {useState, useEffect} from 'react';
 import {connect, useDispatch} from "react-redux";
 import io from "socket.io-client";
-import {ReactComponent as Send} from '../../components/SVG_Icons/send/send.svg';
+import {ReactComponent as Send} from '../../../components/SVG_Icons/send/send.svg';
 
 import {
     clearChat,
@@ -11,7 +10,7 @@ import {
     updatechat,
     getAllRooms,
     currentRoom
-} from '../../services/socket/socketActions';
+} from '../../../services/socket/socketActions';
 
 //import {getRandomColor} from '../../functions/randomColor';
 
@@ -32,9 +31,8 @@ const Chat = ({chat, user}) => {
         })
 
         socket.on('updatechat', (username, data) => {
-            console.log(username);
             dispatch(updatechat(username, data))
-            console.log('DATA', data);
+            console.log('UPDATE CHAT', data);
         })
 
         socket.on('updaterooms', (rooms, current_room) => {
@@ -42,20 +40,27 @@ const Chat = ({chat, user}) => {
             dispatch(getAllRooms(rooms))
         })
 
-        return () => socket.on('disconnect', () => {
+        return() => socket.on('disconnect', () => {
             console.log('disconnected from chat');
         })
 
     }, [name, dispatch])
 
     const roomSwitch = (room) => {
+        dispatch(clearChat())
         const host = window.location.origin;
-        const socket = io.connect('/' || 'https://' + host);
-        //dispatch(clearChat())
-
+        const socket = io.connect();
+        /*
         socket.on('updatechat', (username, data) => {
-            console.log('THIS GETS UPDATED');
-            dispatch(updatechat(username,data))
+            dispatch(updatechat(username, data))
+            console.log('UPDATE CHAT', data);
+        })
+        */
+
+
+        socket.on('updaterooms', (rooms, current_room) => {
+            dispatch(currentRoom(current_room))
+            dispatch(getAllRooms(rooms))
         })
 
 
@@ -64,7 +69,9 @@ const Chat = ({chat, user}) => {
 
     const renderChatButtons = chat
         .rooms
-        .map((e, i) => <button className="room-btn" onClick={() => roomSwitch(e.room)} key={i}>{e.room}</button>)
+        .map((e, i) => <button className={`room-btn ${chat.current_room === e.room
+                ? 'btn-active'
+                : ''}`} onClick={() => roomSwitch(e.room)} key={i}>{e.room}</button>)
 
     const send = () => {
         if (input) {
@@ -106,5 +113,3 @@ const Chat = ({chat, user}) => {
 const mapStateToProps = state => ({chat: state.chat, user: state.auth});
 
 export default connect(mapStateToProps)(Chat);
-
-*/
