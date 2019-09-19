@@ -4,7 +4,7 @@ import Chat from '../../chat/chat';
 
 const Message = () => {
     //only true during testing
-    const [toggleChat, setToggleChat] = useState(true);
+    const [toggleChat, setToggleChat] = useState(false);
 
     const hideShow = () => setToggleChat(!toggleChat);
 
