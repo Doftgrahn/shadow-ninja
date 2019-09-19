@@ -2,35 +2,50 @@ import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
 import {useDispatch} from 'react-redux';
 
-import {sendMessage, recivingMessage, changeRoom} from '../../services/socket/socketActions';
+import {
+    clearChat,
+    switchRoom,
+    sendMessage,
+    updatechat,
+    getAllRooms,
+    currentRoom
+} from '../../services/socket/socketActions';
 
 import {ReactComponent as Send} from '../../components/SVG_Icons/send/send.svg';
-
 import io from "socket.io-client";
-import {getRandomColor} from '../../functions/randomColor';
+
+//import {getRandomColor} from '../../functions/randomColor';
 
 const Chat = ({chat, user}) => {
-    const messageChatEnd = React.createRef()
-    const [input, setInput] = useState('');
     const dispatch = useDispatch();
+    const messageChatEnd = React.createRef()
+
+    const [input, setInput] = useState('');
     const {name} = user.user;
 
     useEffect(() => {
-        const {room} = chat;
         const host = window.location.origin;
-        const socket = io('/' || 'https://' + host);
-        socket.connect();
-        socket.emit('subscribe', room)
+        const socket = io.connect('/' || 'https://' + host);
 
-        socket.on('chat message', message => {
-            console.log('MESSAGE:', message);
-            dispatch(recivingMessage(message))
-
+        socket.on('connect', () => {
+            console.log('Connected to Chat');
+            socket.emit('adduser', name)
         })
 
-        return() => socket.disconnect()
+        socket.on('updatechat', (username, data) => {
+            dispatch(updatechat(username, data))
+        })
 
-    }, [dispatch, chat])
+        socket.on('updaterooms', (rooms, current_room) => {
+            dispatch(currentRoom(current_room))
+            dispatch(getAllRooms(rooms))
+        })
+
+        return() => socket.on('disconnect', (obj) => {
+            console.log('disconnected from chat');
+        })
+
+    }, [name, dispatch])
 
     const scrollToBottom = () => {
         if (messageChatEnd.current)
@@ -39,39 +54,50 @@ const Chat = ({chat, user}) => {
                 .scrollIntoView({behavior: 'smooth'})
         }
 
+    const roomSwitch = (room) => {
+
+        //dispatch(clearChat())
+        dispatch(switchRoom(room))
+    }
+
+    const renderChatButtons = chat
+        .rooms
+        .map((e, i) => <button className="room-btn" onClick={() => roomSwitch(String(e.room))} key={i}>{e.room}</button>)
+
     const send = () => {
-        const {room} = chat;
         if (input) {
-            dispatch(sendMessage(input, name, room))
+            dispatch(sendMessage(input, name))
             setInput('')
             scrollToBottom()
         }
     }
 
-    const roomChange = room => dispatch(changeRoom(room))
+    const pressEnter = (e) => {
+        if (e.key === 'Enter') {
+            send()
+        }
+    }
 
     let showMessages;
     if (chat)
         showMessages = chat
             .data
-            .filter(message => message.room === chat.room)
             .map((e, i) => <div className="chat__content" key={i} ref={messageChatEnd}>
-                <p style={getRandomColor()} className="user">{e.user}:</p>
+                <p className="user">{e.user}:</p>
                 <p>{e.message}</p>
                 <p>{e.time}</p>
             </div>)
 
     return (<main className="chat">
         <div className="chat__room">
-            <button className="room-btn" onClick={() => roomChange('general')}>General</button>
-            <button className="room-btn" onClick={() => roomChange('games')}>Games</button>
-            <button className="room-btn" onClick={() => roomChange('party')}>party</button>
+            {renderChatButtons}
+
         </div>
         <div className="chat__wrapper">
             {showMessages}
         </div>
         <div className="sendInput">
-            <input placeholder="Write Something..." type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
+            <input placeholder="Write Something..." onKeyPress={(e) => pressEnter(e)} type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
             <button onClick={send}><Send/></button>
         </div>
     </main>)
@@ -79,4 +105,4 @@ const Chat = ({chat, user}) => {
 
 const mapStateToProps = state => ({chat: state.chat, user: state.auth});
 
-export default connect(mapStateToProps, {sendMessage, changeRoom})(Chat);
+export default connect(mapStateToProps)(Chat);

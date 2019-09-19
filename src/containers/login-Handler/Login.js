@@ -56,7 +56,7 @@ return (
             <form noValidate onSubmit={this.onSubmit}>
               <div>
                 <input
-                  placeHolder="Email"
+                  placeholder="Email"
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.email}
@@ -75,7 +75,7 @@ return (
               </div>
               <div>
                 <input
-                  placeHolder="Password"
+                  placeholder="Password"
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password}

@@ -8,7 +8,6 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
-  filteredState: []
 };
 
 export default function productReducer(

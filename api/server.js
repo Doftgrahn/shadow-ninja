@@ -58,42 +58,54 @@ server.use(
 
 // ready to connect with React
 // filter and get funtion for games product from MongoDB
-let lastFilter = "";
-let filterProduct = "";
-server.get("/api/games", (request, response) => {
-  let queryFilter = request.query.filter;
+let filterProduct = '';
+let lastFilter = '';
+server.get('/api/games', (request, response) => {
+	let findProduct = {};
+	let queryFind = request.query.find;
+	let queryFilter = request.query.filter;
+	console.log('up queryFind', request.query.find);
+	console.log('up queryFilter: ', request.query.filter);
 
-  if (queryFilter === "") {
-    filterProduct = {};
-  }
-  if (queryFilter === "lowestPrice") {
-    if (lastFilter) {
-      filterProduct = {price: 1};
-    } else {
-      filterProduct = {price: -1};
-    }
-  } else if (queryFilter === "category") {
-    if (lastFilter) {
-      filterProduct = {category: 1};
-    } else {
-      filterProduct = {category: -1};
-    }
-  } else if (queryFilter === "rating") {
-    if (lastFilter) {
-      filterProduct = {rating: 1};
-    } else {
-      filterProduct = {rating: -1};
-    }
-  }
+	if (queryFilter === '' || queryFilter === {}) {
+		filterProduct = {}
+	}
+	else if(queryFilter === 'lowestPrice') {
+		filterProduct = {price: 1};
+	}
+	else if(queryFilter === 'highestPrice') {
+		filterProduct = {price: -1}
+	}
+	else if(queryFilter === 'category'){
+		if(lastFilter) {
+			filterProduct = {category: 1}
+		} else {
+			filterProduct = {category: -1}
+		}
+	}
+	else if(queryFilter === 'rating'){
+		if(lastFilter) {
+			filterProduct = {rating: 1}
+		} else {
+			filterProduct = {rating: -1}
+		}
 
-  lastFilter = !lastFilter;
+	}
+	if(queryFind === 'all') {
+		findProduct = {};
+	}
+	else if(queryFind !== 'all') {
+		findProduct = {category: queryFind};
+	}
+	console.log('2 findProduct', findProduct);
 
-  filterByNameMongoDB(filterProduct, result => {
-    response.send(JSON.stringify(result));
-  });
-});
+	lastFilter = !lastFilter;
+	filterByNameMongoDB(filterProduct, findProduct, result => {
+		response.send(JSON.stringify(result))
+	})
 
-// ready to connect with React
+})
+
 // get request for singleProduct based on ID
 server.get("/api/games/product", (request, response) => {
   let queryid = request.query.id;
@@ -109,7 +121,8 @@ server.get("/api/games/product", (request, response) => {
 server.put('/api/addcurrency', ( request, response) => {
 	let queryid = request.query.id;
 	let userId = queryid;
-	editUserCurrencyMongoDB(userId, result => {
+  let currency = JSON.stringify(request.body)
+	editUserCurrencyMongoDB(userId, currency, result => {
 		response.send(JSON.stringify(result))
 	})
 });
