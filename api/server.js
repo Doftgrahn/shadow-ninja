@@ -64,8 +64,6 @@ server.get('/api/games', (request, response) => {
 	let findProduct = {};
 	let queryFind = request.query.find;
 	let queryFilter = request.query.filter;
-	console.log('up queryFind', request.query.find);
-	console.log('up queryFilter: ', request.query.filter);
 
 	if (queryFilter === '' || queryFilter === {}) {
 		filterProduct = {}
@@ -83,21 +81,20 @@ server.get('/api/games', (request, response) => {
 			filterProduct = {category: -1}
 		}
 	}
-	else if(queryFilter === 'rating'){
-		if(lastFilter) {
+	else if(queryFilter === 'lowestRating') {
 			filterProduct = {rating: 1}
-		} else {
+		}
+	else if(queryFilter === 'highestRating') {
 			filterProduct = {rating: -1}
 		}
 
-	}
+
 	if(queryFind === 'all') {
 		findProduct = {};
 	}
 	else if(queryFind !== 'all') {
 		findProduct = {category: queryFind};
 	}
-	console.log('2 findProduct', findProduct);
 
 	lastFilter = !lastFilter;
 	filterByNameMongoDB(filterProduct, findProduct, result => {
