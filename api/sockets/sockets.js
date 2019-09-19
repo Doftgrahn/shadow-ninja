@@ -3,7 +3,6 @@ module.exports = (io, server) => {
 
   const rooms = ["general", "party", "trade"];
 
-
   io.on("connection", socket => {
     // add username to chat
     socket.room = rooms[0];
@@ -21,11 +20,7 @@ module.exports = (io, server) => {
 
       socket.join("general");
 
-      socket.emit(
-        "updatechat",
-        "SERVER",
-        username + " You have connected to " + socket.room + " chat"
-      );
+      socket.emit("updatechat","SERVER", username + " You have connected to " + socket.room + " chat");
 
       socket.broadcast
         .to("general")
@@ -44,16 +39,14 @@ module.exports = (io, server) => {
       io.in(socket.room).emit("updatechat", users, data);
     });
 
-socket.on('typing', room => {
-    return;
-})
+    socket.on("typing", room => {
+      return;
+    });
 
     // Switch Rooms
 
     socket.on("switchRoom", newroom => {
-
       socket.leave(socket.room);
-
 
       socket.join(newroom);
       socket.emit("updatechat", "SERVER", "You are in " + newroom);

@@ -72,6 +72,12 @@ const Chat = ({chat, user}) => {
         }
     }
 
+    const pressEnter = (e) => {
+        if (e.key === 'Enter') {
+            send()
+        }
+    }
+
     let showMessages;
     if (chat)
         showMessages = chat
@@ -91,7 +97,7 @@ const Chat = ({chat, user}) => {
             {showMessages}
         </div>
         <div className="sendInput">
-            <input placeholder="Write Something..." type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
+            <input placeholder="Write Something..." onKeyPress={(e) => pressEnter(e)} type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
             <button onClick={send}><Send/></button>
         </div>
     </main>)
