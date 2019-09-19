@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 const StoreNavbar = ({products, match, gameinfo}) => {
     const [filterValue, setfilterValue] = useState('');
-    
+
     // Sets state to the users input
     const changeFilterValue = (event) => {
         setfilterValue(event.target.value) 
@@ -16,12 +16,13 @@ const StoreNavbar = ({products, match, gameinfo}) => {
         return byTitle.title.toLowerCase().includes(filterValue.toLowerCase())
     })
     
-    // Makes a new list after when found titles
+    // Makes a new list after when found titles and ID
     const newArray = actualFilter.map(e => ({title: e.title, _id: e._id}))
 
     // Limits the new list to a max of 4 items to be suggested to the user
+    // Links user to chosen title using matching of IDs
     const limitedAutoComplete = newArray.slice(0, 4).map(x => (
-        <Link key={x._id} to={`/store/${x._id}`}>
+        <Link className='listItems' key={x._id} to={`/store/${x._id}`}>
         <li>{x.title}</li>
         </Link>
         ))
@@ -35,7 +36,7 @@ const StoreNavbar = ({products, match, gameinfo}) => {
     } else {
         return (<section className="store-nav">
         <input style={{color:'black'}} value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/>  
-        <ul> 
+        <ul className='suggestedItems'> 
             {limitedAutoComplete}
         </ul>
         </section>)
