@@ -1,14 +1,16 @@
 import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_FAILURE
+  FETCH_PRODUCTS_FAILURE,
+  SORT_PRODUCTS
 } from './actionTypes';
 
 const initialState = {
   items: [],
   loading: false,
   error: null,
-  filteredState: []
+  filter: ''
+  // filteredState: []
 };
 
 export default function productReducer(
@@ -39,6 +41,11 @@ export default function productReducer(
         error: action.payload.error,
         items: []
       };
+	  case SORT_PRODUCTS:
+  		return {
+	  		...state,
+	  		filter: action.payload
+  	};
 
     default:
       return state;
