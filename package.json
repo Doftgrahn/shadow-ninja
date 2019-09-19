@@ -29,6 +29,7 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "react-social-icons": "^4.1.0",
     "react-svg": "^10.0.20",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
@@ -60,20 +61,7 @@
       "last 1 safari version"
     ]
   },
-  "description": "School project",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Doftgrahn/shadow-ninja.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Doftgrahn/shadow-ninja/issues"
-  },
-  "homepage": "https://github.com/Doftgrahn/shadow-ninja#readme",
   "devDependencies": {
-    "@svgr/cli": "^4.3.2",
     "react-social-icons": "^4.1.0"
   }
 }

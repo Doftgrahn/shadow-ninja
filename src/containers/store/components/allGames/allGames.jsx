@@ -14,4 +14,5 @@ const AllGames = ({match, dispatch, products}) => {
     </section>)
 }
 
+
 export default AllGames;

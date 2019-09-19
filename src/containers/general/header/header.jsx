@@ -1,7 +1,7 @@
 import React ,{useState} from 'react';
 import NavBar from './navBar/navBar';
 import Hamburger from './hamburger/hamburger';
-import StoreNavbar from '../../store/components/storenavbar/storenavbar'
+import StoreNavbar from './storenavbar/storenavbar';
 
 
 
@@ -18,7 +18,7 @@ const turnOff = () => setToggle(false);
         toggleState={toggleState}
         toggle={toggle}/>
 
-        
+
         <StoreNavbar
         toggle={toggle}
         turnOff={turnOff}

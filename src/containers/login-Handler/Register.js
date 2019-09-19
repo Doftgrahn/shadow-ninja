@@ -36,7 +36,7 @@ const newUser = {
       password: this.state.password,
       password2: this.state.password2,
       currency: 1000,
-      gameLibrary: [ { id: '5d7777ff330d496ae524c180', title: "Age of Empires II", category: "Strategy", price: "45", rating: '8', imgURL: "https://www.dsogaming.com/wp-content/uploads/2019/04/Age-of-Empires-II...",
+      gameLibrary: [ { _id: '5d7777ff330d496ae524c180', title: "Age of Empires II", category: "Strategy", price: "45", rating: '8', imgURL: "https://www.dsogaming.com/wp-content/uploads/2019/04/Age-of-Empires-II...",
       info: "Age of Empires II: The Age of Kings is a real-time strategy video game..."
        } ]
 
@@ -55,22 +55,15 @@ render() {
     }
 return (
       <div className="regWrapper">
-        <div>
+        <div className="inerRegWrapper">
           <div>
-            <Link to="/">
-              <i>Back to home</i>
-            </Link>
-            <div>
-              <h4>
-                <b>Register</b> below
-              </h4>
-              <p>
-                Already have an account? <Link to="/login">Log in</Link>
-              </p>
-            </div>
+          <h2>
+            Register
+          </h2>
             <form noValidate onSubmit={this.onSubmit}>
               <div>
                 <input
+                  placeholder='Enter your nickname'
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.name}
@@ -81,11 +74,12 @@ return (
                   invalid: errors.name
                   })}
                 />
-                <label htmlFor="name">Name</label>
+                <br/>
                 <span className="red-text">{errors.name}</span>
               </div>
               <div>
                 <input
+                  placeholder='Enter a valid Email'
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.email}
@@ -96,11 +90,12 @@ return (
                   invalid: errors.email
                   })}
                 />
-                <label htmlFor="email">Email</label>
+                <br/>
                 <span className="red-text">{errors.email}</span>
               </div>
               <div>
                 <input
+                  placeholder='min 6 characters'
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password}
@@ -111,11 +106,12 @@ return (
                   invalid: errors.password
                   })}
                 />
-                <label htmlFor="password">Password</label>
+                <br/>
                 <span className="red-text">{errors.password}</span>
               </div>
               <div>
                 <input
+                  placeholder='same as password'
                   style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password2}
@@ -126,7 +122,7 @@ return (
                   invalid: errors.password2
                   })}
                 />
-                <label htmlFor="password2">Confirm Password</label>
+                <br/>
                 <span className="red-text">{errors.password2}</span>
               </div>
               <div>
@@ -135,6 +131,14 @@ return (
                 </button>
               </div>
             </form>
+            <div className="logIn">
+            <p>
+            Already have an account? <Link to="/login">Login</Link>
+            </p>
+            <Link to="/">
+            <i>Back to home</i>
+            </Link>
+            </div>
           </div>
         </div>
       </div>

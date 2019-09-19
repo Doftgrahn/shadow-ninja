@@ -1,5 +1,8 @@
 
+/* Header */
 @import '../../containers/general/header/header.scss';
+@import '../../containers/general/header/storenavbar/storeNavbar.scss';
+
 
 //Landingpage
 @import '../../containers/landingpage/landingPage.scss';
@@ -15,7 +18,6 @@
 @import '../../containers/store/components/oneGame/oneGame.scss';
 @import '../../containers/store/components/promoGame/promoGame.scss';
 @import '../../containers/store/components/sortGames/sortGames.scss';
-@import '../../containers/store/components/storenavbar/storeNavbar.scss';
 /**/
 
 //Single Game
