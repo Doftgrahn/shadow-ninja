@@ -5,8 +5,16 @@
     width: 280px;
 }
 
-ul, li {
+ul {
     list-style-type: none;
     background-color: lightblue;
-    color: black;
+    position: absolute;
+    z-index: 1000;
+    li {
+        padding: 0px 5px 0px 5px;
+        color:black;
+        &:hover {
+            background-color:chartreuse;
+        }
+    }
 }
