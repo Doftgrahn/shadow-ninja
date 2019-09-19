@@ -5,8 +5,8 @@ import {
   SORT_PRODUCTS
 } from "./actionTypes";
 
-const getProducts = (filter) => {
-  const url = `/api/games?find=${'all'}&filter=${filter}`;
+const getProducts = (sort) => {
+  const url = `/api/games?find=${'all'}&filter=${sort}`;
   return fetch(url)
     .then(handleErrors)
     .then(res => {
@@ -16,10 +16,10 @@ const getProducts = (filter) => {
 
 
 // Function for Fetching.
-export const fetchProducts = (filter) => {
+export const fetchProducts = (sort) => {
   return dispatch => {
     dispatch(fetchProductsBegin());
-    return getProducts(filter)
+    return getProducts(sort)
       .then(json => {
         dispatch(fetchProductsSuccess(json));
         return json;
@@ -51,7 +51,7 @@ export const fetchProductsFailure = error => ({
   payload: {error}
 });
 
-export const setFilter = filter => ({
+export const setFilter = sort => ({
 		type: SORT_PRODUCTS,
-		payload: filter
+		payload: sort
 })

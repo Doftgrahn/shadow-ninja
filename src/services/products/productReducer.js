@@ -9,7 +9,7 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
-  filter: ''
+  sort: ''
 };
 
 export default function productReducer(
@@ -43,7 +43,7 @@ export default function productReducer(
 	  case SORT_PRODUCTS:
   		return {
 	  		...state,
-	  		filter: action.payload
+	  		sort: action.payload
   	};
 
     default:
