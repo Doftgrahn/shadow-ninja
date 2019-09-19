@@ -1,7 +1,8 @@
 import {
   SET_CURRENT_USER,
   USER_LOADING,
-  UPDATE_USER_CURRENCY
+  UPDATE_USER_CURRENCY,
+  UPDATE_USER_LIBRARY
 } from "../actions/types";
 
 const isEmpty = require("is-empty");
@@ -21,6 +22,11 @@ export default function(state = initialState, action) {
         user: action.payload
       };
     case UPDATE_USER_CURRENCY:
+      return {
+        ...state,
+        user: action.payload
+      };
+    case UPDATE_USER_LIBRARY:
       return {
         ...state,
         user: action.payload
