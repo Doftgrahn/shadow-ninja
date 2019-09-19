@@ -13,14 +13,14 @@ import SortGames from './components/sortGames/sortGames';
 import AllGames from './components/allGames/allGames';
 
 // General Wrapper for GAMES
-const Store = ({dispatch, products, loading, error, match}) => {
+const Store = ({dispatch, filter, products, loading, error, match}) => {
 
 
 // Dispatch on launch, shows all products via Redux.
+// and filter products with filter state from ./products/productReducer
     useEffect(() => {
-        dispatch(fetchProducts())
-    }, [dispatch])
-
+        dispatch(fetchProducts(filter))
+    }, [dispatch, filter])
 
 
 //If Theres an error loading the page.
@@ -38,13 +38,13 @@ const Store = ({dispatch, products, loading, error, match}) => {
     return (
     <main className="games">
         <PromoGame match={match} products={products}/>
-        <SortGames/>
+        <SortGames />
         <AllGames products={products} match={match}/>
     </main>)
 }
 
 // state, can be retrieved through props or destructuring.
-const mapStateToProps = state => ({products: state.products.items, loading: state.products.loading, error: state.products.error});
+const mapStateToProps = state => ({filter: state.products.filter, products: state.products.items, loading: state.products.loading, error: state.products.error});
 
 
 export default connect(mapStateToProps)(Store);

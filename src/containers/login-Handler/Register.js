@@ -55,19 +55,11 @@ render() {
     }
 return (
       <div className="regWrapper">
-        <div>
+        <div className="inerRegWrapper">
           <div>
-            <Link to="/">
-              <i>Back to home</i>
-            </Link>
-            <div>
-              <h4>
-                <b>Register</b> below
-              </h4>
-              <p>
-                Already have an account? <Link to="/login">Log in</Link>
-              </p>
-            </div>
+          <h2>
+            Register
+          </h2>
             <form noValidate onSubmit={this.onSubmit}>
               <div>
                 <input
@@ -82,7 +74,7 @@ return (
                   invalid: errors.name
                   })}
                 />
-                <label htmlFor="name">Name</label>
+                <br/>
                 <span className="red-text">{errors.name}</span>
               </div>
               <div>
@@ -98,7 +90,7 @@ return (
                   invalid: errors.email
                   })}
                 />
-                <label htmlFor="email">Email</label>
+                <br/>
                 <span className="red-text">{errors.email}</span>
               </div>
               <div>
@@ -114,7 +106,7 @@ return (
                   invalid: errors.password
                   })}
                 />
-                <label htmlFor="password">Password</label>
+                <br/>
                 <span className="red-text">{errors.password}</span>
               </div>
               <div>
@@ -130,7 +122,7 @@ return (
                   invalid: errors.password2
                   })}
                 />
-                <label htmlFor="password2">Confirm Password</label>
+                <br/>
                 <span className="red-text">{errors.password2}</span>
               </div>
               <div>
@@ -139,6 +131,14 @@ return (
                 </button>
               </div>
             </form>
+            <div className="logIn">
+            <p>
+            Already have an account? <Link to="/login">Login</Link>
+            </p>
+            <Link to="/">
+            <i>Back to home</i>
+            </Link>
+            </div>
           </div>
         </div>
       </div>
