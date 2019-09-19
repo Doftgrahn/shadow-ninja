@@ -8,7 +8,6 @@ const SortGames = (props) => {
             disabled: 'disabled',
             hidden: 'hidden',
             value: ''
-
         }, {
             title: 'Most Popular',
             value: 'mostPopular'
