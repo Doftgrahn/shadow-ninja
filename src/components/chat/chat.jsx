@@ -32,11 +32,9 @@ const Chat = ({chat, user}) => {
             socket.emit('adduser', name)
         })
 
-
         socket.on('updatechat', (username, data) => {
             dispatch(updatechat(username, data))
         })
-
 
         socket.on('updaterooms', (rooms, current_room) => {
             dispatch(currentRoom(current_room))
@@ -57,13 +55,14 @@ const Chat = ({chat, user}) => {
         }
 
     const roomSwitch = (room) => {
-        dispatch(clearChat())
+
+        //dispatch(clearChat())
         dispatch(switchRoom(room))
     }
 
     const renderChatButtons = chat
         .rooms
-        .map((e, i) => <button className="room-btn" onClick={() => roomSwitch(e.room)} key={i}>{e.room}</button>)
+        .map((e, i) => <button className="room-btn" onClick={() => roomSwitch(String(e.room))} key={i}>{e.room}</button>)
 
     const send = () => {
         if (input) {

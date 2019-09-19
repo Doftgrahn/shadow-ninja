@@ -6,8 +6,7 @@ module.exports = (io, server) => {
 
   io.on("connection", socket => {
     // add username to chat
-    socket.room = 'general'
-
+    socket.room = rooms[0];
 
     console.log("CONNECTED TO SOCKET in channel", socket.room);
 
@@ -52,11 +51,11 @@ socket.on('typing', room => {
     // Switch Rooms
 
     socket.on("switchRoom", newroom => {
-    console.log('SOCKET.ROOM', socket.room);
+
       socket.leave(socket.room);
 
-      socket.join(newroom);
 
+      socket.join(newroom);
       socket.emit("updatechat", "SERVER", "You are in " + newroom);
 
       io.in(socket.room).emit(
@@ -67,7 +66,6 @@ socket.on('typing', room => {
 
       socket.room = newroom;
 
-console.log('NEWROOM:', newroom);
       io.in(newroom).emit(
         "updatechat",
         "SERVER",
