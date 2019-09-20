@@ -25,7 +25,7 @@ module.exports = (io, server) => {
       socket.join("general");
       //socket.rooms = 'general';
 
-      io.in(socket.rooms).emit(
+      socket.emit(
         "updatechat",
         "SERVER",
         `You are now connected to ${socket.rooms} room`
