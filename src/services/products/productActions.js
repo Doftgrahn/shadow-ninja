@@ -2,11 +2,13 @@ import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
-  SORT_PRODUCTS
+  SORT_PRODUCTS,
+  FILTER_PRODUCTS
 } from "./actionTypes";
 
-const getProducts = (sort) => {
-  const url = `/api/games?find=${'all'}&filter=${sort}`;
+const getProducts = (filter, sort) => {
+	console.log('filter fetch: ', filter, sort);
+  const url = `/api/games?find=${filter}&sort=${sort}`;
   return fetch(url)
     .then(handleErrors)
     .then(res => {
@@ -16,10 +18,10 @@ const getProducts = (sort) => {
 
 
 // Function for Fetching.
-export const fetchProducts = (sort) => {
+export const fetchProducts = (filter, sort) => {
   return dispatch => {
     dispatch(fetchProductsBegin());
-    return getProducts(sort)
+    return getProducts(filter, sort)
       .then(json => {
         dispatch(fetchProductsSuccess(json));
         return json;
@@ -51,7 +53,12 @@ export const fetchProductsFailure = error => ({
   payload: {error}
 });
 
-export const setFilter = sort => ({
-		type: SORT_PRODUCTS,
-		payload: sort
+export const setSort = sort => ({
+	type: SORT_PRODUCTS,
+	payload: sort
+})
+
+export const setFilter = filter => ({
+	type: FILTER_PRODUCTS,
+	payload: filter
 })
