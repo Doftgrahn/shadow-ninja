@@ -1,8 +1,9 @@
 import React from 'react';
 
 import {connect, useDispatch} from "react-redux";
-import {setFilter} from '../../../../services/products/productActions';
- const SortGames = ({filter}) => {
+import {setSort} from '../../../../services/products/productActions';
+import FilterCategory from '../filterCategory/filterCategory'
+ const SortGames = ({sort}) => {
  	const dispatch = useDispatch();
     const options = [
         {
@@ -29,13 +30,14 @@ import {setFilter} from '../../../../services/products/productActions';
 
     return (<div className="sort">
         <div className="sort__wrapper">
+		<FilterCategory />
             <span>Sort by:</span>
-            <select value={filter} onChange={e => dispatch(setFilter(e.target.value))}>
+            <select value={sort} onChange={e => dispatch(setSort(e.target.value))}>
                 {renderOptions}
             </select>
         </div>
     </div>)
 }
 
-const mapStateToProps = state => ({filter: state.products.filter})
+const mapStateToProps = state => ({sort: state.products.sort})
 export default connect(mapStateToProps)(SortGames);
