@@ -16,17 +16,13 @@ import {
 
 const Chat = ({chat, user}) => {
     const dispatch = useDispatch();
-    const messageChatEnd = React.createRef()
     const {name} = user.user;
 
-    const [socket] = useSocket('/')
+    const [socket] = useSocket();
     const [input, setInput] = useState('');
     socket.connect();
 
     useEffect(() => {
-        /* socket.on('connect', () => {
-            console.log('Connected to Chat');
-        }) */
         socket.emit('adduser', name)
 
         socket.on('updatechat', (username, data) => {
@@ -37,24 +33,15 @@ const Chat = ({chat, user}) => {
             dispatch(currentRoom(current_room))
             dispatch(getAllRooms(rooms))
         })
+        return() => dispatch(clearChat())
 
-        return() => socket.on('disconnect')
-
-    }, [dispatch,name, socket])
-
-
+    }, [dispatch, name, socket])
 
     const roomSwitch = (room) => {
         dispatch(clearChat())
         socket.emit("switchRoom", room);
         dispatch(switchRoom(room))
     }
-
-    const renderChatButtons = chat
-        .rooms
-        .map((e, i) => <button className={`room-btn ${chat.current_room === e.room
-                ? 'btn-active'
-                : ''}`} onClick={() => roomSwitch(e.room)} key={i}>{e.room}</button>)
 
     const send = () => {
         if (input) {
@@ -70,15 +57,20 @@ const Chat = ({chat, user}) => {
         }
     }
 
-    let showMessages;
-    if (chat)
-        showMessages = chat
-            .data
-            .map((e, i) => <div className="chat__content" key={i} ref={messageChatEnd}>
-                <p className="user">{e.user}:</p>
-                <p>{e.message}</p>
-                <p>{e.time}</p>
-            </div>)
+    // Renders Group Buttons
+    const renderChatButtons = chat
+        .rooms
+        .map((e, i) => <button disabled={chat.current_room === e.room} className={`room-btn ${chat.current_room === e.room
+                ? 'btn-active'
+                : null}`} onClick={() => roomSwitch(e.room)} key={i}>{e.room}</button>)
+
+    const showMessages = chat
+        .data
+        .map((e, i) => <div className="chat__content" key={i}>
+            <p className="user">{e.user}</p>
+            <p>{e.message}</p>
+            <p>{e.time}</p>
+        </div>)
 
     return (<main className="chat">
         <div className="chat__room">

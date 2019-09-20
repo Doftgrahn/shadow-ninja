@@ -36,8 +36,10 @@ module.exports = (io, server) => {
         .emit(
           "updatechat",
           "SERVER",
-          username + " has connected to this room" + socket.rooms
+          `${username} has connected to ${socket.rooms}`
         );
+
+      //username + " has connected to this room " + socket.rooms
 
       socket.emit("updaterooms", rooms, rooms[0]);
     });
@@ -50,8 +52,9 @@ module.exports = (io, server) => {
 
     // IS TYPING
 
-    socket.on("typing", typing => {
-      return;
+    socket.on("typing", data => {
+      console.log(data);
+      socket.emit("istyping", data);
     });
 
     // Switch rooms

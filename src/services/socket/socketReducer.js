@@ -4,12 +4,13 @@ import {
   CLEAR_ROOMS,
   CHANGE_ROOM,
   CURRENT_ROOM,
-  ROOMS
+  ROOMS,
+  IS_TYPING
 } from "./actionTypes";
 
 const initialState = {
   data: [],
-  recivingMessage: false,
+  isTyping: false,
   current_room: "",
   rooms: []
 };
@@ -35,6 +36,9 @@ export default function(state = initialState, action) {
 
     case CHANGE_ROOM:
       return {...state, current_room: action.room};
+
+    case IS_TYPING:
+    return {...state, isTyping: action.payload}
 
     default:
       return state;

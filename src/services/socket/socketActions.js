@@ -4,20 +4,15 @@ import {
   CHANGE_ROOM,
   CURRENT_ROOM,
   CLEAR_ROOMS,
-  ROOMS
+  ROOMS,
+  IS_TYPING
 } from "./actionTypes";
-
-//import io from "socket.io-client";
-
-//const host = window.location.origin;
-//const socket = io().connect();
 
 export const sendMessage = (message, name) => dispatch => {
   const data = {
     user: name,
     message: message
   };
-
 
   dispatch({
     type: SEND_MESSAGE,
@@ -49,12 +44,16 @@ export const getAllRooms = rooms => ({
 });
 
 export const switchRoom = room => dispatch => {
-
   dispatch({
     type: CHANGE_ROOM,
     room: room
   });
 };
+
+export const isTypong = istyping => ({
+  type: IS_TYPING,
+  payload: istyping
+});
 
 export const clearChat = room => ({
   type: CLEAR_ROOMS,

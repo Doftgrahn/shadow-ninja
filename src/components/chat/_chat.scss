@@ -26,6 +26,7 @@
         border: 2px solid black;
         padding: 5px;
         overflow: scroll;
+
     }
 
     &__content {
@@ -34,6 +35,9 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        &:last-child {
+            position: sticky;
+        }
 
         p {
             color: black;
