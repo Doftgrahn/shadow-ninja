@@ -7,7 +7,6 @@ import {
 } from "./actionTypes";
 
 const getProducts = (filter, sort) => {
-	console.log('filter fetch: ', filter, sort);
   const url = `/api/games?find=${filter}&sort=${sort}`;
   return fetch(url)
     .then(handleErrors)

@@ -18,7 +18,6 @@ export default function productReducer(
     state = initialState,
     action
 ) {
-	console.log('state.filter: ', state.filter);
   switch (action.type) {
     case FETCH_PRODUCTS_BEGIN:
     //When loading.
