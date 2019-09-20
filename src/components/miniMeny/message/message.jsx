@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import Chat from '../../chat/chat';
+//import Chat from '../../chat/chat';
 
 const Message = () => {
     //only true during testing

@@ -5,7 +5,8 @@
     max-width: 1100px;
     height: 600px;
     margin: 0 auto;
-    background: gray;
+    margin-top: 20px;
+    background: $color-gray;
 
     &__wrapper {
         position: relative;

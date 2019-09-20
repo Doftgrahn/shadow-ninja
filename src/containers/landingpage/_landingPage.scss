@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
 
+//@import './icon/icon.scss';
 .box {
     background-image: url("/images/ninjaa.jpg");
     width: 100%;
@@ -11,8 +12,10 @@
 }
 
 
+
 .title {
-    display: flexbox;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
     padding-top: 20%;

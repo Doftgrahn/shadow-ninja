@@ -7,10 +7,10 @@ import {
   ROOMS
 } from "./actionTypes";
 
-import io from "socket.io-client";
+//import io from "socket.io-client";
 
-const host = window.location.origin;
-const socket = io.connect();
+//const host = window.location.origin;
+//const socket = io().connect();
 
 export const sendMessage = (message, name) => dispatch => {
   const data = {
@@ -18,7 +18,6 @@ export const sendMessage = (message, name) => dispatch => {
     message: message
   };
 
-  socket.emit("send", name, message);
 
   dispatch({
     type: SEND_MESSAGE,
@@ -50,7 +49,6 @@ export const getAllRooms = rooms => ({
 });
 
 export const switchRoom = room => dispatch => {
-  socket.emit("switchRoom", room);
 
   dispatch({
     type: CHANGE_ROOM,

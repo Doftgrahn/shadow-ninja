@@ -2,19 +2,21 @@
 
 .header {
     overflow-x: hidden;
-    color: red;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color:#0c0910;
+    padding: 5px 20px;
+    background-color: #0c0910;
 
-    h1 {
-        display: block;
+    .icon_wrapper {
+        max-width: 140px;
         width: 100%;
-        font-size: 40px;
     }
-
+    // h1 {
+    //     //display: block;
+    //     width: 100%;
+    //     font-size: 40px;
+    // }
     a {
         margin: 0 10px;
         color: white;

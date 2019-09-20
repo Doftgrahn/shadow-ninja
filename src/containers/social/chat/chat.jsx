@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {connect, useDispatch} from "react-redux";
-import io from "socket.io-client";
+import useSocket from 'use-socket.io-client';
 import {ReactComponent as Send} from '../../../components/SVG_Icons/send/send.svg';
 
 import {
@@ -17,22 +17,20 @@ import {
 const Chat = ({chat, user}) => {
     const dispatch = useDispatch();
     const messageChatEnd = React.createRef()
-
-    const [input, setInput] = useState('');
     const {name} = user.user;
 
-    useEffect(() => {
-        const host = window.location.origin;
-        const socket = io.connect('/' || 'https://' + host);
+    const [socket] = useSocket('/')
+    const [input, setInput] = useState('');
+    socket.connect();
 
-        socket.on('connect', () => {
+    useEffect(() => {
+        /* socket.on('connect', () => {
             console.log('Connected to Chat');
-            socket.emit('adduser', name)
-        })
+        }) */
+        socket.emit('adduser', name)
 
         socket.on('updatechat', (username, data) => {
             dispatch(updatechat(username, data))
-            console.log('UPDATE CHAT', data);
         })
 
         socket.on('updaterooms', (rooms, current_room) => {
@@ -40,30 +38,15 @@ const Chat = ({chat, user}) => {
             dispatch(getAllRooms(rooms))
         })
 
-        return() => socket.on('disconnect', () => {
-            console.log('disconnected from chat');
-        })
+        return() => socket.on('disconnect')
 
-    }, [name, dispatch])
+    }, [dispatch,name, socket])
+
+
 
     const roomSwitch = (room) => {
         dispatch(clearChat())
-        const host = window.location.origin;
-        const socket = io.connect();
-        /*
-        socket.on('updatechat', (username, data) => {
-            dispatch(updatechat(username, data))
-            console.log('UPDATE CHAT', data);
-        })
-        */
-
-
-        socket.on('updaterooms', (rooms, current_room) => {
-            dispatch(currentRoom(current_room))
-            dispatch(getAllRooms(rooms))
-        })
-
-
+        socket.emit("switchRoom", room);
         dispatch(switchRoom(room))
     }
 
@@ -75,6 +58,7 @@ const Chat = ({chat, user}) => {
 
     const send = () => {
         if (input) {
+            socket.emit("send", name, input);
             dispatch(sendMessage(input, name))
             setInput('')
         }
