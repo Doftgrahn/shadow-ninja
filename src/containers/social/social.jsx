@@ -1,11 +1,12 @@
 import React from 'react';
 
-import Chat from './chat/chat';
+import Chat from '../../components/chat/chat';
 const Social = () => {
     return (<main>
         <h1>This is Social</h1>
+        <Chat/>
 
-<Chat/>
+
     </main>)
 }
 
