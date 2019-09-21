@@ -22,6 +22,7 @@ const Chat = ({chat, user}) => {
     const [input, setInput] = useState('');
     socket.connect();
 
+console.log('THIS IS SOCKET:', socket);
     useEffect(() => {
         socket.emit('adduser', name)
 

@@ -18,10 +18,10 @@ module.exports = (io, server) => {
 
     socket.on("adduser", username => {
       const find = users.find(user => user === username);
-      if (!find) {
+
         socket.username = username;
         users.push(username);
-      }
+
       socket.join("general");
       //socket.rooms = 'general';
 
@@ -47,7 +47,7 @@ module.exports = (io, server) => {
     //send
     socket.on("send", (user, data) => {
       console.log("MSG:", data);
-      io.in(socket.rooms).emit("updatechat", users, data);
+      io.in(socket.rooms).emit("updatechat", user, data);
     });
 
     // IS TYPING
@@ -64,7 +64,7 @@ module.exports = (io, server) => {
         .emit(
           "updatechat",
           "SERVER",
-          `${users} has left the ${socket.rooms} room`
+          `${socket.username} has left the ${socket.rooms} room`
         );
 
       socket.leave(socket.rooms);
@@ -76,7 +76,7 @@ module.exports = (io, server) => {
 
       socket
         .to(socket.rooms)
-        .emit("updatechat", "SERVER", `${users} has joined ${newroom} room`);
+        .emit("updatechat", "SERVER", `${socket.username} has joined ${newroom} room`);
 
       socket.emit("updaterooms", rooms, newroom);
     });

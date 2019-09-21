@@ -9,6 +9,7 @@ import {
 } from "./actionTypes";
 
 const initialState = {
+  socket: [],
   data: [],
   isTyping: false,
   current_room: "",
@@ -27,7 +28,7 @@ export default function(state = initialState, action) {
       return {...state, current_room: action.room};
 
     case ROOMS:
-        let allRooms = action.rooms.map(room => ({room}))
+      let allRooms = action.rooms.map(room => ({room}));
 
       return {...state, rooms: allRooms};
 
@@ -38,7 +39,7 @@ export default function(state = initialState, action) {
       return {...state, current_room: action.room};
 
     case IS_TYPING:
-    return {...state, isTyping: action.payload}
+      return {...state, isTyping: action.payload};
 
     default:
       return state;
