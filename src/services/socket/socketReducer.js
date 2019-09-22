@@ -2,18 +2,15 @@ import {
   SEND_MESSAGE,
   UPDATE_CHAT,
   CLEAR_ROOMS,
-  CHANGE_ROOM,
-  CURRENT_ROOM,
-  ROOMS,
-  IS_TYPING
+  GET_ALL_ROOMS,
+  CHANGE_ROOM
 } from "./actionTypes";
 
 const initialState = {
-  socket: [],
   data: [],
-  isTyping: false,
   current_room: "",
-  rooms: []
+  rooms: [],
+  isTyping: false
 };
 
 export default function(state = initialState, action) {
@@ -24,22 +21,14 @@ export default function(state = initialState, action) {
     case UPDATE_CHAT:
       return {...state, data: [...state.data, action.payload]};
 
-    case CURRENT_ROOM:
-      return {...state, current_room: action.room};
-
-    case ROOMS:
-      let allRooms = action.rooms.map(room => ({room}));
-
-      return {...state, rooms: allRooms};
+    case GET_ALL_ROOMS:
+      return {...state, ...action.room};
 
     case CLEAR_ROOMS:
       return {...state, data: []};
 
     case CHANGE_ROOM:
       return {...state, current_room: action.room};
-
-    case IS_TYPING:
-      return {...state, isTyping: action.payload};
 
     default:
       return state;

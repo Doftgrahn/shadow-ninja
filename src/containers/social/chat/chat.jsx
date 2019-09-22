@@ -3,51 +3,35 @@ import {connect, useDispatch} from "react-redux";
 import useSocket from 'use-socket.io-client';
 import {ReactComponent as Send} from '../../../components/SVG_Icons/send/send.svg';
 
-import {
-    clearChat,
-    switchRoom,
-    sendMessage,
-    updatechat,
-    getAllRooms,
-    currentRoom
-} from '../../../services/socket/socketActions';
+import {clearChat, switchRoom, sendMessage, updatechat, currentRoom} from '../../../services/socket/socketActions';
 
 //import {getRandomColor} from '../../functions/randomColor';
 
 const Chat = ({chat, user}) => {
     const dispatch = useDispatch();
     const {name} = user.user;
-
     const [socket] = useSocket();
     const [input, setInput] = useState('');
+
     socket.connect();
 
-console.log('THIS IS SOCKET:', socket);
     useEffect(() => {
         socket.emit('adduser', name)
+        dispatch(updatechat(socket))
+        dispatch(currentRoom(socket))
 
-        socket.on('updatechat', (username, data) => {
-            dispatch(updatechat(username, data))
-        })
-
-        socket.on('updaterooms', (rooms, current_room) => {
-            dispatch(currentRoom(current_room))
-            dispatch(getAllRooms(rooms))
-        })
-        return() => dispatch(clearChat())
+        return() => socket.close()
 
     }, [dispatch, name, socket])
 
-    const roomSwitch = (room) => {
+    const roomSwitch = room => {
         dispatch(clearChat())
-        socket.emit("switchRoom", room);
-        dispatch(switchRoom(room))
+        dispatch(switchRoom(socket, room))
     }
 
     const send = () => {
         if (input) {
-            socket.emit("send", name, input);
-            dispatch(sendMessage(input, name))
+            dispatch(sendMessage(socket, input))
             setInput('')
         }
     }

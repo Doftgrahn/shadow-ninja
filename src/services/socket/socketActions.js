@@ -2,58 +2,52 @@ import {
   SEND_MESSAGE,
   UPDATE_CHAT,
   CHANGE_ROOM,
-  CURRENT_ROOM,
+  GET_ALL_ROOMS,
   CLEAR_ROOMS,
-  ROOMS,
-  IS_TYPING
+  //IS_TYPING
 } from "./actionTypes";
 
-export const sendMessage = (message, name) => dispatch => {
-  const data = {
-    user: name,
-    message: message
-  };
+export const sendMessage = (socket, message) => dispatch => {
+  socket.emit("send", message);
 
   dispatch({
     type: SEND_MESSAGE,
-    payload: data
+    payload: message
   });
 };
 
-export const updatechat = (username, message) => dispatch => {
-  const data = {
-    user: username,
-    message: message
-  };
-
-  dispatch({
-    type: UPDATE_CHAT,
-    payload: data
+export const updatechat = socket => dispatch => {
+  socket.on("updatechat", data => {
+    dispatch({
+      type: UPDATE_CHAT,
+      payload: data
+    });
   });
 };
 
-export const currentRoom = room => dispatch => {
-  dispatch({
-    type: CURRENT_ROOM,
-    room: room
+export const currentRoom = socket => dispatch => {
+  socket.on("updaterooms", (rooms, current_room) => {
+    let allRooms = rooms.map(room => ({room}));
+    const data = {
+      current_room: current_room,
+      rooms: allRooms
+    };
+
+    dispatch({
+      type: GET_ALL_ROOMS,
+      room: data
+    });
   });
 };
-export const getAllRooms = rooms => ({
-  type: ROOMS,
-  rooms: rooms
-});
 
-export const switchRoom = room => dispatch => {
+export const switchRoom = (socket, room) => dispatch => {
+  socket.emit("switchRoom", room);
+
   dispatch({
     type: CHANGE_ROOM,
     room: room
   });
 };
-
-export const isTyping = istyping => ({
-  type: IS_TYPING,
-  payload: istyping
-});
 
 export const clearChat = room => ({
   type: CLEAR_ROOMS,
