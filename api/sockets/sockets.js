@@ -1,8 +1,24 @@
 module.exports = (io, server) => {
+  const history = [];
   const rooms = ["general", "party", "trade"];
 
   let connections = [];
   const users = [];
+
+  const roomCollection = [
+    {
+      room: "general",
+      history: []
+    },
+    {
+      room: "party",
+      history: []
+    },
+    {
+      room: "trade",
+      history: []
+    }
+  ];
 
   io.on("connection", socket => {
     connections.push(socket);
@@ -17,10 +33,10 @@ module.exports = (io, server) => {
     });
 
     socket.on("adduser", username => {
-      const find = users.find(user => user === username);
+      // const find = users.find(user => user === username);
 
-        socket.username = username;
-        users.push(username);
+      socket.username = username;
+      users.push(username);
 
       socket.join("general");
       //socket.rooms = 'general';
@@ -46,9 +62,26 @@ module.exports = (io, server) => {
 
     //send
     socket.on("send", (user, data) => {
-      console.log("MSG:", data);
+      console.log("MSG:", data, "user:", user);
       io.in(socket.rooms).emit("updatechat", user, data);
+      const test = {
+        user,
+        data
+      };
+
+      //socket.rooms.push(test);
+     roomCollection.map(data => {
+          if(data.room === socket.rooms) {
+              return {...data, history: [...data.history, user ]}
+          }
+           return data;
+      });
+
+      /*
+      console.log('HEJ');
+      */
     });
+
 
     // IS TYPING
 
@@ -59,6 +92,8 @@ module.exports = (io, server) => {
 
     // Switch rooms
     socket.on("switchRoom", newroom => {
+        console.log("HISTORY", roomCollection);
+
       socket
         .to(socket.rooms)
         .emit(
@@ -76,7 +111,11 @@ module.exports = (io, server) => {
 
       socket
         .to(socket.rooms)
-        .emit("updatechat", "SERVER", `${socket.username} has joined ${newroom} room`);
+        .emit(
+          "updatechat",
+          "SERVER",
+          `${socket.username} has joined ${newroom} room`
+        );
 
       socket.emit("updaterooms", rooms, newroom);
     });

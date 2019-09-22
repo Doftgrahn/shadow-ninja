@@ -50,7 +50,7 @@ export const switchRoom = room => dispatch => {
   });
 };
 
-export const isTypong = istyping => ({
+export const isTyping = istyping => ({
   type: IS_TYPING,
   payload: istyping
 });
