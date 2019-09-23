@@ -71,3 +71,16 @@ body:before {
     display: block;
     box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.4), 200px 0 200px 150px rgba(255, 255, 255, 0.4), -250px 0 300px 150px rgba(255, 255, 255, 0.4), 550px 0 300px 200px rgba(255, 255, 255, 0.4), -550px 0 300px 200px rgba(255, 255, 255, 0.4);
 }
+@media  (max-width: 800px)  {
+h1{
+    font-size:30px;
+    margin-top: 120px;
+}
+}
+
+@media (min-width: 400px){
+    h1{
+        font-size:90px;
+        text-shadow: white;
+    }
+}
