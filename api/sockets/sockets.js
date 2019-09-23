@@ -4,7 +4,7 @@ module.exports = (io, server) => {
   const rooms = ["general", "party", "trade"];
 
   let connections = [];
-  const users = [];
+  let users = [];
 
   io.on("connection", socket => {
     console.log("Connected to chat");
@@ -18,7 +18,8 @@ module.exports = (io, server) => {
     });
 
     socket.on("disconnect", () => {
-      users.splice(users.indexOf(socket.username), 1);
+    users = users.filter(user => user.name !== socket.username)
+      //users.splice(users.indexOf(socket.username), 1);
 
       connections.splice(connections.indexOf(socket, 1));
       io.sockets.emit("updateusers", users);
@@ -32,14 +33,19 @@ module.exports = (io, server) => {
       users.push(username);
 
       socket.join("general");
+
+      socket.emit("getUsers", users);
+
       //socket.rooms = "general";
 
+      /*
       const serverreplyToUser = {
         user: "SERVER",
         message: `You are now connected to ${socket.rooms} room`
       };
 
       socket.emit("updatechat", serverreplyToUser);
+      */
 
       const serverReplyToChat = {
         user: "SERVER",
@@ -82,16 +88,15 @@ module.exports = (io, server) => {
 
     // Switch rooms
     socket.on("switchRoom", newroom => {
-      console.log("NEW ROOM", newroom);
-
-      console.log("username BEFORE", socket.username);
+      console.log(users);
+      /*
       const messageLeft = {
         user: "SERVER",
         message: `${socket.username} has left the ${socket.rooms} room`
       };
 
       socket.to(socket.rooms).emit("updatechat", messageLeft);
-
+*/
       socket.leave(socket.rooms);
 
       socket.rooms = newroom;
@@ -109,12 +114,14 @@ module.exports = (io, server) => {
         socket.emit("updatechat", callback);
       });
 
+      /*
       const newRoomJoin = {
         user: "SERVER",
         message: `${socket.username} has joined ${newroom} room`
       };
+      */
 
-      socket.emit("updatechat", newRoomJoin);
+      // socket.to(socket.rooms).emit("updatechat", newRoomJoin);
 
       socket.emit("updaterooms", rooms, newroom);
     });

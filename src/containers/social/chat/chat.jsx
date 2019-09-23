@@ -5,13 +5,20 @@ import useSocket from 'use-socket.io-client';
 
 import {ReactComponent as Send} from '../../../components/SVG_Icons/send/send.svg';
 
-import {clearChat, switchRoom, sendMessage, updatechat, currentRoom} from '../../../services/socket/socketActions';
+import {
+    clearChat,
+    switchRoom,
+    sendMessage,
+    updatechat,
+    currentRoom,
+    numberOnline
+} from '../../../services/socket/socketActions';
 
 const Chat = ({chat, user}) => {
     const myChat = chat
         .data
         .flat()
-    const messagesEndRef = useRef(null)
+    const messagesEndRef = useRef()
     const dispatch = useDispatch();
     const [socket] = useSocket('/', {autoConnect: false});
     const {name, id} = user.user;
@@ -30,6 +37,7 @@ const Chat = ({chat, user}) => {
     }, [socket, name, id])
 
     useEffect(() => {
+        dispatch(numberOnline(socket))
         dispatch(updatechat(socket))
         dispatch(currentRoom(socket))
 
@@ -55,21 +63,21 @@ const Chat = ({chat, user}) => {
         }
     }
 
+    /* .filter(e => e.room === chat.current_room) */
+
     // Renders Group Buttons
     const renderChatButtons = chat
         .rooms
         .map((e, i) => <button disabled={chat.current_room === e.room} className={`room-btn ${chat.current_room === e.room
                 ? 'btn-active'
                 : null}`} onClick={() => roomSwitch(e.room)} key={i}>{e.room}</button>)
-    const showMessages = myChat
-        .filter(e => e.room === chat.current_room)
-        .map((e, i) => <div className={`chat__content ${e.id === user.user.id
-                ? 'activeUser'
-                : ''}`} key={i}>
-            <p className="user">{e.user}</p>
-            <p>{e.message}</p>
-            <p>{e.time}</p>
-        </div>)
+    const showMessages = myChat.map((e, i) => <div className={`chat__content ${e.id === user.user.id
+            ? 'activeUser'
+            : ''}`} key={i}>
+        <p className="user">{e.user}</p>
+        <p>{e.message}</p>
+        <p>{e.time}</p>
+    </div>)
 
     return (<main className="chat">
 

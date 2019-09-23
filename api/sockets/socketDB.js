@@ -24,7 +24,7 @@ const getAllHistory = (currentRoom, callback) => {
 
     collection
       .find(query)
-      .limit(10)
+      .limit(5)
       .toArray((err, result) => {
         if (err) {
           console.error("Could not get messages");

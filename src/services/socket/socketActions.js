@@ -3,18 +3,18 @@ import {
   UPDATE_CHAT,
   CHANGE_ROOM,
   GET_ALL_ROOMS,
-  CLEAR_ROOMS
+  CLEAR_ROOMS,
+  NUMBER_ONLINE
   //IS_TYPING
 } from "./actionTypes";
 
 export const sendMessage = (socket, message, user) => dispatch => {
-
-const data = {
+  const data = {
     message,
     user
-}
+  };
 
-console.log('SEND MESSAGE ', data);
+  console.log("SEND MESSAGE ", data);
   socket.emit("send", data);
 
   dispatch({
@@ -25,7 +25,6 @@ console.log('SEND MESSAGE ', data);
 
 export const updatechat = socket => dispatch => {
   socket.on("updatechat", data => {
-      console.log('DATA IN ACTION', data);
     dispatch({
       type: UPDATE_CHAT,
       payload: data
@@ -55,6 +54,16 @@ export const switchRoom = (socket, room) => dispatch => {
   dispatch({
     type: CHANGE_ROOM,
     room: room
+  });
+};
+
+export const numberOnline = socket => dispatch => {
+  socket.on("getUsers", data => {
+    console.log("USERS", data);
+    dispatch({
+      type: NUMBER_ONLINE,
+      payload: data
+    });
   });
 };
 

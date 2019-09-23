@@ -3,7 +3,6 @@
     //width: 100%;
     max-width: 1100px;
     height: 500px;
-    //background: tomato;
     margin-top: 20px;
     border-radius: 20px 0 0 20px;
 
@@ -23,7 +22,6 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        background: tomato;
         padding: 0 20px;
         overflow: scroll;
     }
@@ -31,13 +29,23 @@
     &__content {
         width: 30%;
         padding: 20px;
-        border-bottom: 1px solid black;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
         margin: 20px;
-        background: lime;
+        background: #7f748d;
         border-radius: 0 20px 20px 20px;
+        transition: 0.3s;
+        animation: fade 0.4s ease;
+        @keyframes fade {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
 
         &:last-child {
             position: sticky;
@@ -45,10 +53,13 @@
 
         p {
             color: black;
+
+            &:last-child {
+                font-size: 14px;
+            }
         }
 
         .user {
-            text-decoration: underline;
             display: block;
             width: 100%;
             margin-bottom: 5px;
@@ -57,7 +68,7 @@
 
     .activeUser {
         margin-left: auto;
-        background: blue;
+        background: #fbe9cd;
         border-radius: 20px 20px 0 20px;
     }
 
@@ -73,6 +84,7 @@
             color: black;
             outline: none;
             border: none;
+            background: #fbe9cd;
         }
 
         button {
@@ -84,10 +96,11 @@
             justify-content: center;
             align-items: center;
             outline: none;
+            padding-left: 20px;
         }
     }
 }
 
 .btn-active {
-    color: red;
+    background: #d2d2d2;
 }
