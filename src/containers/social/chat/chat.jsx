@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {connect, useDispatch} from "react-redux";
 
 import useSocket from 'use-socket.io-client';
@@ -8,11 +8,16 @@ import {ReactComponent as Send} from '../../../components/SVG_Icons/send/send.sv
 import {clearChat, switchRoom, sendMessage, updatechat, currentRoom} from '../../../services/socket/socketActions';
 
 const Chat = ({chat, user}) => {
+    const messagesEndRef = useRef(null)
     const dispatch = useDispatch();
     const [socket] = useSocket('/', {autoConnect: false});
     const {name, id} = user.user;
     const [input, setInput] = useState('');
     socket.connect();
+
+    const scrollToBottom = () => messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+
+    useEffect(() => scrollToBottom, [chat])
 
     useEffect(() => {
         const user = {
@@ -58,7 +63,8 @@ const Chat = ({chat, user}) => {
     const showMessages = chat
         .data
         .flat()
-        .map((e, i) => <div className={`chat__content ${user.id !== e.id
+        .filter(e => e.room === chat.current_room)
+        .map((e, i) => <div className={`chat__content ${e.id === user.user.id
                 ? 'activeUser'
                 : ''}`} key={i}>
             <p className="user">{e.user}</p>
@@ -67,12 +73,16 @@ const Chat = ({chat, user}) => {
         </div>)
 
     return (<main className="chat">
+
         <div className="chat__room">
             {renderChatButtons}
         </div>
-        <div className="chat__wrapper">
+
+        <div className="chat__wrapper" ref={messagesEndRef}>
             {showMessages}
+            <div/>
         </div>
+
         <div className="sendInput">
             <input placeholder="Write Something..." onKeyPress={(e) => pressEnter(e)} type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
             <button onClick={send}><Send/></button>

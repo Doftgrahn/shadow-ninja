@@ -28,11 +28,11 @@ module.exports = (io, server) => {
 
     socket.on("adduser", username => {
       socket.username = username.name;
-      socket.userId = username.id;
+      socket.id = username.id;
       users.push(username);
 
       socket.join("general");
-      //socket.rooms = 'general
+      socket.rooms = "general";
 
       const serverreplyToUser = {
         user: "SERVER",
@@ -62,15 +62,16 @@ module.exports = (io, server) => {
       });
 
       const message = {
-        id: socket.userId,
+        id: socket.id,
         message: data,
         user: socket.username,
         time: today,
         room: socket.rooms
       };
-      insertChatHistory(message);
-
+      console.log("Socket.js  Message", message);
       io.in(socket.rooms).emit("updatechat", message);
+
+      insertChatHistory(message);
     });
 
     // IS TYPING
@@ -82,6 +83,8 @@ module.exports = (io, server) => {
 
     // Switch rooms
     socket.on("switchRoom", newroom => {
+      console.log("NEW ROOM", newroom);
+
       const messageLeft = {
         user: "SERVER",
         message: `${socket.username} has left the ${socket.rooms} room`
@@ -92,6 +95,7 @@ module.exports = (io, server) => {
       socket.leave(socket.rooms);
 
       socket.rooms = newroom;
+
       socket.join(newroom);
 
       const whichRoom = {
@@ -103,7 +107,6 @@ module.exports = (io, server) => {
 
       getAllHistory(socket.rooms, callback => {
         socket.emit("updatechat", callback);
-        console.log(callback);
       });
 
       const newRoomJoin = {

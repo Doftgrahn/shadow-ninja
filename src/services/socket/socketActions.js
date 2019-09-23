@@ -8,6 +8,8 @@ import {
 } from "./actionTypes";
 
 export const sendMessage = (socket, message) => dispatch => {
+
+console.log('SEND MESSAGE ', message);
   socket.emit("send", message);
 
   dispatch({
@@ -18,6 +20,7 @@ export const sendMessage = (socket, message) => dispatch => {
 
 export const updatechat = socket => dispatch => {
   socket.on("updatechat", data => {
+      console.log('DATA IN ACTION', data);
     dispatch({
       type: UPDATE_CHAT,
       payload: data
