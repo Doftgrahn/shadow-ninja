@@ -68,8 +68,7 @@ module.exports = (io, server) => {
       };
 
       console.log("Socket.js  Message", message);
-      socket.emit("updatechat", message);
-
+      socket.broadcast.emit("updatechat", message);
 
       insertChatHistory(message);
     });
