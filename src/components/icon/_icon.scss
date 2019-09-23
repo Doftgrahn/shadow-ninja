@@ -1,0 +1,81 @@
+.st0 {
+    clip-path: url("#SVGID_2_");
+    //animation: move-right 1s  infinite;
+    transform-origin:50% 00%;
+    transform: translate(0%, 0%);
+}
+
+@keyframes move-right {
+    0% {
+        transform: rotate(-00deg) translate(-40px, -10px);
+    }
+    100% {
+        transform: rotate(20deg) translate(20px, 10px);
+    }
+}
+
+.st1 {
+    clip-path: url("#SVGID_4_");
+    fill: #4D4D4D;
+
+}
+
+.st2 {
+    clip-path: url("#SVGID_4_");
+    fill: #FBDAA6;
+}
+
+.st3 {
+    clip-path: url("#SVGID_4_");
+    fill: #B3B3B3;
+}
+
+.st4 {
+    clip-path: url("#SVGID_6_");
+}
+
+.st5 {
+    clip-path: url("#SVGID_8_");
+    fill: #4D4D4D;
+}
+
+.st6 {
+    clip-path: url("#SVGID_8_");
+    fill: #FBDAA6;
+}
+
+.st7 {
+    clip-path: url("#SVGID_8_");
+    fill: #B3B3B3;
+}
+
+.st8 {
+    clip-path: url("#SVGID_10_");
+}
+
+.st9 {
+    clip-path: url("#SVGID_12_");
+    fill: #333333;
+}
+
+.st10 {
+    clip-path: url("#SVGID_12_");
+    fill: #1A1A1A;
+}
+
+.st11 {
+    clip-path: url("#SVGID_12_");
+    fill: #FBDBA8;
+}
+
+.st12 {
+    clip-path: url("#SVGID_12_");
+    fill: none;
+    stroke: #FBDBA8;
+    stroke-width: 5.162;
+    stroke-miterlimit: 10;
+}
+
+.st13 {
+    clip-path: url("#SVGID_12_");
+}

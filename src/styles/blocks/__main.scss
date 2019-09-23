@@ -18,12 +18,14 @@
 @import '../../containers/store/components/oneGame/oneGame.scss';
 @import '../../containers/store/components/promoGame/promoGame.scss';
 @import '../../containers/store/components/sortGames/sortGames.scss';
+@import '../../containers/store/components/filterCategory/filterCategory.scss';
 /**/
 
 //Single Game
 @import '../../containers/singleGame/singleGame.scss';
 //Social
 @import '../../containers/social/social.scss';
+@import '../../containers/social/chat/chat.scss';
 
 //Checkout
 @import '../../containers/checkout/checkout.scss';

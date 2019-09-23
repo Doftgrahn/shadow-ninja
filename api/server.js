@@ -2,7 +2,7 @@
 
 const express = require("express");
 const server = express();
-const httpServer = require("http").Server(server);
+const httpServer = require("http").createServer(server);
 const io = require("socket.io")(httpServer);
 
 /*DATABASE*/
@@ -43,7 +43,6 @@ require("./secrets/passport")(passport);
 /* AUTH / LOGIN */
 
 //Socket
-require("./sockets/sockets")(io, server);
 
 //If you want to insert, uncomment this function.
 //insertMongoDB()
@@ -58,49 +57,46 @@ server.use(
 
 // ready to connect with React
 // filter and get funtion for games product from MongoDB
-let filterProduct = '';
+let sortProduct = '';
 let lastFilter = '';
 server.get('/api/games', (request, response) => {
 	let findProduct = {};
 	let queryFind = request.query.find;
-	let queryFilter = request.query.filter;
-	console.log('up queryFind', request.query.find);
-	console.log('up queryFilter: ', request.query.filter);
+	let querySort = request.query.sort;
 
-	if (queryFilter === '' || queryFilter === {}) {
-		filterProduct = {}
+	if (querySort === '' || querySort === {}) {
+		sortProduct = {}
 	}
-	else if(queryFilter === 'lowestPrice') {
-		filterProduct = {price: 1};
+	else if(querySort === 'lowestPrice') {
+		sortProduct = {price: 1};
 	}
-	else if(queryFilter === 'highestPrice') {
-		filterProduct = {price: -1}
+	else if(querySort === 'highestPrice') {
+		sortProduct = {price: -1}
 	}
-	else if(queryFilter === 'category'){
+	else if(querySort === 'category'){
 		if(lastFilter) {
-			filterProduct = {category: 1}
+			sortProduct = {category: 1}
 		} else {
-			filterProduct = {category: -1}
+			sortProduct = {category: -1}
 		}
 	}
-	else if(queryFilter === 'rating'){
-		if(lastFilter) {
-			filterProduct = {rating: 1}
-		} else {
-			filterProduct = {rating: -1}
+	else if(querySort === 'lowestRating') {
+			sortProduct = {rating: 1}
+		}
+	else if(querySort === 'highestRating') {
+			sortProduct = {rating: -1}
 		}
 
-	}
-	if(queryFind === 'all') {
+
+	if(queryFind === 'All') {
 		findProduct = {};
 	}
-	else if(queryFind !== 'all') {
+	else if(queryFind !== 'All') {
 		findProduct = {category: queryFind};
 	}
-	console.log('2 findProduct', findProduct);
 
 	lastFilter = !lastFilter;
-	filterByNameMongoDB(filterProduct, findProduct, result => {
+	filterByNameMongoDB(sortProduct, findProduct, result => {
 		response.send(JSON.stringify(result))
 	})
 
@@ -165,3 +161,5 @@ const port = process.env.PORT || 1337;
 httpServer.listen(port, () => {
   console.log("Server listening on port " + port);
 });
+
+require("./sockets/sockets")(io, server);

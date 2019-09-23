@@ -1,7 +1,10 @@
 .store-nav {
     padding: 20px;
     height: 100%;
-    width: 280px;
+    max-width: 200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: 50px;
 }
 
 a.listItems {
@@ -13,21 +16,23 @@ a.listItems {
 }
 
 .suggestedItems {
-    border-radius: 0px 3px 3px 3px;
+    border-radius: 0 3px 3px 3px;
     min-width: 215px;
     // max-width: 215px;
     list-style-type: none;
     background-color: gray;
     position: absolute;
-    z-index: 1000;
+    z-index: 10;
+
     li {
         display: block;
-        padding: 0px 5px 0px 5px;
-        color:black;
-        transition: all .2s ease-in-out;
+        padding: 0 5px;
+        color: black;
+        transition: all 0.2s ease-in-out;
+
         &:hover {
             transform: scale(1.01);
-            background-color:lightgray
+            background-color: lightgray;
         }
     }
 }
