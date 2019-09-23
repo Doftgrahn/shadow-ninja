@@ -7,10 +7,15 @@ import {
   //IS_TYPING
 } from "./actionTypes";
 
-export const sendMessage = (socket, message) => dispatch => {
+export const sendMessage = (socket, message, user) => dispatch => {
 
-console.log('SEND MESSAGE ', message);
-  socket.emit("send", message);
+const data = {
+    message,
+    user
+}
+
+console.log('SEND MESSAGE ', data);
+  socket.emit("send", data);
 
   dispatch({
     type: SEND_MESSAGE,

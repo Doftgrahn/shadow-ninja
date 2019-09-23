@@ -8,6 +8,9 @@ import {ReactComponent as Send} from '../../../components/SVG_Icons/send/send.sv
 import {clearChat, switchRoom, sendMessage, updatechat, currentRoom} from '../../../services/socket/socketActions';
 
 const Chat = ({chat, user}) => {
+    const myChat = chat
+        .data
+        .flat()
     const messagesEndRef = useRef(null)
     const dispatch = useDispatch();
     const [socket] = useSocket('/', {autoConnect: false});
@@ -18,7 +21,6 @@ const Chat = ({chat, user}) => {
     const scrollToBottom = () => messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
 
     useEffect(() => scrollToBottom, [chat])
-
     useEffect(() => {
         const user = {
             name: name,
@@ -42,7 +44,7 @@ const Chat = ({chat, user}) => {
 
     const send = () => {
         if (input && user.user) {
-            dispatch(sendMessage(socket, input))
+            dispatch(sendMessage(socket, input, name))
             setInput('')
         }
     }
@@ -59,10 +61,7 @@ const Chat = ({chat, user}) => {
         .map((e, i) => <button disabled={chat.current_room === e.room} className={`room-btn ${chat.current_room === e.room
                 ? 'btn-active'
                 : null}`} onClick={() => roomSwitch(e.room)} key={i}>{e.room}</button>)
-
-    const showMessages = chat
-        .data
-        .flat()
+    const showMessages = myChat
         .filter(e => e.room === chat.current_room)
         .map((e, i) => <div className={`chat__content ${e.id === user.user.id
                 ? 'activeUser'

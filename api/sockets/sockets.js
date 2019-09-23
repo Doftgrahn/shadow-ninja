@@ -32,7 +32,7 @@ module.exports = (io, server) => {
       users.push(username);
 
       socket.join("general");
-      socket.rooms = "general";
+      //socket.rooms = "general";
 
       const serverreplyToUser = {
         user: "SERVER",
@@ -48,8 +48,6 @@ module.exports = (io, server) => {
 
       socket.to(socket.rooms).emit("updatechat", serverReplyToChat);
 
-      //username + " has connected to this room " + socket.rooms
-
       socket.emit("updaterooms", rooms, rooms[0]);
     });
 
@@ -63,13 +61,15 @@ module.exports = (io, server) => {
 
       const message = {
         id: socket.id,
-        message: data,
-        user: socket.username,
+        message: data.message,
+        user: data.user,
         time: today,
         room: socket.rooms
       };
+
       console.log("Socket.js  Message", message);
-      io.in(socket.rooms).emit("updatechat", message);
+      socket.emit("updatechat", message);
+
 
       insertChatHistory(message);
     });
@@ -85,6 +85,7 @@ module.exports = (io, server) => {
     socket.on("switchRoom", newroom => {
       console.log("NEW ROOM", newroom);
 
+      console.log("username BEFORE", socket.username);
       const messageLeft = {
         user: "SERVER",
         message: `${socket.username} has left the ${socket.rooms} room`
@@ -96,7 +97,7 @@ module.exports = (io, server) => {
 
       socket.rooms = newroom;
 
-      socket.join(newroom);
+      socket.join(socket.rooms);
 
       const whichRoom = {
         user: "SERVER",
@@ -114,7 +115,7 @@ module.exports = (io, server) => {
         message: `${socket.username} has joined ${newroom} room`
       };
 
-      socket.to(socket.rooms).emit("updatechat", newRoomJoin);
+      socket.emit("updatechat", newRoomJoin);
 
       socket.emit("updaterooms", rooms, newroom);
     });
