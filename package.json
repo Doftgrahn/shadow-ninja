@@ -46,7 +46,6 @@
     "eject": "react-scripts eject",
     "now-build": "react-scripts build && mv build dist"
   },
-  "proxy": "http://localhost:1337/",
   "eslintConfig": {
     "extends": "react-app"
   },

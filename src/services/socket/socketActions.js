@@ -3,7 +3,7 @@ import {
   UPDATE_CHAT,
   CHANGE_ROOM,
   GET_ALL_ROOMS,
-  CLEAR_ROOMS,
+  CLEAR_ROOMS
   //IS_TYPING
 } from "./actionTypes";
 
@@ -28,6 +28,7 @@ export const updatechat = socket => dispatch => {
 export const currentRoom = socket => dispatch => {
   socket.on("updaterooms", (rooms, current_room) => {
     let allRooms = rooms.map(room => ({room}));
+
     const data = {
       current_room: current_room,
       rooms: allRooms
