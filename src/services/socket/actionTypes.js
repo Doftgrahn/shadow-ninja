@@ -1,3 +1,4 @@
+export const SOCKET = "SOCKET";
 export const SEND_MESSAGE = "SEND_WEBSOCKET_MESSAGE";
 export const UPDATE_CHAT = "UPDATE_CHAT";
 export const CLEAR_ROOMS = 'CLEAR_ROOMS'

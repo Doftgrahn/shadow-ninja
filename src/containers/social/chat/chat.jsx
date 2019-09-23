@@ -29,12 +29,13 @@ const Chat = ({chat, user}) => {
 
     useEffect(() => scrollToBottom, [chat])
     useEffect(() => {
+
         const user = {
             name: name,
             id: id
         }
         socket.emit('adduser', user)
-    }, [socket, name, id])
+    }, [socket, name, id, dispatch])
 
     useEffect(() => {
         dispatch(numberOnline(socket))

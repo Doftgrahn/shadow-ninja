@@ -1,4 +1,5 @@
 import {
+  SOCKET,
   SEND_MESSAGE,
   UPDATE_CHAT,
   CHANGE_ROOM,
@@ -8,13 +9,17 @@ import {
   //IS_TYPING
 } from "./actionTypes";
 
+export const defaultSocket = socket => ({
+  type: SOCKET,
+  payload: socket
+});
+
 export const sendMessage = (socket, message, user) => dispatch => {
   const data = {
     message,
     user
   };
 
-  console.log("SEND MESSAGE ", data);
   socket.emit("send", data);
 
   dispatch({
