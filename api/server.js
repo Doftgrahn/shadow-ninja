@@ -1,9 +1,11 @@
-
-
 const express = require("express");
 const server = express();
 const httpServer = require("http").createServer(server);
-const io = require("socket.io")(httpServer);
+const io = require("socket.io")(httpServer, {
+  serveClient: process.config.env === "production" ? false : true,
+  path: "/socket.io"
+});
+
 
 /*DATABASE*/
 //const {insertMongoDB} = require('./database/AddProduct');
@@ -57,50 +59,42 @@ server.use(
 
 // ready to connect with React
 // filter and get funtion for games product from MongoDB
-let sortProduct = '';
-let lastFilter = '';
-server.get('/api/games', (request, response) => {
-	let findProduct = {};
-	let queryFind = request.query.find;
-	let querySort = request.query.sort;
+let sortProduct = "";
+let lastFilter = "";
+server.get("/api/games", (request, response) => {
+  let findProduct = {};
+  let queryFind = request.query.find;
+  let querySort = request.query.sort;
 
-	if (querySort === '' || querySort === {}) {
-		sortProduct = {}
-	}
-	else if(querySort === 'lowestPrice') {
-		sortProduct = {price: 1};
-	}
-	else if(querySort === 'highestPrice') {
-		sortProduct = {price: -1}
-	}
-	else if(querySort === 'category'){
-		if(lastFilter) {
-			sortProduct = {category: 1}
-		} else {
-			sortProduct = {category: -1}
-		}
-	}
-	else if(querySort === 'lowestRating') {
-			sortProduct = {rating: 1}
-		}
-	else if(querySort === 'highestRating') {
-			sortProduct = {rating: -1}
-		}
+  if (querySort === "" || querySort === {}) {
+    sortProduct = {};
+  } else if (querySort === "lowestPrice") {
+    sortProduct = {price: 1};
+  } else if (querySort === "highestPrice") {
+    sortProduct = {price: -1};
+  } else if (querySort === "category") {
+    if (lastFilter) {
+      sortProduct = {category: 1};
+    } else {
+      sortProduct = {category: -1};
+    }
+  } else if (querySort === "lowestRating") {
+    sortProduct = {rating: 1};
+  } else if (querySort === "highestRating") {
+    sortProduct = {rating: -1};
+  }
 
+  if (queryFind === "All") {
+    findProduct = {};
+  } else if (queryFind !== "All") {
+    findProduct = {category: queryFind};
+  }
 
-	if(queryFind === 'All') {
-		findProduct = {};
-	}
-	else if(queryFind !== 'All') {
-		findProduct = {category: queryFind};
-	}
-
-	lastFilter = !lastFilter;
-	filterByNameMongoDB(sortProduct, findProduct, result => {
-		response.send(JSON.stringify(result))
-	})
-
-})
+  lastFilter = !lastFilter;
+  filterByNameMongoDB(sortProduct, findProduct, result => {
+    response.send(JSON.stringify(result));
+  });
+});
 
 // get request for singleProduct based on ID
 server.get("/api/games/product", (request, response) => {
@@ -114,25 +108,23 @@ server.get("/api/games/product", (request, response) => {
 
 //add currency to account based on id
 
-server.put('/api/addcurrency', ( request, response) => {
-	let queryid = request.query.id;
-	let userId = queryid;
-  let currency = JSON.stringify(request.body)
-	editUserCurrencyMongoDB(userId, currency, result => {
-		response.send(JSON.stringify(result))
-	})
+server.put("/api/addcurrency", (request, response) => {
+  let queryid = request.query.id;
+  let userId = queryid;
+  let currency = JSON.stringify(request.body);
+  editUserCurrencyMongoDB(userId, currency, result => {
+    response.send(JSON.stringify(result));
+  });
 });
 
-server.put('/api/addGameLibrary', (request, response) => {
-	let queryid = request.query.id;
-	let userId = queryid;
-	let gamesToAdd = JSON.stringify(request.body)
-	editUserLibraryMongoDB(userId, gamesToAdd, result => {
-		response.send(JSON.stringify(result))
-	})
+server.put("/api/addGameLibrary", (request, response) => {
+  let queryid = request.query.id;
+  let userId = queryid;
+  let gamesToAdd = JSON.stringify(request.body);
+  editUserLibraryMongoDB(userId, gamesToAdd, result => {
+    response.send(JSON.stringify(result));
+  });
 });
-
-
 
 /* Routing */
 
@@ -144,12 +136,10 @@ require("./secrets/passport")(passport);
 // Routes
 server.use("/api/users", users);
 
-
 server.use((error, request, response, next) => {
   response.status(500).send("error 500 error");
-  next()
+  next();
 });
-
 
 mongoose
   .connect(db, {useNewUrlParser: true})

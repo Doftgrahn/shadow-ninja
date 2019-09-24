@@ -13,10 +13,7 @@ import {updatechat, currentRoom, numberOnline} from '../../../services/socket/so
 const Chat = ({chat, user}) => {
 
     const dispatch = useDispatch();
-    const [socket] = useSocket('/', {
-        autoConnect: false,
-        transports: ['websocket']
-    });
+    const [socket] = useSocket({autoConnect: false, transports: ['websocket']});
     const {name, id} = user.user;
     socket.connect();
 
@@ -33,11 +30,12 @@ const Chat = ({chat, user}) => {
         dispatch(updatechat(socket))
         dispatch(currentRoom(socket))
 
-        return() => socket.close()
+        return() => socket.disconnect()
 
     }, [dispatch, socket])
 
     /* .filter(e => e.room === chat.current_room) */
+
 
     return (<main className="chat">
         <Fade>

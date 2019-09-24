@@ -6,6 +6,7 @@ module.exports = (io, server) => {
   let connections = [];
   let users = [];
 
+
   io.on("connection", socket => {
     console.log("Connected to chat");
     connections.push(socket);
@@ -56,7 +57,6 @@ module.exports = (io, server) => {
 
       socket.emit("updaterooms", rooms, rooms[0]);
     });
-
     //send
     socket.on("send", data => {
       const today = new Date().toLocaleTimeString("en-GB", {
@@ -70,7 +70,7 @@ module.exports = (io, server) => {
         message: data.message,
         user: data.user,
         time: today,
-        room: socket.rooms
+        room: socket.rooms,
       };
 
       console.log("Socket.js  Message", message);

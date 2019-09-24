@@ -23,10 +23,11 @@ const getAllHistory = (currentRoom, callback) => {
     let collection = client.db(db).collection(dbcol);
 
     const query = {room: currentRoom};
-
+    const sortByTime = {time: 1};
     collection
       .find(query)
       .limit(5)
+      .sort(sortByTime)
       .toArray((err, result) => {
         if (err) {
           console.error("Could not get messages");
