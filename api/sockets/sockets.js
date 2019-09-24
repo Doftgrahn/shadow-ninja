@@ -18,7 +18,7 @@ module.exports = (io, server) => {
     });
 
     socket.on("disconnect", () => {
-    users = users.filter(user => user.name !== socket.username)
+      users = users.filter(user => user.name !== socket.username);
       //users.splice(users.indexOf(socket.username), 1);
 
       connections.splice(connections.indexOf(socket, 1));
@@ -105,7 +105,7 @@ module.exports = (io, server) => {
 
       const whichRoom = {
         user: "SERVER",
-        message: `You are in ${newroom}`
+        message: `You are in ${newroom} room`
       };
 
       socket.emit("updatechat", whichRoom);

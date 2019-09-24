@@ -14,6 +14,10 @@ export const defaultSocket = socket => ({
   payload: socket
 });
 
+/***************************************************************************************** */
+/* Async Action items using - Sockets													   */
+/***************************************************************************************** */
+
 export const sendMessage = (socket, message, user) => dispatch => {
   const data = {
     message,

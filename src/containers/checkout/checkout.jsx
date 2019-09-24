@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Fade from 'react-reveal/Fade';
+
 //Redux
 import {connect} from 'react-redux';
 
@@ -22,7 +24,7 @@ const Checkout = ({cartProducts, total}) => {
     });
 
     return (<main className="checkout">
-
+<Fade cascade>
         <div className="checkout__wrapper">
             <AmountInCart cart={cartProducts} productQuantity={productQuantity}/>
 
@@ -36,7 +38,7 @@ const Checkout = ({cartProducts, total}) => {
                     : null
             }
         </div>
-
+</Fade>
     </main>)
 }
 

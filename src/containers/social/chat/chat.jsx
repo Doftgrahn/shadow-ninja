@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {connect, useDispatch} from "react-redux";
+import Fade from 'react-reveal/Fade';
 
 import useSocket from 'use-socket.io-client';
 
@@ -25,7 +26,10 @@ const Chat = ({chat, user}) => {
     const [input, setInput] = useState('');
     socket.connect();
 
-    const scrollToBottom = () => messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+    const scrollToBottom = () => {
+        if (messagesEndRef.current)
+            messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight
+    };
 
     useEffect(() => scrollToBottom, [chat])
     useEffect(() => {
@@ -75,26 +79,30 @@ const Chat = ({chat, user}) => {
     const showMessages = myChat.map((e, i) => <div className={`chat__content ${e.id === user.user.id
             ? 'activeUser'
             : ''}`} key={i}>
-        <p className="user">{e.user}</p>
+        <h4 className="user">{e.user}</h4>
         <p>{e.message}</p>
         <p>{e.time}</p>
     </div>)
 
     return (<main className="chat">
+        <Fade>
 
-        <div className="chat__room">
-            {renderChatButtons}
-        </div>
+            <div className="chat__room">
+                {renderChatButtons}
+            </div>
 
-        <div className="chat__wrapper" ref={messagesEndRef}>
-            {showMessages}
-            <div/>
-        </div>
+            <div className="chat__wrapper" ref={messagesEndRef}>
+                {showMessages}
+                <div/>
+            </div>
 
-        <div className="sendInput">
-            <input placeholder="Write Something..." onKeyPress={(e) => pressEnter(e)} type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
-            <button onClick={send}><Send/></button>
-        </div>
+            <div className="sendInput">
+                <textarea placeholder="Write Something..." onKeyPress={(e) => pressEnter(e)} type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
+                <div className="send_container">
+                    <button onClick={send}><Send/></button>
+                </div>
+            </div>
+        </Fade>
     </main>)
 }
 

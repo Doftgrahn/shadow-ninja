@@ -1,9 +1,11 @@
-const {uri} = require("../secrets/mongoDB.config.js");
+const {uri} = require("../secrets/mongodbConfig.js");
 const {settings, MongoClient} = require("../settings/Settings.js");
+
+const {db, dbcol} = require("./mongoConfig");
 
 const insertChatHistory = message => {
   MongoClient.connect(uri, settings, (error, client) => {
-    let collection = client.db("shadowDB").collection("chat");
+    let collection = client.db(db).collection(dbcol);
 
     collection.insertMany([message], (err, result) => {
       if (err) {
@@ -18,9 +20,9 @@ const insertChatHistory = message => {
 
 const getAllHistory = (currentRoom, callback) => {
   MongoClient.connect(uri, settings, (error, client) => {
-    let collection = client.db("shadowDB").collection("chat");
+    let collection = client.db(db).collection(dbcol);
 
-    const query = { room: currentRoom };
+    const query = {room: currentRoom};
 
     collection
       .find(query)
@@ -30,6 +32,7 @@ const getAllHistory = (currentRoom, callback) => {
           console.error("Could not get messages");
           throw err;
         }
+        console.log("Fetched all chat history");
         callback(result);
         client.close();
       });

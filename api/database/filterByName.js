@@ -1,4 +1,4 @@
-const {uri} = require('../secrets/mongoDB.config')
+const {uri} = require('../secrets/mongodbConfig')
 const {settings, MongoClient} = require('../settings/Settings.js');
 
 

@@ -6,7 +6,11 @@ import { updateGames } from "../../services/login/actions/authActions";
 
 
 import PropTypes from "prop-types";
-import GameLibrary from './gameLibrary'
+import GameLibrary from './gameLibrary';
+
+
+import Fade from 'react-reveal/Fade';
+
 
 class Profile extends Component {
 
@@ -36,6 +40,7 @@ render() {
 
 return (
       <div>
+          <Fade>
         <div>
           <div>
             <h4>
@@ -67,6 +72,7 @@ return (
             </div>
           </div>
         </div>
+        </Fade>
       </div>
     );
   }

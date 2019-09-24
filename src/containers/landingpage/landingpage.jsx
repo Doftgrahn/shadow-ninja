@@ -1,12 +1,15 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
+import Fade from 'react-reveal/Fade';
+
 //import {ReactComponent as Hero} from './icon/shadow.svg';
 
 
 
 const LandingPage = () => {
     return (<div className="box">
+    <Fade>
 
         <div className="title">
 
@@ -17,6 +20,7 @@ const LandingPage = () => {
             </Link>
 
         </div>
+    </Fade>
     </div>)
 }
 
