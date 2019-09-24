@@ -4,7 +4,8 @@ import {
   CLEAR_ROOMS,
   GET_ALL_ROOMS,
   CHANGE_ROOM,
-  NUMBER_ONLINE
+  NUMBER_ONLINE,
+  IS_TYPING
 } from "./actionTypes";
 
 const initialState = {
@@ -17,7 +18,6 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-
     case SEND_MESSAGE:
       return {...state, data: [...state.data]};
 
@@ -32,6 +32,9 @@ export default function(state = initialState, action) {
 
     case CHANGE_ROOM:
       return {...state, current_room: action.room};
+
+    case IS_TYPING:
+      return {...state, isTyping: action.payload};
 
     case NUMBER_ONLINE:
       return {

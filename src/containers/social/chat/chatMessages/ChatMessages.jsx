@@ -1,16 +1,35 @@
 import React, {useRef, useEffect} from 'react';
 
-import {connect} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 
-const ChatMessages = ({chat, user}) => {
+import Dots from '../../../../components/dots/dots';
+import {whoIsTyping} from '../../../../services/socket/socketActions';
+
+const ChatMessages = ({chat, user, socket}) => {
+    const dispatch = useDispatch();
     const messagesEndRef = useRef()
 
+console.log(chat.isTyping);
     const scrollToBottom = () => {
-        if (messagesEndRef.current) 
+        if (messagesEndRef.current)
             messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight
     };
 
+    useEffect(() => {
+        dispatch(whoIsTyping(socket, user))
+    }, [socket, dispatch, user])
+
     useEffect(() => scrollToBottom, [chat])
+
+    const renderDots = () => {
+        if (chat.isTyping) {
+            return <Dots/>
+        } else {
+            return false
+        }
+    }
+
+
 
     const showMessages = chat
         .data
@@ -25,6 +44,7 @@ const ChatMessages = ({chat, user}) => {
 
     return (<div className="chat__wrapper" ref={messagesEndRef}>
         {showMessages}
+        {renderDots()}
         <div/>
     </div>)
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 import {connect, useDispatch} from "react-redux";
 
@@ -6,10 +6,26 @@ import {ReactComponent as Send} from '../../../../components/SVG_Icons/send/send
 
 import {sendMessage} from '../../../../services/socket/socketActions';
 
-const SendMessage = ({socket, user}) => {
+const SendMessage = ({socket, user, chat}) => {
     const dispatch = useDispatch();
-
+    const isInitialMount = useRef(true);
     const [input, setInput] = useState('');
+
+    useEffect(() => {
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+        } else {
+            const {name} = user.user
+            socket.emit("typing", true, name);
+
+            const typer = setTimeout(() => {
+                socket.emit("typing", false, name);
+            }, 3000)
+
+            return() => clearTimeout(typer)
+        }
+
+    }, [input, dispatch, socket, user.user])
 
     const send = () => {
         if (input && user.user) {
@@ -31,6 +47,6 @@ const SendMessage = ({socket, user}) => {
     </div>)
 }
 
-const mapStateToProps = state => ({user: state.auth})
+const mapStateToProps = state => ({user: state.auth, chat: state.chat})
 
 export default connect(mapStateToProps)(SendMessage);

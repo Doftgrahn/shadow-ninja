@@ -30,7 +30,6 @@ const Chat = ({chat, user}) => {
         dispatch(numberOnline(socket))
         dispatch(updatechat(socket))
         dispatch(currentRoom(socket))
-
         return() => socket.disconnect()
 
     }, [dispatch, socket])
@@ -40,7 +39,7 @@ const Chat = ({chat, user}) => {
     return (<main className="chat">
         <Fade>
             <ChatRooms socket={socket}/>
-            <ChatMessages/>
+            <ChatMessages socket={socket}/>
             <SendMessage socket={socket}/>
         </Fade>
     </main>)

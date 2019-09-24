@@ -6,7 +6,6 @@ module.exports = (io, server) => {
   let connections = [];
   let users = [];
 
-
   io.on("connection", socket => {
     console.log("Connected to chat");
     connections.push(socket);
@@ -70,7 +69,7 @@ module.exports = (io, server) => {
         message: data.message,
         user: data.user,
         time: today,
-        room: socket.rooms,
+        room: socket.rooms
       };
 
       console.log("Socket.js  Message", message);
@@ -81,9 +80,11 @@ module.exports = (io, server) => {
 
     // IS TYPING
 
-    socket.on("typing", data => {
-      console.log(data);
-      socket.emit("istyping", data);
+    socket.on("typing", (data, user) => {
+      console.log("Is Anyone writing?:", data, "Who is Writing?", user);
+      socket.broadcast.emit("istyping", data, user);
+      // All the other folks but not U
+      // socket.broadcast.to(socket.rooms).emit("istyping", data, user);
     });
 
     // Switch rooms

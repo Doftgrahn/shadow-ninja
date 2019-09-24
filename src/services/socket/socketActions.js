@@ -5,8 +5,8 @@ import {
   CHANGE_ROOM,
   GET_ALL_ROOMS,
   CLEAR_ROOMS,
-  NUMBER_ONLINE
-  //IS_TYPING
+  NUMBER_ONLINE,
+  IS_TYPING
 } from "./actionTypes";
 
 export const defaultSocket = socket => ({
@@ -68,7 +68,6 @@ export const switchRoom = (socket, room) => dispatch => {
 
 export const numberOnline = socket => dispatch => {
   socket.on("getUsers", data => {
-    console.log("USERS", data);
     dispatch({
       type: NUMBER_ONLINE,
       payload: data
@@ -76,6 +75,15 @@ export const numberOnline = socket => dispatch => {
   });
 };
 
+export const whoIsTyping = (socket, type, name) => dispatch => {
+  socket.on("istyping", (data, user) => {
+
+    dispatch({
+      type: IS_TYPING,
+      payload: data
+    });
+  });
+};
 export const clearChat = room => ({
   type: CLEAR_ROOMS,
   room
