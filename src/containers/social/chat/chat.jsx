@@ -8,7 +8,7 @@ import ChatRooms from './chatRooms/chatRooms';
 import ChatMessages from './chatMessages/ChatMessages';
 import SendMessage from './sendMessage/sendMessage';
 
-import {updatechat, currentRoom, numberOnline} from '../../../services/socket/socketActions';
+import {updatechat, currentRoom, numberOnline, clearChat} from '../../../services/socket/socketActions';
 
 const Chat = ({chat, user}) => {
 
@@ -26,6 +26,7 @@ const Chat = ({chat, user}) => {
     }, [socket, name, id, dispatch])
 
     useEffect(() => {
+        dispatch(clearChat())
         dispatch(numberOnline(socket))
         dispatch(updatechat(socket))
         dispatch(currentRoom(socket))
@@ -35,7 +36,6 @@ const Chat = ({chat, user}) => {
     }, [dispatch, socket])
 
     /* .filter(e => e.room === chat.current_room) */
-
 
     return (<main className="chat">
         <Fade>

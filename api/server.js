@@ -136,6 +136,11 @@ require("./secrets/passport")(passport);
 // Routes
 server.use("/api/users", users);
 
+server.get('*', (req, res) => {
+res.sendFile(`${__dirname}/../build/index.html`);
+});
+
+
 server.use((error, request, response, next) => {
   response.status(500).send("error 500 error");
   next();

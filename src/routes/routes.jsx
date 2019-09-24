@@ -11,6 +11,8 @@ import Login from '../containers/login-Handler/Login';
 import Profile from '../containers/userProfile/Profile'
 import PrivateRoute from "./PrivateRoute";
 
+import ForOFour from '../components/404/404';
+
 const Routes = () => {
 
     const allRoutes = [
@@ -49,6 +51,11 @@ const Routes = () => {
             exact: false,
             path: '/login',
             Component: Login
+        }, {
+            _id: 7,
+            exact: false,
+            path: '*',
+            Component: ForOFour
         }
     ]
 
@@ -57,8 +64,8 @@ const Routes = () => {
     })
 
     return (<Switch >
+        <PrivateRoute exact={true} path="/userProfile" component={Profile}/>
         {renderRoutes}
-        <PrivateRoute exact="exact" path="/userProfile" component={Profile}/>
     </Switch>)
 }
 
