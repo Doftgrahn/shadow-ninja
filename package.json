@@ -63,6 +63,5 @@
     "react-social-icons": "^4.1.0",
     "nodemon": "^1.19.2",
     "node-sass": "^4.12.0"
-
   }
 }
