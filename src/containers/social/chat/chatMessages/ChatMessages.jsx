@@ -15,13 +15,13 @@ const ChatMessages = ({chat, user, socket}) => {
     };
 
     useEffect(() => {
-        dispatch(whoIsTyping(socket))
-    }, [socket, dispatch])
+        dispatch(whoIsTyping(socket, chat.current_room))
+    }, [socket, dispatch, chat.current_room])
 
     useEffect(() => scrollToBottom, [chat])
 
     const renderDots = () => {
-        if (chat.isTyping.typer) {
+        if (chat.isTyping.typer && chat.current_room === chat.isTyping.room) {
             return <Dots/>
         } else {
             return false

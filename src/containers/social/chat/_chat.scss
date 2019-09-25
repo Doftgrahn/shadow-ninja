@@ -4,8 +4,7 @@
     max-width: 1100px;
     //margin-top: 20px;
     border-radius: 20px 20px 20px 20px;
-    background: gray;
-    //min-height: 100vh;
+    background: #dea152;
     height: 640px;
     height: 100%;
     @media sceen and (min-width: 800px) {
@@ -22,7 +21,7 @@
             flex: 1;
             margin: 0;
             width: 100%;
-            border-bottom: 5px solid black;
+            border-bottom: 5px solid #e57474;
         }
     }
 
@@ -32,7 +31,8 @@
         flex-direction: column;
         //padding: 0 20px;
         overflow: scroll;
-        height: 420px;
+        //height: 420px;
+        min-height: 74vh;
     }
 
     &__content {
@@ -42,7 +42,7 @@
         justify-content: space-between;
         flex-wrap: wrap;
         margin: 10px 15px 0;
-        background: #7f748d;
+        background: #9f53ff;
         border-radius: 0 20px 20px 20px;
         transition: 0.3s;
         animation: fade 0.4s ease;
@@ -71,16 +71,16 @@
         .user {
             transition: 0.4s;
             display: block;
-            background: gray;
             padding: 1px;
             width: 100%;
             margin-bottom: 5px;
+            color: black;
         }
     }
 
     .activeUser {
         margin-left: auto;
-        background: #fbe9cd;
+        background: #f16363;
         border-radius: 20px 20px 0 20px;
     }
 
