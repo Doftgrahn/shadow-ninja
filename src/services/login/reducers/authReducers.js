@@ -2,7 +2,8 @@ import {
   SET_CURRENT_USER,
   USER_LOADING,
   UPDATE_USER_CURRENCY,
-  UPDATE_USER_LIBRARY
+  UPDATE_USER_LIBRARY,
+  CHANGE_PURCHASE_TRUE_FALSE
 } from "../actions/types";
 
 const isEmpty = require("is-empty");
@@ -10,7 +11,8 @@ const isEmpty = require("is-empty");
 const initialState = {
   isAuthenticated: false,
   user: {},
-  loading: false
+  loading: false,
+  isPurchaseValid: true
 };
 
 export default function(state = initialState, action) {
@@ -19,7 +21,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: !isEmpty(action.payload),
-        user: action.payload
+        user: action.payload,
+        isPurchaseValid: true
       };
     case UPDATE_USER_CURRENCY:
       return {
@@ -30,6 +33,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         user: action.payload
+      }
+    case CHANGE_PURCHASE_TRUE_FALSE:
+      return {
+        ...state,
+        isPurchaseValid: action.payload
       }
     case USER_LOADING:
       return {

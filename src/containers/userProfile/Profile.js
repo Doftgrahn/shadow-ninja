@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../services/login/actions/authActions";
 import { updateCurrency } from "../../services/login/actions/authActions";
 import { updateGames } from "../../services/login/actions/authActions";
-
+import {Link, Redirect} from "react-router-dom";
 
 import PropTypes from "prop-types";
 import GameLibrary from './gameLibrary'
@@ -23,52 +23,58 @@ class Profile extends Component {
   }
 
   updateGameLibrary = () => {
-    let url = this.props.auth.user.id
-    let userData = this.props.auth.user
-    let cart = this.props.cart
-    let total = this.props.totalReducer
-    this.props.updateGames(url, userData, cart, total)
+    let url = this.props.auth.user.id;
+    let userData = this.props.auth.user;
+    let cart = this.props.cart;
+    let total = this.props.totalReducer;
+    let isPurchaseValid = this.props.auth.isPurchaseValid;
+    console.log(this.props.auth.isPurchaseValid)
+    this.props.updateGames(url, userData, cart, total, isPurchaseValid)
   }
 
 
 render() {
     const { user } = this.props.auth;
+    let profile;
 
-return (
-      <div>
-        <div>
-          <div>
-            <h4>
-              <b>Hey there,</b> {user.name.split(" ")[0]}
-            </h4>
-            <h5>
-              <b>Here is your currency: {user.currency}</b>
-            </h5>
-              <div>
-                <b>Here is your gameLibrary</b>
-                <div className='gameContainer'>
-                  <GameLibrary />
+    if (this.props.auth.isAuthenticated ) {
+      profile =   <div>
+                <h4>
+                  <b>Hey there,</b> {user.name.split(" ")[0]}
+                  </h4>
+                  <h5>
+                    <b>Here is your currency: {user.currency}</b>
+                  </h5>
+                  <div>
+                    <b>Here is your gameLibrary</b>
+                    <div className='gameContainer'>
+                      <GameLibrary />
+                    </div>
+                  </div>
+
+
+                  <button
+                    style={{ color: 'black' }}
+                    onClick={this.onLogoutClick}
+                    >
+                    Logout
+
+                  </button>
+                  <div>
+                    <button onClick={this.onUpdateClick} style={{ color: 'black' }} >Add currency</button>
+                    <button onClick={this.updateGameLibrary} style={{ color: 'black' }}>Add game</button>
+
+                  </div>
                 </div>
-              </div>
 
 
-            <button
-              style={{ color: 'black' }}
-              onClick={this.onLogoutClick}
-            >
-              Logout
-            </button>
+    } else {
+      profile = <Redirect to="/" />
+    }
 
-
-            <div>
-              <button onClick={this.onUpdateClick} style={{ color: 'black' }} >Add currency</button>
-              <button onClick={this.updateGameLibrary} style={{ color: 'black' }}>Add game</button>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return (
+      <div>{profile}</div>
+    )
   }
 }
 
@@ -86,6 +92,7 @@ const mapStateToProps = state => ({
   auth: state.auth,
   cart: state.cart,
   total: state.totalReducer,
+  isPurchaseValid: state.isPurchaseValid,
 });
 export default connect(
   mapStateToProps,

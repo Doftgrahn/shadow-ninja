@@ -1,12 +1,14 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import {Link} from "react-router-dom";
 import {
   GET_ERRORS,
   SET_CURRENT_USER,
   USER_LOADING,
   UPDATE_USER_CURRENCY,
-  UPDATE_USER_LIBRARY
+  UPDATE_USER_LIBRARY,
+  CHANGE_PURCHASE_TRUE_FALSE
 } from "./types";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -58,7 +60,7 @@ export const updateCurrency = (url, userData, amountToAdd, amountToLower) => dis
   function postData(url = '') {
     return fetch(url, {
       method: 'PUT',
-      body: JSON.stringify(userData), 
+      body: JSON.stringify(userData),
       headers:{
         'Content-Type': 'application/json'
       }
@@ -69,26 +71,41 @@ export const updateCurrency = (url, userData, amountToAdd, amountToLower) => dis
 //Update user currency --------------------------------------------------------
 
 //Update user library
-export const updateGames = (url, userData, cart, total) => dispatch => {
+export const updateGames = (url, userData, cart, total, isPurchaseValid) => dispatch => {
   let amountToLower = 0;
   let amountToAdd = false;
+  let newPurchaseValid = isPurchaseValid;
 
+  console.log('is valid?', newPurchaseValid)
   cart.forEach(game => {
     let number = parseInt(game.price)
     amountToLower += number
+    if(game.quantity > 1) {
+      console.log('Dont buy 2 copies of the same game! stupido!, change state to buy invalid')
+      newPurchaseValid = false;
+    } else {
+      if( userData.gameLibrary.find(obj => obj.title === game.title)) {
+        console.log('game exists, change state to buy invalid')
+        newPurchaseValid = false;
+      } else {
+        console.log('game is ok to buy!')
+      }
+
+    }
+
   });
-  console.log(amountToLower)
-  console.log(userData.currency)
-  if(userData.currency < amountToLower) {
-    console.log('not enough dineros!')
-    //DO somthing if users currency is to low
+  console.log('game ok to buy?: ',newPurchaseValid)
+  if(userData.currency < amountToLower || newPurchaseValid !== true) {
+    console.log('change state to not enough currency or newPurchaseValid = false')
     return;
   } else {
+    console.log('buying game')
     let newData = {
       ...userData,
       gameLibrary: [...userData.gameLibrary, ...cart]
     }
 
+    dispatch(changePurchase(newPurchaseValid))
     dispatch(setUserGames(newData))
     dispatch(updateCurrency(url, newData, amountToAdd, amountToLower))
 
@@ -150,6 +167,14 @@ export const setUserGames = userData => {
     payload: userData
   };
 };
+
+export const changePurchase = newPurchaseValid => {
+  console.log('inside change',newPurchaseValid)
+  return {
+    type: CHANGE_PURCHASE_TRUE_FALSE,
+    payload: newPurchaseValid
+  }
+}
 
 
 // updateUserCurrency

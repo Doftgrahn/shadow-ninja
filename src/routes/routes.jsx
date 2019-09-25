@@ -10,7 +10,8 @@ import Register from '../containers/login-Handler/Register';
 import Login from '../containers/login-Handler/Login';
 import Profile from '../containers/userProfile/Profile'
 import PrivateRoute from "./PrivateRoute";
-
+import PageNotFound from '../components/pagenotfound/Pagenotfound';
+import userProfile from  '../containers/userProfile/Profile'
 
 // import AnimatedRoute from './animatedRoute';
 // import AnimatedSwitch from './animatedSwitch';
@@ -50,14 +51,21 @@ const Routes = () => {
             Component: Register
         }, {
             _id:6,
-            exact: false,
+            exact: true,
             path: '/login',
             Component: Login
-        },
-
-
+          }, {
+            _id:7,
+            exact: false,
+            path: '/userProfile',
+            Component: userProfile
+          },  {
+            _id:7,
+            exact: false,
+            path: '*',
+            Component: PageNotFound
+          },
     ]
-
     const renderRoutes = allRoutes.map(r => {
         return <Route
                 key={r._id}
@@ -71,7 +79,7 @@ const Routes = () => {
         animationTimeout={300}
       >
           {renderRoutes}
-          <PrivateRoute exact path="/userProfile" component={Profile} />
+
           </Switch>
 )
 }
