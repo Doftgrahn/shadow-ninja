@@ -16,6 +16,10 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
         return byTitle.title.toLowerCase().includes(filterValue.toLowerCase())
     })
 
+    function handleCleanse (){
+        setfilterValue('')
+    }
+
     // Makes a new list after when found titles and ID
     const newArray = actualFilter.map(e => ({title: e.title, _id: e._id}))
 
@@ -23,7 +27,7 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
     // Links user to chosen title using matching of IDs
     const limitedAutoComplete = newArray.slice(0, 4).map(x => (
         <Link className='listItems' key={x._id} to={`/store/${x._id}`}>
-        <li>{x.title}</li>
+        <li onClick={handleCleanse}>{x.title}</li>
         </Link>
         ))
 
