@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
+import StoreNavbar from '../storenavbar/storenavbar';
 import {Link} from "react-router-dom";
 
 const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
@@ -37,7 +38,9 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
     return (<nav className={`navMenu ${toggle
             ? 'activeNav'
             : ''}`}>
-        {navBar}</nav>)
+        {navBar}
+        <StoreNavbar toggle={toggle} turnOff={turnOff}/>
+        </nav>)
 };
 
 const mapStateToProps = state => ({auth: state.auth, isAuthenticated: state.auth.isAuthenticated});

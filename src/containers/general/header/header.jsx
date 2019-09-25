@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import NavBar from './navBar/navBar';
 import Hamburger from './hamburger/hamburger';
-import StoreNavbar from './storenavbar/storenavbar';
+// import StoreNavbar from './storenavbar/storenavbar';
 
 import {ReactComponent as Hero} from './../../../components/icon/shadow.svg';
 
@@ -16,11 +16,12 @@ const Header = () => {
             <Hero/>
         </div>
 
-        <StoreNavbar toggle={toggle} turnOff={turnOff}/>
 
-        <NavBar toggle={toggle} turnOff={turnOff}/>
 
-        <Hamburger toggleState={toggleState} toggle={toggle}/>
+          <NavBar toggle={toggle} turnOff={turnOff}/>
+
+          <Hamburger toggleState={toggleState} toggle={toggle}/>
+
     </header>)
 }
 
