@@ -43,12 +43,15 @@
 
           @media screen and (max-width: 800px) {
               font-size: 3em;
+          }
 
+          @media screen and (max-width: 610px) {
+              font-size: 1.7em;
           }
     }
-    div {
-        font-size: 100px;
-    }
+    // div {
+    //     font-size: 100px;
+    // }
     /*h1:hover {
         color: rgba(34, 32, 34, 0.4);
         cursor: pointer;

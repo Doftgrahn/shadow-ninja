@@ -17,6 +17,7 @@
         top: 90px;
         left: 80px;
         padding: 10px;
+        border-radius: 5px;
       }
 
     @media screen and (min-width: 800px) {
@@ -32,7 +33,7 @@
         flex: 0;
 
         input{
-          border-radius: 5px;
+        
           font-size: 20px;
           text-align: center;
           position: static;
@@ -40,7 +41,7 @@
         }
     }
 
-  
+
 }
 
 .activeNav {
