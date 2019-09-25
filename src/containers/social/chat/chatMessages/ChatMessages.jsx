@@ -9,31 +9,29 @@ const ChatMessages = ({chat, user, socket}) => {
     const dispatch = useDispatch();
     const messagesEndRef = useRef()
 
-console.log(chat.isTyping);
     const scrollToBottom = () => {
         if (messagesEndRef.current)
             messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight
     };
 
     useEffect(() => {
-        dispatch(whoIsTyping(socket, user))
-    }, [socket, dispatch, user])
+        dispatch(whoIsTyping(socket))
+    }, [socket, dispatch])
 
     useEffect(() => scrollToBottom, [chat])
 
     const renderDots = () => {
-        if (chat.isTyping) {
+        if (chat.isTyping.typer) {
             return <Dots/>
         } else {
             return false
         }
     }
 
-
-
     const showMessages = chat
         .data
         .flat()
+        .filter(e => e.room === chat.current_room)
         .map((e, i) => <div className={`chat__content ${e.id === user.user.id
                 ? 'activeUser'
                 : ''}`} key={i}>

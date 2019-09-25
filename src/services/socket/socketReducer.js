@@ -12,7 +12,7 @@ const initialState = {
   data: [],
   current_room: "",
   rooms: [],
-  isTyping: false,
+  isTyping: {},
   number_online: []
 };
 

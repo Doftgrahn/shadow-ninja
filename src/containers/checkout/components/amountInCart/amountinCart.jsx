@@ -1,6 +1,11 @@
 import React, {Fragment} from 'react';
 
-const AmountInCart = ({cart, productQuantity}) => {
+import {connect} from 'react-redux';
+
+
+const AmountInCart = ({cart, total}) => {
+    const {productQuantity} = total;
+
     return (<Fragment>
         {
             cart.length !== 0
@@ -10,5 +15,7 @@ const AmountInCart = ({cart, productQuantity}) => {
         < /Fragment>)
 }
 
+const mapStateToProps = state => ({cart: state.cart, total: state.total.data})
 
-export default AmountInCart;
+
+export default connect(mapStateToProps)(AmountInCart);
