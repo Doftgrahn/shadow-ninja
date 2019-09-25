@@ -12,7 +12,7 @@ module.exports = (io, server) => {
     // add username to chat
 
     //socket.rooms = "general";
-    //socket.room = "general";
+    socket.room = "general";
 
     socket.join("general");
 
@@ -39,7 +39,7 @@ module.exports = (io, server) => {
 
       socket.emit("getUsers", users);
 
-      socket.room = "general";
+      //socket.room = "general";
 
       /*
       const serverreplyToUser = {
@@ -77,20 +77,20 @@ module.exports = (io, server) => {
       };
 
       console.log("Socket.js  Message", socket.room);
-      //socket.broadcast.emit("updatechat", message);
-      io.in(socket.room).emit("updatechat", message);
+      socket.broadcast.emit("updatechat", message);
+      //io.in(data.room).emit("updatechat", message);
 
       insertChatHistory(message);
     });
 
     // IS TYPING
 
-    socket.on("typing", (data, user) => {
+    socket.on("typing", (data, user, room) => {
       console.log("Is Anyone writing?:", data, "Who is Writing?", user);
-      // socket.broadcast.emit("istyping", data, user);
+      socket.broadcast.emit("istyping", data, user, room);
       // All the other folks but not U
-      console.log("ROOM TYPE", socket.room);
-      socket.broadcast.to(socket.room).emit("istyping", data, user);
+      console.log("ROOM TYPE", room);
+      // socket.broadcast.to(socket.room).emit("istyping", data, user);
     });
 
     // Switch rooms
