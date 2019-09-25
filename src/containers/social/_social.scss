@@ -11,29 +11,16 @@
         flex: 1 100%;
     }
 
-    &:first-child {
-        flex: 1 auto;
-        order: 1;
-    }
-
-    &:last-child {
-        flex: 1 auto;
-        order: 3;
-        //background: red;
-    }
-
     .sidebar {
         order: 1;
         flex: 1 auto;
-        background: gray;
+        background: #d35a5a;
         //width: 100%;
-        margin-right: 20px;
-        border-radius: 20px;
     }
 
     .chat {
         order: 3;
-        flex: 2 0;
+        flex: 2 1100px;
     }
 
     .alternate {
@@ -43,5 +30,6 @@
 }
 
 button {
+    border-radius: 0 0 20px 20px;
     color: black;
 }

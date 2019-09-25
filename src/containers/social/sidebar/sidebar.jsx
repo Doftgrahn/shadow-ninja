@@ -5,11 +5,12 @@ import {connect} from "react-redux";
 import UsersOnline from "./usersOnline/usersOnline";
 import ChatRooms from './chatRooms/chatRooms';
 
-const Sidebar = ({socket}) => {
+const Sidebar = ({socket,chat}) => {
 
   return (
     <main className="sidebar">
         <ChatRooms socket={socket}/>
+        <span>You are in {chat.current_room} chat.</span>
       <UsersOnline />
     </main>
   );
