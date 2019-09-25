@@ -13,7 +13,7 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
     } else {
         toggleLogin = {
             name: 'Login',
-            to: '/register'
+            to: '/Login'
         }
     }
     const navBarData = [

@@ -12,13 +12,22 @@
     padding: 180px 110px 10px;
     flex: 1;
 
-      input{
+      // input{
+      //   position: absolute;
+      //   top: 90px;
+      //   left: 80px;
+      //   padding: 10px;
+      //   border-radius: 5px;
+      // }
+
+      section{
         position: absolute;
         top: 90px;
         left: 80px;
         padding: 10px;
         border-radius: 5px;
       }
+
 
     @media screen and (min-width: 800px) {
         width: 100%;
@@ -32,8 +41,8 @@
         margin: 0 50px 0 0;
         flex: 0;
 
-        input{
-        
+        section{
+
           font-size: 20px;
           text-align: center;
           position: static;
