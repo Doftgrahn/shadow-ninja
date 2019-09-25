@@ -13,7 +13,7 @@ const LandingPage = () => {
 
         <div className="title">
 
-            {/*<h1 className="big">xX~ShadowNinja~Xx</h1*/}
+            <h1 className="big">xX~ShadowNinja~Xx</h1>
 
             <Link to={'/store'}>
                 <button>Store</button>

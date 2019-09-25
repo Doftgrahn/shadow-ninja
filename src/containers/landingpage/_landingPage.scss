@@ -18,21 +18,33 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding-top: 20%;
-    text-shadow:   1px 0px rgb(128, 127, 127), 0px 1px rgb(53, 52, 52),
-    2px 1px rgb(128, 127, 127), 1px 2px rgb(53, 52, 52),
-    3px 2px rgb(128, 127, 127), 2px 3px rgb(53, 52, 52),
-    4px 3px rgb(128, 127, 127), 3px 4px rgb(53, 52, 52),
-    5px 4px rgb(128, 127, 127), 4px 5px rgb(53, 52, 52),
-    6px 5px rgb(128, 127, 127), 5px 6px rgb(53, 52, 52),
-    7px 6px rgb(128, 127, 127), 6px 7px rgb(53, 52, 52),
-    8px 7px rgb(128, 127, 127), 7px 8px rgb(53, 52, 52),
-    8px 8px rgb(128, 127, 127);
+    padding-top: 300px;
+    font-weight: bold;
+    // text-shadow:   1px 0px rgb(128, 127, 127), 0px 1px rgb(53, 52, 52),
+    // 2px 1px rgb(128, 127, 127), 1px 2px rgb(53, 52, 52),
+    // 3px 2px rgb(128, 127, 127), 2px 3px rgb(53, 52, 52),
+    // 4px 3px rgb(128, 127, 127), 3px 4px rgb(53, 52, 52),
+    // 5px 4px rgb(128, 127, 127), 4px 5px rgb(53, 52, 52),
+    // 6px 5px rgb(128, 127, 127), 5px 6px rgb(53, 52, 52),
+    // 7px 6px rgb(128, 127, 127), 6px 7px rgb(53, 52, 52),
+    // 8px 7px rgb(128, 127, 127), 7px 8px rgb(53, 52, 52),
+    // 8px 8px rgb(128, 127, 127);
+
+      @media screen and (max-width: 800px) {
+          padding-top: 350px;
+      }
+
+
 
     h1 {
-        font-size: 90px;
+        font-size: 3.5em;
         margin-bottom: 20px;
+        color: #dcdcdc;
 
+          @media screen and (max-width: 800px) {
+              font-size: 3em;
+
+          }
     }
     div {
         font-size: 100px;
