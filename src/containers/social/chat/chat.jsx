@@ -2,19 +2,14 @@ import React, {useEffect} from 'react';
 import {connect, useDispatch} from "react-redux";
 import Fade from 'react-reveal/Fade';
 
-import useSocket from 'use-socket.io-client';
-
-import ChatRooms from './chatRooms/chatRooms';
 import ChatMessages from './chatMessages/ChatMessages';
 import SendMessage from './sendMessage/sendMessage';
 
 import {updatechat, currentRoom, numberOnline} from '../../../services/socket/socketActions';
 
-const Chat = ({chat, user}) => {
+const Chat = ({socket, chat, user}) => {
     const dispatch = useDispatch();
-    const [socket] = useSocket({autoConnect: false, transports: ['websocket']});
     const {name, id} = user.user;
-    socket.connect();
 
     useEffect(() => {
         const user = {
@@ -36,7 +31,6 @@ const Chat = ({chat, user}) => {
 
     return (<main className="chat">
         <Fade>
-            <ChatRooms socket={socket}/>
             <ChatMessages socket={socket}/>
             <SendMessage socket={socket}/>
         </Fade>

@@ -5,25 +5,22 @@ import Fade from 'react-reveal/Fade';
 
 import {ReactComponent as Hero} from '../../components/icon/shadow.svg';
 
-
-
 const LandingPage = () => {
     return (<main className="box">
-    <Fade>
-    <Hero/>
+        <Fade>
+            <Hero/>
+            <div className="box-wrapper">
+                <div className="title">
 
-<div className="box-wrapper">
-        <div className="title">
+                    {<h1 className="big textCarosel">hej</h1>}
 
-            {<h1 className="big textCarosel"></h1>}
+                    <Link to={'/store'}>
+                        <button className="hover ">Store</button>
+                    </Link>
 
-            <Link to={'/store'}>
-                <button className="hover ">Store</button>
-            </Link>
-            
-        </div>
-        </div>
-    </Fade>
+                </div>
+            </div>
+        </Fade>
     </main>)
 }
 
