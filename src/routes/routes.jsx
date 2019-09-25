@@ -10,8 +10,9 @@ import Register from '../containers/login-Handler/Register';
 import Login from '../containers/login-Handler/Login';
 import Profile from '../containers/userProfile/Profile'
 import PrivateRoute from "./PrivateRoute";
-
 import ForOFour from '../components/404/404';
+import PageNotFound from '../components/pagenotfound/Pagenotfound';
+import userProfile from  '../containers/userProfile/Profile'
 
 const Routes = () => {
 
@@ -47,18 +48,22 @@ const Routes = () => {
             path: '/register',
             Component: Register
         }, {
-            _id: 6,
-            exact: false,
+            _id:6,
+            exact: true,
             path: '/login',
             Component: Login
-        }, {
-            _id: 7,
+          }, {
+            _id:7,
+            exact: false,
+            path: '/userProfile',
+            Component: userProfile
+          },  {
+            _id:7,
             exact: false,
             path: '*',
-            Component: ForOFour
-        }
+            Component: PageNotFound
+          },
     ]
-
     const renderRoutes = allRoutes.map(r => {
         return <Route key={r._id} exact={r.exact} path={r.path} render={(props) => <r.Component {...props}/>}/>
     })

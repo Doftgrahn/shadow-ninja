@@ -24,9 +24,13 @@
 //Single Game
 @import '../../containers/singleGame/singleGame.scss';
 //Social
+
+
 @import '../../containers/social/social.scss';
 @import '../../containers/social/chat/chat.scss';
 @import '../../containers/social/chat/unAuthorised/unauthorised.scss';
+@import '../../containers/social/sidebar/usersOnline/usersOnline.scss';
+
 
 //Checkout
 @import '../../containers/checkout/checkout.scss';
