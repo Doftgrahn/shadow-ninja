@@ -12,7 +12,7 @@ const LandingPage = () => {
             <div className="box-wrapper">
                 <div className="title">
 
-                    {<h1 className="big textCarosel">hej</h1>}
+                    <h1 className="textCarosel"></h1>
 
                     <Link to={'/store'}>
                         <button className="hover ">Store</button>
