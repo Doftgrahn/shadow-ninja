@@ -2,13 +2,16 @@
 
 //@import './icon/icon.scss';
 .box {
-    background-image: url("/images/ninjaa.jpg");
+    //background-image: url("/images/shadow.svg");
+    background-image: url("/images/ninjaa.jpg ");
     width: 100%;
     min-height: 100vh;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    background-color: black;
+    
 }
 
 
@@ -19,7 +22,9 @@
     justify-content: center;
     text-align: center;
     padding-top: 20%;
-    text-shadow:   1px 0px rgb(128, 127, 127), 0px 1px rgb(53, 52, 52),
+    font-family:  "Segoe UI", "Roboto", "Oxygen",
+         "Cantarell", ;
+   /* text-shadow:   1px 0px rgb(128, 127, 127), 0px 1px rgb(53, 52, 52),
     2px 1px rgb(128, 127, 127), 1px 2px rgb(53, 52, 52),
     3px 2px rgb(128, 127, 127), 2px 3px rgb(53, 52, 52),
     4px 3px rgb(128, 127, 127), 3px 4px rgb(53, 52, 52),
@@ -27,11 +32,13 @@
     6px 5px rgb(128, 127, 127), 5px 6px rgb(53, 52, 52),
     7px 6px rgb(128, 127, 127), 6px 7px rgb(53, 52, 52),
     8px 7px rgb(128, 127, 127), 7px 8px rgb(53, 52, 52),
-    8px 8px rgb(128, 127, 127);
+    8px 8px rgb(128, 127, 127);*/
+    
 
-    h1 {
+    .big {
         font-size: 90px;
         margin-bottom: 20px;
+        font-family:  "Segoe UI", "Roboto", "Oxygen",;
 
     }
     div {
@@ -47,18 +54,26 @@
         margin: 5px;
         padding: 15px;
         width: 200px;
-        background-color: darkgrey;
+        background-color:#1B0023;
         border-radius: 5px;
         font-size: 20px;
         font-weight: bold;
-        border: inset 1px #e1e1e1;
+        //border: inset 1px #e1e1e1;
         outline: none;
+        margin-top: 22px;
+        color: white;
+        border: black;
+        font-family:  "Segoe UI", "Roboto", "Oxygen",
+         "Cantarell", ;
     }
 }
 
 button:hover {
     background-color: rgba(34, 32, 34, 0.4);
     clear: both;
+    color: white;
+    border-color: rgb(43, 41, 41);
+    
 }
 
 body:before {
@@ -73,18 +88,23 @@ body:before {
     border-radius: 100%;
     background: transparent;
     display: block;
-    box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.4), 200px 0 200px 150px rgba(255, 255, 255, 0.4), -250px 0 300px 150px rgba(255, 255, 255, 0.4), 550px 0 300px 200px rgba(255, 255, 255, 0.4), -550px 0 300px 200px rgba(255, 255, 255, 0.4);
-}
-@media  (max-width: 800px)  {
-h1{
-    font-size:30px;
-    margin-top: 120px;
-}
+    box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.3), 200px 0 200px 150px rgba(255, 255, 255, 0.3), -250px 0 300px 150px rgba(255, 255, 255, 0.4), 550px 0 300px 200px rgba(255, 255, 255, 0.3), -550px 0 300px 200px rgba(255, 255, 255, 0.3);
 }
 
-@media (min-width: 400px){
-    h1{
+@media  (max-width: 800px)  {
+   .title{ .big{
+    
+    font-size:30px;
+    margin-top: 180px;
+   }
+   }
+}
+
+@media (min-width: 375px){
+    .title{.big{
+        
         font-size:90px;
-        text-shadow: white;
+        
+    }
     }
 }
