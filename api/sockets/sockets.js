@@ -9,6 +9,8 @@ module.exports = (io, server) => {
   io.on("connection", socket => {
     console.log("Connected to chat");
     connections.push(socket);
+    socket.emit("getUsers", users);
+
     // add username to chat
 
     //socket.rooms = "general";
@@ -78,6 +80,8 @@ module.exports = (io, server) => {
 
       console.log("Socket.js  Message", socket.room);
       socket.broadcast.emit("updatechat", message);
+      socket.emit("getUsers", users);
+
       //io.in(data.room).emit("updatechat", message);
 
       insertChatHistory(message);
@@ -115,6 +119,8 @@ module.exports = (io, server) => {
       };
 
       socket.emit("updatechat", whichRoom);
+      socket.emit("getUsers", users);
+
 
       getAllHistory(newroom, callback => {
         socket.emit("updatechat", callback);
