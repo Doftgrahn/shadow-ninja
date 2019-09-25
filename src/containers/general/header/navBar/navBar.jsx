@@ -29,12 +29,7 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
         }, {
             name: 'Checkout',
             to: '/checkout'
-<<<<<<< HEAD
         }, toggleLogin,
-=======
-        },
-        toggleLogin
->>>>>>> e628cc0230ca1b89e22664d23b0288193a2c7e2f
     ]
 
     const navBar = navBarData.map((nav, index) => <Link onClick={turnOff} key={index} to={nav.to}>{nav.name}</Link>)

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../services/login/actions/authActions";
 import { updateCurrency } from "../../services/login/actions/authActions";
 import { updateGames } from "../../services/login/actions/authActions";
-import {Link, Redirect} from "react-router-dom";
+import { Redirect} from "react-router-dom";
 
 import PropTypes from "prop-types";
 import GameLibrary from './gameLibrary';
@@ -32,7 +32,6 @@ class Profile extends Component {
     let cart = this.props.cart;
     let total = this.props.totalReducer;
     let isPurchaseValid = this.props.auth.isPurchaseValid;
-    console.log(this.props.auth.isPurchaseValid)
     this.props.updateGames(url, userData, cart, total, isPurchaseValid)
   }
 
@@ -70,7 +69,7 @@ render() {
                     <button onClick={this.updateGameLibrary} style={{ color: 'black' }}>Add game</button>
 
                   </div>
-                  <Fade>
+                </Fade>
                 </div>
 
 

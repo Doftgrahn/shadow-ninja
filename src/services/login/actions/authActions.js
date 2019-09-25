@@ -1,7 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import {Link} from "react-router-dom";
+
 import {
   GET_ERRORS,
   SET_CURRENT_USER,
@@ -76,7 +76,6 @@ export const updateGames = (url, userData, cart, total, isPurchaseValid) => disp
   let amountToAdd = false;
   let newPurchaseValid = isPurchaseValid;
 
-  console.log('is valid?', newPurchaseValid)
   cart.forEach(game => {
     let number = parseInt(game.price)
     amountToLower += number
@@ -94,7 +93,7 @@ export const updateGames = (url, userData, cart, total, isPurchaseValid) => disp
     }
 
   });
-  console.log('game ok to buy?: ',newPurchaseValid)
+
   if(userData.currency < amountToLower || newPurchaseValid !== true) {
     console.log('change state to not enough currency or newPurchaseValid = false')
     return;
