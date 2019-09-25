@@ -13,6 +13,20 @@
 
 
 
+.textCarosel::after{
+  content:"";
+  animation: 20s linear infinite;
+  animation-name: textCarosel;
+
+}
+
+@keyframes textCarosel {
+  0% { content: "xX~ShadowNinja~Xx"}
+  50% { content: "ASSASIN'S NEVER DIE" }
+  
+  100% { content: "THEY JUST GAME AWAY" }
+}
+
 .title {
     display: flex;
     flex-direction: column;
