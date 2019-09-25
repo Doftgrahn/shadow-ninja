@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import { updateGames } from "../../../../services/login/actions/authActions";
 //Redux
 import {connect} from 'react-redux';
 import {useDispatch} from 'react-redux'
@@ -7,7 +7,7 @@ import {useDispatch} from 'react-redux'
 //Function that clears all products from state.
 import {clearProducts} from '../../../../services/cart/cartAction';
 
-const CheckoutFinal = ({cart, total}) => {
+const CheckoutFinal = ({cart, total, auth, isPurchaseValid, updateGames}) => {
 
     // Get Dispatch from Redux.
     const dispatch = useDispatch();
@@ -21,7 +21,14 @@ const CheckoutFinal = ({cart, total}) => {
 
     const checkout = () => {
         const {productQuantity, totalPrice} = total;
-
+        // Add to user library
+        let url = auth.user.id;
+        let userData = auth.user;
+        let cart1 = cart;
+        let total1 = totalPrice;
+        let isPurchaseValid = auth.isPurchaseValid;
+        updateGames(url, userData, cart1, total1, isPurchaseValid)
+        //Add to user library
         // If cart exists and checkbox is okay, send in stuff and delete entire state.
         if (cart.length && hasAccepted) {
             setIsValid(true)
@@ -67,6 +74,6 @@ const CheckoutFinal = ({cart, total}) => {
     </div>)
 }
 
-const mapStateToProps = state => ({cart: state.cart, total: state.total.data})
+const mapStateToProps = state => ({cart: state.cart, total: state.total.data, auth: state.auth, isPurchaseValid: state.isPurchaseValid})
 
-export default connect(mapStateToProps)(CheckoutFinal);
+export default connect(mapStateToProps, {updateGames})(CheckoutFinal);

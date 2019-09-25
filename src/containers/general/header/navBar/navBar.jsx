@@ -13,7 +13,7 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
     } else {
         toggleLogin = {
             name: 'Login',
-            to: '/register'
+            to: '/Login'
         }
     }
     const navBarData = [
@@ -29,8 +29,7 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
         }, {
             name: 'Checkout',
             to: '/checkout'
-        },
-        toggleLogin
+        }, toggleLogin,
     ]
 
     const navBar = navBarData.map((nav, index) => <Link onClick={turnOff} key={index} to={nav.to}>{nav.name}</Link>)
