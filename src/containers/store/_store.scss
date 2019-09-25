@@ -3,12 +3,12 @@
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    background: $color-gray;
 
     .gameswrapper {
         display: flex;
         flex-direction: row;
         overflow: hidden;
-        
     }
 
     h1 {

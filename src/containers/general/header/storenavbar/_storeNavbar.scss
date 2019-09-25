@@ -1,12 +1,44 @@
 .store-nav {
-    display: block;
-    padding: 20px;
-    height: 100%;
-    width: 280px;
+
+    // input{
+    //   border-radius: 5px;
+    //   font-size: 20px;
+    //   text-align: center;
+    //   margin-right: 10px;
+    // }
 }
 
-ul, li {
+a.listItems {
+    margin: 0;
+}
+
+.listItems:hover {
+    text-decoration: none;
+}
+.titleInput {
+    color: #1B0023;
+    font-size: 15px;
+    text-align: center;
+}
+
+.suggestedItems {
+    border-radius: 0 3px 3px 3px;
+    min-width: 215px;
+    // max-width: 215px;
     list-style-type: none;
-    background-color: lightblue;
-    color: black;
+    background-color: gray;
+    position: absolute;
+    z-index: 10;
+    
+    li {
+        display: block;
+        padding: 0 5px;
+        color: black;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.01);
+            background-color: lightgray;
+        }
+    }
 }

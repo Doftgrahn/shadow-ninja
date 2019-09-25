@@ -1,5 +1,7 @@
 .chat {
+    margin: 0 auto;
     width: 100%;
+    max-width: 1100px;
     padding-top: 10px;
     min-height: 320px;
     background: tomato;
@@ -12,9 +14,8 @@
 
         .room-btn {
             flex: 1;
-            margin:0 ;
+            margin: 0;
             width: 100%;
-            
         }
     }
 
@@ -25,6 +26,7 @@
         border: 2px solid black;
         padding: 5px;
         overflow: scroll;
+
     }
 
     &__content {
@@ -33,6 +35,9 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        &:last-child {
+            position: sticky;
+        }
 
         p {
             color: black;
@@ -53,8 +58,9 @@
         margin-top: 0;
 
         input {
+            padding:10px;
+            width: 100%;
             color: black;
-            padding: 5px;
             outline: none;
             border: none;
         }
@@ -70,6 +76,8 @@
             outline: none;
         }
     }
+}
 
-
+.btn-active {
+    color:red;
 }

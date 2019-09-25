@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import Chat from '../../chat/chat';
+//import Chat from '../../chat/chat';
 
 const Message = () => {
     //only true during testing
@@ -12,7 +12,7 @@ const Message = () => {
         <div className={`message__container ${ !toggleChat
                 ? 'show'
                 : 'hide'}`}>
-            <Chat/>
+            {/*<Chat/>*/}
         </div>
         <button onClick={hideShow}>{toggleChat ? 'Close' : 'Chat'}</button>
     </main>)

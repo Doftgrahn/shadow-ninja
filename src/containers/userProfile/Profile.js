@@ -6,7 +6,11 @@ import { updateGames } from "../../services/login/actions/authActions";
 import {Link, Redirect} from "react-router-dom";
 
 import PropTypes from "prop-types";
-import GameLibrary from './gameLibrary'
+import GameLibrary from './gameLibrary';
+
+
+import Fade from 'react-reveal/Fade';
+
 
 class Profile extends Component {
 
@@ -39,6 +43,7 @@ render() {
 
     if (this.props.auth.isAuthenticated ) {
       profile =   <div>
+                  <Fade>
                 <h4>
                   <b>Hey there,</b> {user.name.split(" ")[0]}
                   </h4>
@@ -65,6 +70,7 @@ render() {
                     <button onClick={this.updateGameLibrary} style={{ color: 'black' }}>Add game</button>
 
                   </div>
+                  <Fade>
                 </div>
 
 

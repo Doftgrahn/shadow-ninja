@@ -1,61 +1,62 @@
 import {
+  SOCKET,
   SEND_MESSAGE,
   UPDATE_CHAT,
   CHANGE_ROOM,
-  CURRENT_ROOM,
+  GET_ALL_ROOMS,
   CLEAR_ROOMS,
-  ROOMS
+  NUMBER_ONLINE,
+  IS_TYPING
 } from "./actionTypes";
 
-import io from "socket.io-client";
-
-const host = window.location.origin;
-const socket = io.connect('/' || 'https://' + host);
-
-export const sendMessage = (message, name) => dispatch => {
-
-    const data = {
-    user:name,
-      message: message
-    };
+export const defaultSocket = socket => ({
+  type: SOCKET,
+  payload: socket
+});
 
 
-  socket.emit("send", message);
+export const sendMessage = (socket, message, user, room) => dispatch => {
+  const data = {
+    message,
+    user,
+    room
+  };
+  console.log(data);
+
+  socket.emit("send", data);
 
   dispatch({
     type: SEND_MESSAGE,
-    payload: data
+    payload: message
   });
 };
 
-export const updatechat = (username, message) => dispatch => {
-  const data = {
-    user: username,
-    message: message
-  };
-
-  dispatch({
-    type: UPDATE_CHAT,
-    payload: data
+export const updatechat = socket => dispatch => {
+  socket.on("updatechat", data => {
+    dispatch({
+      type: UPDATE_CHAT,
+      payload: data
+    });
   });
 };
 
+export const currentRoom = socket => dispatch => {
+  socket.on("updaterooms", (rooms, current_room) => {
+    let allRooms = rooms.map(room => ({room}));
 
-export const currentRoom = room => dispatch => {
+    const data = {
+      current_room: current_room,
+      rooms: allRooms
+    };
 
-
-  dispatch({
-    type: CURRENT_ROOM,
-    room: room
+    dispatch({
+      type: GET_ALL_ROOMS,
+      room: data
+    });
   });
 };
-export const getAllRooms = rooms => ({
-  type: ROOMS,
-  rooms: rooms
-});
 
-export const switchRoom = room => dispatch => {
-    console.log(room);
+export const switchRoom = (socket, room) => dispatch => {
   socket.emit("switchRoom", room);
 
   dispatch({
@@ -64,7 +65,31 @@ export const switchRoom = room => dispatch => {
   });
 };
 
-export const clearChat = (room) => ({
-    type: CLEAR_ROOMS,
-    room
-})
+export const numberOnline = socket => dispatch => {
+  socket.on("getUsers", data => {
+    dispatch({
+      type: NUMBER_ONLINE,
+      payload: data
+    });
+  });
+};
+
+export const whoIsTyping = (socket) => dispatch => {
+
+  socket.on("istyping", (data, name) => {
+
+      const whoIsTyping = {
+          typer: data,
+          user: name
+      }
+
+    dispatch({
+      type: IS_TYPING,
+      payload: whoIsTyping
+    });
+  });
+};
+export const clearChat = room => ({
+  type: CLEAR_ROOMS,
+  room
+});

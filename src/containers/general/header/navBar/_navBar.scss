@@ -2,15 +2,24 @@
     display: flex;
     flex-direction: column;
     z-index: 2;
-    background: tomato;
+    background: #1f1c3a;
     width: 100%;
     height: 100vh;
     position: fixed;
     left: 2000px;
     top: 0;
     transition: 0.4s;
-    padding: 100px 180px 10px;
+    padding: 180px 110px 10px;
     flex: 1;
+    letter-spacing: 1px;
+      input{
+        position: absolute;
+        top: 90px;
+        left: 80px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
     @media screen and (min-width: 800px) {
         width: 100%;
         background: 0;
@@ -21,15 +30,18 @@
         height: auto;
         padding: 0;
         margin: 0 50px 0 0;
-    }
+        flex: 0;
 
-    a {
-        margin-top: 40px;
-        font-size: 30px;
-        @media screen and (min-width: 800px) {
-            font-size: 20px;
+        input{
+        
+          font-size: 20px;
+          text-align: center;
+          position: static;
+          padding: 0;
         }
     }
+
+
 }
 
 .activeNav {

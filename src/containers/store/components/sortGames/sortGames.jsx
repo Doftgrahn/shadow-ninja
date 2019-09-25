@@ -1,40 +1,43 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const SortGames = (props) => {
-    const [sortValue, setSortValue] = useState('');
-
+import {connect, useDispatch} from "react-redux";
+import {setSort} from '../../../../services/products/productActions';
+import FilterCategory from '../filterCategory/filterCategory'
+ const SortGames = ({sort}) => {
+ 	const dispatch = useDispatch();
     const options = [
         {
             disabled: 'disabled',
             hidden: 'hidden',
             value: ''
         }, {
-            title: 'Most Popular',
-            value: 'mostPopular'
-        }, {
-            title: 'Newest',
-            value: 'newest'
-        }, {
             title: 'Price - lowest first',
             value: 'lowestPrice'
         }, {
-            title: 'Price - lowest first',
+            title: 'Price - heighest first',
             value: 'highestPrice'
+        }, {
+            title: 'Rating - lowest first',
+            value: 'lowestRating'
+        }, {
+            title: 'Rating - heighest first',
+            value: 'highestRating'
         }
     ];
-
     const renderOptions = options.map((option, index) => {
         return <option  key={index} value={option.value}>{option.title}</option>
     })
 
     return (<div className="sort">
         <div className="sort__wrapper">
+		<FilterCategory />
             <span>Sort by:</span>
-            <select value={sortValue} onChange={e => setSortValue(e.target.value)}>
+            <select value={sort} onChange={e => dispatch(setSort(e.target.value))}>
                 {renderOptions}
             </select>
         </div>
     </div>)
 }
 
-export default SortGames;
+const mapStateToProps = state => ({sort: state.products.sort})
+export default connect(mapStateToProps)(SortGames);

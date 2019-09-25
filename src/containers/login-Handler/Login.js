@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { loginUser } from "../../services/login/actions/authActions";
 import classnames from "classnames";
 
+import Fade from 'react-reveal/Fade';
+
 class Login extends Component {
   constructor() {
     super();
@@ -45,6 +47,7 @@ render() {
     }
 return (
   <div className="LogInWrapper">
+      <Fade>
       <div className="inerWrapper">
           <div className="inerOfInerWrapper">
 
@@ -67,7 +70,7 @@ return (
                   invalid: errors.email || errors.emailnotfound
                   })}
                 />
-
+                <br/>
                 <span className="red-text">
                 {errors.email}
                 {errors.emailnotfound}
@@ -86,7 +89,7 @@ return (
                   invalid: errors.password || errors.passwordincorrect
                 }) }
                 />
-
+                <br/>
                 <span className="red-text">
                 {errors.password}
                 {errors.passwordincorrect}
@@ -108,6 +111,7 @@ return (
               </div>
           </div>
         </div>
+        </Fade>
       </div>
     );
   }

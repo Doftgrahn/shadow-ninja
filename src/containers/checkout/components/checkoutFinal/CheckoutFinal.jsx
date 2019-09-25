@@ -7,7 +7,8 @@ import {useDispatch} from 'react-redux'
 //Function that clears all products from state.
 import {clearProducts} from '../../../../services/cart/cartAction';
 
-const CheckoutFinal = ({cart, totalPrice, totalProducts}) => {
+const CheckoutFinal = ({cart, total}) => {
+
     // Get Dispatch from Redux.
     const dispatch = useDispatch();
 
@@ -19,6 +20,8 @@ const CheckoutFinal = ({cart, totalPrice, totalProducts}) => {
     const removeAll = () => (dispatch(clearProducts()))
 
     const checkout = () => {
+        const {productQuantity, totalPrice} = total;
+
         // If cart exists and checkbox is okay, send in stuff and delete entire state.
         if (cart.length && hasAccepted) {
             setIsValid(true)
@@ -27,7 +30,7 @@ const CheckoutFinal = ({cart, totalPrice, totalProducts}) => {
                 RECIEPT
                 _________________________________________
                 Total Price : € ${totalPrice}
-                Total Number of Products: ${totalProducts}
+                Total Number of Products: ${productQuantity}
                 ${cart.map(e => e.title)}
                 `)
             removeAll();
@@ -64,4 +67,6 @@ const CheckoutFinal = ({cart, totalPrice, totalProducts}) => {
     </div>)
 }
 
-export default connect()(CheckoutFinal);
+const mapStateToProps = state => ({cart: state.cart, total: state.total.data})
+
+export default connect(mapStateToProps)(CheckoutFinal);
