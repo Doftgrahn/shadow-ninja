@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import NavBar from './navBar/navBar';
 import Hamburger from './hamburger/hamburger';
-import StoreNavbar from './storenavbar/storenavbar';
+// import StoreNavbar from './storenavbar/storenavbar';
 
-//import {ReactComponent as Hero} from './../../../components/icon/shadow.svg';
+// import {ReactComponent as Hero} from './../../../components/icon/shadow.svg';
 
 const Header = () => {
     const [toggle, setToggle] = useState(false);
@@ -12,13 +12,12 @@ const Header = () => {
     const turnOff = () => setToggle(false);
 
     return (<header className="header">
-       
-
-        <StoreNavbar toggle={toggle} turnOff={turnOff}/>
         
-        <NavBar toggle={toggle} turnOff={turnOff}/>
+        <h1>xX~SN~Xx</h1>
+          <NavBar toggle={toggle} turnOff={turnOff}/>
 
-        <Hamburger toggleState={toggleState} toggle={toggle}/>
+          <Hamburger toggleState={toggleState} toggle={toggle}/>
+
     </header>)
 }
 

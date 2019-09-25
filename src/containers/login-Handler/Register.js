@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { registerUser } from "../../services/login/actions/authActions";
 import classnames from "classnames";
 
+import Fade from 'react-reveal/Fade';
+
+
 class Register extends Component {
   constructor() {
     super();
@@ -55,6 +58,7 @@ render() {
     }
 return (
       <div className="regWrapper">
+          <Fade>
         <div className="inerRegWrapper">
           <div>
           <h2>
@@ -141,6 +145,7 @@ return (
             </div>
           </div>
         </div>
+        </Fade>
       </div>
     );
   }

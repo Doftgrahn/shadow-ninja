@@ -1,23 +1,30 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-//import {ReactComponent as Hero} from './icon/shadow.svg';
+import Fade from 'react-reveal/Fade';
+
+import {ReactComponent as Hero} from '../../components/icon/shadow.svg';
 
 
 
 const LandingPage = () => {
-    return (<div className="box">
+    return (<main className="box">
+    <Fade>
+    <Hero/>
 
+<div className="box-wrapper">
         <div className="title">
 
-            {<h1 className="big">xX~ShadowNinja~Xx</h1>}
+            {<h1 className="big textCarosel"></h1>}
 
             <Link to={'/store'}>
                 <button className="hover ">Store</button>
             </Link>
             
         </div>
-    </div>)
+        </div>
+    </Fade>
+    </main>)
 }
 
 export default LandingPage;

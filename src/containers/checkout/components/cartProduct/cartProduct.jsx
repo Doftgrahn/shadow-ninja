@@ -48,6 +48,7 @@ const CartProduct = ({product}) => {
 
         </div>
 
+<div className="allBtn-container">
         <div className="quantiy">
 <button onClick={addQuantity}><Plus/></button>
 <button onClick={decreaseQuant}><Minus/></button>
@@ -56,7 +57,7 @@ const CartProduct = ({product}) => {
         <div className="btn-container">
             <button onClick={remove}><Delete/></button>
         </div>
-
+</div>
     </div>)
 }
 

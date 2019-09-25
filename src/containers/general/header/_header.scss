@@ -5,9 +5,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 20px;
+    padding: 15px 20px;
     //background-color: #0c0910;
-   background-color: #1B0023;
+   background-color: #1b171d;
    
     
     .icon_wrapper {
@@ -19,11 +19,19 @@
     //     width: 100%;
     //     font-size: 40px;
     // }
+
     a {
-        margin: 0 10px;
+        margin-top: 20px;
+        font-size: 40px;
         color: white;
-        font-size: 15px;
-        font-family:  "Segoe UI", "Roboto", "Oxygen",
-         "Cantarell", 
+        @media screen and (min-width: 800px) {
+            font-size: 20px;
+            margin: 0 10px;
+        }
+      }
+
+    .navAndStorebar{
+      display: flex;
     }
+
 }

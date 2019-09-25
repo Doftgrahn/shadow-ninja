@@ -1,14 +1,30 @@
 import {
+  SOCKET,
   SEND_MESSAGE,
   UPDATE_CHAT,
   CHANGE_ROOM,
   GET_ALL_ROOMS,
   CLEAR_ROOMS,
-  //IS_TYPING
+  NUMBER_ONLINE,
+  IS_TYPING
 } from "./actionTypes";
 
-export const sendMessage = (socket, message) => dispatch => {
-  socket.emit("send", message);
+export const defaultSocket = socket => ({
+  type: SOCKET,
+  payload: socket
+});
+
+/***************************************************************************************** */
+/* Async Action items using - Sockets													   */
+/***************************************************************************************** */
+
+export const sendMessage = (socket, message, user) => dispatch => {
+  const data = {
+    message,
+    user
+  };
+
+  socket.emit("send", data);
 
   dispatch({
     type: SEND_MESSAGE,
@@ -28,6 +44,7 @@ export const updatechat = socket => dispatch => {
 export const currentRoom = socket => dispatch => {
   socket.on("updaterooms", (rooms, current_room) => {
     let allRooms = rooms.map(room => ({room}));
+
     const data = {
       current_room: current_room,
       rooms: allRooms
@@ -49,6 +66,24 @@ export const switchRoom = (socket, room) => dispatch => {
   });
 };
 
+export const numberOnline = socket => dispatch => {
+  socket.on("getUsers", data => {
+    dispatch({
+      type: NUMBER_ONLINE,
+      payload: data
+    });
+  });
+};
+
+export const whoIsTyping = (socket, type, name) => dispatch => {
+  socket.on("istyping", (data, user) => {
+
+    dispatch({
+      type: IS_TYPING,
+      payload: data
+    });
+  });
+};
 export const clearChat = room => ({
   type: CLEAR_ROOMS,
   room

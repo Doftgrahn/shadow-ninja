@@ -3,14 +3,17 @@ import {
   UPDATE_CHAT,
   CLEAR_ROOMS,
   GET_ALL_ROOMS,
-  CHANGE_ROOM
+  CHANGE_ROOM,
+  NUMBER_ONLINE,
+  IS_TYPING
 } from "./actionTypes";
 
 const initialState = {
   data: [],
   current_room: "",
   rooms: [],
-  isTyping: false
+  isTyping: false,
+  number_online: []
 };
 
 export default function(state = initialState, action) {
@@ -29,6 +32,15 @@ export default function(state = initialState, action) {
 
     case CHANGE_ROOM:
       return {...state, current_room: action.room};
+
+    case IS_TYPING:
+      return {...state, isTyping: action.payload};
+
+    case NUMBER_ONLINE:
+      return {
+        ...state,
+        number_online: [...state.data, action.payload]
+      };
 
     default:
       return state;

@@ -6,7 +6,7 @@ const GameLibrary = ({auth}) => {
 
   let gamesInLibrary = auth.user.gameLibrary.map(game => {
      return (
-       <div key={game.id} className='test'>
+       <div key={game._id} className='test'>
          <p>{game.title}</p>
          <p>{game.category}</p>
          <p>{game.rating}</p>

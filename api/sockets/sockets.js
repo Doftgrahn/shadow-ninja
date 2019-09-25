@@ -1,67 +1,61 @@
+const {insertChatHistory, getAllHistory} = require("./socketDB");
+
 module.exports = (io, server) => {
-  const history = [];
   const rooms = ["general", "party", "trade"];
 
   let connections = [];
-  const users = [];
-
-  const roomCollection = [
-    {
-      room: "general",
-      history: []
-    },
-    {
-      room: "party",
-      history: []
-    },
-    {
-      room: "trade",
-      history: []
-    }
-  ];
+  let users = [];
 
   io.on("connection", socket => {
-      console.log('Connected to chat');
+    console.log("Connected to chat");
     connections.push(socket);
     // add username to chat
     socket.rooms = "general";
-    socket.join("general")
+    socket.join("general");
+
+    getAllHistory(socket.rooms, callback => {
+      socket.emit("updatechat", callback);
+    });
 
     socket.on("disconnect", () => {
-      //users.splice(users.indexOf(socket.username), 1)
+      users = users.filter(user => user.name !== socket.username);
+      //users.splice(users.indexOf(socket.username), 1);
+
       connections.splice(connections.indexOf(socket, 1));
       io.sockets.emit("updateusers", users);
-      console.log('disconnected');
+
+      console.log("disconnected");
     });
 
     socket.on("adduser", username => {
-      // const find = users.find(user => user === username);
-
-      socket.username = username;
+      socket.username = username.name;
+      socket.id = username.id;
       users.push(username);
 
       socket.join("general");
-      //socket.rooms = 'general
 
+      socket.emit("getUsers", users);
+
+      //socket.rooms = "general";
+
+      /*
       const serverreplyToUser = {
         user: "SERVER",
         message: `You are now connected to ${socket.rooms} room`
       };
 
       socket.emit("updatechat", serverreplyToUser);
+      */
 
       const serverReplyToChat = {
         user: "SERVER",
-        message: `${username} has connected to ${socket.rooms}`
+        message: `${username.name} has connected to ${socket.rooms}`
       };
 
       socket.to(socket.rooms).emit("updatechat", serverReplyToChat);
 
-      //username + " has connected to this room " + socket.rooms
-
       socket.emit("updaterooms", rooms, rooms[0]);
     });
-
     //send
     socket.on("send", data => {
       const today = new Date().toLocaleTimeString("en-GB", {
@@ -71,68 +65,64 @@ module.exports = (io, server) => {
       });
 
       const message = {
-        message: data,
-        user: socket.username,
-        time: today
+        id: socket.id,
+        message: data.message,
+        user: data.user,
+        time: today,
+        room: socket.rooms
       };
-      console.log("MSG:", data);
-      io.in(socket.rooms).emit("updatechat", message);
-      /*
-      const test = {
-        user,
-        data
-      };
-      */
 
-      //socket.rooms.push(test);
-      /*
-      roomCollection.map(data => {
-        if (data.room === socket.rooms) {
-          return {...data, history: [...data.history, user]};
-        }
-        return data;
-      });
+      console.log("Socket.js  Message", message);
+      socket.broadcast.emit("updatechat", message);
 
-*/
-      /*
-      console.log('HEJ');
-      */
+      insertChatHistory(message);
     });
 
     // IS TYPING
 
-    socket.on("typing", data => {
-      console.log(data);
-      socket.emit("istyping", data);
+    socket.on("typing", (data, user) => {
+      console.log("Is Anyone writing?:", data, "Who is Writing?", user);
+      socket.broadcast.emit("istyping", data, user);
+      // All the other folks but not U
+      // socket.broadcast.to(socket.rooms).emit("istyping", data, user);
     });
 
     // Switch rooms
     socket.on("switchRoom", newroom => {
+      console.log(users);
+      /*
       const messageLeft = {
         user: "SERVER",
         message: `${socket.username} has left the ${socket.rooms} room`
       };
 
       socket.to(socket.rooms).emit("updatechat", messageLeft);
-
+*/
       socket.leave(socket.rooms);
 
       socket.rooms = newroom;
-      socket.join(newroom);
+
+      socket.join(socket.rooms);
 
       const whichRoom = {
         user: "SERVER",
-        message: `You are in ${newroom}`
+        message: `You are in ${newroom} room`
       };
 
       socket.emit("updatechat", whichRoom);
 
+      getAllHistory(socket.rooms, callback => {
+        socket.emit("updatechat", callback);
+      });
+
+      /*
       const newRoomJoin = {
         user: "SERVER",
         message: `${socket.username} has joined ${newroom} room`
       };
+      */
 
-      socket.to(socket.rooms).emit("updatechat", newRoomJoin);
+      // socket.to(socket.rooms).emit("updatechat", newRoomJoin);
 
       socket.emit("updaterooms", rooms, newroom);
     });

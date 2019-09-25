@@ -15,16 +15,15 @@ const PromoGame = ({products, match}) => {
                 <h1>{game.title}</h1>
                 <h3>€{game.price}</h3>
                 <h3>PROMO €{game.price / 2} 50% off</h3>
-
                 <Link to={`${match.url}/${game._id}`}>More info...</Link>
             </div>
 
         </div>)
 
-    })[6];
+    })[Math.floor(Math.random() * products.length)]
     //Uses Regular Index for developmentt.
 
-    //   [Math.floor(Math.random() * products.length)]
+    //[6]   [Math.floor(Math.random() * products.length)]
 
     return (<section className="promo">
         {randomPromo}
