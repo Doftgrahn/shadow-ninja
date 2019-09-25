@@ -12,16 +12,27 @@
     //background-size: contain;
     background-color: black;
     position: relative;
+
+      
+    @media screen and (max-width: 800px) {
+        min-height: 66vh;
+    }
     
 svg {
     width:100%;
     height: 100%;
+
+    @media screen and (max-width: 800px) {
+        margin-top: 150px;
+    }
 }
     &-wrapper {
         width:100%;
         height:100%;
         position: absolute;
         top:50%;
+
+        
     }
 }
 
@@ -49,7 +60,7 @@ svg {
     font-weight: bold;
    
       @media screen and (max-width: 800px) {
-          padding-top: 350px;
+          padding-bottom: 350px;
       }
 
 
