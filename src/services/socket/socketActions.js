@@ -76,11 +76,13 @@ export const numberOnline = socket => dispatch => {
 
 export const whoIsTyping = (socket) => dispatch => {
 
-  socket.on("istyping", (data, name) => {
+  socket.on("istyping", (data, name, room) => {
 
+console.log('ROOM', room);
       const whoIsTyping = {
           typer: data,
-          user: name
+          user: name,
+          room:room
       }
 
     dispatch({
