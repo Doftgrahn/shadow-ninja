@@ -34,9 +34,9 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
 
     // Only shows the suggestions to user if there is something written by the user
     if(filterValue === '') {
-        return (<section className="store-nav" >
-        <input
-        style={{color:'black'}} value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/>
+        return (<section className="store-nav">
+        <input style={{color:'black'}} value={filterValue} onChange={changeFilterValue} className='titleInput' 
+        placeholder='Enter game title'/>  
         </section>)
     } else {
         return (<section className="store-nav">
