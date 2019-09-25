@@ -14,15 +14,14 @@ export const defaultSocket = socket => ({
   payload: socket
 });
 
-/***************************************************************************************** */
-/* Async Action items using - Sockets													   */
-/***************************************************************************************** */
 
-export const sendMessage = (socket, message, user) => dispatch => {
+export const sendMessage = (socket, message, user, room) => dispatch => {
   const data = {
     message,
-    user
+    user,
+    room
   };
+  console.log(data);
 
   socket.emit("send", data);
 
@@ -75,12 +74,20 @@ export const numberOnline = socket => dispatch => {
   });
 };
 
-export const whoIsTyping = (socket, type, name) => dispatch => {
-  socket.on("istyping", (data, user) => {
+export const whoIsTyping = (socket) => dispatch => {
+
+  socket.on("istyping", (data, name, room) => {
+
+console.log('ROOM', room);
+      const whoIsTyping = {
+          typer: data,
+          user: name,
+          room:room
+      }
 
     dispatch({
       type: IS_TYPING,
-      payload: data
+      payload: whoIsTyping
     });
   });
 };

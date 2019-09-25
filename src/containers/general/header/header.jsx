@@ -3,7 +3,7 @@ import NavBar from './navBar/navBar';
 import Hamburger from './hamburger/hamburger';
 // import StoreNavbar from './storenavbar/storenavbar';
 
-import {ReactComponent as Hero} from './../../../components/icon/shadow.svg';
+// import {ReactComponent as Hero} from './../../../components/icon/shadow.svg';
 
 const Header = () => {
     const [toggle, setToggle] = useState(false);
@@ -12,12 +12,8 @@ const Header = () => {
     const turnOff = () => setToggle(false);
 
     return (<header className="header">
-        <div className="icon_wrapper">
-            <Hero/>
-        </div>
-
-
-
+        
+        <h1>xX~SN~Xx</h1>
           <NavBar toggle={toggle} turnOff={turnOff}/>
 
           <Hamburger toggleState={toggleState} toggle={toggle}/>
@@ -26,3 +22,8 @@ const Header = () => {
 }
 
 export default Header;
+
+
+//<div className="icon_wrapper">
+         //<Hero/>
+       // </div>

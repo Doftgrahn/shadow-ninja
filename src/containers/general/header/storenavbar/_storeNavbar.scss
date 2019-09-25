@@ -15,6 +15,11 @@ a.listItems {
 .listItems:hover {
     text-decoration: none;
 }
+.titleInput {
+    color: #1B0023;
+    font-size: 15px;
+    text-align: center;
+}
 
 .suggestedItems {
     border-radius: 0 3px 3px 3px;
@@ -24,7 +29,7 @@ a.listItems {
     background-color: gray;
     position: absolute;
     z-index: 10;
-
+    
     li {
         display: block;
         padding: 0 5px;

@@ -11,21 +11,17 @@
     transition: 0.4s;
     padding: 180px 110px 10px;
     flex: 1;
-
-      // input{
-      //   position: absolute;
-      //   top: 90px;
-      //   left: 80px;
-      //   padding: 10px;
-      //   border-radius: 5px;
-      // }
-
+    letter-spacing: 1px;
       section{
         position: absolute;
         top: 90px;
         left: 80px;
-        padding: 10px;
-        border-radius: 5px;
+
+
+          input{
+            padding: 10px;
+            border-radius: 5px;
+          }
       }
 
 

@@ -12,27 +12,39 @@ const SendMessage = ({socket, user, chat}) => {
     const [input, setInput] = useState('');
 
     useEffect(() => {
+        if (chat.current_room) {
+            setInput('')
+        }
+    }, [chat.current_room])
+
+    useEffect(() => {
         if (isInitialMount.current) {
             isInitialMount.current = false;
+            //dispatch(clearChat())
         } else {
-            const {name} = user.user
-            socket.emit("typing", true, name);
+            const {name} = user
+                .user
+                socket
+                .emit("typing", true, name, chat.current_room);
 
             const typer = setTimeout(() => {
-                socket.emit("typing", false, name);
-            }, 3000)
+                socket.emit("typing", false, name, chat.current_room);
+            }, 1000)
 
             return() => clearTimeout(typer)
         }
 
-    }, [input, dispatch, socket, user.user])
+    }, [input, dispatch, socket, user.user, chat.current_room])
 
     const send = () => {
+        console.log(chat.current_room);
         if (input && user.user) {
-            dispatch(sendMessage(socket, input, user.user.name))
+            dispatch(sendMessage(socket, input, user.user.name, chat.current_room))
             setInput('')
+
         }
     }
+
     const pressEnter = (e) => {
         if (e.key === 'Enter') {
             send()
