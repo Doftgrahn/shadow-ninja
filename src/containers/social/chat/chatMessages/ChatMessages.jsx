@@ -28,10 +28,10 @@ const ChatMessages = ({chat, user, socket}) => {
         }
     }
 
-console.log(chat.data);
     const showMessages = chat
         .data
-        .flat().filter(e => e.room === chat.current_room)
+        .flat()
+        .filter(e => e.room === chat.current_room)
         .map((e, i) => <div className={`chat__content ${e.id === user.user.id
                 ? 'activeUser'
                 : ''}`} key={i}>
