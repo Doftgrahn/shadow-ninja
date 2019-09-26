@@ -19,9 +19,11 @@ a.listItems {
     color: white;
     font-size: 16px;
     text-align: left;
-    background-color: darkorange;
+    background-color: $color-orange;
     outline: none;
     border: 0px;
+
+    
 }
 
 .suggestedItems {
@@ -41,7 +43,7 @@ a.listItems {
 
         &:hover {
             transform: scale(1.01);
-            background-color: lightgray;
+            background-color: $color-white;
         }
     }
 }
