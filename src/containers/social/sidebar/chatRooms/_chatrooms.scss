@@ -1,0 +1,17 @@
+.chat__room {
+    display: flex;
+    flex-direction: row;
+
+    .room-btn {
+        padding: 10px;
+        flex: 1;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+        //border-bottom: 5px solid #e57474;
+    }
+}
+
+.btn-active {
+    background: #7a4ee0;
+}
