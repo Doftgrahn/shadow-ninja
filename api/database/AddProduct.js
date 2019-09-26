@@ -1,6 +1,5 @@
-const {uri} = require('../secrets/mongoDB.config');
+const {uri} = require('../secrets/mongoDB.config.js');
 const {settings, MongoClient} = require('../settings/Settings.js');
-
 
 const insertMongoDB = () => {
     // start MongoClient
@@ -17,8 +16,8 @@ const insertMongoDB = () => {
               }
               console.log('succsess insertMany: ', 'response');
               client.close()
-            })
+		  })
     })
 }
 
-module.exports = {insertMongoDB};
+module.exports = {insertMongoDB}

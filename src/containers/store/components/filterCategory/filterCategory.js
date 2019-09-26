@@ -6,7 +6,7 @@ import {setFilter} from '../../../../services/products/productActions';
 const FilterCategory = ({filter}) => {
 	const dispatch = useDispatch();
 	let categories = [
-		'All', 'Adventure', 'Action', 'Fighting', 'Puzzle', 'RPG', 'Sport', 'Strategy'
+		'All', 'Adventure', 'Action', 'Fighting', 'Puzzle', 'RPG', 'Racing', 'Sport', 'Strategy', 'War'
 	];
 
 	const renderCategory = categories.map((category, index) => {

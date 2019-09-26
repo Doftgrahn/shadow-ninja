@@ -21,7 +21,7 @@ const PromoGame = ({products, match}) => {
 
         </div>)
 
-    })[6];
+    })[0];
     //Uses Regular Index for developmentt.
 
     //   [Math.floor(Math.random() * products.length)]

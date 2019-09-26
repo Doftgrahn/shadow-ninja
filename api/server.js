@@ -6,8 +6,8 @@ const httpServer = require("http").createServer(server);
 const io = require("socket.io")(httpServer);
 
 /*DATABASE*/
-//const {insertMongoDB} = require('./database/AddProduct');
 const {filterByNameMongoDB} = require("./database/filterByName");
+// const {insertMongoDB} = require("./database/addProduct");
 const {getSingleProductMongoDB} = require("./database/getSingleProduct");
 const {
   editUserCurrencyMongoDB
@@ -44,8 +44,8 @@ require("./secrets/passport")(passport);
 
 //Socket
 
-//If you want to insert, uncomment this function.
-//insertMongoDB()
+// If you want to insert, uncomment this function.
+// insertMongoDB()
 
 /* Handle Auth / Login */
 
@@ -61,6 +61,7 @@ let sortProduct = '';
 let lastFilter = '';
 server.get('/api/games', (request, response) => {
 	let findProduct = {};
+	let querySkip = JSON.parse(request.query.skip);
 	let queryFind = request.query.find;
 	let querySort = request.query.sort;
 
@@ -96,7 +97,7 @@ server.get('/api/games', (request, response) => {
 	}
 
 	lastFilter = !lastFilter;
-	filterByNameMongoDB(sortProduct, findProduct, result => {
+	filterByNameMongoDB(querySkip, sortProduct, findProduct, result => {
 		response.send(JSON.stringify(result))
 	})
 
