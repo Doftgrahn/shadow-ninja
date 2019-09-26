@@ -12,19 +12,17 @@
     padding: 180px 110px 10px;
     flex: 1;
     letter-spacing: 1px;
-      section{
+
+    section {
         position: absolute;
         top: 90px;
         left: 80px;
 
-
-          input{
+        input {
             padding: 10px;
             border-radius: 5px;
-          }
-      }
-
-
+        }
+    }
     @media screen and (min-width: 800px) {
         width: 100%;
         background: 0;
@@ -34,19 +32,14 @@
         position: static;
         height: auto;
         padding: 0;
-        margin: 0 50px 0 0;
         flex: 0;
 
-        section{
-
-          font-size: 20px;
-          text-align: center;
-          position: static;
-          padding: 0;
+        section {
+            text-align: center;
+            position: static;
+            padding: 0;
         }
     }
-
-
 }
 
 .activeNav {
