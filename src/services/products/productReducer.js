@@ -2,6 +2,7 @@ import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
+  FETCH_PRODUCTS_FETCHQUERY,
   SORT_PRODUCTS,
   FILTER_PRODUCTS
 } from './actionTypes';
@@ -34,6 +35,13 @@ export default function productReducer(
         loading: false,
         error: null
       };
+	  case FETCH_PRODUCTS_FETCHQUERY:
+	  return {
+		  ...state,
+		  items: action.payload.products,
+		  loading: false,
+		  error: null
+	  }
     case FETCH_PRODUCTS_FAILURE:
     // If failure.
       return {
