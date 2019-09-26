@@ -5,10 +5,16 @@ import {connect} from "react-redux";
 import UsersOnline from "./usersOnline/usersOnline";
 import ChatRooms from './chatRooms/chatRooms';
 
+import {ReactComponent as Logo} from './../../../components/icon/icon ninja.svg';
+
 const Sidebar = ({socket, chat}) => {
 
     return (<main className="sidebar">
-        <h3>{chat.current_room} chat</h3>
+        <div className="logo__Wrapper">
+            <Logo/>
+        </div>
+        <h3>{chat.current_room}
+        </h3>
         <ChatRooms socket={socket}/>
         <UsersOnline/>
     </main>);
