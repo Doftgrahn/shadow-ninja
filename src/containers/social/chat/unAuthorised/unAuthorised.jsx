@@ -1,10 +1,8 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
 
-
 //import {ReactComponent as Icon} from '/public/images/shadow.svg';
 import {Link} from "react-router-dom";
-
 
 const UnAuthorised = () => {
     return (<main className="unAuthorised">
@@ -17,6 +15,6 @@ const UnAuthorised = () => {
 }
 
 export default UnAuthorised;
-/*<div className="svg__Wrapper">
+/* <div className="svg__Wrapper">
 <Icon/>
-</div>*/
+</div> */

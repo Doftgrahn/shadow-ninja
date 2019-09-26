@@ -12,7 +12,6 @@ const insertChatHistory = message => {
         console.error("Could not Insert Chat History");
         throw err;
       }
-      console.log("Successefully inserted history");
       client.close();
     });
   });
@@ -33,7 +32,6 @@ const getAllHistory = (currentRoom, callback) => {
           console.error("Could not get messages");
           throw err;
         }
-        console.log("Fetched all chat history");
         callback(result);
         client.close();
       });
