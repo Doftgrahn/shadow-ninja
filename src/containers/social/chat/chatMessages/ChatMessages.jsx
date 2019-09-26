@@ -10,7 +10,7 @@ const ChatMessages = ({chat, user, socket}) => {
     const messagesEndRef = useRef()
 
     const scrollToBottom = () => {
-        if (messagesEndRef.current)
+        if (messagesEndRef.current) 
             messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight
     };
 

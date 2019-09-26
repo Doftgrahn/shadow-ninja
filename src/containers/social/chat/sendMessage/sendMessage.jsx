@@ -3,7 +3,7 @@ import {connect, useDispatch} from "react-redux";
 
 import {ReactComponent as Send} from '../../../../components/SVG_Icons/send/send.svg';
 
-import {sendMessage} from '../../../../services/socket/socketActions';
+import {sendMessage, clearChat} from '../../../../services/socket/socketActions';
 
 const SendMessage = ({socket, user, chat}) => {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const SendMessage = ({socket, user, chat}) => {
         const {name} = user.user;
         if (isInitialMount.current) {
             isInitialMount.current = false;
-            //dispatch(clearChat())
+            dispatch(clearChat())
         } else {
             socket.emit("typing", true, name);
 

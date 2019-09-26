@@ -1,11 +1,13 @@
 .social {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    padding: 20px;
-    height: 100vh;
+    flex-wrap: nowrap; //    height: 90vh;
+    margin: 0 auto;
+    padding: 0;
     @media screen and (min-width: 800px) {
+        padding: 20px 60px;
         flex-direction: row;
+        height: 90vh;
         flex-wrap: wrap;
         flex-wrap: nowrap;
     }
@@ -16,7 +18,7 @@
 
     .sidebar {
         order: 1;
-        flex: 1 0;
+        flex: 1;
         background: $color-dark-gray;
         width: 100%;
     }
@@ -27,8 +29,9 @@
     }
 
     .alternate {
+        //background: $color-dark-gray;
         order: 3;
-        flex: 1 auto;
+        flex: 1;
     }
 }
 

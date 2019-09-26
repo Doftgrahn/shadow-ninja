@@ -10,8 +10,10 @@ const UsersOnline = ({chat}) => {
         .map((online, i) => <p key={i}>{online.name}</p>)
 
     return (<section className="usersonline">
-        <h4>These People are online</h4>
+        <h4>online</h4>
+        <div className="usersonline__container">
         {howManyIsOnline}
+        </div>
     </section>)
 }
 

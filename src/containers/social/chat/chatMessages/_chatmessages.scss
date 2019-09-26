@@ -15,11 +15,11 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 10px 15px 0;
-    background: #9f53ff;
+    background: #7a8eb3;
     border-radius: 0 20px 20px 20px;
     transition: 0.3s;
     animation: fade 0.4s ease;
-    color: white;
+    box-shadow: 2px 2px 2px $color-dark-gray;
     @media screen and (min-width: 800px) {
         width: 320px;
     }
@@ -34,6 +34,7 @@
     }
 
     p {
+        //color: black;
         color: black;
 
         &:last-child {
@@ -54,10 +55,16 @@
 .activeUser {
     //margin:0;
     margin-left: auto;
-    background: #f16363;
+    color: $color-white;
+    background: #d66363;
     border-radius: 20px 20px 0 20px;
 
+    .user {
+        color: black;
+    }
+
     p {
+        color: black;
         margin-left: 0;
     }
 }
