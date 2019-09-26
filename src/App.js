@@ -1,7 +1,7 @@
 import React from 'react';
-
-
 import {BrowserRouter as Router} from "react-router-dom";
+
+//import styles
 
 import './styles/main.scss';
 
@@ -15,7 +15,6 @@ import { setCurrentUser, logoutUser } from "./services/login/actions/authActions
 
 //Authentication
 
-//import styles
 
 //Header and Footer
 import Header from './containers/general/header/header';

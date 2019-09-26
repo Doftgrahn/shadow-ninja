@@ -5,15 +5,19 @@ import {connect} from "react-redux";
 import UsersOnline from "./usersOnline/usersOnline";
 import ChatRooms from './chatRooms/chatRooms';
 
-const Sidebar = ({socket,chat}) => {
+import {ReactComponent as Logo} from './../../../components/icon/icon ninja.svg';
 
-  return (
-    <main className="sidebar">
+const Sidebar = ({socket, chat}) => {
+
+    return (<main className="sidebar">
+        <div className="logo__Wrapper">
+            <Logo/>
+        </div>
+        <h3>{chat.current_room}
+        </h3>
         <ChatRooms socket={socket}/>
-        <span>You are in {chat.current_room} chat.</span>
-      <UsersOnline />
-    </main>
-  );
+        <UsersOnline/>
+    </main>);
 };
 
 const mapStateToProps = state => ({chat: state.chat, user: state.auth});

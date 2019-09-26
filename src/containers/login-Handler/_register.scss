@@ -99,10 +99,15 @@
             text-align: center;
         }
     }
-    //sass for profile
 
+
+
+    //sass for profile
     .userMainContent {
       display: flex;
+      @media screen and (max-width: 800px) {
+        flex-direction: column;
+      }
       .userGames {
 
         p {
@@ -112,15 +117,41 @@
       .userStatus {
         display: flex;
         flex-direction: column;
-        width: 400px;
-
+        max-width: 1100px;
+        width: 100%;
+        margin: 0 auto;
+        background-color: $color-orange;
+        @media screen and (max-width: 800px) {
+          align-content: center;
+          width: 90%;
+          margin-top: 20px;
+          padding: 10px;
+        }
+        button {
+          background-color: $color-gray;
+        }
+        button:hover {
+            background-color: $color-button-hover;
+            color: white;
+        }
+        b {
+          text-align: center;
+        }
         .helloUser {
-          color: black;
+          color: $color-white;
+          text-align: center;
+          p {
+            color: $color-orange;
+          }
+          b {
+            color: $color-dark-gray;
+          }
         }
         .userImg {
           align-self: center;
           height: 90px;
           width: 90px;
+          padding: 5px;
         }
         .addcurrency {
           float: left;

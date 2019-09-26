@@ -1,13 +1,30 @@
 .usersonline {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    //padding: 20px;
+    //background: $color-orange;
+    //margin: 10px;
+    text-align: left;
 
-    h3 {
-        text-align: left;
-        padding: 10px;
+    h4 {
+        //text-align: left;
+        //padding: 5px;
+        text-transform: uppercase;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-bottom: 5px solid $color-orange;
     }
 
-    p {
-        padding: 0;
-        margin: 0;
+    &__container {
+        text-align: left;
+
+        p {
+            //padding-top: 20px;
+            padding: 0;
+            margin: 0;
+            //    padding:5px;
+        }
     }
 }
