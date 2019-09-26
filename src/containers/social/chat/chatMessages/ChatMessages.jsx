@@ -27,6 +27,7 @@ const ChatMessages = ({chat, user, socket}) => {
             return false
         }
     }
+    console.log(chat.data);
 
     const showMessages = chat
         .data
@@ -34,7 +35,7 @@ const ChatMessages = ({chat, user, socket}) => {
         .filter(e => e.room === chat.current_room)
         .map((e, i) => <div className={`chat__content ${e.id === user.user.id
                 ? 'activeUser'
-                : ''}`} key={i}>
+                : null}`} key={i}>
             <h4 className="user">{e.user}</h4>
             <p>{e.message}</p>
             <p>{e.time}</p>
