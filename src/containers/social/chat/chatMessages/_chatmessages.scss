@@ -5,21 +5,24 @@
     //padding: 0 20px;
     overflow: scroll;
     //height: 420px;
-    min-height: 74vh;
+    height: 70vh;
+    padding: 20px;
 }
 
 .chat__content {
     width: 180px;
     padding: 4px 20px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     margin: 10px 15px 0;
-    background: #9f53ff;
+    background: #7a8eb3;
     border-radius: 0 20px 20px 20px;
     transition: 0.3s;
     animation: fade 0.4s ease;
-    color: white;
+    box-shadow: 2px 2px 2px $color-dark-gray;
     @media screen and (min-width: 800px) {
         width: 320px;
     }
@@ -33,31 +36,62 @@
         }
     }
 
-    p {
-        color: black;
-
-        &:last-child {
-            font-size: 14px;
-        }
-    }
-
     .user {
+        order: 1;
         transition: 0.4s;
         display: block;
         padding: 1px;
         width: 100%;
-        margin-bottom: 5px;
         color: black;
+        margin-bottom: 10px;
+    }
+
+    .message {
+        order: 2;
+        flex: 1;
+        margin-left: 10px;
+
+        p {
+            //color: black;
+            color: black;
+
+            &:last-child {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .avatar {
+        order: 1;
+        height: 24px;
+        width: 24px;
     }
 }
 
 .activeUser {
+    display: flex;
     //margin:0;
     margin-left: auto;
-    background: #f16363;
+    color: $color-white;
+    background: #d66363;
     border-radius: 20px 20px 0 20px;
 
-    p {
+    .message {
+        flex: 1;
+        order: 3;
         margin-left: 0;
     }
+
+    .avatar {
+        order: 3;
+    }
+
+    .user {
+        order: 1;
+        color: black;
+    }
+    // p {
+    //     color: black;
+    //     margin-left: 0;
+    // }
 }

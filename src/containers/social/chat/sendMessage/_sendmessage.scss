@@ -1,10 +1,11 @@
 .sendInput {
-    margin-top: 10px;
+    //margin-top: 10px;
     display: flex;
     justify-content: center;
     flex-direction: row;
 
     textarea {
+        flex: 1 100%;
         resize: none;
         height: 100px;
         padding: 10px;
@@ -12,7 +13,7 @@
         color: black;
         outline: none;
         border: none;
-        background: #fbe9cd;
+        background: $color-white;
     }
 
     .send_container {
@@ -23,7 +24,7 @@
         align-items: center;
         position: relative;
         //display: block;
-        background: #fbe9cd;
+        background: $color-white;
         border-left: 1px solid black;
 
         button {

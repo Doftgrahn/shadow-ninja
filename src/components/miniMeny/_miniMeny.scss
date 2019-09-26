@@ -1,16 +1,16 @@
 .mini {
     z-index: 10;
     position: fixed;
-    width: 260px;
+    width: 100%;
     //overflow: hidden;
     right: 0;
-    bottom: 0%;
+    bottom: 0;
     //padding: 20px;
     border-radius: 20px 0 0 20px;
 }
 
 .miniMeny {
-    background: tomato;
+    background: $color-orange;
     transition: 0.5s cubic-bezier(0.5, 0, 0.5, 1);
     border-radius: 20px 0 0 20px;
     padding: 10px;

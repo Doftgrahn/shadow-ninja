@@ -1,17 +1,27 @@
 .chat__room {
     display: flex;
     flex-direction: row;
+    @media screen and (min-width: 800px) {
+        flex-direction: column;
+    }
 
     .room-btn {
+        outline: none;
+        color: $color-white;
         padding: 10px;
         flex: 1;
-        margin: 0;
+        margin: 0 0 10px;
         width: 100%;
         border-radius: 0;
-        //border-bottom: 5px solid #e57474;
+        border: 0;
+        cursor: pointer;
+        background: $color-gray;
+        transition: 0.2s ease;
+        //    border: 5px solid $color-dark-gray
     }
-}
 
-.btn-active {
-    background: #7a4ee0;
+    .btn-active {
+        background: $color-orange;
+        border-right: 5px solid $color-dark-gray;
+    }
 }
