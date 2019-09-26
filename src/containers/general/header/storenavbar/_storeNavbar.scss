@@ -1,10 +1,11 @@
 .store-nav {
-    padding: 20px;
-    height: 100%;
-    max-width: 200px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: 50px;
+
+    // input{
+    //   border-radius: 5px;
+    //   font-size: 20px;
+    //   text-align: center;
+    //   margin-right: 10px;
+    // }
 }
 
 a.listItems {
@@ -13,6 +14,14 @@ a.listItems {
 
 .listItems:hover {
     text-decoration: none;
+}
+.titleInput {
+    color: white;
+    font-size: 10px;
+    text-align: left;
+    background-color: darkorange;
+    outline: none;
+    border: 0px;
 }
 
 .suggestedItems {
@@ -27,7 +36,7 @@ a.listItems {
     li {
         display: block;
         padding: 0 5px;
-        color: black;
+        color:white;
         transition: all 0.2s ease-in-out;
 
         &:hover {

@@ -1,9 +1,11 @@
-
-
 const express = require("express");
 const server = express();
 const httpServer = require("http").createServer(server);
-const io = require("socket.io")(httpServer);
+const io = require("socket.io")(httpServer, {
+  serveClient: process.config.env === "production" ? false : true,
+  path: "/socket.io"
+});
+
 
 /*DATABASE*/
 const {filterByNameMongoDB} = require("./database/filterByName");
@@ -115,25 +117,23 @@ server.get("/api/games/product", (request, response) => {
 
 //add currency to account based on id
 
-server.put('/api/addcurrency', ( request, response) => {
-	let queryid = request.query.id;
-	let userId = queryid;
-  let currency = JSON.stringify(request.body)
-	editUserCurrencyMongoDB(userId, currency, result => {
-		response.send(JSON.stringify(result))
-	})
+server.put("/api/addcurrency", (request, response) => {
+  let queryid = request.query.id;
+  let userId = queryid;
+  let currency = JSON.stringify(request.body);
+  editUserCurrencyMongoDB(userId, currency, result => {
+    response.send(JSON.stringify(result));
+  });
 });
 
-server.put('/api/addGameLibrary', (request, response) => {
-	let queryid = request.query.id;
-	let userId = queryid;
-	let gamesToAdd = JSON.stringify(request.body)
-	editUserLibraryMongoDB(userId, gamesToAdd, result => {
-		response.send(JSON.stringify(result))
-	})
+server.put("/api/addGameLibrary", (request, response) => {
+  let queryid = request.query.id;
+  let userId = queryid;
+  let gamesToAdd = JSON.stringify(request.body);
+  editUserLibraryMongoDB(userId, gamesToAdd, result => {
+    response.send(JSON.stringify(result));
+  });
 });
-
-
 
 /* Routing */
 
@@ -145,12 +145,15 @@ require("./secrets/passport")(passport);
 // Routes
 server.use("/api/users", users);
 
+server.get('*', (req, res) => {
+res.sendFile(`${__dirname}/../build/index.html`);
+});
+
 
 server.use((error, request, response, next) => {
   response.status(500).send("error 500 error");
-  next()
+  next();
 });
-
 
 mongoose
   .connect(db, {useNewUrlParser: true})

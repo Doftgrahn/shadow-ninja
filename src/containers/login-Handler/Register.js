@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { registerUser } from "../../services/login/actions/authActions";
 import classnames from "classnames";
 
+import Fade from 'react-reveal/Fade';
+
+
 class Register extends Component {
   constructor() {
     super();
@@ -36,9 +39,7 @@ const newUser = {
       password: this.state.password,
       password2: this.state.password2,
       currency: 1000,
-      gameLibrary: [ { _id: '5d7777ff330d496ae524c180', title: "Age of Empires II", category: "Strategy", price: "45", rating: '8', imgURL: "https://www.dsogaming.com/wp-content/uploads/2019/04/Age-of-Empires-II...",
-      info: "Age of Empires II: The Age of Kings is a real-time strategy video game..."
-       } ]
+      gameLibrary: []
 
 
 
@@ -55,6 +56,7 @@ render() {
     }
 return (
       <div className="regWrapper">
+          <Fade>
         <div className="inerRegWrapper">
           <div>
           <h2>
@@ -141,6 +143,7 @@ return (
             </div>
           </div>
         </div>
+        </Fade>
       </div>
     );
   }

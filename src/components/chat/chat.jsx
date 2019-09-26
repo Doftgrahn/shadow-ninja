@@ -1,8 +1,7 @@
-/*
 import React, {useState, useEffect} from 'react';
 import {connect, useDispatch} from "react-redux";
-import io from "socket.io-client";
-import {ReactComponent as Send} from '../../components/SVG_Icons/send/send.svg';
+import useSocket from 'use-socket.io-client';
+import {ReactComponent as Send} from '../SVG_Icons/send/send.svg';
 
 import {
     clearChat,
@@ -17,57 +16,37 @@ import {
 
 const Chat = ({chat, user}) => {
     const dispatch = useDispatch();
-    const messageChatEnd = React.createRef()
-
-    const [input, setInput] = useState('');
     const {name} = user.user;
 
-    useEffect(() => {
-        const host = window.location.origin;
-        const socket = io.connect('/' || 'https://' + host);
+    const [socket] = useSocket();
+    const [input, setInput] = useState('');
+    socket.connect();
 
-        socket.on('connect', () => {
-            console.log('Connected to Chat');
-            socket.emit('adduser', name)
-        })
+    useEffect(() => {
+        socket.emit('adduser', name)
 
         socket.on('updatechat', (username, data) => {
-            console.log(username);
             dispatch(updatechat(username, data))
-            console.log('DATA', data);
         })
 
         socket.on('updaterooms', (rooms, current_room) => {
             dispatch(currentRoom(current_room))
             dispatch(getAllRooms(rooms))
         })
+        return() => dispatch(clearChat())
 
-        return () => socket.on('disconnect', () => {
-            console.log('disconnected from chat');
-        })
 
-    }, [name, dispatch])
+    }, [dispatch, name, socket])
 
     const roomSwitch = (room) => {
-        const host = window.location.origin;
-        const socket = io.connect('/' || 'https://' + host);
-        //dispatch(clearChat())
-
-        socket.on('updatechat', (username, data) => {
-            console.log('THIS GETS UPDATED');
-            dispatch(updatechat(username,data))
-        })
-
-
+        dispatch(clearChat())
+        socket.emit("switchRoom", room);
         dispatch(switchRoom(room))
     }
 
-    const renderChatButtons = chat
-        .rooms
-        .map((e, i) => <button className="room-btn" onClick={() => roomSwitch(e.room)} key={i}>{e.room}</button>)
-
     const send = () => {
         if (input) {
+            socket.emit("send", name, input);
             dispatch(sendMessage(input, name))
             setInput('')
         }
@@ -79,15 +58,20 @@ const Chat = ({chat, user}) => {
         }
     }
 
-    let showMessages;
-    if (chat)
-        showMessages = chat
-            .data
-            .map((e, i) => <div className="chat__content" key={i} ref={messageChatEnd}>
-                <p className="user">{e.user}:</p>
-                <p>{e.message}</p>
-                <p>{e.time}</p>
-            </div>)
+    // Renders Group Buttons
+    const renderChatButtons = chat
+        .rooms
+        .map((e, i) => <button disabled={chat.current_room === e.room} className={`room-btn ${chat.current_room === e.room
+                ? 'btn-active'
+                : null}`} onClick={() => roomSwitch(e.room)} key={i}>{e.room}</button>)
+
+    const showMessages = chat
+        .data
+        .map((e, i) => <div className="chat__content" key={i}>
+            <p className="user">{e.user}</p>
+            <p>{e.message}</p>
+            <p>{e.time}</p>
+        </div>)
 
     return (<main className="chat">
         <div className="chat__room">
@@ -106,5 +90,3 @@ const Chat = ({chat, user}) => {
 const mapStateToProps = state => ({chat: state.chat, user: state.auth});
 
 export default connect(mapStateToProps)(Chat);
-
-*/

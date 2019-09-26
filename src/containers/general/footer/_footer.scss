@@ -5,18 +5,32 @@
     flex-direction: row;
     justify-content: center;
     padding: 30px;
-    background-color: 0 0 150px 100px rgba95, 54, 105, 0.6;
+   
+    font-family:  "Segoe UI", "Roboto", "Oxygen",
+         "Cantarell", ;
+   // background-color: #0c0910;
+   background-color: #333333;
+    -blurradius : (20);
+   // background-color: 0 0 150px 100px rgba121, 54, 105, 0.6;
 
     &__wrapper {
         max-width: 800px;
         width: 100%;
         flex: 1 0 auto;
-
+        color: #f7931e;
+       .hr{
+           background-color:  #f7931e;
+       }
+      
         h4 {
             padding: 0;
             text-align: left;
             padding-top: 20px;
             font-size: 16px;
+            font-family:  "Segoe UI", "Roboto", "Oxygen",
+         "Cantarell", ;
+         letter-spacing: 1px;
+         color:  #f7931e;
         }
     }
 }
@@ -24,10 +38,10 @@
 .iconWrapper {
     display: flex;
     justify-content: center;
+
     .icon {
         margin: 0 20px;
     }
-
 }
 /*
 .icont {
@@ -42,9 +56,12 @@
     margin-left: 50px;
 }
 */
+
 .a {
     color: white;
     font-size: 16px;
+    font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
+    letter-spacing: 1px;
 }
 
 .footer:before {
@@ -58,7 +75,7 @@
     border-radius: 50%;
     background: transparent;
     display: block;
-    box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.2), 200px 0 200px 150px rgba(255, 255, 255, 0.2), -250px 0 300px 150px rgba(255, 255, 255, 0.2), 550px 0 300px 200px rgba(255, 255, 255, 0.2), -550px 0 300px 200px rgba(255, 255, 255, 0.2);
+   // box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.2), 200px 0 200px 150px rgba(255, 255, 255, 0.2), -250px 0 300px 150px rgba(255, 255, 255, 0.2), 550px 0 300px 200px rgba(255, 255, 255, 0.2), -550px 0 300px 200px rgba(255, 255, 255, 0.2);
 }
 @media only screen and (max-width: 850px) {
     .iconWrapper {
@@ -71,3 +88,20 @@
 //       font-size: 80px;
 //     }
 //   }
+/*
+@media only screen and (max-width: 450px) {
+
+        h4{
+       margin-left: 110px;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    .a{
+   margin-left: 110px;
+}
+
+}
+*/

@@ -1,141 +1,176 @@
-*{
-  font-size: 20px;
-}
+* {
+    font-size: 15px;
 
-h2{
-  color: black;
-  font-weight: 400;
-
-}
-.LogInWrapper{
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
-
-
-}
-
-.inerWrapper{
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  background-color: #9A979D;
-  padding: 50px;
-  border-radius: 50px;
-  height: 50%;
-  width: 500px;
-
-    input{
-      padding: 10px;
-      border-radius: 10px;
-      margin: 20px;
-      width: 300px;
+    h2 {
+        color: black;
+        font-weight: 400;
     }
 
-    button{
-      background-color: snow;
-      padding: 10px;
-      width: 100px;
-      border-radius: 5px;
-
+    .LogInWrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+        margin-bottom: 100px;
     }
 
-    .dontHaveLogin{
-      margin-top: 20px;
-      border-top: solid 1px;
-      width: 100%;
-      text-align: center;
+    .inerWrapper {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        background-color: #9A979D;
+        padding: 50px;
+        border-radius: 50px;
+        height: 50%;
+        max-width: 1100px;
 
-        i{
-          margin: 20px;
+
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            margin: 20px;
+            width: 300px;
         }
 
-        p{
-          margin: 20px;
+        button {
+            background-color: snow;
+            padding: 10px;
+            width: 100px;
+            border-radius: 5px;
+        }
+
+        .dontHaveLogin {
+            margin-top: 20px;
+            border-top: solid 1px;
+            width: 100%;
+            text-align: center;
+
+            i {
+                margin: 20px;
+            }
+
+            p {
+                margin: 20px;
+            }
+        }
+    }
+    // Here starts the scss for the register
+
+    .regWrapper {
+        justify-content: center;
+        display: flex;
+        margin-bottom: 100px;
+
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            margin: 20px;
+            width: 300px;
+        }
+
+        button {
+            background-color: snow;
+            padding: 10px;
+            width: 100px;
+            border-radius: 5px;
+        }
+
+        i {
+            margin: 20px;
+        }
+
+        p {
+            margin: 20px;
+        }
+    }
+
+    .inerRegWrapper {
+        background-color: gray;
+        text-align: center;
+        margin-top: 100px;
+        background-color: #9A979D;
+        padding: 50px;
+        border-radius: 50px;
+        //height: 80%;
+        // width: 500px;
+        .logIn {
+            margin-top: 20px;
+            border-top: solid 1px;
+            width: 100%;
+            text-align: center;
         }
     }
 
 
 
-}
+    //sass for profile
+    .userMainContent {
+      display: flex;
+      @media screen and (max-width: 800px) {
+        flex-direction: column;
+      }
+      .userGames {
 
+        p {
+          text-align: center;
+        }
+      }
+      .userStatus {
+        display: flex;
+        flex-direction: column;
+        max-width: 1100px;
+        width: 100%;
+        margin: 0 auto;
+        background-color: $color-orange;
+        @media screen and (max-width: 800px) {
+          align-content: center;
+          width: 90%;
+          margin-top: 20px;
+          padding: 10px;
+        }
+        button {
+          background-color: $color-gray;
+        }
+        button:hover {
+            background-color: $color-button-hover;
+            color: white;
+        }
+        b {
+          text-align: center;
+        }
+        .helloUser {
+          color: $color-white;
+          text-align: center;
+          p {
+            color: $color-orange;
+          }
+          b {
+            color: $color-dark-gray;
+          }
+        }
+        .userImg {
+          align-self: center;
+          height: 90px;
+          width: 90px;
+          padding: 5px;
+        }
+        .addcurrency {
+          float: left;
+        }
+      }
+      .gameContainer {
+        border: 2px solid black;
+      }
 
+      .singlegames {
+        text-align: center;
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+      }
 
+      .test {
+        margin-top: 10px;
+      }
 
-
-// Here starts the scss for the register
-
-
-.regWrapper{
-  justify-content: center;
-  display:flex;
-
-
-  input{
-    padding: 10px;
-    border-radius: 10px;
-    margin: 20px;
-    width: 300px;
-  }
-
-  button{
-    background-color: snow;
-    padding: 10px;
-    width: 100px;
-    border-radius: 5px;
-
-  }
-
-  i{
-    margin: 20px;
-  }
-
-  p{
-    margin: 20px;
-  }
-
-
-  
-
-
-}
-
-.inerRegWrapper{
-  background-color: gray;
-  text-align: center;
-  margin-top: 100px;
-  background-color: #9A979D;
-  padding: 50px;
-  border-radius: 50px;
-  height: 80%;
-  width: 500px;
-
-
-
-  .logIn{
-    margin-top: 20px;
-    border-top: solid 1px;
-    width: 100%;
-    text-align: center;
-  }
-}
-
-
-
-
-
-
-//sass for profile
-.gameContainer {
-  border: 2px solid black;
-}
-.singlegames {
-  text-align: center;
-  border: 2px solid black;
-  display: flex;
-}
-.test {
-  border: 1px solid black;
-  margin: 3px;
-  padding: 3px;
+    }
 }

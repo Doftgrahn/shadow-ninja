@@ -1,0 +1,30 @@
+.unAuthorised {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .svg__Wrapper {
+        max-width: 600px;
+        width: 100%;
+
+        svg {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    h1 {
+        text-align: center;
+        margin: 0 20px 20px 0;
+    }
+
+    a {
+        color: white;
+        text-decoration: underline;
+        padding: 20px;
+        font-size: 30px;
+    }
+}

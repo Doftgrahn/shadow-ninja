@@ -1,3 +1,40 @@
+.social {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap; //   height: 90vh;
+    margin: 0 auto;
+    padding: 0;
+    @media screen and (min-width: 800px) {
+        padding: 20px 60px;
+        flex-direction: row;
+        height: 90vh;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        flex-wrap: nowrap;
+    }
+
+    .sidebar {
+        order: 1;
+        flex: 1 0;
+        background: $color-dark-gray;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .chat {
+        order: 2;
+        flex: 2 100%;
+    }
+
+    .alternate {
+        //background: $color-dark-gray;
+        order: 3;
+        flex: 1;
+        max-width: 500px;
+    }
+}
+
 button {
+    border-radius: 0 0 20px 20px;
     color: black;
 }

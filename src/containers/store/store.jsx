@@ -1,5 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 
+import Fade from 'react-reveal/Fade';
+
 // Redux ..
 import {connect} from "react-redux";
 import {fetchProducts} from '../../services/products/productActions';
@@ -67,14 +69,18 @@ const Store = ({dispatch, isFetching, filter, sort, products, loading, error, ma
 
 //If Theres an error loading the page.
     if (error) {
-		// dispatch(fetchProducts(filter, sort))
-        return (<div>Error, no connection</div>)
+        return (<div>
+            <Fade>
+                Error, no connection
+            </Fade>
+        </div>)
     }
 
-
-// If Connection is slow, or when loading. This will show.
+    // If Connection is slow, or when loading. This will show.
     if (loading) {
-        return <Loader/>
+        return <Fade>
+            <Loader/>
+        </Fade>
     }
 
 
@@ -98,6 +104,5 @@ const mapStateToProps = state => ({
 	loading: state.products.loading,
 	error: state.products.error
 });
-
 
 export default connect(mapStateToProps)(Store);

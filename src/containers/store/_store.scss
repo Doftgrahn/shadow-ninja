@@ -4,12 +4,12 @@
     flex-direction: column;
     overflow-x: hidden;
     background: $color-gray;
+    min-height: 100vh;
 
     .gameswrapper {
         display: flex;
         flex-direction: row;
         overflow: hidden;
-
     }
 
     h1 {

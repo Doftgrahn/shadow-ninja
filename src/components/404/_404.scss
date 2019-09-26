@@ -1,0 +1,12 @@
+.for {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        margin-top:20px;
+        padding: 10px;
+    }
+}

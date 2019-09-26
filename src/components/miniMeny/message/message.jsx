@@ -12,7 +12,7 @@ const Message = () => {
         <div className={`message__container ${ !toggleChat
                 ? 'show'
                 : 'hide'}`}>
-            {/*Chat/>*/}
+            {/*<Chat/>*/}
         </div>
         <button onClick={hideShow}>{toggleChat ? 'Close' : 'Chat'}</button>
     </main>)

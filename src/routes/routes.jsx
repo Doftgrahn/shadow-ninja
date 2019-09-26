@@ -10,10 +10,9 @@ import Register from '../containers/login-Handler/Register';
 import Login from '../containers/login-Handler/Login';
 import Profile from '../containers/userProfile/Profile'
 import PrivateRoute from "./PrivateRoute";
-
-
-// import AnimatedRoute from './animatedRoute';
-// import AnimatedSwitch from './animatedSwitch';
+//import ForOFour from '../components/404/404';
+import PageNotFound from '../components/pagenotfound/Pagenotfound';
+import userProfile from  '../containers/userProfile/Profile'
 
 const Routes = () => {
 
@@ -24,58 +23,55 @@ const Routes = () => {
             path: '/',
             Component: LandingPage
         }, {
-            _id:1,
+            _id: 1,
             exact: true,
             path: '/store',
             Component: Store
         }, {
-            _id:2,
+            _id: 2,
             exact: false,
             path: '/store/:id',
             Component: SingleGame
         }, {
-            _id:3,
+            _id: 3,
             exact: false,
             path: '/social',
             Component: Social
         }, {
-            _id:4,
+            _id: 4,
             exact: false,
             path: '/checkout',
             Component: Checkout
         }, {
-            _id:5,
+            _id: 5,
             exact: false,
             path: '/register',
             Component: Register
         }, {
             _id:6,
-            exact: false,
+            exact: true,
             path: '/login',
             Component: Login
-        },
-
-
+          }, {
+            _id:7,
+            exact: false,
+            path: '/userProfile',
+            Component: userProfile
+          },  {
+            _id:7,
+            exact: false,
+            path: '*',
+            Component: PageNotFound
+          },
     ]
-
     const renderRoutes = allRoutes.map(r => {
-        return <Route
-                key={r._id}
-                exact={r.exact}
-                path={r.path}
-                render={(props) => <r.Component {...props}/>}/>
+        return <Route key={r._id} exact={r.exact} path={r.path} render={(props) => <r.Component {...props}/>}/>
     })
 
-    return ( <Switch
-        animationClassName="page-slide"
-        animationTimeout={300}
-      >
-          {renderRoutes}
-          <PrivateRoute exact path="/userProfile" component={Profile} />
-          </Switch>
-)
+    return (<Switch >
+        <PrivateRoute exact={true} path="/userProfile" component={Profile}/>
+        {renderRoutes}
+    </Switch>)
 }
-
-
 
 export default Routes;

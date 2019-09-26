@@ -1,29 +1,35 @@
 .checkout__final {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+    //margin: 0 auto;
+    //display: flex;
+    //flex-direction: column;
+    //align-items: center;
     .checkout-btn {
         width: 200px;
         height: 50px;
-        margin: 50px auto 0;
+        margin: 20px auto 0;
         color: black;
         border-radius: 20px;
+        outline: none;
+        background: $color-orange;
+        transition: 0.3s;
+        border: 0;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 
 .checkout-wrapper {
-    padding-top: 30px;
+    padding-top: 20px;
     display: flex;
-    flex-direction: row;
+    //flex-direction: row;
     justify-content: center;
     align-items: center;
-    justify-content: space-around;
-
+    //justify-content: space-around;
     span {
         display: block;
-        margin-right: 30px;
+        margin-right: 35px;
     }
 }
 
@@ -33,13 +39,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    outline: none;
 
     .error {
-        display: block;
-        color: red;
-        top: 0;
-        left: 18px;
+        color: #e83023;
+        width: 500px;
+        top: 26px;
+        left: -60px;
+        font-size: 16px;
         position: absolute;
+        @media screen and (min-width: 800px) {
+            top: -2px;
+            left: 45px;
+            width: 600px;
+        }
     }
 }
 // CheckBox
@@ -64,7 +77,7 @@
 
 .checkbox-label .checkbox-custom {
     position: absolute;
-    top: 0;
+    top: 4px;
     left: 0;
     width: 24px;
     height: 24px;
@@ -104,7 +117,7 @@
     -ms-transform: rotate(0deg) scale(0);
     transform: rotate(0deg) scale(0);
     opacity: 1;
-    border: solid #009bff;
+    border: solid $color-orange;
     border-width: 0 3px 3px 0;
     border-radius: 5px;
 }
@@ -118,7 +131,7 @@
     -ms-transform: rotate(45deg) scale(1);
     transform: rotate(45deg) scale(1);
     opacity: 1;
-    border: solid #009bff;
+    border: solid $color-orange;
     border-width: 0 2px 2px 0;
     border-radius: 0;
     background-color: transparent;
