@@ -29,7 +29,8 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
         }, {
             name: 'Checkout',
             to: '/checkout'
-        }, toggleLogin,
+        },
+        toggleLogin
     ]
 
     const navBar = navBarData.map((nav, index) => <Link onClick={turnOff} key={index} to={nav.to}>{nav.name}</Link>)
@@ -37,9 +38,8 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
     return (<nav className={`navMenu ${toggle
             ? 'activeNav'
             : ''}`}>
-        {navBar}
-        <StoreNavbar toggle={toggle} turnOff={turnOff}/>
-        </nav>)
+        <StoreNavbar toggle={toggle} turnOff={turnOff}/> {navBar}
+    </nav>)
 };
 
 const mapStateToProps = state => ({auth: state.auth, isAuthenticated: state.auth.isAuthenticated});

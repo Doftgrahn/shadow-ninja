@@ -4,114 +4,96 @@
     //border-bottom: 30px solid purple;
     max-width: 1100px;
     height: 560px;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 50px auto 0;
     padding: 10px;
     // margin-bottom: 50px;
-
-
     &__wrapper {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      background: $color-yellow;
-      border-radius: 5px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: $color-yellow;
+        border-radius: 5px;
 
+        & figure {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 300px;
 
-      & figure {
-          position: relative;
-          display: block;
-          width: 100%;
-          height: 300px;
+            img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
 
-          img {
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              // object-fit: cover;
-          }
-      }
+        &--desc {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            flex-direction: column;
+            padding: 20px;
 
-          &--desc {
-              display: flex;
-              align-items: center;
-              flex: 1;
-              flex-direction: column;
-              padding: 20px;
+            h1 {
+                z-index: 1;
+                bottom: 150px;
+                //position: absolute;
+                left: 200px;
+                display: inline-block;
+                //background: purple;
+                padding: 20px;
+            }
 
-
-
-              h1 {
-                  z-index: 1;
-                  bottom: 150px;
-                  //position: absolute;
-                  left: 200px;
-                  display: inline-block;
-                  //background: purple;
-                  padding: 20px;
-              }
-
-              h3 {
-                  font-size: 45px;
-                  //position: absolute;
-                  z-index: 1;
-                  top: 50px;
-                  right: 150px;
-                  //display: inline-block;
-                  //background: purple;
-                  padding: 20px;
-                  border: none;
-              }
-          }
+            h3 {
+                font-size: 45px;
+                //position: absolute;
+                z-index: 1;
+                top: 50px;
+                right: 150px;
+                //display: inline-block;
+                //background: purple;
+                padding: 20px;
+                border: none;
+            }
+        }
 
         a {
             font-size: 20px;
             z-index: 1;
-            color:$color-gray;
+            color: $color-gray;
             margin: 20px;
-
         }
 
-
-        .priceTag{
-          color: green;
-          font-size: 45px;
-
+        .priceTag {
+            color: green;
+            font-size: 45px;
         }
 
-        .priceOff{
-          color: red;
-          font-size: 40px;
-          z-index: 1;
-          padding: 20px;
+        .priceOff {
+            color: red;
+            font-size: 40px;
+            z-index: 1;
+            padding: 20px;
         }
-
-
     }
-
-
-    @media screen and (min-width: 800px){
-
-
+    @media screen and (min-width: 800px) {
         &__wrapper {
-                  & figure {
-                    height: 420px;
-                  }
+            & figure {
+                height: 420px;
+            }
+
             &--desc {
                 flex-direction: row;
                 justify-content: center;
             }
 
             a {
-
                 font-size: 30px;
                 z-index: 1;
-                color:$color-gray;
+                color: $color-gray;
             }
-
-
         }
-
-  }
+    }
 }

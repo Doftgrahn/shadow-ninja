@@ -5,7 +5,7 @@ import Fade from 'react-reveal/Fade';
 
 import {ReactComponent as Hero} from '../../components/icon/ninja_page.svg';
 
-import Glitch from '../../components/glitch/glitch';
+//import Glitch from '../../components/glitch/glitch';
 
 const LandingPage = () => {
     return (<main className="box">
@@ -15,7 +15,8 @@ const LandingPage = () => {
             </figure>
 
             <div className="title">
-                <Glitch/> {/* <p className="big textCarosel"></p> */}
+                {/*<Glitch/>*/}
+                 { <p className="big textCarosel"></p> }
                 <Link to={'/store'}>
                     <button className="hover ">Store</button>
                 </Link>

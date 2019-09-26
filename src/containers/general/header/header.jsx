@@ -3,7 +3,7 @@ import NavBar from './navBar/navBar';
 import Hamburger from './hamburger/hamburger';
 // import StoreNavbar from './storenavbar/storenavbar';
 
- import {ReactComponent as Logo} from './../../../components/icon/icon_ninja.svg';
+import {ReactComponent as Logo} from './../../../components/icon/icon_ninja.svg';
 
 const Header = () => {
     const [toggle, setToggle] = useState(false);
@@ -13,17 +13,14 @@ const Header = () => {
 
     return (<header className="header">
 
-
         <Logo className="logo"/>
 
-          <NavBar toggle={toggle} turnOff={turnOff}/>
+        <NavBar toggle={toggle} turnOff={turnOff}/>
 
-          <Hamburger toggleState={toggleState} toggle={toggle}/>
+        <Hamburger toggleState={toggleState} toggle={toggle}/>
 
     </header>)
 }
-
-
 
 /*
 <div className="icon_wrapper">
