@@ -39,6 +39,30 @@
               flex: 1;
               flex-direction: column;
               padding: 20px;
+
+
+
+              h1 {
+                  z-index: 1;
+                  bottom: 150px;
+                  //position: absolute;
+                  left: 200px;
+                  display: inline-block;
+                  //background: purple;
+                  padding: 20px;
+              }
+
+              h3 {
+                  font-size: 45px;
+                  //position: absolute;
+                  z-index: 1;
+                  top: 50px;
+                  right: 150px;
+                  //display: inline-block;
+                  //background: purple;
+                  padding: 20px;
+                  border: none;
+              }
           }
 
         a {
@@ -85,6 +109,7 @@
                 z-index: 1;
                 color:$color-gray;
             }
+
 
         }
 
