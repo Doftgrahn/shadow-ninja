@@ -1,16 +1,18 @@
 import React, {useRef, useEffect} from 'react';
-
 import {connect, useDispatch} from "react-redux";
 
-import Dots from '../../../../components/dots/dots';
 import {whoIsTyping} from '../../../../services/socket/socketActions';
+
+import Dots from '../../../../components/dots/dots';
+
+import {ReactComponent as Avatar} from './../../../../components/SVG_Icons/avatar/user.svg';
 
 const ChatMessages = ({chat, user, socket}) => {
     const dispatch = useDispatch();
     const messagesEndRef = useRef()
 
     const scrollToBottom = () => {
-        if (messagesEndRef.current) 
+        if (messagesEndRef.current)
             messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight
     };
 
@@ -36,8 +38,13 @@ const ChatMessages = ({chat, user, socket}) => {
                 ? 'activeUser'
                 : null}`} key={i}>
             <h4 className="user">{e.user}</h4>
-            <p>{e.message}</p>
-            <p>{e.time}</p>
+            <div className="message">
+                <p>{e.message}</p>
+                <p>{e.time}</p>
+            </div>
+            <div className="avatar">
+                <Avatar/>
+            </div>
         </div>)
 
     return (<div className="chat__wrapper" ref={messagesEndRef}>
