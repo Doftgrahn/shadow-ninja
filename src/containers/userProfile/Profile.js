@@ -51,8 +51,8 @@ render() {
                         Hey there, <b>{user.name.split(" ")[0]}</b>
                       </p>
                       <b>Your currency: {user.currency}</b>
-                      <button onClick={this.onUpdateClick} className="addcurrency" >Add currency</button>
-                      <button style={{ color: 'black' }} onClick={this.onLogoutClick}>
+                      <button onClick={this.onUpdateClick} >Add currency</button>
+                      <button onClick={this.onLogoutClick}>
                         Logout
                       </button>
                   </div>
@@ -63,7 +63,6 @@ render() {
                     </div>
                   </div>
                 </div>
-                  <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
                 </Fade>
     } else {
       profile = <Redirect to="/" />
