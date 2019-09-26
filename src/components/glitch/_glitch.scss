@@ -23,9 +23,9 @@
     text-shadow: -1px 0 $color-orange;
     top: 0;
     color: white;
-    background: black;
+    background: $color-gray;
     overflow: hidden;
-    animation: noise-anim 5s infinite linear alternate-reverse;
+    animation: noise-anim 15s infinite linear alternate-reverse;
 }
 @keyframes noise-anim-2 {
     $steps: 20;
@@ -45,7 +45,7 @@
     text-shadow: 1px 0 blue;
     top: 0;
     color: white;
-    background: black;
+    background: $color-dark-gray;
     overflow: hidden;
     animation: noise-anim-2 15s infinite linear alternate-reverse;
 }
