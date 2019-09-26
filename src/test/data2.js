@@ -60,3 +60,5 @@ const data = [
       "1080° Snowboarding[a] is a snowboard racing video game developed by Nintendo EAD and published by Nintendo. It was released in 1998 for the Nintendo 64, and was re-released in 2008 for the Wii's Virtual Console. In the game, the player controls one of five snowboarders from a third-person perspective, using a combination of buttons to jump and perform tricks over eight levels."
   }
 ];
+
+module.exports = {data}

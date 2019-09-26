@@ -4,6 +4,7 @@ import {combineReducers} from "redux";
 import products from "./products/productReducer";
 import singleProduct from "./product/singleProductReducer";
 import cart from "./cart/cartReducer";
+import scrollBottom from "./infiniteScroll/scrollReducer"
 
 // Gives Total value and Quantity, used in USEEFFECT on render in MiniMeny. Also is used in Checkout
 import totalReducer from "./total/totalReducer";
@@ -20,6 +21,7 @@ export default combineReducers({
   products: products,
   singleProduct: singleProduct,
   cart: cart,
+  scrollBottom: scrollBottom,
   total: totalReducer,
   auth: authReducer,
   errors: errorReducer
