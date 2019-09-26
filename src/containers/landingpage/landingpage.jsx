@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import Fade from 'react-reveal/Fade';
 
-import {ReactComponent as Hero} from '../../components/icon/ninja page.svg';
+import {ReactComponent as Hero} from '../../components/icon/ninja_page.svg';
 
 const LandingPage = () => {
     return (<main className="box">
