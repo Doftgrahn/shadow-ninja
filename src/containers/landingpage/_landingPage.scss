@@ -54,6 +54,28 @@
             font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
             letter-spacing: 2px;
         }
+
+        p {
+            font-size: 4.8em;
+            margin-bottom: 20px;
+            /* text-shadow:   1px 0px rgb(128, 127, 127), 0px 1px rgb(255, 254, 254),
+             2px 1px rgb(128, 127, 127), 1px 2px rgb(241, 238, 238),
+            3px 2px rgb(128, 127, 127), 2px 3px rgb(255, 251, 251),
+            4px 3px rgb(128, 127, 127), 3px 4px rgb(255, 255, 255),
+             5px 4px rgb(128, 127, 127), 4px 5px rgb(255, 255, 255),
+             6px 5px rgb(128, 127, 127), 5px 6px rgb(252, 252, 252),
+            7px 6px rgb(128, 127, 127), 6px 7px rgb(255, 255, 255),
+             8px 7px rgb(128, 127, 127), 7px 8px rgb(255, 255, 255),
+             8px 8px rgb(128, 127, 127);*/
+            @media screen and (max-width: 800px) {
+                font-size: 3em;
+                text-shadow: none;
+            }
+            @media screen and (max-width: 610px) {
+                font-size: 1.7em;
+                text-shadow: none;
+            }
+        }
     }
 
     button:hover {
@@ -104,27 +126,7 @@
     }
 }
 
-p {
-    font-size: 4.8em;
-    margin-bottom: 20px;
-    /* text-shadow:   1px 0px rgb(128, 127, 127), 0px 1px rgb(255, 254, 254),
-     2px 1px rgb(128, 127, 127), 1px 2px rgb(241, 238, 238),
-    3px 2px rgb(128, 127, 127), 2px 3px rgb(255, 251, 251),
-    4px 3px rgb(128, 127, 127), 3px 4px rgb(255, 255, 255),
-     5px 4px rgb(128, 127, 127), 4px 5px rgb(255, 255, 255),
-     6px 5px rgb(128, 127, 127), 5px 6px rgb(252, 252, 252),
-    7px 6px rgb(128, 127, 127), 6px 7px rgb(255, 255, 255),
-     8px 7px rgb(128, 127, 127), 7px 8px rgb(255, 255, 255),
-     8px 8px rgb(128, 127, 127);*/
-    @media screen and (max-width: 800px) {
-        font-size: 3em;
-        text-shadow: none;
-    }
-    @media screen and (max-width: 610px) {
-        font-size: 1.7em;
-        text-shadow: none;
-    }
-}
+
 // div {
 //     font-size: 100px;
 // }
