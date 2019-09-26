@@ -8,6 +8,7 @@ import { Redirect} from "react-router-dom";
 import PropTypes from "prop-types";
 import GameLibrary from './gameLibrary';
 
+import { ReactComponent as Profileimg } from './user.svg';
 
 import Fade from 'react-reveal/Fade';
 
@@ -41,38 +42,37 @@ render() {
     let profile;
 
     if (this.props.auth.isAuthenticated ) {
-      profile =   <div>
-                  <Fade>
-                <h4>
-                  <b>Hey there,</b> {user.name.split(" ")[0]}
-                  </h4>
-                  <h5>
-                    <b>Here is your currency: {user.currency}</b>
-                  </h5>
-                  <div>
-                    <b>Here is your gameLibrary</b>
+      profile =
+                <Fade>
+                  <div className="userMainContent">
+                    <div className="userStatus">
+                      <Profileimg className="userImg"/>
+                      <p className="helloUser">
+                        Hey there, <b>{user.name.split(" ")[0]}</b>
+                      </p>
+                      <b>Your currency: {user.currency}</b>
+                      <ul>display more info below --
+                        <li>Member since - 2018</li>
+                          <ul>Friends
+                            <li>sven</li>
+                            <li>anders</li>
+                            <li>karl</li>
+                          </ul>
+                      </ul>
+                      <button onClick={this.onUpdateClick} className="addcurrency" >Add currency</button>
+                      <button style={{ color: 'black' }} onClick={this.onLogoutClick}>
+                        Logout
+                      </button>
+                  </div>
+                  <div className="userGames">
+                    <p><b>Your games</b></p>
                     <div className='gameContainer'>
                       <GameLibrary />
                     </div>
                   </div>
-
-
-                  <button
-                    style={{ color: 'black' }}
-                    onClick={this.onLogoutClick}
-                    >
-                    Logout
-
-                  </button>
-                  <div>
-                    <button onClick={this.onUpdateClick} style={{ color: 'black' }} >Add currency</button>
-                    <button onClick={this.updateGameLibrary} style={{ color: 'black' }}>Add game</button>
-
-                  </div>
-                </Fade>
                 </div>
-
-
+                  <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
+                </Fade>
     } else {
       profile = <Redirect to="/" />
     }

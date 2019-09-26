@@ -14,11 +14,12 @@ export const defaultSocket = socket => ({
   payload: socket
 });
 
-export const sendMessage = (socket, message, user, room) => dispatch => {
+export const sendMessage = (socket, message, user, room,id) => dispatch => {
   const data = {
     message,
     user,
-    room
+    room,
+    id
   };
 
   socket.emit("send", data);
@@ -31,6 +32,7 @@ export const sendMessage = (socket, message, user, room) => dispatch => {
 
 export const updatechat = socket => dispatch => {
   socket.on("updatechat", data => {
+
     dispatch({
       type: UPDATE_CHAT,
       payload: data

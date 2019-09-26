@@ -101,19 +101,45 @@
     }
     //sass for profile
 
-    .gameContainer {
-        border: 2px solid black;
-    }
+    .userMainContent {
+      display: flex;
+      .userGames {
 
-    .singlegames {
+        p {
+          text-align: center;
+        }
+      }
+      .userStatus {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+
+        .helloUser {
+          color: black;
+        }
+        .userImg {
+          align-self: center;
+          height: 90px;
+          width: 90px;
+        }
+        .addcurrency {
+          float: left;
+        }
+      }
+      .gameContainer {
+        border: 2px solid black;
+      }
+
+      .singlegames {
         text-align: center;
         border: 2px solid black;
         display: flex;
-    }
+        flex-direction: column;
+      }
 
-    .test {
-        border: 1px solid black;
-        margin: 3px;
-        padding: 3px;
+      .test {
+        margin-top: 10px;
+      }
+
     }
 }
