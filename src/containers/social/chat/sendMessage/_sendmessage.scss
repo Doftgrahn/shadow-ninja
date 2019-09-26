@@ -1,0 +1,45 @@
+.sendInput {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    textarea {
+        resize: none;
+        height: 100px;
+        padding: 10px;
+        width: 100%;
+        color: black;
+        outline: none;
+        border: none;
+        background: $color-white;
+    }
+
+    .send_container {
+        width: 150px;
+        //cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        //display: block;
+        background: $color-white;
+        border-left: 1px solid black;
+
+        button {
+            position: absolute;
+            margin: 0 auto;
+            background: 0;
+            height: 100%;
+            //display: block;
+            border: 0;
+            width: 100%;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            outline: none;
+        }
+    }
+}

@@ -1,0 +1,63 @@
+.chat__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    //padding: 0 20px;
+    overflow: scroll;
+    //height: 420px;
+    min-height: 74vh;
+}
+
+.chat__content {
+    width: 180px;
+    padding: 4px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 10px 15px 0;
+    background: #9f53ff;
+    border-radius: 0 20px 20px 20px;
+    transition: 0.3s;
+    animation: fade 0.4s ease;
+    color: white;
+    @media screen and (min-width: 800px) {
+        width: 320px;
+    }
+    @keyframes fade {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    p {
+        color: black;
+
+        &:last-child {
+            font-size: 14px;
+        }
+    }
+
+    .user {
+        transition: 0.4s;
+        display: block;
+        padding: 1px;
+        width: 100%;
+        margin-bottom: 5px;
+        color: black;
+    }
+}
+
+.activeUser {
+    //margin:0;
+    margin-left: auto;
+    background: #f16363;
+    border-radius: 20px 20px 0 20px;
+
+    p {
+        margin-left: 0;
+    }
+}

@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useRef} from 'react';
-
 import {connect, useDispatch} from "react-redux";
 
 import {ReactComponent as Send} from '../../../../components/SVG_Icons/send/send.svg';
@@ -18,23 +17,21 @@ const SendMessage = ({socket, user, chat}) => {
     }, [chat.current_room])
 
     useEffect(() => {
+        const {name} = user.user;
         if (isInitialMount.current) {
             isInitialMount.current = false;
             //dispatch(clearChat())
         } else {
-            const {name} = user
-                .user
-                socket
-                .emit("typing", true, name, chat.current_room);
+            socket.emit("typing", true, name);
 
             const typer = setTimeout(() => {
-                socket.emit("typing", false, name, chat.current_room);
+                socket.emit("typing", false);
             }, 1000)
 
             return() => clearTimeout(typer)
         }
 
-    }, [input, dispatch, socket, user.user, chat.current_room])
+    }, [input, dispatch, socket, user.user])
 
     const send = () => {
         console.log(chat.current_room);

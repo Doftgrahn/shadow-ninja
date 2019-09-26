@@ -14,7 +14,7 @@ export const defaultSocket = socket => ({
   payload: socket
 });
 
-export const sendMessage = (socket, message, user, room,id) => dispatch => {
+export const sendMessage = (socket, message, user, room, id) => dispatch => {
   const data = {
     message,
     user,
@@ -32,7 +32,6 @@ export const sendMessage = (socket, message, user, room,id) => dispatch => {
 
 export const updatechat = socket => dispatch => {
   socket.on("updatechat", data => {
-
     dispatch({
       type: UPDATE_CHAT,
       payload: data
@@ -76,7 +75,6 @@ export const numberOnline = socket => dispatch => {
 
 export const whoIsTyping = socket => dispatch => {
   socket.on("istyping", (data, name, room) => {
-    console.log("ROOM", room);
     const whoIsTyping = {
       typer: data,
       user: name,

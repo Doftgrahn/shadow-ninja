@@ -27,7 +27,6 @@ const ChatMessages = ({chat, user, socket}) => {
             return false
         }
     }
-    console.log(chat.data);
 
     const showMessages = chat
         .data
