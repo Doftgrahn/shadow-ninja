@@ -5,15 +5,13 @@ import {connect} from "react-redux";
 import UsersOnline from "./usersOnline/usersOnline";
 import ChatRooms from './chatRooms/chatRooms';
 
-const Sidebar = ({socket,chat}) => {
+const Sidebar = ({socket, chat}) => {
 
-  return (
-    <main className="sidebar">
+    return (<main className="sidebar">
+        <h3>{chat.current_room} chat</h3>
         <ChatRooms socket={socket}/>
-        <span>You are in {chat.current_room} chat.</span>
-      <UsersOnline />
-    </main>
-  );
+        <UsersOnline/>
+    </main>);
 };
 
 const mapStateToProps = state => ({chat: state.chat, user: state.auth});

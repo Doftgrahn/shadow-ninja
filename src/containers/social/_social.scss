@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    padding: 20px;
+    height: 100vh;
     @media screen and (min-width: 800px) {
         flex-direction: row;
         flex-wrap: wrap;
@@ -15,7 +17,7 @@
     .sidebar {
         order: 1;
         flex: 1 0;
-        background: #d35a5a;
+        background: $color-dark-gray;
         width: 100%;
     }
 

@@ -1,59 +1,70 @@
-@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy"); //@import './icon/icon.scss';
 
-//@import './icon/icon.scss';
 .box {
-   // background-image: url("/images/shadow.svg");
+    // background-image: url("/images/shadow.svg");
     // background-image: url("/images/ninjaa.jpg ");
     width: 100%;
     min-height: 100vh;
-   //background-attachment: fixed;
+    //background-attachment: fixed;
     background-position: center;
-    background-repeat: no-repeat;
+    //background-repeat: no-repeat;
     //background-size: contain;
     background-color: black;
     position: relative;
+    @media screen and (min-width: 800px) {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-      
-    @media screen and (max-width: 800px) {
-        min-height: 66vh;
-    }
-    
-svg {
-    width:100%;
-    height: 100%;
-    
-background-size: contain;
-    @media screen and (max-width: 800px) {
-        margin-top: 150px;
-    }
-}
-    &-wrapper {
-        width:100%;
-        height:100%;
+    svg {
         position: absolute;
-        top:50%;
+        width: 100%;
+        top:0;
+        padding:0;
+        left:0;
+        right: 0;
+        min-height: 100vh;
+        background-size: contain;
+        @media screen and (min-width: 800px) {
+            //margin-top: 150px;
+            //padding-top:150px;
+        }
+    }
 
-        
+    &-wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
     }
 }
 
-.hr{
+.hr {
     background-color: #f7931e;
 }
 
-.textCarosel::after{
-  content:"";
-  animation: 20s linear infinite;
-  animation-name: textCarosel;
-  margin-left: 710px;
-  font-size: 40px;
-
+.textCarosel::after {
+    content: "";
+    animation: 20s linear infinite;
+    animation-name: textCarosel;
+    margin-left: 710px;
+    font-size: 40px;
 }
-
 @keyframes textCarosel {
-  0% { content: "xX~ShadowNinja~Xx"}
-  50% { content: "ASSASIN'S NEVER DIE" }
-  100% { content: "THEY JUST GAME AWAY" }
+    0% {
+        content: "xX~ShadowNinja~Xx";
+    }
+
+    50% {
+        content: "ASSASIN'S NEVER DIE";
+    }
+
+    100% {
+        content: "THEY JUST GAME AWAY";
+    }
 }
 
 .title {
@@ -61,19 +72,16 @@ background-size: contain;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-   // padding-top: 420px;
+    // padding-top: 420px;
     font-weight: bold;
-     
-      @media screen and (max-width: 800px) {
-          padding-bottom: 350px;
-      }
+    @media screen and (max-width: 800px) {
+        padding-bottom: 350px;
+    }
 
-
-
-    h1 {    
+    h1 {
         font-size: 4.8em;
         margin-bottom: 20px;
-         /* text-shadow:   1px 0px rgb(128, 127, 127), 0px 1px rgb(255, 254, 254),
+        /* text-shadow:   1px 0px rgb(128, 127, 127), 0px 1px rgb(255, 254, 254),
      2px 1px rgb(128, 127, 127), 1px 2px rgb(241, 238, 238),
     3px 2px rgb(128, 127, 127), 2px 3px rgb(255, 251, 251),
     4px 3px rgb(128, 127, 127), 3px 4px rgb(255, 255, 255),
@@ -82,16 +90,14 @@ background-size: contain;
     7px 6px rgb(128, 127, 127), 6px 7px rgb(255, 255, 255),
      8px 7px rgb(128, 127, 127), 7px 8px rgb(255, 255, 255),
      8px 8px rgb(128, 127, 127);*/
-           
-          @media screen and (max-width: 800px) {
-              font-size: 3em;
-              text-shadow: none;
-          }
-
-          @media screen and (max-width: 610px) {
-              font-size: 1.7em;
-              text-shadow: none;
-          }
+        @media screen and (max-width: 800px) {
+            font-size: 3em;
+            text-shadow: none;
+        }
+        @media screen and (max-width: 610px) {
+            font-size: 1.7em;
+            text-shadow: none;
+        }
     }
     // div {
     //     font-size: 100px;
@@ -101,7 +107,6 @@ background-size: contain;
         cursor: pointer;
 
     }*/
-
     button {
         margin: 5px;
         padding: 15px;
@@ -109,16 +114,14 @@ background-size: contain;
         background-color: dimgray;
         border-radius: 5px;
         font-size: 20px;
-      
         //border: inset 1px #e1e1e1;
         outline: none;
         margin-top: 22px;
-        color:#f7931e;
+        color: #f7931e;
         //333333
         border: black;
-        font-family:  "Segoe UI", "Roboto", "Oxygen",
-         "Cantarell", ;
-         letter-spacing: 2px;
+        font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
+        letter-spacing: 2px;
     }
 }
 
@@ -127,7 +130,6 @@ button:hover {
     clear: both;
     color: white;
     border-color: rgb(43, 41, 41);
-    
 }
 
 body:before {
@@ -142,23 +144,18 @@ body:before {
     border-radius: 100%;
     background: transparent;
     display: block;
-   // box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.3), 200px 0 200px 150px rgba(255, 255, 255, 0.3), -250px 0 300px 150px rgba(255, 255, 255, 0.4), 550px 0 300px 200px rgba(255, 255, 255, 0.3), -550px 0 300px 200px rgba(255, 255, 255, 0.3);//
+    // box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.3), 200px 0 200px 150px rgba(255, 255, 255, 0.3), -250px 0 300px 150px rgba(255, 255, 255, 0.4), 550px 0 300px 200px rgba(255, 255, 255, 0.3), -550px 0 300px 200px rgba(255, 255, 255, 0.3);//
 }
-
 // @media  (max-width: 800px)  {
 //    .title{ .big{
-    
 //     font-size:30px;
 //     margin-top: 180px;
 //    }
 //    }
 // }
-
 // @media (min-width: 375px){
 //     .title{.big{
-        
 //         font-size:90px;
-        
 //     }
 //     }
 // }
