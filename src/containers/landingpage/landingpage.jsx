@@ -5,16 +5,14 @@ import Fade from 'react-reveal/Fade';
 
 import {ReactComponent as Hero} from '../../components/icon/ninja page.svg';
 
-
-
 const LandingPage = () => {
     return (<main className="box">
-        
-    <Fade>
-    <Hero/>
+        <Fade>
+            <Hero/>
+            <div className="box-wrapper">
+                <div className="title">
 
-<div className="box-wrapper">
-        <div className="title">
+                 
 
             {<h1 className="big textCarosel"> 
            </h1>}

@@ -1,7 +1,7 @@
 const {insertChatHistory, getAllHistory} = require("./socketDB");
 
 module.exports = (io, server) => {
-  const rooms = ["general", "party", "trade"];
+  const rooms = ["general", "party", "trade", "yolo"];
 
   let connections = [];
   let users = [];
@@ -9,6 +9,9 @@ module.exports = (io, server) => {
   io.on("connection", socket => {
     console.log("Connected to chat");
     connections.push(socket);
+    socket.emit("getUsers", users);
+    io.sockets.emit("updateusers", users);
+
     // add username to chat
 
     //socket.rooms = "general";
@@ -35,11 +38,10 @@ module.exports = (io, server) => {
       socket.id = username.id;
       users.push(username);
 
+      socket.room = "general";
       socket.join("general");
 
       socket.emit("getUsers", users);
-
-      //socket.room = "general";
 
       /*
       const serverreplyToUser = {
@@ -56,7 +58,7 @@ module.exports = (io, server) => {
         room: socket.room
       };
 
-      socket.to(socket.room).emit("updatechat", serverReplyToChat);
+      socket.broadcast.emit("updatechat", serverReplyToChat);
 
       socket.emit("updaterooms", rooms, rooms[0]);
     });
@@ -69,15 +71,18 @@ module.exports = (io, server) => {
       });
 
       const message = {
-        id: socket.id,
+        id: data.id,
         message: data.message,
         user: data.user,
         time: today,
-        room: data.room
+        room: data.room,
+        dateSort: Date.now()
       };
 
       console.log("Socket.js  Message", socket.room);
-      socket.broadcast.emit("updatechat", message);
+      socket.broadcast.to(socket.room).emit("updatechat", message);
+      socket.emit("getUsers", users);
+
       //io.in(data.room).emit("updatechat", message);
 
       insertChatHistory(message);
@@ -86,10 +91,9 @@ module.exports = (io, server) => {
     // IS TYPING
 
     socket.on("typing", (data, user, room) => {
-      console.log("Is Anyone writing?:", data, "Who is Writing?", user);
       socket.broadcast.emit("istyping", data, user, room);
-      // All the other folks but not U
-      console.log("ROOM TYPE", room);
+      //io.in(socket.rooms).emit('istyping', data,user,room)
+
       // socket.broadcast.to(socket.room).emit("istyping", data, user);
     });
 
@@ -115,19 +119,19 @@ module.exports = (io, server) => {
       };
 
       socket.emit("updatechat", whichRoom);
+      socket.emit("getUsers", users);
 
       getAllHistory(newroom, callback => {
         socket.emit("updatechat", callback);
       });
 
-      /*
       const newRoomJoin = {
         user: "SERVER",
-        message: `${socket.username} has joined ${newroom} room`
+        message: `${socket.username} has joined ${newroom} room`,
+        room: socket.room
       };
-      */
 
-      // socket.to(socket.rooms).emit("updatechat", newRoomJoin);
+      socket.broadcast.emit("updatechat", newRoomJoin);
 
       socket.emit("updaterooms", rooms, newroom);
     });

@@ -10,6 +10,7 @@
         display: flex;
         justify-content: center;
         margin-top: 100px;
+        margin-bottom: 100px;
     }
 
     .inerWrapper {
@@ -21,7 +22,7 @@
         border-radius: 50px;
         height: 50%;
         max-width: 1100px;
-        width: 100%;
+
 
         input {
             padding: 10px;
@@ -57,6 +58,7 @@
     .regWrapper {
         justify-content: center;
         display: flex;
+        margin-bottom: 100px;
 
         input {
             padding: 10px;
@@ -99,19 +101,45 @@
     }
     //sass for profile
 
-    .gameContainer {
-        border: 2px solid black;
-    }
+    .userMainContent {
+      display: flex;
+      .userGames {
 
-    .singlegames {
+        p {
+          text-align: center;
+        }
+      }
+      .userStatus {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+
+        .helloUser {
+          color: black;
+        }
+        .userImg {
+          align-self: center;
+          height: 90px;
+          width: 90px;
+        }
+        .addcurrency {
+          float: left;
+        }
+      }
+      .gameContainer {
+        border: 2px solid black;
+      }
+
+      .singlegames {
         text-align: center;
         border: 2px solid black;
         display: flex;
-    }
+        flex-direction: column;
+      }
 
-    .test {
-        border: 1px solid black;
-        margin: 3px;
-        padding: 3px;
+      .test {
+        margin-top: 10px;
+      }
+
     }
 }

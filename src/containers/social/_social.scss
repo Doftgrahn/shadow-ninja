@@ -1,3 +1,36 @@
+.social {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    @media screen and (min-width: 800px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-wrap: nowrap;
+    }
+
+    & > * {
+        flex: 1 100%;
+    }
+
+    .sidebar {
+        order: 1;
+        flex: 1 0;
+        background: #d35a5a;
+        //width: 100%;
+    }
+
+    .chat {
+        order: 3;
+        flex: 2 100%;
+    }
+
+    .alternate {
+        order: 3;
+        flex: 1 auto;
+    }
+}
+
 button {
+    border-radius: 0 0 20px 20px;
     color: black;
 }

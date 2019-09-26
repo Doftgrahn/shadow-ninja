@@ -5,7 +5,7 @@ import {clearChat, switchRoom} from '../../../../services/socket/socketActions';
 
 const ChatRooms = ({socket, chat}) => {
     const dispatch = useDispatch();
-
+    
     const roomSwitch = room => {
         dispatch(clearChat())
         dispatch(switchRoom(socket, room))
