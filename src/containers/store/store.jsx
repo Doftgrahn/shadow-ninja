@@ -4,7 +4,7 @@ import Fade from 'react-reveal/Fade';
 
 // Redux ..
 import {connect} from "react-redux";
-import {fetchProducts} from '../../services/products/productActions';
+import {fetchProducts, fetchProductsWithQuery} from '../../services/products/productActions';
 // import {} from '../../services/infiniteScroll/scrollActions'
 import {changeFetchState} from '../../services/infiniteScroll/scrollActions'
 // Spinner, uses for loading Animation.
@@ -21,7 +21,7 @@ const Store = ({dispatch, isFetching, filter, sort, products, loading, error, ma
 
 
 	const isInitialMount = useRef(true);
-	const hej = useRef();
+	const gamesWindow = useRef();
 
 	useEffect(() => {
 		// fetch on launch
@@ -31,40 +31,36 @@ const Store = ({dispatch, isFetching, filter, sort, products, loading, error, ma
 			setSkip(skip + 3)
 		}
 	}, [dispatch, skip, filter, sort]);
-
 	// fetch when scroll is in bottom on page
 	useEffect(() => {
-
 		// listen addEventListener scroll
-		const fun = () => {
-
-			const body = document.body;
-			const wrapper = document.getElementById('games')
-			// TODOo: anända REF i stället för vanilla DOM
-			let isAtBottom = wrapper && (window.innerHeight + window.scrollY) >= body.offsetHeight;
-
+		const scrollEvent = () => {
+			const wrapper = gamesWindow.current
+			let isAtBottom = wrapper && (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
 
 			if (isAtBottom) {
 				dispatch(changeFetchState())
-
 				if(isFetching) {
-						setSkip(skip + 3)
-
+					setSkip(skip + 3)
 					dispatch(fetchProducts(skip, filter, sort))
-
 				} else if(!isFetching) {
 					return null
 				}
-
 			}
-
-
 		}
-		window.addEventListener('scroll', fun);
-		return () => window.removeEventListener('scroll', fun);
+		window.addEventListener('scroll', scrollEvent);
+		return () => window.removeEventListener('scroll', scrollEvent);
 	}, [dispatch, isFetching, skip, filter, sort]);
 
+	// fetch when filter or sort changes
+	useEffect((skip) => {
+		setSkip( skip = 0 );
+		if(!isInitialMount.current) {
+		dispatch(fetchProductsWithQuery(skip, filter, sort))
 
+			setSkip(skip + 3)
+		}
+	}, [dispatch, filter, sort]);
 
 
 //If Theres an error loading the page.
@@ -84,11 +80,8 @@ const Store = ({dispatch, isFetching, filter, sort, products, loading, error, ma
     }
 
 
-
-
-
     return (
-    <main id="games" ref={hej}>
+    <main id="games" ref={gamesWindow}>
         <PromoGame match={match} products={products}/>
         <SortGames />
         <AllGames products={products} match={match}/>
