@@ -16,9 +16,12 @@ a.listItems {
     text-decoration: none;
 }
 .titleInput {
-    color: #1B0023;
-    font-size: 15px;
+    color: white;
+    font-size: 10px;
     text-align: center;
+    background-color: darkorange;
+    outline: none;
+    border: 0px;
 }
 
 .suggestedItems {
@@ -33,7 +36,7 @@ a.listItems {
     li {
         display: block;
         padding: 0 5px;
-        color: black;
+        color:white;
         transition: all 0.2s ease-in-out;
 
         &:hover {

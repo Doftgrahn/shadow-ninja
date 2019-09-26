@@ -10,7 +10,7 @@ import Register from '../containers/login-Handler/Register';
 import Login from '../containers/login-Handler/Login';
 import Profile from '../containers/userProfile/Profile'
 import PrivateRoute from "./PrivateRoute";
-import ForOFour from '../components/404/404';
+//import ForOFour from '../components/404/404';
 import PageNotFound from '../components/pagenotfound/Pagenotfound';
 import userProfile from  '../containers/userProfile/Profile'
 
