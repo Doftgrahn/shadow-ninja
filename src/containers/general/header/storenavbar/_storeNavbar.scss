@@ -18,7 +18,7 @@ a.listItems {
 .titleInput {
     color: white;
     font-size: 10px;
-    text-align: center;
+    text-align: left;
     background-color: darkorange;
     outline: none;
     border: 0px;
@@ -32,7 +32,7 @@ a.listItems {
     background-color: gray;
     position: absolute;
     z-index: 10;
-    
+
     li {
         display: block;
         padding: 0 5px;
