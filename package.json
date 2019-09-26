@@ -62,5 +62,6 @@
   },
   "devDependencies": {
     "react-social-icons": "^4.1.0",
-    "nodemon": "^1.19.2"  }
+    "nodemon": "^1.19.2"
+  }
 }

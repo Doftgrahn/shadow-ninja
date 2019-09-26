@@ -22,7 +22,11 @@ const PromoGame = ({products, match}) => {
 
         </div>)
 
-    })[Math.floor(Math.random() * products.length)]
+		// chnage to random later
+    })[0];
+
+    // })[Math.floor(Math.random() * products.length)]
+
     //Uses Regular Index for developmentt.
 
     //[6]   [Math.floor(Math.random() * products.length)]

@@ -5,12 +5,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 0 10px;
     //background-color: #0c0910;
     border-bottom: 1px solid white;
-   background-color: #333333;
-   
-    
+    background-color: #333333;
+
     .icon_wrapper {
         max-width: 140px;
         width: 100%;
@@ -20,28 +19,28 @@
     //     width: 100%;
     //     font-size: 40px;
     // }
-    .logo{
-      width: 80px;
+    .logo {
+        padding: 10px;
+        width: 80px;
     }
 
     a {
         margin-top: 20px;
-        font-size: 30px;
+        font-size: 20px;
         color: white;
         letter-spacing: 2px;
-        font-family:  "Segoe UI", "Roboto", "Oxygen",
-        "Cantarell", ;
+        font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
         @media screen and (min-width: 800px) {
-            font-size: 20px;
+            font-size: 16px;
             margin: 0 10px;
         }
-      }
-      a:hover{
-          color: #f7931e ;
-      }
-
-    .navAndStorebar{
-      display: flex;
     }
 
+    a:hover {
+        color: #f7931e;
+    }
+
+    .navAndStorebar {
+        display: flex;
+    }
 }

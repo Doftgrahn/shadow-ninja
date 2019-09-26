@@ -5,9 +5,11 @@ import {
   SORT_PRODUCTS,
   FILTER_PRODUCTS
 } from "./actionTypes";
+import {fetchDone} from '../infiniteScroll/scrollActions';
 
-const getProducts = (filter, sort) => {
-  const url = `/api/games?find=${filter}&sort=${sort}`;
+const getProducts = (skip, filter, sort) => {
+
+  const url = `/api/games?skip=${skip}&find=${filter}&sort=${sort}`;
   return fetch(url)
     .then(handleErrors)
     .then(res => {
@@ -15,16 +17,16 @@ const getProducts = (filter, sort) => {
     });
 };
 
-
 // Function for Fetching.
-export const fetchProducts = (filter, sort) => {
+export const fetchProducts = (skip, filter, sort) => {
   return dispatch => {
     dispatch(fetchProductsBegin());
-    return getProducts(filter, sort)
+    return getProducts(skip, filter, sort)
       .then(json => {
         dispatch(fetchProductsSuccess(json));
         return json;
       })
+	  .then(dispatch(fetchDone()))
       .catch(error => {
         dispatch(fetchProductsFailure(error));
       });
@@ -42,7 +44,7 @@ export const fetchProductsBegin = () => ({
   type: FETCH_PRODUCTS_BEGIN
 });
 
-export const fetchProductsSuccess = products => ({
+export const fetchProductsSuccess = (products) => ({
   type: FETCH_PRODUCTS_SUCCESS,
   payload: {products}
 });
