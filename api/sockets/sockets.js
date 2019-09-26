@@ -80,7 +80,7 @@ module.exports = (io, server) => {
       };
 
       console.log("Socket.js  Message", socket.room);
-      socket.broadcast.emit("updatechat", message);
+      socket.broadcast.to(socket.room).emit("updatechat", message);
       socket.emit("getUsers", users);
 
       //io.in(data.room).emit("updatechat", message);
@@ -91,11 +91,9 @@ module.exports = (io, server) => {
     // IS TYPING
 
     socket.on("typing", (data, user, room) => {
-      console.log("Is Anyone writing?:", data, "Who is Writing?", user);
       socket.broadcast.emit("istyping", data, user, room);
       //io.in(socket.rooms).emit('istyping', data,user,room)
-      // All the other folks but not U
-      console.log("ROOM TYPE", room);
+
       // socket.broadcast.to(socket.room).emit("istyping", data, user);
     });
 
