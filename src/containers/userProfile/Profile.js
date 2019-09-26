@@ -51,14 +51,6 @@ render() {
                         Hey there, <b>{user.name.split(" ")[0]}</b>
                       </p>
                       <b>Your currency: {user.currency}</b>
-                      <ul>display more info below --
-                        <li>Member since - 2018</li>
-                          <ul>Friends
-                            <li>sven</li>
-                            <li>anders</li>
-                            <li>karl</li>
-                          </ul>
-                      </ul>
                       <button onClick={this.onUpdateClick} className="addcurrency" >Add currency</button>
                       <button style={{ color: 'black' }} onClick={this.onLogoutClick}>
                         Logout
