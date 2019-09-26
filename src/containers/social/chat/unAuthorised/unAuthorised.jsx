@@ -9,9 +9,9 @@ import {Link} from "react-router-dom";
 const UnAuthorised = () => {
     return (<main className="unAuthorised">
         <Fade>
-         
+
             <h1>You must be logged in to be able to chat</h1>
-            <Link to="/register">Log in</Link>
+            <Link to="/Login">Log in</Link>
         </Fade>
     </main>)
 }

@@ -23,7 +23,7 @@ const getAllHistory = (currentRoom, callback) => {
     let collection = client.db(db).collection(dbcol);
 
     const query = {room: currentRoom};
-    const sortByTime = {time: 1};
+    const sortByTime = {dateSort: 1};
     collection
       .find(query)
       .limit(5)

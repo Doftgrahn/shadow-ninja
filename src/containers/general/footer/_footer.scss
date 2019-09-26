@@ -5,13 +5,11 @@
     flex-direction: row;
     justify-content: center;
     padding: 30px;
-    font-family:  "Segoe UI", "Roboto", "Oxygen",
-         "Cantarell", ;
-   // background-color: #0c0910;
-   background-color: #1b171d;
-    -blurradius : (20);
-   // background-color: 0 0 150px 100px rgba121, 54, 105, 0.6;
-
+    font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
+    // background-color: #0c0910;
+    background-color: #1b171d;
+    -blurradius: (20);
+    // background-color: 0 0 150px 100px rgba121, 54, 105, 0.6;
     &__wrapper {
         max-width: 800px;
         width: 100%;
@@ -22,9 +20,8 @@
             text-align: left;
             padding-top: 20px;
             font-size: 16px;
-            font-family:  "Segoe UI", "Roboto", "Oxygen",
-         "Cantarell", ;
-         letter-spacing: 1px;
+            font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
+            letter-spacing: 1px;
         }
     }
 }
@@ -32,10 +29,10 @@
 .iconWrapper {
     display: flex;
     justify-content: center;
+
     .icon {
         margin: 0 20px;
     }
-
 }
 /*
 .icont {
@@ -53,9 +50,8 @@
 .a {
     color: white;
     font-size: 16px;
-    font-family:  "Segoe UI", "Roboto", "Oxygen",
-         "Cantarell", ;
-         letter-spacing: 1px;
+    font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
+    letter-spacing: 1px;
 }
 
 .footer:before {
@@ -82,21 +78,20 @@
 //       font-size: 80px;
 //     }
 //   }
-
+/*
 @media only screen and (max-width: 450px) {
-    
+
         h4{
        margin-left: 110px;
     }
-    
+
 }
-  
+
 @media only screen and (max-width: 450px) {
-    
+
     .a{
-   margin-left: 110px;  
+   margin-left: 110px;
 }
 
 }
-
-    
+*/
