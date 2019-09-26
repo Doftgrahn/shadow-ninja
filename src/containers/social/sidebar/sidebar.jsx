@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import UsersOnline from "./usersOnline/usersOnline";
 import ChatRooms from './chatRooms/chatRooms';
 
-import {ReactComponent as Logo} from './../../../components/icon/icon ninja.svg';
+import {ReactComponent as Logo} from './../../../components/icon/icon_ninja.svg';
 
 const Sidebar = ({socket, chat}) => {
 

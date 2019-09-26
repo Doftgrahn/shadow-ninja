@@ -12,9 +12,11 @@ const PromoGame = ({products, match}) => {
             </figure>
 
             <div className="promo__wrapper--desc">
-                <h1>{game.title}</h1>
-                <h3>€{game.price}</h3>
-                <h3>PROMO €{game.price / 2} 50% off</h3>
+
+
+                <h1>NOW FOR ONLY </h1>
+                <h1 className="priceTag"> €{game.price / 2}</h1>
+                <h2 className="priceOff"> 50% OFF </h2>
                 <Link to={`${match.url}/${game._id}`}>More info...</Link>
             </div>
 
@@ -31,3 +33,6 @@ const PromoGame = ({products, match}) => {
 }
 
 export default PromoGame;
+
+  // <h1>{game.title}</h1>
+  // <h3> €{game.price}</h3>
