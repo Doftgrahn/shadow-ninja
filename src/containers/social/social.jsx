@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from "react-redux";
-
 import useSocket from 'use-socket.io-client';
 
 import UnAuthorised from './chat/unAuthorised/unAuthorised';
@@ -20,7 +19,7 @@ const Social = ({user}) => {
     return (<main className="social">
         <Sidebar socket={socket}/>
         <Chat socket={socket}/>
-        <div className="alternate"></div>
+        <div className="alternate"/>
     </main>)
 }
 

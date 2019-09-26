@@ -19,6 +19,7 @@ const Chat = ({socket, chat, user}) => {
         socket.emit('adduser', user)
     }, [socket, name, id, dispatch])
 
+
     useEffect(() => {
         dispatch(numberOnline(socket))
         dispatch(updatechat(socket))
