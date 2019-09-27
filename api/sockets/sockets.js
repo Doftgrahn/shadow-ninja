@@ -1,12 +1,15 @@
-const {insertChatHistory, getAllHistory} = require("./socketDB");
+const {insertChatHistory, getAllHistory} = require("./socketDBHISTORY");
+const {
+  addUserOnline,
+  getUsersOnline,
+  deleteUserWhenLoggingOut
+} = require("./socketDBUSERS");
 
-module.exports = (io) => {
+module.exports = io => {
   const rooms = ["general", "party", "trade"];
 
   let connections = [];
   let users = [];
-
-
 
   io.on("connection", socket => {
     console.log("Connected to chat");
@@ -25,16 +28,6 @@ module.exports = (io) => {
       socket.emit("updatechat", callback);
     });
 
-    socket.on("disconnect", () => {
-      users = users.filter(user => user.name !== socket.username);
-      //users.splice(users.indexOf(socket.username), 1);
-
-      connections.splice(connections.indexOf(socket, 1));
-      io.sockets.emit("updateusers", users);
-
-      console.log("disconnected");
-    });
-
     socket.on("adduser", username => {
       socket.username = username.name;
       socket.id = username.id;
@@ -45,6 +38,8 @@ module.exports = (io) => {
 
       socket.emit("getUsers", users);
 
+      addUserOnline(username);
+
       /*
       const serverreplyToUser = {
         user: "SERVER",
@@ -53,6 +48,9 @@ module.exports = (io) => {
 
       socket.emit("updatechat", serverreplyToUser);
       */
+      getUsersOnline(callback => {
+        socket.emit("getUsers", callback);
+      });
 
       const serverReplyToChat = {
         user: "SERVER",
@@ -101,6 +99,9 @@ module.exports = (io) => {
 
     // Switch rooms
     socket.on("switchRoom", newroom => {
+      getUsersOnline(callback => {
+        socket.emit("getUsers", callback);
+      });
       /*
       const messageLeft = {
         user: "SERVER",
@@ -136,6 +137,18 @@ module.exports = (io) => {
       socket.broadcast.emit("updatechat", newRoomJoin);
 
       socket.emit("updaterooms", rooms, newroom);
+    });
+
+    socket.on("disconnect", () => {
+      users = users.filter(user => user.name !== socket.username);
+      //users.splice(users.indexOf(socket.username), 1);
+
+      deleteUserWhenLoggingOut(socket.id);
+
+      connections.splice(connections.indexOf(socket, 1));
+      io.sockets.emit("updateusers", users);
+
+      console.log("disconnected");
     });
   });
 };
