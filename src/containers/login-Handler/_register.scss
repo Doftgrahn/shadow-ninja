@@ -105,73 +105,171 @@
     //sass for profile
     .userMainContent {
       display: flex;
+      margin: 20px;
+      justify-content: space-between;
       @media screen and (max-width: 800px) {
         flex-direction: column;
-      }
-      .userGames {
-
-        p {
-          text-align: center;
-        }
+        margin: 0px;
       }
       .userStatus {
         display: flex;
         flex-direction: column;
-        max-width: 1100px;
-        width: 100%;
-        margin: 0 auto;
-        background-color: $color-orange;
+        padding: 10px;
+        min-width: 40%;
+        height: 40%;
+        background-color: $color-dark-gray;
+        border-top: 1px solid $color-orange;
         @media screen and (max-width: 800px) {
-          align-content: center;
+          align-self: center;
           width: 90%;
           margin-top: 20px;
           padding: 10px;
         }
         .userButton {
-          background-color: $color-gray;
-          color: $color-white;
+          padding: 5px;
+          border: 1px solid black;
+          background-color: $color-orange;
+          color: $color-dark-gray;
           border-radius: 0 0 0 0;
+
+          width: 30%;
+          align-self: center;
         }
         .userButton:hover {
-            background-color: $color-dark-gray;
+            background-color: $color-button-hover;
             color: $color-white;
         }
         b {
+          margin-bottom: 15px;
           text-align: center;
         }
         .helloUser {
           text-align: center;
-          p {
-            color: $color-orange;
-          }
+          margin: 5px;
           b {
-            color: $color-dark-gray;
+
+            color: $color-orange;
           }
         }
         .userImg {
           align-self: center;
-          height: 90px;
-          width: 90px;
+          height: 120px;
+          width: 120px;
           padding: 5px;
+
         }
         .addcurrency {
           float: left;
         }
       }
-      .gameContainer {
-        border: 2px solid black;
-      }
 
       .singlegames {
+        border-top: 1px solid $color-orange;
+        background-color: $color-dark-gray;
         text-align: center;
-        border: 2px solid black;
         display: flex;
         flex-direction: column;
+        margin-left: 20px;
+        max-width: 1100px;
+        h2 {
+          color: $color-orange;
+          border-bottom: 3px solid $color-orange;
+          padding: 10px;
+
+        }
+        @media screen and (max-width: 800px) {
+          flex-direction: column;
+          margin: 19px;
+          width: auto;
+
+        }
+        .gameDisplay {
+          display: flex;
+          width: 80%;
+          margin-bottom: 20px;
+
+            h3 {
+            margin-top: 25px;
+            display: none;
+            background-color: white;
+          }
+          @media screen and (max-width: 800px) {
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            height: auto;
+            width: auto;
+
+              h3 {
+                border-left: 3px solid black;
+                border-top: 3px solid black;
+                border-right: 3px solid black;
+              background-color: $color-gray;
+              color: $color-orange;
+              display: inline;
+              border-bottom: none;
+            }
+          }
+          .buttonDisplay {
+            background-color: $color-dark-gray;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0;
+            align-self: center;
+            @media screen and (max-width: 800px) {
+              background-color: $color-gray;
+              border-left: 3px solid black;
+              border-right: 3px solid black;
+              border-bottom: 3px solid black;
+              order: 2;
+              flex-direction: row;
+              width: 100%;
+              justify-content: center;
+            }
+          }
+          .image {
+            @media screen and (max-width: 800px) {
+              border-left: 3px solid black;
+              border-right: 3px solid black;
+            }
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+      .emptyLibrary {
+        display: flex;
+        flex-direction: column;
+        background-color: $color-dark-gray;
+        height: 200px;
+        justify-content: center;
+
+        @media screen and (max-width: 800px) {
+          margin: 19px;
+
+        }
+        .shopButton {
+          font-size: 30px;
+          margin: 5px;
+          padding: 5px;
+          background-color: $color-orange;
+          border: none;
+          border-radius: 0 0 0 0;
+          width: auto;
+          align-self: center;
+        }
       }
 
-      .test {
-        margin-top: 10px;
-      }
 
+    }
+    .download {
+      height: 50px;
+      width: 50px;
+      margin: 15px;
+      @media screen and (max-width: 800px) {
+        height: 40px;
+        width: 40px;
+      }
     }
 }
