@@ -5,8 +5,9 @@
     justify-content: center;
     width: 100%;
     max-width: 1100px;
-    margin: 0 auto;
-    background: #282b29;
-    border-radius: 10px;
-    margin-top: 40px;
+    margin: 20px auto;
+    background: $color-dark-gray;
+    //border-radius: 10px;
+    padding: 0 20px;
+    border-top: 5px solid $color-orange;
 }

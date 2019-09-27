@@ -8,8 +8,8 @@ const io = require("socket.io")(httpServer, {
 
 
 /*DATABASE*/
-//const {insertMongoDB} = require('./database/AddProduct');
 const {filterByNameMongoDB} = require("./database/filterByName");
+// const {insertMongoDB} = require("./database/addProduct");
 const {getSingleProductMongoDB} = require("./database/getSingleProduct");
 const {
   editUserCurrencyMongoDB
@@ -46,8 +46,8 @@ require("./secrets/passport")(passport);
 
 //Socket
 
-//If you want to insert, uncomment this function.
-//insertMongoDB()
+// If you want to insert, uncomment this function.
+// insertMongoDB()
 
 /* Handle Auth / Login */
 
@@ -59,42 +59,51 @@ server.use(
 
 // ready to connect with React
 // filter and get funtion for games product from MongoDB
-let sortProduct = "";
-let lastFilter = "";
-server.get("/api/games", (request, response) => {
-  let findProduct = {};
-  let queryFind = request.query.find;
-  let querySort = request.query.sort;
+let sortProduct = '';
+let lastFilter = '';
+server.get('/api/games', (request, response) => {
+	let findProduct = {};
+	let querySkip = JSON.parse(request.query.skip);
+	let queryFind = request.query.find;
+	let querySort = request.query.sort;
 
-  if (querySort === "" || querySort === {}) {
-    sortProduct = {};
-  } else if (querySort === "lowestPrice") {
-    sortProduct = {price: 1};
-  } else if (querySort === "highestPrice") {
-    sortProduct = {price: -1};
-  } else if (querySort === "category") {
-    if (lastFilter) {
-      sortProduct = {category: 1};
-    } else {
-      sortProduct = {category: -1};
-    }
-  } else if (querySort === "lowestRating") {
-    sortProduct = {rating: 1};
-  } else if (querySort === "highestRating") {
-    sortProduct = {rating: -1};
-  }
+	if (querySort === '' || querySort === {}) {
+		sortProduct = {}
+	}
+	else if(querySort === 'lowestPrice') {
+		sortProduct = {price: 1};
+	}
+	else if(querySort === 'highestPrice') {
+		sortProduct = {price: -1}
+	}
+	else if(querySort === 'category'){
+		if(lastFilter) {
+			sortProduct = {category: 1}
+		} else {
+			sortProduct = {category: -1}
+		}
+	}
+	else if(querySort === 'lowestRating') {
+			sortProduct = {rating: 1}
+		}
+	else if(querySort === 'highestRating') {
+			sortProduct = {rating: -1}
+		}
 
-  if (queryFind === "All") {
-    findProduct = {};
-  } else if (queryFind !== "All") {
-    findProduct = {category: queryFind};
-  }
 
-  lastFilter = !lastFilter;
-  filterByNameMongoDB(sortProduct, findProduct, result => {
-    response.send(JSON.stringify(result));
-  });
-});
+	if(queryFind === 'All') {
+		findProduct = {};
+	}
+	else if(queryFind !== 'All') {
+		findProduct = {category: queryFind};
+	}
+
+	lastFilter = !lastFilter;
+	filterByNameMongoDB(querySkip, sortProduct, findProduct, result => {
+		response.send(JSON.stringify(result))
+	})
+
+})
 
 // get request for singleProduct based on ID
 server.get("/api/games/product", (request, response) => {

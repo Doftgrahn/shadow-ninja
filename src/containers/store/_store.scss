@@ -4,8 +4,10 @@
     flex-direction: column;
     overflow-x: hidden;
     background: $color-gray;
+    min-height: 100vh;
 
     .gameswrapper {
+        min-height: 100vh;
         display: flex;
         flex-direction: row;
         overflow: hidden;
