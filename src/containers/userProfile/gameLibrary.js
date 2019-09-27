@@ -6,13 +6,14 @@ import { ReactComponent as Play } from './play.svg';
 const GameLibrary = ({auth}) => {
   let gamesInLibrary = auth.user.gameLibrary.map(game => {
      return (
-       <div key={game._id} className='img'>
-         <div>
+       <div key={game._id} className='gameDisplay'>
+         <h3>{game.title}</h3>
+         <div className="buttonDisplay">
            <Download className="download"/>
            <Star className="download"/>
            <Play className="download"/>
          </div>
-         <img src={game.imgURL} alt={game.name}/>
+         <img className="image"src={game.imgURL} alt={game.name}/>
        </div>
      )
   })

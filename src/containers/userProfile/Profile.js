@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import GameLibrary from './gameLibrary';
 
 import { ReactComponent as Profileimg } from './user.svg';
-import { ReactComponent as Download } from './download.svg';
+
 import Fade from 'react-reveal/Fade';
 
 

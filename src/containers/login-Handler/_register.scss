@@ -173,28 +173,68 @@
         max-width: 1100px;
         h2 {
           color: $color-orange;
+          border-bottom: 3px solid $color-orange;
+          padding: 10px;
+
         }
         @media screen and (max-width: 800px) {
+          flex-direction: column;
           margin: 19px;
           width: auto;
+
         }
-        div {
+        .gameDisplay {
           display: flex;
           width: 80%;
           margin-bottom: 20px;
 
-          div {
+            h3 {
+            margin-top: 25px;
+            display: none;
+            background-color: white;
+          }
+          @media screen and (max-width: 800px) {
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            height: auto;
+            width: auto;
+
+              h3 {
+                border-left: 3px solid black;
+                border-top: 3px solid black;
+                border-right: 3px solid black;
+              background-color: $color-gray;
+              color: $color-orange;
+              display: inline;
+              border-bottom: none;
+            }
+          }
+          .buttonDisplay {
+            background-color: $color-dark-gray;
             display: flex;
             flex-direction: column;
             margin-bottom: 0;
             align-self: center;
+            @media screen and (max-width: 800px) {
+              background-color: $color-gray;
+              border-left: 3px solid black;
+              border-right: 3px solid black;
+              border-bottom: 3px solid black;
+              order: 2;
+              flex-direction: row;
+              width: 100%;
+              justify-content: center;
+            }
           }
-
-          .img {
+          .image {
+            @media screen and (max-width: 800px) {
+              border-left: 3px solid black;
+              border-right: 3px solid black;
+            }
             height: 100%;
             width: 100%;
-
-
           }
         }
       }
@@ -220,16 +260,16 @@
           align-self: center;
         }
       }
-      .img {
-        margin-top: 10px;
 
-      }
 
     }
     .download {
       height: 50px;
       width: 50px;
-      margin: 20px;
-      color: green;
+      margin: 15px;
+      @media screen and (max-width: 800px) {
+        height: 40px;
+        width: 40px;
+      }
     }
 }
