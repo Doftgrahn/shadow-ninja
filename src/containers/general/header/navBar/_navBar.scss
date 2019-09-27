@@ -23,6 +23,31 @@
             border-radius: 5px;
         }
     }
+
+    .navTotal {
+        position: relative;
+        //text-align: center;
+        //display: flex;
+        display: block;
+
+        &-total {
+            //display: block;
+            text-align: center;
+            height: 24px;
+            width: 24px;
+            line-height: 20px;
+            position: absolute;
+            background: $color-orange;
+            border-radius: 50%;
+            padding: 2px;
+            //bottom: 14px;
+            right: 160px;
+            transition: 1s ease;
+            @media screen and (min-width: 800px) {
+                right: -14px;
+            }
+        }
+    }
     @media screen and (min-width: 800px) {
         width: 100%;
         background: 0;
@@ -45,4 +70,12 @@
 .activeNav {
     left: 0;
     text-outline: 200px;
+}
+
+.remove {
+    bottom: 500px;
+}
+
+.there {
+    bottom: 14px;
 }

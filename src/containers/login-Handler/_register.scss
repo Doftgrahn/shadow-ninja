@@ -127,18 +127,19 @@
           margin-top: 20px;
           padding: 10px;
         }
-        button {
+        .userButton {
           background-color: $color-gray;
+          color: $color-white;
+          border-radius: 0 0 0 0;
         }
-        button:hover {
-            background-color: $color-button-hover;
-            color: white;
+        .userButton:hover {
+            background-color: $color-dark-gray;
+            color: $color-white;
         }
         b {
           text-align: center;
         }
         .helloUser {
-          color: $color-white;
           text-align: center;
           p {
             color: $color-orange;

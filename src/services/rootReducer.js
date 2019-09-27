@@ -16,6 +16,9 @@ import errorReducer from "./login/reducers/errorReducers";
 import socketHandler from "./socket/socketReducer";
 //AUTH
 
+//users
+import userReducer from './users/usersReducer';
+
 export default combineReducers({
   chat: socketHandler,
   products: products,
@@ -24,5 +27,6 @@ export default combineReducers({
   scrollBottom: scrollBottom,
   total: totalReducer,
   auth: authReducer,
-  errors: errorReducer
+  errors: errorReducer,
+  users: userReducer
 });

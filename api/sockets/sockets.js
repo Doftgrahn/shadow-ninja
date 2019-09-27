@@ -1,6 +1,11 @@
-const {insertChatHistory, getAllHistory} = require("./socketDB");
+const {insertChatHistory, getAllHistory} = require("./socketDBHISTORY");
+const {
+  addUserOnline,
+  getUsersOnline,
+  deleteUserWhenLoggingOut
+} = require("./socketDBUSERS");
 
-module.exports = (io, server) => {
+module.exports = io => {
   const rooms = ["general", "party", "trade"];
 
   let connections = [];
@@ -19,18 +24,12 @@ module.exports = (io, server) => {
 
     socket.join("general");
 
-    getAllHistory(socket.room, callback => {
-      socket.emit("updatechat", callback);
+    getUsersOnline(callback => {
+      socket.emit("getUsers", callback);
     });
 
-    socket.on("disconnect", () => {
-      users = users.filter(user => user.name !== socket.username);
-      //users.splice(users.indexOf(socket.username), 1);
-
-      connections.splice(connections.indexOf(socket, 1));
-      io.sockets.emit("updateusers", users);
-
-      console.log("disconnected");
+    getAllHistory(socket.room, callback => {
+      socket.emit("updatechat", callback);
     });
 
     socket.on("adduser", username => {
@@ -43,6 +42,8 @@ module.exports = (io, server) => {
 
       socket.emit("getUsers", users);
 
+      addUserOnline(username);
+
       /*
       const serverreplyToUser = {
         user: "SERVER",
@@ -51,6 +52,9 @@ module.exports = (io, server) => {
 
       socket.emit("updatechat", serverreplyToUser);
       */
+      getUsersOnline(callback => {
+        socket.emit("getUsers", callback);
+      });
 
       const serverReplyToChat = {
         user: "SERVER",
@@ -99,6 +103,9 @@ module.exports = (io, server) => {
 
     // Switch rooms
     socket.on("switchRoom", newroom => {
+      getUsersOnline(callback => {
+        socket.emit("getUsers", callback);
+      });
       /*
       const messageLeft = {
         user: "SERVER",
@@ -134,6 +141,18 @@ module.exports = (io, server) => {
       socket.broadcast.emit("updatechat", newRoomJoin);
 
       socket.emit("updaterooms", rooms, newroom);
+    });
+
+    socket.on("disconnect", () => {
+      users = users.filter(user => user.name !== socket.username);
+      //users.splice(users.indexOf(socket.username), 1);
+
+      deleteUserWhenLoggingOut(socket.id);
+
+      connections.splice(connections.indexOf(socket, 1));
+      io.sockets.emit("updateusers", users);
+
+      console.log("disconnected");
     });
   });
 };

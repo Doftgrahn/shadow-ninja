@@ -1,28 +1,45 @@
 const proxy = require('http-proxy-middleware');
 
+const URI = process.env.REVERSE_PROXY_URI || 'http://localhost:1337'
+
 module.exports = (app) => {
   // proxy api calls
   app.use(proxy('/api', {
-    target: 'http://localhost:1337/',
+    target: URI,
     changeOrigin: true,
   }));
 
   app.use(proxy('/login', {
-    target: 'http://localhost:1337/',
+    target: URI,
     changeOrigin: true,
   }));
 
   app.use(proxy('/register', {
-    target: 'http://localhost:1337/',
+    target: URI,
     changeOrigin: true,
   }));
 
   // proxy websocket
+
+
   app.use(proxy('/socket.io', {
-    target: 'http://localhost:1337/',
+    target: URI,
     changeOrigin: true,
     ws: true,
   }));
+
+  app.use(proxy('/socket.io/twitter', {
+    target: URI,
+    changeOrigin: true,
+    ws: true,
+  }));
+
+
+
+
+
+
+
 };
 
 /*
