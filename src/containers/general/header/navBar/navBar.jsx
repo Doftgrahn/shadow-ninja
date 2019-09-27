@@ -40,8 +40,8 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
 
     const navBar = navBarData.map((nav, index) => {
         if (nav.name === 'Checkout') {
-            return <Link className="navTotal" onClick={turnOff} key={index} to={nav.to}>{nav.name}
-                <span className="navTotal-total">{totalProducts}</span>
+            return <Link className="navTotal" onClick={turnOff} key={'hej'+index} to={nav.to}>{nav.name}
+                <span className={`navTotal-total ${!totalProducts ? 'remove' : 'there'}`}>{totalProducts}</span>
             </Link>
         } else {
             return <Link onClick={turnOff} key={index} to={nav.to}>{nav.name}</Link>

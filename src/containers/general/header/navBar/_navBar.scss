@@ -38,8 +38,9 @@
             background: $color-orange;
             border-radius: 50%;
             padding: 2px;
-            bottom: 14px;
+            //bottom: 14px;
             right: -14px;
+            transition: 1s ease;
         }
     }
     @media screen and (min-width: 800px) {
@@ -64,4 +65,12 @@
 .activeNav {
     left: 0;
     text-outline: 200px;
+}
+
+.remove {
+    bottom: 500px;
+}
+
+.there {
+    bottom: 14px;
 }
