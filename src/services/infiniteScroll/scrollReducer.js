@@ -8,7 +8,6 @@ const initialState = {
 	isFetching: false,
 	error: null
 }
-// console.log('scrollReducer, state: ', initialState.isFetching);
 
 export default function scrollReducer(
 	state = initialState,

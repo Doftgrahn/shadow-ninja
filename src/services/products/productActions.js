@@ -1,6 +1,7 @@
 import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
+  FETCH_PRODUCTS_FETCHQUERY,
   FETCH_PRODUCTS_FAILURE,
   SORT_PRODUCTS,
   FILTER_PRODUCTS
@@ -8,6 +9,7 @@ import {
 import {fetchDone} from '../infiniteScroll/scrollActions';
 
 const getProducts = (skip, filter, sort) => {
+
 
   const url = `/api/games?skip=${skip}&find=${filter}&sort=${sort}`;
   return fetch(url)
@@ -33,6 +35,20 @@ export const fetchProducts = (skip, filter, sort) => {
   };
 };
 
+export const fetchProductsWithQuery = (skip, filter, sort) => {
+	return dispatch => {
+		dispatch(fetchProductsBegin());
+		return getProducts(skip, filter, sort)
+		.then(json => {
+			dispatch(fetchProductsQuery(json));
+			return json;
+		})
+		.catch(error => {
+			dispatch(fetchProductsFailure(error))
+		});
+	}
+}
+
 const handleErrors = response => {
 	if (!response.ok) {
 		throw Error(response.statusText);
@@ -46,6 +62,11 @@ export const fetchProductsBegin = () => ({
 
 export const fetchProductsSuccess = (products) => ({
   type: FETCH_PRODUCTS_SUCCESS,
+  payload: {products}
+});
+
+export const fetchProductsQuery = (products) => ({
+  type: FETCH_PRODUCTS_FETCHQUERY,
   payload: {products}
 });
 
