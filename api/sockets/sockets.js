@@ -24,6 +24,10 @@ module.exports = io => {
 
     socket.join("general");
 
+    getUsersOnline(callback => {
+      socket.emit("getUsers", callback);
+    });
+
     getAllHistory(socket.room, callback => {
       socket.emit("updatechat", callback);
     });

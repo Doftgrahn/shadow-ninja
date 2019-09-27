@@ -143,7 +143,15 @@ server.use(passport.initialize());
 // Passport config
 require("./secrets/passport")(passport);
 // Routes
+
 server.use("/api/users", users);
+
+
+
+//get all user api/users
+
+require('./routes/getUsers')(server)
+
 
 server.get('*', (req, res) => {
 res.sendFile(`${__dirname}/../build/index.html`);

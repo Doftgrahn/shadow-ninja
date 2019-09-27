@@ -38,15 +38,14 @@ const deleteUserWhenLoggingOut = id => {
   MongoClient.connect(uri, settings, (error, client) => {
     let collection = client.db(db).collection("online_chat");
 
-//const myId = JSON.parse(myId);
-    const query =  {id:id};
+    //const myId = JSON.parse(myId);
+    const query = {id: id};
     collection.deleteMany(query, (err, result) => {
       if (err) {
         console.error("could not Delete");
         throw err;
       }
-      console.log('result', result);
-      console.log("1 Document Deleted.");
+      console.log("X Document Deleted.");
       client.close();
     });
   });
