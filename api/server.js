@@ -6,7 +6,6 @@ const io = require("socket.io").listen(httpServer, {
   path: "/socket.io"
 });
 
-
 /*DATABASE*/
 const {filterByNameMongoDB} = require("./database/filterByName");
 // const {insertMongoDB} = require("./database/addProduct");
@@ -59,51 +58,43 @@ server.use(
 
 // ready to connect with React
 // filter and get funtion for games product from MongoDB
-let sortProduct = '';
-let lastFilter = '';
-server.get('/api/games', (request, response) => {
-	let findProduct = {};
-	let querySkip = JSON.parse(request.query.skip);
-	let queryFind = request.query.find;
-	let querySort = request.query.sort;
+let sortProduct = "";
+let lastFilter = "";
+server.get("/api/games", (request, response) => {
+  let findProduct = {};
+  let querySkip = JSON.parse(request.query.skip);
+  let queryFind = request.query.find;
+  let querySort = request.query.sort;
 
-	if (querySort === '' || querySort === {}) {
-		sortProduct = {}
-	}
-	else if(querySort === 'lowestPrice') {
-		sortProduct = {price: 1};
-	}
-	else if(querySort === 'highestPrice') {
-		sortProduct = {price: -1}
-	}
-	else if(querySort === 'category'){
-		if(lastFilter) {
-			sortProduct = {category: 1}
-		} else {
-			sortProduct = {category: -1}
-		}
-	}
-	else if(querySort === 'lowestRating') {
-			sortProduct = {rating: 1}
-		}
-	else if(querySort === 'highestRating') {
-			sortProduct = {rating: -1}
-		}
+  if (querySort === "" || querySort === {}) {
+    sortProduct = {};
+  } else if (querySort === "lowestPrice") {
+    sortProduct = {price: 1};
+  } else if (querySort === "highestPrice") {
+    sortProduct = {price: -1};
+  } else if (querySort === "category") {
+    if (lastFilter) {
+      sortProduct = {category: 1};
+    } else {
+      sortProduct = {category: -1};
+    }
+  } else if (querySort === "lowestRating") {
+    sortProduct = {rating: 1};
+  } else if (querySort === "highestRating") {
+    sortProduct = {rating: -1};
+  }
 
+  if (queryFind === "All") {
+    findProduct = {};
+  } else if (queryFind !== "All") {
+    findProduct = {category: queryFind};
+  }
 
-	if(queryFind === 'All') {
-		findProduct = {};
-	}
-	else if(queryFind !== 'All') {
-		findProduct = {category: queryFind};
-	}
-
-	lastFilter = !lastFilter;
-	filterByNameMongoDB(querySkip, sortProduct, findProduct, result => {
-		response.send(JSON.stringify(result))
-	})
-
-})
+  lastFilter = !lastFilter;
+  filterByNameMongoDB(querySkip, sortProduct, findProduct, result => {
+    response.send(JSON.stringify(result));
+  });
+});
 
 // get request for singleProduct based on ID
 server.get("/api/games/product", (request, response) => {
@@ -145,18 +136,12 @@ require("./secrets/passport")(passport);
 // Routes
 
 server.use("/api/users", users);
-
-
-
 //get all user api/users
+require("./routes/getUsers")(server);
 
-require('./routes/getUsers')(server)
-
-
-server.get('*', (req, res) => {
-res.sendFile(`${__dirname}/../build/index.html`);
+server.get("*", (req, res) => {
+  res.sendFile(`${__dirname}/../build/index.html`);
 });
-
 
 server.use((error, request, response, next) => {
   response.status(500).send("error 500 error");

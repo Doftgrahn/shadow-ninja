@@ -11,7 +11,6 @@ const getAllUsers = callback => {
         throw error;
       }
       callback(response);
-      console.log(response);
       client.close();
     });
   });

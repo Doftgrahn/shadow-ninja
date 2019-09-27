@@ -51,7 +51,7 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
     return (<nav className={`navMenu ${toggle
             ? 'activeNav'
             : ''}`}>
-        <StoreNavbar toggle={toggle} turnOff={turnOff}/> {navBar}
+        {/*<StoreNavbar toggle={toggle} turnOff={turnOff}/>*/} {navBar}
     </nav>)
 };
 
