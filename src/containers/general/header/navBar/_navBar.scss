@@ -23,6 +23,25 @@
             border-radius: 5px;
         }
     }
+
+    .navTotal {
+        position: relative;
+        text-align: center;
+        display: flex;
+
+        &-total {
+            text-align: center;
+            height: 24px;
+            width: 24px;
+            line-height: 20px;
+            position: absolute;
+            background: $color-orange;
+            border-radius: 50%;
+            padding: 2px;
+            bottom: 14px;
+            right: -14px;
+        }
+    }
     @media screen and (min-width: 800px) {
         width: 100%;
         background: 0;

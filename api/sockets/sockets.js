@@ -1,10 +1,12 @@
 const {insertChatHistory, getAllHistory} = require("./socketDB");
 
-module.exports = (io, server) => {
+module.exports = (io) => {
   const rooms = ["general", "party", "trade"];
 
   let connections = [];
   let users = [];
+
+
 
   io.on("connection", socket => {
     console.log("Connected to chat");
