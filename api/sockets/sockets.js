@@ -1,7 +1,7 @@
 const {insertChatHistory, getAllHistory} = require("./socketDB");
 
 module.exports = (io, server) => {
-  const rooms = ["general", "party", "trade", "yolo"];
+  const rooms = ["general", "party", "trade"];
 
   let connections = [];
   let users = [];
@@ -90,8 +90,8 @@ module.exports = (io, server) => {
 
     // IS TYPING
 
-    socket.on("typing", (data, user, room) => {
-      socket.broadcast.emit("istyping", data, user, room);
+    socket.on("typing", (data, user) => {
+      socket.broadcast.emit("istyping", data, user, socket.room);
       //io.in(socket.rooms).emit('istyping', data,user,room)
 
       // socket.broadcast.to(socket.room).emit("istyping", data, user);

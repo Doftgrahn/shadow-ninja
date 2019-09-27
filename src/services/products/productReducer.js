@@ -2,6 +2,7 @@ import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
+  FETCH_PRODUCTS_FETCHQUERY,
   SORT_PRODUCTS,
   FILTER_PRODUCTS
 } from './actionTypes';
@@ -13,11 +14,11 @@ const initialState = {
   sort: '',
   filter: 'All'
 };
-
 export default function productReducer(
     state = initialState,
     action
 ) {
+
   switch (action.type) {
     case FETCH_PRODUCTS_BEGIN:
     //When loading.
@@ -30,10 +31,17 @@ export default function productReducer(
     // When sucess
       return {
         ...state,
-        items: action.payload.products,
+		items: [...state.items, ...action.payload.products],
         loading: false,
         error: null
       };
+	  case FETCH_PRODUCTS_FETCHQUERY:
+	  return {
+		  ...state,
+		  items: action.payload.products,
+		  loading: false,
+		  error: null
+	  }
     case FETCH_PRODUCTS_FAILURE:
     // If failure.
       return {
