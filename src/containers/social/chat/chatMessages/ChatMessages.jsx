@@ -30,6 +30,7 @@ const ChatMessages = ({chat, user, socket}) => {
         }
     }
 
+    
     const showMessages = chat
         .data
         .flat()
