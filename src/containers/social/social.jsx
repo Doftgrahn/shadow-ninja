@@ -7,7 +7,10 @@ import Chat from './chat/chat';
 import Sidebar from './sidebar/sidebar';
 
 const Social = ({user}) => {
-    const [socket] = useSocket({autoConnect: false, transports: ['websocket']});
+    const [socket] = useSocket('/', {
+        autoConnect: false,
+        transports: ['websocket']
+    });
 
     if (user.user.name) {
         socket.connect();

@@ -1,7 +1,7 @@
 const express = require("express");
 const server = express();
 const httpServer = require("http").createServer(server);
-const io = require("socket.io")(httpServer, {
+const io = require("socket.io").listen(httpServer, {
   serveClient: process.config.env === "production" ? false : true,
   path: "/socket.io"
 });
@@ -166,4 +166,4 @@ httpServer.listen(port, () => {
   console.log("Server listening on port " + port);
 });
 
-require("./sockets/sockets")(io, server);
+require("./sockets/sockets")(io);
