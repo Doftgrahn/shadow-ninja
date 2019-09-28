@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 
 import {connect} from 'react-redux';
 
@@ -9,17 +9,25 @@ import {ReactComponent as ShoppingCart} from '../../SVG_Icons/shoppingCart/shopp
 import {updateCart} from '../../../services/total/totalAction';
 
 const CartInfo = ({cart, total, dispatch}) => {
+    const isInitialMount = useRef(true);
     const [animation, setAnimation] = useState(false);
 
     const {productQuantity} = total;
 
     useEffect(() => {
-        if (cart) {
-            setAnimation(animation => !animation)
+        if(isInitialMount.current) {
+            isInitialMount.current = false
+        }
+        else {
+
+            if (cart) {
+                setAnimation(animation => !animation)
+                dispatch(updateCart(cart))
+            }
+
         }
 
         // updates Cart with sum, productQuantity.
-        dispatch(updateCart(cart))
 
     }, [cart, dispatch])
 

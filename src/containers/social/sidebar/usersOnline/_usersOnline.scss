@@ -21,10 +21,12 @@
 
         p {
             background: $color-gray;
-            //padding-top: 20px;
             padding: 10px;
             margin: 0 0 4px;
-            //    padding:5px;
+
+            &:empty {
+                display: none;
+            }
         }
     }
 }
