@@ -5,25 +5,25 @@
     //background: $color-orange;
     //margin: 10px;
     text-align: left;
+-webkit-font-smoothing: antialiased;
 
     h4 {
-        //text-align: left;
-        //padding: 5px;
+        text-align: center;
+        padding: 20px;
         text-transform: uppercase;
         border: 0;
         margin: 0;
-        padding: 0;
         border: 0;
-        border-bottom: 5px solid $color-orange;
     }
 
     &__container {
         text-align: left;
 
         p {
+            background: $color-gray;
             //padding-top: 20px;
-            padding: 0;
-            margin: 0;
+            padding: 10px;
+            margin: 0 0 4px;
             //    padding:5px;
         }
     }

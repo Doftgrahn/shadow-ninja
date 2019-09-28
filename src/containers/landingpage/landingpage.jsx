@@ -6,7 +6,8 @@ import Fade from 'react-reveal/Fade';
 import {ReactComponent as Hero} from '../../components/icon/ninja_page.svg';
 
 //import Glitch from '../../components/glitch/glitch';
-import Block from './block/block';
+import Block from './infoBlock/block';
+
 
 const LandingPage = () => {
     return (<main className="landingpage">

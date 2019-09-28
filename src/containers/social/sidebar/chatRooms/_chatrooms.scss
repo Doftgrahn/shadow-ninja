@@ -6,11 +6,12 @@
     }
 
     .room-btn {
+        -webkit-font-smoothing: antialiased;
         outline: none;
         color: $color-white;
         padding: 10px;
         flex: 1;
-        margin: 0 0 10px;
+        margin: 0 0 4px;
         width: 100%;
         border-radius: 0;
         border: 0;
@@ -22,6 +23,7 @@
 
     .btn-active {
         background: $color-orange;
-        border-right: 5px solid $color-dark-gray;
+        color:$color-dark-gray;
+        //border-right: 5px solid $color-dark-gray;
     }
 }
