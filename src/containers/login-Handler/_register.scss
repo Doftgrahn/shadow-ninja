@@ -16,38 +16,62 @@
         text-align: center;
         display: flex;
         justify-content: center;
-        background-color: #9A979D;
+        background-color: $color-dark-gray;
         padding: 50px;
-        border-radius: 50px;
         height: 50%;
         max-width: 1100px;
 
 
         input {
-            padding: 10px;
-            border-radius: 10px;
-            margin: 20px;
-            width: 300px;
+          background-color: $color-orange;
+          border: none;
+          padding: 10px;
+          margin: 20px;
+          width: 300px;
+          color: $color-dark-gray;
+          font-weight: bold;
+        }
+        input:focus {
+          border: 2px solid blue;
         }
 
         button {
-            background-color: snow;
+            margin-top: 20px;
+            color: $color-dark-gray;
+            background-color: $color-orange;
             padding: 10px;
             width: 100px;
-            border-radius: 5px;
+            border-radius: 0 0 0 0;
+            border: none;
+            font-weight: bold;
+        }
+        button:hover {
+          background-color: $color-button-hover;
+          color: $color-white;
+          border: 1px solid orange;
+        }
+        ::placeholder {
+          font-weight: bold;
+          color: $color-dark-gray;
         }
         .dontHaveLogin {
             margin-top: 20px;
-            border-top: solid 1px;
+            border-top: solid 1px $color-orange;
             width: 100%;
             text-align: center;
 
             i {
-                margin: 20px;
+              color: $color-orange;
+              margin: 20px;
             }
 
             p {
-                margin: 20px;
+              color: $color-white;
+              margin: 20px;
+            }
+            a {
+              color: $color-orange;
+              font-weight: bold;
             }
         }
     }
@@ -67,19 +91,24 @@
           color: $color-dark-gray;
           font-weight: bold;
         }
+        input:focus {
+          border: 2px solid blue;
+        }
 
         button {
           margin-top: 20px;
-            color: $color-orange;
-            background-color: $color-gray;
+            color: $color-dark-gray;
+            background-color: $color-orange;
             padding: 10px;
             width: 100px;
             border-radius: 0 0 0 0;
             border: none;
+            font-weight: bold;
         }
         button:hover {
-          background-color: $color-orange;
-          color: $color-orange;
+          background-color: $color-button-hover;
+          color: $color-white;
+          border: 1px solid orange;
         }
         ::placeholder {
           font-weight: bold;
@@ -87,18 +116,24 @@
         }
 
         i {
-            margin: 20px;
+          color: $color-orange;
+          margin: 20px;
         }
 
         p {
-            margin: 20px;
+          color: $color-white;
+          margin: 20px;
+        }
+        a {
+          color: $color-orange;
+          font-weight: bold;
         }
     }
 
     .inerRegWrapper {
 
         text-align: center;
-        margin-top: 100px;
+        margin-top: 15px;
         background-color: #9A979D;
         padding: 50px;
         background-color: $color-dark-gray;
@@ -147,7 +182,7 @@
           background-color: $color-orange;
           color: $color-dark-gray;
           border-radius: 0 0 0 0;
-
+          font-weight: bold;
           width: 30%;
           align-self: center;
         }
@@ -275,6 +310,10 @@
           width: auto;
           align-self: center;
         }
+        .shopButton:hover {
+          background-color: $color-button-hover;
+          color: $color-white;
+        }
       }
 
 
@@ -291,4 +330,5 @@
 }
 .red-text {
   color: red;
+  font-weight: bold;
 }

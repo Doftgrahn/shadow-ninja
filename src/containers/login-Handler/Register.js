@@ -51,9 +51,7 @@ this.props.registerUser(newUser, this.props.history);
 
 render() {
     const { errors } = this.state;
-    const colorDark = {
-      color: 'black'
-    }
+
 return (
       <div className="regWrapper">
           <Fade>
@@ -66,7 +64,6 @@ return (
               <div>
                 <input
                   placeholder='Enter your name'
-                  style={colorDark}
                   onChange={this.onChange}
                   value={this.state.name}
                   error={errors.name}
@@ -82,7 +79,6 @@ return (
               <div>
                 <input
                   placeholder='Enter a valid Email'
-                  style={colorDark}
                   onChange={this.onChange}
                   value={this.state.email}
                   error={errors.email}
@@ -98,7 +94,6 @@ return (
               <div>
                 <input
                   placeholder='Enter Password'
-                  style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password}
                   error={errors.password}
@@ -114,7 +109,6 @@ return (
               <div>
                 <input
                   placeholder='Confirm Password'
-                  style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password2}
                   error={errors.password2}
@@ -128,7 +122,7 @@ return (
                 <span className="red-text">{errors.password2}</span>
               </div>
               <div>
-                <button type="submit" style={colorDark}>
+                <button type="submit">
                   Sign up
                 </button>
               </div>
