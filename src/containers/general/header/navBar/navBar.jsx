@@ -19,7 +19,6 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
     }
 
     const totalProducts = total.productQuantity;
-    console.log(totalProducts);
 
     const navBarData = [
         {
@@ -51,7 +50,7 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
     return (<nav className={`navMenu ${toggle
             ? 'activeNav'
             : ''}`}>
-        {/*<StoreNavbar toggle={toggle} turnOff={turnOff}/>*/} {navBar}
+        <StoreNavbar toggle={toggle} turnOff={turnOff}/>{navBar}
     </nav>)
 };
 

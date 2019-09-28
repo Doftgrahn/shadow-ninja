@@ -5,7 +5,7 @@ import {
 } from "./actionTypes";
 
 const getUsers = () => {
-  const url = "/api/getusers/";
+  const url = "/api/allusers/";
   return fetch(url)
     .then(handleErrors)
     .then(res => {
@@ -18,8 +18,7 @@ export const fetchUsers = () => {
     dispatch(fetchUsersBegin());
     return getUsers()
       .then(json => {
-        dispatch(fetchUsersSuccess(json));
-        return json;
+        return dispatch(fetchUsersSuccess(json));
       })
       .catch(error => {
         dispatch(fetchUsersFailure(error));
@@ -38,9 +37,9 @@ export const fetchUsersBegin = () => ({
   type: FETCH_USERS_BEGIN
 });
 
-export const fetchUsersSuccess = products => ({
+export const fetchUsersSuccess = users => ({
   type: FETCH_USERS_SUCCESS,
-  payload: {products}
+  payload: {users}
 });
 
 export const fetchUsersFailure = error => ({

@@ -4,7 +4,7 @@ import {combineReducers} from "redux";
 import products from "./products/productReducer";
 import singleProduct from "./product/singleProductReducer";
 import cart from "./cart/cartReducer";
-import scrollBottom from "./infiniteScroll/scrollReducer"
+import scrollBottom from "./infiniteScroll/scrollReducer";
 
 // Gives Total value and Quantity, used in USEEFFECT on render in MiniMeny. Also is used in Checkout
 import totalReducer from "./total/totalReducer";
@@ -17,7 +17,7 @@ import socketHandler from "./socket/socketReducer";
 //AUTH
 
 //users
-import userReducer from './users/usersReducer';
+import userReducer from "./users/usersReducer";
 
 export default combineReducers({
   chat: socketHandler,

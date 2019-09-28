@@ -55,7 +55,6 @@ const App = ({users}) => {
         dispatch(fetchUsers())
     }, [dispatch])
 
-    console.log(users);
     return (<div className="App">
         <Router>
             <MiniMeny/>

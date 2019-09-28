@@ -23,7 +23,7 @@ export default function(state = initialState, action) {
       // When success
       return {
         ...state,
-        users: [...state.users, ...action.payload.products],
+        users: [...state.users, action.payload.users],
         loading: false,
         error: null
       };

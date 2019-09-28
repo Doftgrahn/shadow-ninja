@@ -136,6 +136,7 @@ require("./secrets/passport")(passport);
 // Routes
 
 server.use("/api/users", users);
+
 //get all user api/users
 require("./routes/getUsers")(server);
 
