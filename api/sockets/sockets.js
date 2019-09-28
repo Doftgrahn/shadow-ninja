@@ -15,7 +15,8 @@ module.exports = io => {
     console.log("Connected to chat");
     connections.push(socket);
     socket.emit("getUsers", users);
-    io.sockets.emit("updateusers", users);
+
+    //io.sockets.emit("updateusers", users);
 
     // add username to chat
 
@@ -24,9 +25,10 @@ module.exports = io => {
 
     socket.join("general");
 
-    getUsersOnline(callback => {
-      socket.emit("getUsers", callback);
+      getUsersOnline(callback => {
+        socket.emit("getUsers", callback);
     });
+
 
     getAllHistory(socket.room, callback => {
       socket.emit("updatechat", callback);
@@ -40,7 +42,7 @@ module.exports = io => {
       socket.room = "general";
       socket.join("general");
 
-      socket.emit("getUsers", users);
+      //socket.emit("getUsers", users);
 
       addUserOnline(username);
 
@@ -52,17 +54,21 @@ module.exports = io => {
 
       socket.emit("updatechat", serverreplyToUser);
       */
+      /*
       getUsersOnline(callback => {
         socket.emit("getUsers", callback);
       });
+      */
 
       const serverReplyToChat = {
-        user: "SERVER",
+        name: "SERVER",
         message: `${username.name} has connected to ${socket.room}`,
         room: socket.room
       };
 
+
       socket.broadcast.emit("updatechat", serverReplyToChat);
+
 
       socket.emit("updaterooms", rooms, rooms[0]);
     });
@@ -103,9 +109,11 @@ module.exports = io => {
 
     // Switch rooms
     socket.on("switchRoom", newroom => {
+        /*
       getUsersOnline(callback => {
         socket.emit("getUsers", callback);
       });
+      */
       /*
       const messageLeft = {
         user: "SERVER",
@@ -120,18 +128,20 @@ module.exports = io => {
 
       socket.join(newroom);
 
+/*
       const whichRoom = {
         user: "SERVER",
         message: `You are in ${newroom} room`
       };
 
       socket.emit("updatechat", whichRoom);
+      */
       socket.emit("getUsers", users);
 
       getAllHistory(newroom, callback => {
         socket.emit("updatechat", callback);
       });
-
+/*
       const newRoomJoin = {
         user: "SERVER",
         message: `${socket.username} has joined ${newroom} room`,
@@ -139,6 +149,7 @@ module.exports = io => {
       };
 
       socket.broadcast.emit("updatechat", newRoomJoin);
+      */
 
       socket.emit("updaterooms", rooms, newroom);
     });
