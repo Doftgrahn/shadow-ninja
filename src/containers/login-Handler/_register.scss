@@ -1,8 +1,7 @@
 * {
     font-size: 15px;
-
     h2 {
-        color: black;
+        color: $color-orange;
         font-weight: 400;
     }
 
@@ -37,7 +36,6 @@
             width: 100px;
             border-radius: 5px;
         }
-
         .dontHaveLogin {
             margin-top: 20px;
             border-top: solid 1px;
@@ -61,17 +59,31 @@
         margin-bottom: 100px;
 
         input {
-            padding: 10px;
-            border-radius: 10px;
-            margin: 20px;
-            width: 300px;
+          background-color: $color-orange;
+          border: none;
+          padding: 10px;
+          margin: 20px;
+          width: 300px;
+          color: $color-dark-gray;
+          font-weight: bold;
         }
 
         button {
-            background-color: snow;
+          margin-top: 20px;
+            color: $color-orange;
+            background-color: $color-gray;
             padding: 10px;
             width: 100px;
-            border-radius: 5px;
+            border-radius: 0 0 0 0;
+            border: none;
+        }
+        button:hover {
+          background-color: $color-orange;
+          color: $color-orange;
+        }
+        ::placeholder {
+          font-weight: bold;
+          color: $color-dark-gray;
         }
 
         i {
@@ -84,15 +96,14 @@
     }
 
     .inerRegWrapper {
-        background-color: gray;
+
         text-align: center;
         margin-top: 100px;
         background-color: #9A979D;
         padding: 50px;
-        border-radius: 50px;
-        //height: 80%;
-        // width: 500px;
+        background-color: $color-dark-gray;
         .logIn {
+            color: $color-orange;
             margin-top: 20px;
             border-top: solid 1px;
             width: 100%;
@@ -107,6 +118,10 @@
       display: flex;
       margin: 20px;
       justify-content: space-between;
+      max-width: 1100px;
+      width:100%;
+      margin: 0 auto;
+      min-height: 66vh;
       @media screen and (max-width: 800px) {
         flex-direction: column;
         margin: 0px;
@@ -119,6 +134,7 @@
         height: 40%;
         background-color: $color-dark-gray;
         border-top: 1px solid $color-orange;
+        margin: 10px;
         @media screen and (max-width: 800px) {
           align-self: center;
           width: 90%;
@@ -170,7 +186,8 @@
         display: flex;
         flex-direction: column;
         margin-left: 20px;
-        max-width: 1100px;
+        height: 40%;
+          margin: 10px;
         h2 {
           color: $color-orange;
           border-bottom: 3px solid $color-orange;
@@ -185,9 +202,8 @@
         }
         .gameDisplay {
           display: flex;
-          width: 80%;
-          margin-bottom: 20px;
-
+          margin: 20px;
+          align-items: stretch;
             h3 {
             margin-top: 25px;
             display: none;
@@ -205,8 +221,8 @@
                 border-left: 3px solid black;
                 border-top: 3px solid black;
                 border-right: 3px solid black;
-              background-color: $color-gray;
-              color: $color-orange;
+              background-color: $color-orange;
+              color: $color-dark-gray;
               display: inline;
               border-bottom: none;
             }
@@ -215,8 +231,8 @@
             background-color: $color-dark-gray;
             display: flex;
             flex-direction: column;
-            margin-bottom: 0;
-            align-self: center;
+            justify-content: center;
+            background-color: $color-gray;
             @media screen and (max-width: 800px) {
               background-color: $color-gray;
               border-left: 3px solid black;
@@ -251,7 +267,7 @@
         }
         .shopButton {
           font-size: 30px;
-          margin: 5px;
+          margin-top: 15px;
           padding: 5px;
           background-color: $color-orange;
           border: none;
@@ -272,4 +288,7 @@
         width: 40px;
       }
     }
+}
+.red-text {
+  color: red;
 }
