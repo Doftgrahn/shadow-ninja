@@ -22,7 +22,8 @@
     border-radius: 0 20px 20px 20px;
     transition: 0.3s;
     animation: fade 0.4s ease;
-    box-shadow: 2px 2px 2px 2px $color-dark-gray;
+    // box-shadow: 2px 2px 2px 2px $color-dark-gray;
+    box-shadow: 2px 2px 5px 0px #492c09;
     padding: 10px 20px;
     @media screen and (min-width: 800px) {
         width: 320px;
@@ -57,7 +58,7 @@
             color: black;
 
             &:last-child {
-                font-size: 14px;
+                font-size: 11px;
             }
         }
     }

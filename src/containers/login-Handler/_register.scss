@@ -1,7 +1,7 @@
 * {
     font-size: 15px;
     h2 {
-        color: black;
+        color: $color-orange;
         font-weight: 400;
     }
 
@@ -36,7 +36,6 @@
             width: 100px;
             border-radius: 5px;
         }
-
         .dontHaveLogin {
             margin-top: 20px;
             border-top: solid 1px;
@@ -60,17 +59,31 @@
         margin-bottom: 100px;
 
         input {
-            padding: 10px;
-            border-radius: 10px;
-            margin: 20px;
-            width: 300px;
+          background-color: $color-orange;
+          border: none;
+          padding: 10px;
+          margin: 20px;
+          width: 300px;
+          color: $color-dark-gray;
+          font-weight: bold;
         }
 
         button {
-            background-color: snow;
+          margin-top: 20px;
+            color: $color-orange;
+            background-color: $color-gray;
             padding: 10px;
             width: 100px;
-            border-radius: 5px;
+            border-radius: 0 0 0 0;
+            border: none;
+        }
+        button:hover {
+          background-color: $color-orange;
+          color: $color-orange;
+        }
+        ::placeholder {
+          font-weight: bold;
+          color: $color-dark-gray;
         }
 
         i {
@@ -83,15 +96,14 @@
     }
 
     .inerRegWrapper {
-        background-color: gray;
+
         text-align: center;
         margin-top: 100px;
         background-color: #9A979D;
         padding: 50px;
-        border-radius: 50px;
-        //height: 80%;
-        // width: 500px;
+        background-color: $color-dark-gray;
         .logIn {
+            color: $color-orange;
             margin-top: 20px;
             border-top: solid 1px;
             width: 100%;
@@ -276,4 +288,7 @@
         width: 40px;
       }
     }
+}
+.red-text {
+  color: red;
 }

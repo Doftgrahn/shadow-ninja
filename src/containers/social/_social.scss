@@ -3,9 +3,10 @@
     flex-direction: column;
     flex-wrap: nowrap; //   height: 90vh;
     margin: 0 auto;
+    max-width: 1100px;
     padding: 0;
     @media screen and (min-width: 800px) {
-        padding: 20px 60px;
+        padding: 20px 0;
         flex-direction: row;
         height: 90vh;
         flex-wrap: wrap;
@@ -15,23 +16,23 @@
 
     .sidebar {
         //order: 1;
-        flex: 1 0;
         background: $color-dark-gray;
-    //    width: 100%;
+        //    width: 100%;
         //max-width: 500px;
-        max-width: 250px;
-        width: 100%;
+        width: 250px;
+        max-width: 100%;
     }
 
     .chat {
         //order: 2;
-        flex: 2 1100px;
+        // flex: 2 0;
+        // width: 100%;
+        // max-width: 1100px;
     }
 
     .alternate {
         //background: $color-dark-gray;
         //order: 3;
-        flex: 1 0;
         max-width: 500px;
     }
 }
