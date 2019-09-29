@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import StoreNavbar from '../storenavbar/storenavbar';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
 
@@ -23,7 +23,8 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
     const navBarData = [
         {
             name: 'Home',
-            to: '/'
+            to: '/',
+            exact:true
         }, {
             name: 'Store',
             to: '/store'
@@ -39,11 +40,11 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
 
     const navBar = navBarData.map((nav, index) => {
         if (nav.name === 'Checkout') {
-            return <Link className="navTotal" onClick={turnOff} key={'hej'+index} to={nav.to}>{nav.name}
+            return <NavLink activeClassName="active-route" className="navTotal" onClick={turnOff} key={'hej'+index} to={nav.to}>{nav.name}
                 <span className={`navTotal-total ${!totalProducts ? 'remove' : 'there'}`}>{totalProducts}</span>
-            </Link>
+            </NavLink>
         } else {
-            return <Link onClick={turnOff} key={index} to={nav.to}>{nav.name}</Link>
+            return <NavLink exact={nav.exact} activeClassName="active-route" onClick={turnOff} key={index} to={nav.to}>{nav.name}</NavLink>
         }
     })
 
