@@ -12,7 +12,7 @@ import Profile from '../containers/userProfile/Profile'
 import PrivateRoute from "./PrivateRoute";
 //import ForOFour from '../components/404/404';
 import PageNotFound from '../components/pagenotfound/Pagenotfound';
-import userProfile from  '../containers/userProfile/Profile'
+import userProfile from '../containers/userProfile/Profile'
 
 const Routes = () => {
 
@@ -48,21 +48,21 @@ const Routes = () => {
             path: '/register',
             Component: Register
         }, {
-            _id:6,
+            _id: 6,
             exact: true,
             path: '/login',
             Component: Login
-          }, {
-            _id:7,
+        }, {
+            _id: 7,
             exact: false,
             path: '/userProfile',
             Component: userProfile
-          },  {
-            _id:7,
+        }, {
+            _id: 7,
             exact: false,
             path: '*',
             Component: PageNotFound
-          },
+        }
     ]
     const renderRoutes = allRoutes.map(r => {
         return <Route key={r._id} exact={r.exact} path={r.path} render={(props) => <r.Component {...props}/>}/>

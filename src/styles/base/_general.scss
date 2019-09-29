@@ -3,7 +3,9 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
+    font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell";
+    -webkit-font-smoothing: antialiased;
+
 }
 
 html {
