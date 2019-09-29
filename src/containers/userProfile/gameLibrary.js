@@ -24,7 +24,7 @@ const GameLibrary = ({auth}) => {
     gamesInLibrary = <div className="emptyLibrary">
                       Your library looks empty, better visit our shop to fill it out.
 
-                      <Link to="/store"><button className="shopButton">STORE</button></Link>
+                    <Link to="/store" className="shopButton">store</Link>
                       </div>
   }
   return (

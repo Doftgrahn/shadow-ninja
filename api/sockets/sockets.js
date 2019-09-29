@@ -6,7 +6,7 @@ const {
 } = require("./socketDBUSERS");
 
 module.exports = io => {
-  const rooms = ["general", "party", "trade"];
+  const rooms = ["general", "party", "trade", "group"];
 
   let connections = [];
   let users = [];
@@ -14,36 +14,35 @@ module.exports = io => {
   io.on("connection", socket => {
     console.log("Connected to chat");
     connections.push(socket);
-    socket.emit("getUsers", users);
+    //socket.emit("getUsers", users);
 
-    //io.sockets.emit("updateusers", users);
+    io.emit("updateusers", users);
 
     // add username to chat
 
-    //socket.rooms = "general";
     socket.room = "general";
 
     socket.join("general");
-
-      getUsersOnline(callback => {
-        socket.emit("getUsers", callback);
-    });
-
 
     getAllHistory(socket.room, callback => {
       socket.emit("updatechat", callback);
     });
 
+/*
+    getUsersOnline(callback => {
+      socket.emit("getUsers", callback);
+    });
+    */
+
     socket.on("adduser", username => {
       socket.username = username.name;
       socket.id = username.id;
-      users.push(username);
+      //users.push(username);
 
       socket.room = "general";
       socket.join("general");
 
       //socket.emit("getUsers", users);
-
       addUserOnline(username);
 
       /*
@@ -54,21 +53,19 @@ module.exports = io => {
 
       socket.emit("updatechat", serverreplyToUser);
       */
-      /*
+
       getUsersOnline(callback => {
         socket.emit("getUsers", callback);
       });
-      */
+
 
       const serverReplyToChat = {
-        name: "SERVER",
-        message: `${username.name} has connected to ${socket.room}`,
+        user: "SERVER",
+        message: `You have connected to ${socket.room}`,
         room: socket.room
       };
 
-
-      socket.broadcast.emit("updatechat", serverReplyToChat);
-
+      socket.emit("updatechat", serverReplyToChat);
 
       socket.emit("updaterooms", rooms, rooms[0]);
     });
@@ -91,7 +88,7 @@ module.exports = io => {
 
       console.log("Socket.js  Message", socket.room);
       socket.broadcast.to(socket.room).emit("updatechat", message);
-      socket.emit("getUsers", users);
+      //socket.emit("getUsers", users);
 
       //io.in(data.room).emit("updatechat", message);
 
@@ -101,34 +98,34 @@ module.exports = io => {
     // IS TYPING
 
     socket.on("typing", (data, user) => {
-      socket.broadcast.emit("istyping", data, user, socket.room);
-      //io.in(socket.rooms).emit('istyping', data,user,room)
+     // socket.broadcast.emit("istyping", data, user, socket.room);
+      io.in(socket.rooms).emit('istyping', data,user, socket.room)
 
       // socket.broadcast.to(socket.room).emit("istyping", data, user);
     });
 
     // Switch rooms
     socket.on("switchRoom", newroom => {
-        /*
       getUsersOnline(callback => {
         socket.emit("getUsers", callback);
       });
-      */
+
       /*
       const messageLeft = {
         user: "SERVER",
         message: `${socket.username} has left the ${socket.rooms} room`
-      };
+
 
       socket.to(socket.rooms).emit("updatechat", messageLeft);
+
 */
       socket.leave(socket.room);
 
-      //socket.room = newroom;
+      socket.room = newroom;
 
       socket.join(newroom);
 
-/*
+      /*
       const whichRoom = {
         user: "SERVER",
         message: `You are in ${newroom} room`
@@ -136,12 +133,21 @@ module.exports = io => {
 
       socket.emit("updatechat", whichRoom);
       */
-      socket.emit("getUsers", users);
+
+      const serverReplyToChat = {
+        user: "SERVER",
+        message: `You have connected to ${socket.room}`,
+        room: socket.room
+      };
+
+      socket.emit("updatechat", serverReplyToChat);
+
+      //socket.emit("getUsers", users);
 
       getAllHistory(newroom, callback => {
         socket.emit("updatechat", callback);
       });
-/*
+      /*
       const newRoomJoin = {
         user: "SERVER",
         message: `${socket.username} has joined ${newroom} room`,
@@ -155,13 +161,16 @@ module.exports = io => {
     });
 
     socket.on("disconnect", () => {
-      users = users.filter(user => user.name !== socket.username);
+      users = users.filter(user => user.id !== socket.id);
       //users.splice(users.indexOf(socket.username), 1);
-
       deleteUserWhenLoggingOut(socket.id);
 
       connections.splice(connections.indexOf(socket, 1));
-      io.sockets.emit("updateusers", users);
+      io.emit("updateusers", users);
+
+      getUsersOnline(callback => {
+        socket.emit("getUsers", callback);
+      });
 
       console.log("disconnected");
     });

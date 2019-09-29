@@ -14,11 +14,11 @@ const initialState = {
   sort: '',
   filter: 'All'
 };
+
 export default function productReducer(
     state = initialState,
     action
 ) {
-
   switch (action.type) {
     case FETCH_PRODUCTS_BEGIN:
     //When loading.
@@ -60,6 +60,7 @@ export default function productReducer(
 				...state,
 				filter: action.payload
 			}
+
 	    default:
 	      return state;
 	  }

@@ -2,12 +2,14 @@
 /* Header */
 @import '../../containers/general/header/header.scss';
 @import '../../containers/general/header/storenavbar/storeNavbar.scss';
+@import '../../containers/general/header/navBar/navBar.scss';
 
 
 //Landingpage
 @import '../../containers/landingpage/landingPage.scss';
 @import '../../containers/landingpage/infoBlock/block.scss';
 @import '../../containers/landingpage/promoBlock/promoBlock.scss';
+@import '../../containers/landingpage/promoChat/promoChat.scss';
 
 // login
 @import '../../containers/login-Handler/register.scss';
