@@ -32,7 +32,7 @@ const PromoBlock = ({products}) => {
 
             <div className="PromoBlock__wrapper">
                 <Fade left={true}>
-                    <h1>Promo games right now!</h1>
+                    <h1>Latest shown games!</h1>
                 </Fade>
 
                 {renderPromo}

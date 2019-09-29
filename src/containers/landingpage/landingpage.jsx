@@ -8,6 +8,7 @@ import {ReactComponent as Hero} from '../../components/icon/ninja_page.svg';
 //import Glitch from '../../components/glitch/glitch';
 import Block from './infoBlock/block';
 import PromoBlock from './promoBlock/promoBlock';
+import PromoChat from './promoChat/promoChat';
 
 
 const LandingPage = () => {
@@ -30,6 +31,7 @@ const LandingPage = () => {
             </div>
             <Block/>
             <PromoBlock/>
+            <PromoChat/>
         </Fade>
     </main>)
 }

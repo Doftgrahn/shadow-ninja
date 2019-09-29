@@ -1,7 +1,7 @@
 .PromoBlock {
     border-top: 40px solid $color-orange;
     display: block;
-    //min-height: 100vh;
+    min-height: 100vh;
     margin: 0 auto;
     background: $color-button-hover;
     padding: 20px;
@@ -56,13 +56,16 @@
                 }
             }
             h3 {
+                padding:10px;
+
                 color:black;
             }
 
             p {
+                padding:10px;
+
                 color: black;
                 margin: 0;
-                padding: 0;
             }
         }
     }
