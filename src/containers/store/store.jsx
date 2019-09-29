@@ -81,7 +81,7 @@ const Store = ({dispatch, isFetching, filter, sort, products, loading, error, ma
 
 
     return (
-    <main id="games" ref={gamesWindow}>
+    <main id="games" className="games" ref={gamesWindow}>
         <PromoGame match={match} products={products}/>
         <SortGames />
         <AllGames products={products} match={match}/>
