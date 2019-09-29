@@ -2,8 +2,8 @@
     width: 100%;
     display: block;
     height: 100vh;
-    border-top: 100px solid $color-white;
-    background: $color-button-hover;
+    //border-top: 100px solid $color-white;
+    background:$color-button-hover;
     display: flex;
 
     &__wrapper {
@@ -14,5 +14,14 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        a {
+            text-decoration: underline;
+        }
+
+        h3 {
+            padding: 20px;
+            font-size: 26px;
+        }
     }
 }

@@ -7,6 +7,7 @@ import {ReactComponent as Hero} from '../../components/icon/ninja_page.svg';
 
 //import Glitch from '../../components/glitch/glitch';
 import Block from './infoBlock/block';
+import PromoBlock from './promoBlock/promoBlock';
 
 
 const LandingPage = () => {
@@ -28,6 +29,7 @@ const LandingPage = () => {
 
             </div>
             <Block/>
+            <PromoBlock/>
         </Fade>
     </main>)
 }
