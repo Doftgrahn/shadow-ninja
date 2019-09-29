@@ -47,12 +47,14 @@
         color: black;
 
         p {
+            font-weight: 100;
             color: black;
             margin: 0 10px 10px;
+            font-weight: 100;
 
             span {
-                color: black;
                 font-weight: bold;
+                color: black;
             }
         }
     }
