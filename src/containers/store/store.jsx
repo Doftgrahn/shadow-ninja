@@ -36,7 +36,7 @@ const Store = ({dispatch, isFetching, filter, sort, products, loading, error, ma
 	useEffect(() => {
 		// fetch on launch
 		if(isInitialMount.current) {
-			dispatch(fetchProducts(skip, filter, sort))
+			dispatch(fetchProductsWithQuery(skip, filter, sort))
 			isInitialMount.current = false;
 			setSkip(skip + 3)
 		}

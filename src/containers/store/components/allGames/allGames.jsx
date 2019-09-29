@@ -8,7 +8,7 @@ import OneGame from '../oneGame/oneGame';
 // dispatch, isFetching, filter, sort,
 const AllGames = ({match, products, loading, error}) => {
 
-
+	// console.log('allGames.jsx: products ', products);
 	const renderAllGames = products.map((game) => {
 
 		return <OneGame match={match} key={game._id} gameinfo={game}/>

@@ -36,7 +36,6 @@ export default function productReducer(
         error: null
       };
 	  case FETCH_PRODUCTS_FETCHQUERY:
-	  console.log('query state.items: ', state.items);
 	  return {
 		  ...state,
 		  items: action.payload.products,
