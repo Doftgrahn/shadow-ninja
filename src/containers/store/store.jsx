@@ -23,6 +23,16 @@ const Store = ({dispatch, isFetching, filter, sort, products, loading, error, ma
 	const isInitialMount = useRef(true);
 	const gamesWindow = useRef();
 
+	// fetch when filter or sort changes
+	useEffect((skip) => {
+		setSkip( skip = 0 );
+		if(!isInitialMount.current) {
+		dispatch(fetchProductsWithQuery(skip, filter, sort))
+
+			setSkip(skip + 3)
+		}
+	}, [dispatch, filter, sort]);
+
 	useEffect(() => {
 		// fetch on launch
 		if(isInitialMount.current) {
@@ -31,6 +41,7 @@ const Store = ({dispatch, isFetching, filter, sort, products, loading, error, ma
 			setSkip(skip + 3)
 		}
 	}, [dispatch, skip, filter, sort]);
+
 	// fetch when scroll is in bottom on page
 	useEffect(() => {
 		// listen addEventListener scroll
@@ -42,7 +53,7 @@ const Store = ({dispatch, isFetching, filter, sort, products, loading, error, ma
 				dispatch(changeFetchState())
 				if(isFetching) {
 					setSkip(skip + 3)
-					dispatch(fetchProducts(skip, filter, sort))
+					dispatch(fetchProducts(skip, filter, sort ))
 				} else if(!isFetching) {
 					return null
 				}
@@ -51,16 +62,6 @@ const Store = ({dispatch, isFetching, filter, sort, products, loading, error, ma
 		window.addEventListener('scroll', scrollEvent);
 		return () => window.removeEventListener('scroll', scrollEvent);
 	}, [dispatch, isFetching, skip, filter, sort]);
-
-	// fetch when filter or sort changes
-	useEffect((skip) => {
-		setSkip( skip = 0 );
-		if(!isInitialMount.current) {
-		dispatch(fetchProductsWithQuery(skip, filter, sort))
-
-			setSkip(skip + 3)
-		}
-	}, [dispatch, filter, sort]);
 
 
 //If Theres an error loading the page.

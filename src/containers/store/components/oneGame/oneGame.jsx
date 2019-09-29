@@ -8,7 +8,8 @@ import {addProduct} from '../../../../services/cart/cartAction';
 
 // Renders ONE game, this loop out with map in ALLGAMES component.
 const OneGame = ({gameinfo, match, addProduct}) => {
-    //gameinfo.quantity = 1;
+    gameinfo.quantity = 1;
+
 
     return (<section className="game__container">
         <Link to={`${match.url}/${gameinfo._id}`}>
