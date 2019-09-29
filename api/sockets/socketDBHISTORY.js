@@ -38,4 +38,10 @@ const getAllHistory = (currentRoom, callback) => {
   });
 };
 
+
+
+
+
+
+
 module.exports = {insertChatHistory, getAllHistory};

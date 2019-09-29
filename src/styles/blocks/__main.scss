@@ -2,10 +2,13 @@
 /* Header */
 @import '../../containers/general/header/header.scss';
 @import '../../containers/general/header/storenavbar/storeNavbar.scss';
+@import '../../containers/general/header/navBar/navBar.scss';
 
 
 //Landingpage
 @import '../../containers/landingpage/landingPage.scss';
+@import '../../containers/landingpage/infoBlock/block.scss';
+@import '../../containers/landingpage/promoBlock/promoBlock.scss';
 
 // login
 @import '../../containers/login-Handler/register.scss';
@@ -20,6 +23,8 @@
 @import '../../containers/store/components/sortGames/sortGames.scss';
 @import '../../containers/store/components/filterCategory/filterCategory.scss';
 /**/
+
+
 
 //Single Game
 @import '../../containers/singleGame/singleGame.scss';

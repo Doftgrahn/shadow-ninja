@@ -19,9 +19,9 @@ const OneGame = ({gameinfo, match, addProduct}) => {
 
             <h3>{gameinfo.title}</h3>
             <div className="game__container-description">
-                <p>Category: {gameinfo.category}</p>
-                <p>Price: €{gameinfo.price}</p>
-                <p>Rating: {gameinfo.rating}</p>
+                <p>Category: <span>{gameinfo.category}</span></p>
+                <p>Price: <span>€{gameinfo.price}</span></p>
+                <p>Rating: <span>{gameinfo.rating}</span></p>
             </div>
         </Link>
         <RegularButton title="buy" click={() => addProduct(gameinfo)}/>

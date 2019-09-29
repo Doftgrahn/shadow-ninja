@@ -1,19 +1,13 @@
 .promo {
     display: block;
     width: 100%;
-    //border-bottom: 30px solid purple;
-    max-width: 1100px;
     height: 560px;
-    margin: 50px auto 0;
-    padding: 10px;
-    // margin-bottom: 50px;
     &__wrapper {
         position: relative;
         display: flex;
         flex-direction: column;
         height: 100%;
         background: $color-yellow;
-        border-radius: 5px;
 
         & figure {
             position: relative;

@@ -51,9 +51,7 @@ this.props.registerUser(newUser, this.props.history);
 
 render() {
     const { errors } = this.state;
-    const colorDark = {
-      color: 'black'
-    }
+
 return (
       <div className="regWrapper">
           <Fade>
@@ -65,8 +63,7 @@ return (
             <form noValidate onSubmit={this.onSubmit}>
               <div>
                 <input
-                  placeholder='Enter your nickname'
-                  style={colorDark}
+                  placeholder='Enter your name'
                   onChange={this.onChange}
                   value={this.state.name}
                   error={errors.name}
@@ -82,7 +79,6 @@ return (
               <div>
                 <input
                   placeholder='Enter a valid Email'
-                  style={colorDark}
                   onChange={this.onChange}
                   value={this.state.email}
                   error={errors.email}
@@ -97,8 +93,7 @@ return (
               </div>
               <div>
                 <input
-                  placeholder='min 6 characters'
-                  style={colorDark}
+                  placeholder='Enter Password'
                   onChange={this.onChange}
                   value={this.state.password}
                   error={errors.password}
@@ -113,8 +108,7 @@ return (
               </div>
               <div>
                 <input
-                  placeholder='same as password'
-                  style={colorDark}
+                  placeholder='Confirm Password'
                   onChange={this.onChange}
                   value={this.state.password2}
                   error={errors.password2}
@@ -128,7 +122,7 @@ return (
                 <span className="red-text">{errors.password2}</span>
               </div>
               <div>
-                <button type="submit" style={colorDark}>
+                <button type="submit">
                   Sign up
                 </button>
               </div>

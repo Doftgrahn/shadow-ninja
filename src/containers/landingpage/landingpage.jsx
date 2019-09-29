@@ -6,22 +6,28 @@ import Fade from 'react-reveal/Fade';
 import {ReactComponent as Hero} from '../../components/icon/ninja_page.svg';
 
 //import Glitch from '../../components/glitch/glitch';
+import Block from './infoBlock/block';
+
 
 const LandingPage = () => {
-    return (<main className="box">
+    return (<main className="landingpage">
         <Fade>
-            <figure>
-                <Hero/>
-            </figure>
+            <div className="box">
+                <figure>
+                    <Hero/>
+                </figure>
 
-            <div className="title">
-                {/*<Glitch/>*/}
-                 { <p className="big textCarosel"></p> }
-                <Link to={'/store'}>
-                    <button className="hover ">Store</button>
-                </Link>
+                <div className="title">
+                    {/* <Glitch/> */}
+                    {<p className="big textCarosel"></p>}
+                    <Link to={'/store'}>
+                        <button className="hover ">Store</button>
+                    </Link>
+
+                </div>
 
             </div>
+            <Block/>
         </Fade>
     </main>)
 }
