@@ -3,7 +3,7 @@
     display: block;
     height: 100vh;
     //border-top: 100px solid $color-white;
-    background:$color-button-hover;
+    background: $color-button-hover;
     display: flex;
 
     &__wrapper {
@@ -17,9 +17,11 @@
 
         a {
             text-decoration: underline;
+            font-weight: 100;
         }
 
         h3 {
+            font-weight: 100;
             padding: 20px;
             font-size: 26px;
         }

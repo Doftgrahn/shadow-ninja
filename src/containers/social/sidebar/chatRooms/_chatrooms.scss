@@ -6,6 +6,7 @@
     }
 
     .room-btn {
+        font-weight: 100;
         -webkit-font-smoothing: antialiased;
         outline: none;
         color: $color-white;
@@ -23,6 +24,7 @@
     }
 
     .btn-active {
+        font-weight: 100;
         background: $color-orange;
         color:$color-dark-gray;
         //border-right: 5px solid $color-dark-gray;

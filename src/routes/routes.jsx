@@ -12,7 +12,9 @@ import Profile from '../containers/userProfile/Profile'
 import PrivateRoute from "./PrivateRoute";
 //import ForOFour from '../components/404/404';
 import PageNotFound from '../components/pagenotfound/Pagenotfound';
-import userProfile from '../containers/userProfile/Profile'
+import userProfile from '../containers/userProfile/Profile';
+
+import Snake from '../components/snake/snake';
 
 const Routes = () => {
 
@@ -58,7 +60,12 @@ const Routes = () => {
             path: '/userProfile',
             Component: userProfile
         }, {
-            _id: 7,
+            _id: 8,
+            exact: false,
+            path: '/snake',
+            Component: Snake
+        }, {
+            _id: 9,
             exact: false,
             path: '*',
             Component: PageNotFound
@@ -69,8 +76,7 @@ const Routes = () => {
     })
 
     return (<Switch >
-        <PrivateRoute exact={true} path="/userProfile" component={Profile}/>
-        {renderRoutes}
+        <PrivateRoute exact={true} path="/userProfile" component={Profile}/> {renderRoutes}
     </Switch>)
 }
 

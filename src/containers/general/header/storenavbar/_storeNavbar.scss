@@ -3,11 +3,16 @@
     align-items: center;
     position: relative;
     background-color: $color-orange;
+    justify-content: center;
+
 
     .searchContainer {
+        background-color: $color-orange;
         display: block;
         height: auto;
         position: relative;
+        display: flex;
+        align-items: center;
         height:100%;
         padding: 0 10px;
 
@@ -35,7 +40,7 @@ a.listItems {
 
 .titleInput {
     position: relative;
-    color: white;
+    color: $color-white;
     font-size: 16px;
     text-align: left;
     background-color: $color-orange;
@@ -54,7 +59,7 @@ a.listItems {
     li {
         display: block;
         padding: 0 5px;
-        color: white;
+        color: $color-white;
         transition: all 0.2s ease-in-out;
 
         &:hover {

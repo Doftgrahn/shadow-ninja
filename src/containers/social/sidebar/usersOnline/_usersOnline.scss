@@ -14,12 +14,15 @@
         border: 0;
         margin: 0;
         border: 0;
+        font-weight: 100;
+
     }
 
     &__container {
         text-align: left;
 
         p {
+            font-weight: 100;
             background: $color-gray;
             padding: 10px;
             margin: 0 0 4px;
