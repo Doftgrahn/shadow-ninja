@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom";
 
 const Footer = (isAuthenticated, auth,) => {
 
+
     let toggleLogin = {};
     if (isAuthenticated) {
         toggleLogin = {
@@ -63,6 +64,7 @@ const Footer = (isAuthenticated, auth,) => {
 
     </footer>)
 }
+
 
 const mapStateToProps = state => ({auth: state.auth, isAuthenticated: state.auth.isAuthenticated, total: state.total.data});
 

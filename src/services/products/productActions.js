@@ -8,6 +8,7 @@ import {
 } from "./actionTypes";
 import {fetchDone} from '../infiniteScroll/scrollActions';
 const getProducts = (skip, filter, sort) => {
+	console.log('fetch skip: ', skip);
   const url = `/api/games?skip=${skip}&find=${filter}&sort=${sort}`;
   return fetch(url)
     .then(handleErrors)

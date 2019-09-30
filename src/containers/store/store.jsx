@@ -6,6 +6,8 @@ import Fade from 'react-reveal/Fade';
 import {connect} from "react-redux";
 import {fetchProducts, fetchProductsWithQuery} from '../../services/products/productActions';
 
+
+
 // import {} from '../../services/infiniteScroll/scrollActions'
 import {changeFetchState} from '../../services/infiniteScroll/scrollActions'
 // Spinner, uses for loading Animation.
@@ -19,17 +21,20 @@ import AllGames from './components/allGames/allGames';
 // General Wrapper for GAMES
 const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, error, match}) => {
 
+console.log('skip store.jsx: ', skip);
+
 
 	const isInitialMount = useRef(true);
 	const gamesWindow = useRef();
 
 	// fetch when filter or sort changes
-	useEffect((skip) => {
+	useEffect(() => {
 		if(!isInitialMount.current) {
-		dispatch(fetchProductsWithQuery(skip, filter, sort))
+			console.log('filter store.jsx');
+		dispatch(fetchProductsWithQuery(0, filter, sort))
 
 		}
-	}, [dispatch, filter, sort]);
+	}, [dispatch, filter, sort, skip]);
 
 	useEffect(() => {
 		// fetch on launch
@@ -58,6 +63,7 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
 					return null
 				}
 			}
+
 		}
 		window.addEventListener('scroll', scrollEvent);
 		return () => window.removeEventListener('scroll', scrollEvent);
@@ -82,10 +88,12 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
         </div>
     }
 
-    return (<main id="games" className="games" ref={gamesWindow}>
-        <PromoGame match={match} products={products}/>
-        <SortGames/>
-        <AllGames products={products} match={match}/>
+    return (<main id="games" className="games">
+		<div ref={gamesWindow}>
+	        <PromoGame match={match} products={products}/>
+	        <SortGames/>
+	        <AllGames products={products} match={match}/>
+		</div>
     </main>)
 }
 
