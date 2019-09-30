@@ -7,9 +7,7 @@ import {
   FILTER_PRODUCTS
 } from "./actionTypes";
 import {fetchDone} from '../infiniteScroll/scrollActions';
-
 const getProducts = (skip, filter, sort) => {
-
   const url = `/api/games?skip=${skip}&find=${filter}&sort=${sort}`;
   return fetch(url)
     .then(handleErrors)
@@ -20,9 +18,7 @@ const getProducts = (skip, filter, sort) => {
 
 // Function for Fetching.
 export const fetchProducts = (skip, filter, sort) => {
-	// console.log('products: ', products);
   return dispatch => {
-    dispatch(fetchProductsBegin());
     return getProducts(skip, filter, sort)
       .then(json => {
         dispatch(fetchProductsSuccess(json));
@@ -61,6 +57,7 @@ export const fetchProductsBegin = () => ({
 });
 
 export const fetchProductsSuccess = (products) => ({
+
   type: FETCH_PRODUCTS_SUCCESS,
   payload: {products}
 });
