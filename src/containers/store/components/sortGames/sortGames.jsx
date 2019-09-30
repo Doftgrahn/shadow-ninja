@@ -31,8 +31,8 @@ import FilterCategory from '../filterCategory/filterCategory'
     return (<div className="sort">
         <div className="sort__wrapper">
 		<FilterCategory />
-            <span>Sort by:</span>
-            <select value={sort} onChange={e => dispatch(setSort(e.target.value))}>
+            <span>Sort:</span>
+            <select className="select" value={sort} onChange={e => dispatch(setSort(e.target.value))}>
                 {renderOptions}
             </select>
         </div>

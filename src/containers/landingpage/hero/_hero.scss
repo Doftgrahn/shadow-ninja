@@ -30,15 +30,14 @@
         bottom: 50%;
         left: 50%;
         right: 50%;
-        font-weight: bold;
         transform: translate(-50%, -50%);
 
         button {
             margin: 5px;
+            transition: 0.4s ease;
             padding: 15px;
             width: 200px;
-            background-color: dimgray;
-            border-radius: 5px;
+            background-color: $color-white;
             font-size: 30px;
             //border: inset 1px #e1e1e1;
             outline: none;
@@ -46,8 +45,8 @@
             color: #f7931e;
             //333333
             border: black;
-            font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            font-weight: 100;
         }
     }
 

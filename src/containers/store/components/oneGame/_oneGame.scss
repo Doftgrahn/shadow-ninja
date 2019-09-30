@@ -18,6 +18,8 @@
     }
 
     a {
+        font-weight: 100;
+
         display: block;
         //height: 100%;
         flex: 1;
@@ -37,24 +39,25 @@
     }
 
     h3 {
-        color: black;
+        font-weight: 100;
+        color:$color-black ;
         background: $color-orange;
         padding: 10px;
     }
 
     &-description {
         padding: 0 10px;
-        color: black;
+        color: $color-black;
 
         p {
             font-weight: 100;
-            color: black;
+            color: $color-black;
             margin: 0 10px 10px;
             font-weight: 100;
 
             span {
                 font-weight: bold;
-                color: black;
+                color: $color-black;
             }
         }
     }

@@ -46,14 +46,20 @@
         width: 100%;
         color: black;
         margin-bottom: 10px;
+        font-weight: 100;
+
     }
 
     .message {
         order: 2;
         flex: 1;
         margin-left: 10px;
+        font-weight: 100;
+
 
         p {
+            font-weight: 100;
+
             //color: black;
             color: black;
 
@@ -73,6 +79,8 @@
 }
 
 .activeUser {
+    font-weight: 100;
+
     display: flex;
     //margin:0;
     margin-left: auto;
