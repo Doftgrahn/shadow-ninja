@@ -28,7 +28,8 @@ h3 {
 }
 
 a {
-    font-family: $font-basic;
+    font-family: $font-headline;
+    font-weight: 50;
 
     &:hover {
         text-decoration: underline;

@@ -20,7 +20,6 @@
         font-size: 20px;
         color: white;
         letter-spacing: 2px;
-        font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
         @media screen and (min-width: 800px) {
             font-size: 16px;
             margin: 0 10px;
@@ -38,13 +37,12 @@
 
 
     section {
-        position: absolute;
-        top: 90px;
-        left: 80px;
+        //position: absolute;
+        //top: 90px;
+        //left: 80px;
 
         input {
             padding: 10px;
-            border-radius: 5px;
         }
     }
 
@@ -85,9 +83,9 @@
 
 
         section {
-            text-align: center;
-            position: static;
-            padding: 0;
+            //text-align: center;
+            //position: static;
+            //padding: 0;
         }
     }
 }
