@@ -6,8 +6,10 @@ import Fade from 'react-reveal/Fade';
 import {connect} from "react-redux";
 import {fetchProducts, fetchProductsWithQuery} from '../../services/products/productActions';
 
+
+
 // import {} from '../../services/infiniteScroll/scrollActions'
-import {changeFetchState} from '../../services/infiniteScroll/scrollActions'
+import {changeFetchState, fetchDone} from '../../services/infiniteScroll/scrollActions'
 // Spinner, uses for loading Animation.
 import Loader from '../../components/loader/loader';
 
@@ -16,62 +18,56 @@ import PromoGame from './components/promoGame/promoGame';
 import SortGames from './components/sortGames/sortGames';
 import AllGames from './components/allGames/allGames';
 
+// import Sidebar from './sidebar/sidebar';
+
 // General Wrapper for GAMES
-const Store = ({
-    dispatch,
-    isFetching,
-    filter,
-    sort,
-    skip,
-    products,
-    loading,
-    error,
-    match
-}) => {
+const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, error, match}) => {
 
-    const isInitialMount = useRef(true);
-    const gamesWindow = useRef();
 
-    // fetch when filter or sort changes
-    useEffect((skip) => {
-        if (!isInitialMount.current) {
-            dispatch(fetchProductsWithQuery(skip, filter, sort))
 
-        }
-    }, [dispatch, filter, sort]);
+	const isInitialMount = useRef(true);
+	const gamesWindow = useRef();
 
-    useEffect(() => {
-        // fetch on launch
-        if (products.length !== 0) {
-            isInitialMount.current = false;
+	// fetch when filter or sort changes
+	useEffect(() => {
+		if(!isInitialMount.current) {
+		dispatch(fetchProductsWithQuery(0, filter, sort))
 
-        } else if (isInitialMount.current) {
-            dispatch(fetchProductsWithQuery(skip, filter, sort))
-            isInitialMount.current = false;
-        }
-    }, [dispatch, skip, filter, sort, products.length]);
+		}
+	}, [dispatch, filter, sort]);
 
-    // fetch when scroll is in bottom on page
-    useEffect(() => {
-        // listen addEventListener scroll
-        const scrollEvent = () => {
-            const wrapper = gamesWindow.current
-            let isAtBottom = wrapper && (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+	useEffect(() => {
+		// fetch on launch
+		if( products.length !== 0 ) {
+			isInitialMount.current = false;
 
-            if (isAtBottom) {
-                dispatch(changeFetchState())
-                if (isFetching) {
-                    dispatch(fetchProducts(skip, filter, sort))
-                } else if (!isFetching) {
-                    return null
-                }
-            }
-        }
-        window.addEventListener('scroll', scrollEvent);
-        return() => window.removeEventListener('scroll', scrollEvent);
-    }, [dispatch, isFetching, skip, filter, sort]);
+		}
+		else if(isInitialMount.current) {
+			dispatch(fetchProductsWithQuery(0, filter, sort))
+			isInitialMount.current = false;
+		}
+	}, [dispatch, filter, sort, products.length]);
 
-    //If Theres an error loading the page.
+	// fetch when scroll is in bottom on page
+	useEffect(() => {
+		// listen addEventListener scroll
+		const scrollEvent = () => {
+			const wrapper = gamesWindow.current
+			let isAtBottom = wrapper && (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+
+			if (isAtBottom && !isFetching) {
+				dispatch(changeFetchState())
+				dispatch(fetchProducts(skip, filter, sort ))
+			} else if(isFetching) {
+				dispatch(fetchDone())
+			}
+		}
+		window.addEventListener('scroll', scrollEvent);
+		return () => window.removeEventListener('scroll', scrollEvent);
+	}, [dispatch, isFetching, skip, filter, sort]);
+
+
+//If Theres an error loading the page.
     if (error) {
         return (<div>
             <Fade>
@@ -91,9 +87,11 @@ const Store = ({
 
     return (<main id="games" className="games" ref={gamesWindow}>
         <Fade>
-            <PromoGame match={match} products={products}/>
-            <SortGames/>
-            <AllGames products={products} match={match}/>
+                <PromoGame match={match} products={products}/>
+                <div>
+                <SortGames/>
+                <AllGames products={products} match={match}/>
+            </div>
         </Fade>
     </main>)
 }

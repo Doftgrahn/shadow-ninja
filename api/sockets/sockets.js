@@ -32,7 +32,7 @@ module.exports = io => {
     getUsersOnline(callback => {
       socket.emit("getUsers", callback);
     });
-    
+
 
     socket.on("adduser", username => {
       socket.username = username.name;
@@ -99,7 +99,7 @@ module.exports = io => {
 
     socket.on("typing", (data, user) => {
      // socket.broadcast.emit("istyping", data, user, socket.room);
-      io.in(socket.rooms).emit('istyping', data,user, socket.room)
+      socket.broadcast.emit('istyping', data,user, socket.room)
 
       // socket.broadcast.to(socket.room).emit("istyping", data, user);
     });
