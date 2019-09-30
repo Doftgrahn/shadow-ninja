@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Link} from "react-router-dom";
+
 import Fade from 'react-reveal/Fade';
 
 const PromoChat = () => {
@@ -10,6 +12,9 @@ const PromoChat = () => {
             </Fade>
             <Fade right={true}>
                 <h3>Together we are strong.</h3>
+            </Fade>
+            <Fade left={true}>
+                <Link to="/social">Join our Chat of latest update.</Link>
             </Fade>
 
         </div>
