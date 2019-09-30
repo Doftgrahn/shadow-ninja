@@ -10,10 +10,13 @@
         height: 100vh;
         width: 100%;
     }
-
+    .esme_class{
+        background-image: url("../../components/icon/ninja_page.svg");
+    
+    }   
     svg {
         
-        transform: scale(1.2);
+        transform: scale(1.4);
         position: absolute;
         width: 100%;
         //height: 100vh;
@@ -26,6 +29,14 @@
             //margin-top: 150px;
             //padding-top:150px;
             
+        }
+        @media screen and (min-width: 400px) {
+            //margin-top: 150px;
+            //padding-top:150px;
+     .esme_class{
+         width: 100%;
+         height: 100%;
+     }
         }
     }
 
@@ -58,6 +69,7 @@
             border: black;
             font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
             letter-spacing: 2px;
+            
         }
 
         p {
@@ -106,9 +118,7 @@
     }
 }
 
-.hr {
-    background-color: #f7931e;
-}
+
 
 .textCarosel::after {
     content: "";
@@ -120,6 +130,7 @@
 @keyframes textCarosel {
     0% {
         content: "xX~ShadowNinja~Xx";
+        font-family: "Oxygen";
     }
 
     25% {

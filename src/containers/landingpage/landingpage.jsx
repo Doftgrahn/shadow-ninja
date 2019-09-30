@@ -11,7 +11,7 @@ const LandingPage = () => {
     return (<main className="box">
         <Fade>
             <figure>
-                <Hero/>
+              <div > <Hero className="esme_class"/></div>
             </figure>
 
             <div className="title">
