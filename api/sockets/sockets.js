@@ -16,7 +16,7 @@ module.exports = io => {
     connections.push(socket);
     //socket.emit("getUsers", users);
 
-    io.emit("updateusers", users);
+    //io.emit("updateusers", users);
 
     // add username to chat
 
@@ -28,11 +28,11 @@ module.exports = io => {
       socket.emit("updatechat", callback);
     });
 
-/*
+
     getUsersOnline(callback => {
       socket.emit("getUsers", callback);
     });
-    */
+    
 
     socket.on("adduser", username => {
       socket.username = username.name;

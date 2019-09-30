@@ -13,10 +13,19 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+
         h1 {
             text-align: center;
             letter-spacing: 2px;
         }
-        
+
+        h3 {
+            margin: 20px;
+        }
+
+        a {
+            color: white;
+            text-decoration: underline;
+        }
     }
 }

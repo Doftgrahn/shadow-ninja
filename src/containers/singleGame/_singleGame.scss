@@ -16,8 +16,6 @@
         flex-direction: column;
         //align-items: center;
         background: $color-dark-gray;
-        padding: 0 20px 0 0;
-        border-radius: 20px;
         @media screen and (min-width: 800px) {
             flex-direction: row;
         }
@@ -30,7 +28,7 @@
             @media screen and (min-width: 800px) {
                 height: 600px;
                 width: 100%;
-                flex: 1 0;
+                flex: 1;
             }
 
             img {
@@ -42,27 +40,31 @@
         }
 
         &-description {
-            padding: 20px;
             flex: 1;
             display: flex;
             flex-direction: column;
 
+            h3 {
+                text-align: left;
+                padding: 20px;
+                width: 100%;
+                background: $color-orange;
+                display: inline-block;
+                border-bottom: 0;
+            }
+
             .info {
+                padding: 20px;
+
                 .desc {
                     //border-top: 5px solid $color-orange;
                     padding: 10px 0;
                     text-align: left;
                 }
 
-                h3 {
-                    display: inline-block;
-                    border-bottom: 0;
-                }
-
                 p {
                     margin: 5px 0 10px;
                     text-align: left;
-                    border-top: 5px solid $color-orange;
                 }
             }
 
@@ -70,7 +72,9 @@
                 margin-top: auto;
 
                 button {
-                    margin: 0 0 10px;
+                    color: black;
+                    background:$color-orange;
+                    margin-top:10px;
                 }
             }
         }
