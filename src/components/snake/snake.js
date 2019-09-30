@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import Fade from 'react-reveal/Fade';
+
 const KEYS = {
     37: 'left',
     38: 'up',
@@ -215,20 +217,22 @@ export default class Snake extends Component {
     };
 
     render() {
-        return (<main className="snake">
-            <canvas ref="canvas" onClick={this.focusDirectionInput} width={window.innerWidth} height={window.innerHeight}/>
-            <input ref="directionInput" type="text" onKeyDown={this.handleKeyDown} style={{
-                    position: 'absolute',
-                    opacity: 0,
-                    width: 0,
-                    height: 0
-                }}/> {
-                this.state.gameEnded && <div id="infoWrapper" className="infoWrapper">
-                        <div id="playAgain" className="info" onClick={this.init}>Play again!</div>
-                        <div id="score" className="info">SCORE: {this.state.snake.length - 3}
+        return (<Fade>
+            <main className="snake">
+                <canvas ref="canvas" onClick={this.focusDirectionInput} width={window.innerWidth} height={window.innerHeight}/>
+                <input ref="directionInput" type="text" onKeyDown={this.handleKeyDown} style={{
+                        position: 'absolute',
+                        opacity: 0,
+                        width: 0,
+                        height: 0
+                    }}/> {
+                    this.state.gameEnded && <div id="infoWrapper" className="infoWrapper">
+                            <div id="playAgain" className="info" onClick={this.init}>Play again!</div>
+                            <div id="score" className="info">SCORE: {this.state.snake.length - 3}
+                            </div>
                         </div>
-                    </div>
-            }
-        </main>);
+                }
+            </main>
+        </Fade>);
     }
 }
