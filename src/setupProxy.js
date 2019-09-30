@@ -5,7 +5,7 @@ const URI = process.env.REVERSE_PROXY_URI || "http://localhost:1337";
 module.exports = app => {
   // proxy api calls
   app.use(
-    proxy("/api/*", {
+    proxy("/api/", {
       target: URI,
       changeOrigin: true
     })

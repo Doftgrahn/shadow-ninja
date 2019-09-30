@@ -125,6 +125,8 @@ server.put("/api/addGameLibrary", (request, response) => {
     response.send(JSON.stringify(result));
   });
 });
+require("./routes/getUsers")(server);
+
 
 /* Routing */
 
@@ -138,7 +140,6 @@ require("./secrets/passport")(passport);
 server.use("/api/users", users);
 
 //get all user api/users
-require("./routes/getUsers")(server);
 
 server.get("*", (req, res) => {
   res.sendFile(`${__dirname}/../build/index.html`);
