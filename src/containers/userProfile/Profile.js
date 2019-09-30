@@ -47,21 +47,17 @@ render() {
                   <div className="userMainContent">
                     <div className="userStatus">
                       <Profileimg className="userImg"/>
+
                       <p className="helloUser">
                         Hey there, <b>{user.name.split(" ")[0]}</b>
                       </p>
                       <b>Your currency: {user.currency}</b>
-                      <button onClick={this.onUpdateClick} >Add currency</button>
-                      <button onClick={this.onLogoutClick}>
+                      <button className="userButton" onClick={this.onUpdateClick} >Add currency</button>
+                      <button className="userButton" onClick={this.onLogoutClick}>
                         Logout
                       </button>
                   </div>
-                  <div className="userGames">
-                    <p><b>Your games</b></p>
-                    <div className='gameContainer'>
-                      <GameLibrary />
-                    </div>
-                  </div>
+                    <GameLibrary />
                 </div>
                 </Fade>
     } else {

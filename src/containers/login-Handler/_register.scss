@@ -1,8 +1,7 @@
 * {
-    font-size: 15px;
-
+    /*font-size: 15px;*/
     h2 {
-        color: black;
+        color: $color-orange;
         font-weight: 400;
     }
 
@@ -17,39 +16,62 @@
         text-align: center;
         display: flex;
         justify-content: center;
-        background-color: #9A979D;
+        background-color: $color-dark-gray;
         padding: 50px;
-        border-radius: 50px;
         height: 50%;
         max-width: 1100px;
 
 
         input {
-            padding: 10px;
-            border-radius: 10px;
-            margin: 20px;
-            width: 300px;
+          background-color: $color-orange;
+          border: none;
+          padding: 10px;
+          margin: 20px;
+          width: 300px;
+          color: $color-dark-gray;
+          font-weight: bold;
+        }
+        input:focus {
+          border: 2px solid blue;
         }
 
         button {
-            background-color: snow;
+            margin-top: 20px;
+            color: $color-dark-gray;
+            background-color: $color-orange;
             padding: 10px;
             width: 100px;
-            border-radius: 5px;
+            border-radius: 0 0 0 0;
+            border: none;
+            font-weight: bold;
         }
-
+        button:hover {
+          background-color: $color-button-hover;
+          color: $color-white;
+          border: 1px solid orange;
+        }
+        ::placeholder {
+          font-weight: bold;
+          color: $color-dark-gray;
+        }
         .dontHaveLogin {
             margin-top: 20px;
-            border-top: solid 1px;
+            border-top: solid 1px $color-orange;
             width: 100%;
             text-align: center;
 
             i {
-                margin: 20px;
+              color: $color-orange;
+              margin: 20px;
             }
 
             p {
-                margin: 20px;
+              color: $color-white;
+              margin: 20px;
+            }
+            a {
+              color: $color-orange;
+              font-weight: bold;
             }
         }
     }
@@ -61,38 +83,62 @@
         margin-bottom: 100px;
 
         input {
-            padding: 10px;
-            border-radius: 10px;
-            margin: 20px;
-            width: 300px;
+          background-color: $color-orange;
+          border: none;
+          padding: 10px;
+          margin: 20px;
+          width: 300px;
+          color: $color-dark-gray;
+          font-weight: bold;
+        }
+        input:focus {
+          border: 2px solid blue;
         }
 
         button {
-            background-color: snow;
+          margin-top: 20px;
+            color: $color-dark-gray;
+            background-color: $color-orange;
             padding: 10px;
             width: 100px;
-            border-radius: 5px;
+            border-radius: 0 0 0 0;
+            border: none;
+            font-weight: bold;
+        }
+        button:hover {
+          background-color: $color-button-hover;
+          color: $color-white;
+          border: 1px solid orange;
+        }
+        ::placeholder {
+          font-weight: bold;
+          color: $color-dark-gray;
         }
 
         i {
-            margin: 20px;
+          color: $color-orange;
+          margin: 20px;
         }
 
         p {
-            margin: 20px;
+          color: $color-white;
+          margin: 20px;
+        }
+        a {
+          color: $color-orange;
+          font-weight: bold;
         }
     }
 
     .inerRegWrapper {
-        background-color: gray;
+
         text-align: center;
-        margin-top: 100px;
+        margin-top: 15px;
         background-color: #9A979D;
         padding: 50px;
-        border-radius: 50px;
-        //height: 80%;
-        // width: 500px;
+        background-color: $color-dark-gray;
         .logIn {
+            color: $color-orange;
             margin-top: 20px;
             border-top: solid 1px;
             width: 100%;
@@ -105,72 +151,184 @@
     //sass for profile
     .userMainContent {
       display: flex;
+      margin: 20px;
+      justify-content: space-between;
+      max-width: 1100px;
+      width:100%;
+      margin: 0 auto;
+      min-height: 66vh;
       @media screen and (max-width: 800px) {
         flex-direction: column;
-      }
-      .userGames {
-
-        p {
-          text-align: center;
-        }
+        margin: 0px;
       }
       .userStatus {
         display: flex;
         flex-direction: column;
-        max-width: 1100px;
-        width: 100%;
-        margin: 0 auto;
-        background-color: $color-orange;
+        padding: 10px;
+        min-width: 40%;
+        height: 40%;
+        background-color: $color-dark-gray;
+        border-top: 1px solid $color-orange;
+        margin: 10px;
         @media screen and (max-width: 800px) {
-          align-content: center;
+          align-self: center;
           width: 90%;
           margin-top: 20px;
           padding: 10px;
         }
-        button {
-          background-color: $color-gray;
+        .userButton {
+          padding: 5px;
+          border: 1px solid black;
+          background-color: $color-orange;
+          color: $color-dark-gray;
+          border-radius: 0 0 0 0;
+          font-weight: bold;
+          width: 30%;
+          align-self: center;
         }
-        button:hover {
+        .userButton:hover {
             background-color: $color-button-hover;
-            color: white;
+            color: $color-white;
         }
         b {
+          margin-bottom: 15px;
           text-align: center;
         }
         .helloUser {
-          color: $color-white;
           text-align: center;
-          p {
-            color: $color-orange;
-          }
+          margin: 5px;
           b {
-            color: $color-dark-gray;
+
+            color: $color-orange;
           }
         }
         .userImg {
           align-self: center;
-          height: 90px;
-          width: 90px;
+          height: 120px;
+          width: 120px;
           padding: 5px;
+
         }
         .addcurrency {
           float: left;
         }
       }
-      .gameContainer {
-        border: 2px solid black;
-      }
 
       .singlegames {
+        border-top: 1px solid $color-orange;
+        background-color: $color-dark-gray;
         text-align: center;
-        border: 2px solid black;
         display: flex;
         flex-direction: column;
+        margin-left: 20px;
+        height: 40%;
+          margin: 10px;
+        h2 {
+          color: $color-orange;
+          border-bottom: 3px solid $color-orange;
+          padding: 10px;
+
+        }
+        @media screen and (max-width: 800px) {
+          flex-direction: column;
+          margin: 19px;
+          width: auto;
+
+        }
+        .gameDisplay {
+          display: flex;
+          margin: 20px;
+          align-items: stretch;
+            h3 {
+            margin-top: 25px;
+            display: none;
+            background-color: white;
+          }
+          @media screen and (max-width: 800px) {
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            height: auto;
+            width: auto;
+
+              h3 {
+                border-left: 3px solid black;
+                border-top: 3px solid black;
+                border-right: 3px solid black;
+              background-color: $color-orange;
+              color: $color-dark-gray;
+              display: inline;
+              border-bottom: none;
+            }
+          }
+          .buttonDisplay {
+            background-color: $color-dark-gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: $color-gray;
+            @media screen and (max-width: 800px) {
+              background-color: $color-gray;
+              border-left: 3px solid black;
+              border-right: 3px solid black;
+              border-bottom: 3px solid black;
+              order: 2;
+              flex-direction: row;
+              width: 100%;
+              justify-content: center;
+            }
+          }
+          .image {
+            @media screen and (max-width: 800px) {
+              border-left: 3px solid black;
+              border-right: 3px solid black;
+            }
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+      .emptyLibrary {
+        display: flex;
+        flex-direction: column;
+        background-color: $color-dark-gray;
+        height: 200px;
+        justify-content: center;
+
+        @media screen and (max-width: 800px) {
+          margin: 19px;
+
+        }
+        .shopButton {
+          font-size: 30px;
+          margin-top: 15px;
+          padding: 5px;
+          background-color: $color-orange;
+          border: none;
+          border-radius: 0 0 0 0;
+          width: auto;
+          align-self: center;
+        }
+        .shopButton:hover {
+          background-color: $color-button-hover;
+          color: $color-white;
+        }
       }
 
-      .test {
-        margin-top: 10px;
-      }
 
     }
+    .download {
+      height: 50px;
+      width: 50px;
+      margin: 15px;
+      @media screen and (max-width: 800px) {
+        height: 40px;
+        width: 40px;
+      }
+    }
+}
+.red-text {
+  color: red;
+  font-weight: bold;
 }

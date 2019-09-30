@@ -3,7 +3,8 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
+    font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell";
+    -webkit-font-smoothing: antialiased;
 }
 
 html {
@@ -49,13 +50,13 @@ body:before {
     padding: 0;
     margin: 0;
     width: 100%;
+    padding: 40px 0;
     //display: block;
-    //min-height: 100vh;
+    min-height: 100vh;
 }
 
 h3 {
     text-align: center;
-    border-bottom: 5px solid white;
 }
 
 a {

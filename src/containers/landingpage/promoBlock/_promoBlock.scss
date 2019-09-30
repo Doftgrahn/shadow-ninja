@@ -1,0 +1,72 @@
+.PromoBlock {
+    border-top: 40px solid $color-orange;
+    display: block;
+    min-height: 100vh;
+    margin: 0 auto;
+    background: $color-button-hover;
+    padding: 20px;
+
+    &__wrapper {
+        max-width: 1100px;
+        width: 100%;
+        margin: 20px auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: row;
+
+        h1 {
+            text-align: center;
+            width: 100%;
+            flex: 1 100%;
+        }
+
+        &-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 100%;
+            margin: $regular-spacing;
+            transition: 0.4s;
+            min-height: 400px;
+            height: 100%;
+            position: relative;
+            background: $color-white;
+            @media screen and (min-width: 800px) {
+                width: 100%;
+                max-width: 320px;
+                width: 100%;
+                min-height: inherit;
+                max-height: 320px;
+                height: 100%;
+            }
+
+            figure {
+                height: 320px;
+                display: block;
+                position: relative;
+
+                img {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+            h3 {
+                padding:10px;
+
+                color:black;
+            }
+
+            p {
+                padding:10px;
+
+                color: black;
+                margin: 0;
+            }
+        }
+    }
+}

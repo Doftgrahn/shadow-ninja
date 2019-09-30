@@ -38,8 +38,10 @@ const CartProduct = ({cart}) => {
             <div className="desc">
                 <h3>{product.title}</h3>
                 <div className="desc__info">
-                    <p>PRICE:{product.price}</p>
-                    <p>QUANTITY:{product.quantity}</p>
+                    <p>Price: <span>{product.price}</span>
+                    </p>
+                    <p>Quantity: <span>{product.quantity}</span>
+                    </p>
                 </div>
             </div>
 

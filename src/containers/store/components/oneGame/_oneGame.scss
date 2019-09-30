@@ -1,4 +1,4 @@
-.game__container {
+    .game__container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -19,20 +19,13 @@
 
     a {
         display: block;
-        height: 100%;
+        //height: 100%;
         flex: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
-    &:hover {
-        box-shadow: 8px 8px 8px $color-gray;
     }
 
     figure {
-        flex: 1;
         position: relative;
-        width: 100%;
+        display: block;
         height: 240px;
 
         img {
@@ -45,8 +38,8 @@
 
     h3 {
         color: black;
-        border-bottom: 5px solid $color-orange;
-        padding: 0 10px;
+        background: $color-orange;
+        padding: 10px;
     }
 
     &-description {
@@ -54,8 +47,15 @@
         color: black;
 
         p {
+            font-weight: 100;
             color: black;
-            margin: 0 0 10px;
+            margin: 0 10px 10px;
+            font-weight: 100;
+
+            span {
+                font-weight: bold;
+                color: black;
+            }
         }
     }
 }

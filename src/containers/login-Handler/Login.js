@@ -42,9 +42,7 @@ const userData = {
 
 render() {
     const { errors } = this.state;
-    const colorDark = {
-      color: 'black'
-    }
+
 return (
   <div className="LogInWrapper">
       <Fade>
@@ -60,7 +58,6 @@ return (
               <div>
                 <input
                   placeholder="Email"
-                  style={colorDark}
                   onChange={this.onChange}
                   value={this.state.email}
                   error={errors.email}
@@ -79,7 +76,6 @@ return (
               <div>
                 <input
                   placeholder="Password"
-                  style={colorDark}
                   onChange={this.onChange}
                   value={this.state.password}
                   error={errors.password}
@@ -96,7 +92,7 @@ return (
                 </span>
               </div>
               <div>
-                <button type="submit" style={colorDark}>
+                <button type="submit">
                   Login
                 </button>
               </div>

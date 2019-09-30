@@ -1,6 +1,16 @@
+.loaderWrapper {
+    position: relative;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
 .spinner.lds-ring {
     position: fixed;
     top: 50%;
+    left: 50%;
+    right: 50%;
     left: 50%;
     margin-left: -32px;
     margin-top: -32px;
@@ -9,7 +19,6 @@
     z-index: 10;
     border-radius: 5px;
     //background-color: #000;
-
     div {
         display: block;
         position: absolute;

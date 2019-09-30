@@ -1,9 +1,10 @@
 import React from 'react';
 import {connect} from "react-redux";
 import StoreNavbar from '../storenavbar/storenavbar';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
-const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
+const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
+
     let toggleLogin = {};
     if (isAuthenticated) {
         toggleLogin = {
@@ -16,10 +17,14 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
             to: '/Login'
         }
     }
+
+    const totalProducts = total.productQuantity;
+
     const navBarData = [
         {
             name: 'Home',
-            to: '/'
+            to: '/',
+            exact:true
         }, {
             name: 'Store',
             to: '/store'
@@ -33,15 +38,23 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth}) => {
         toggleLogin
     ]
 
-    const navBar = navBarData.map((nav, index) => <Link onClick={turnOff} key={index} to={nav.to}>{nav.name}</Link>)
+    const navBar = navBarData.map((nav, index) => {
+        if (nav.name === 'Checkout') {
+            return <NavLink activeClassName="active-route" className="navTotal" onClick={turnOff} key={'hej'+index} to={nav.to}>{nav.name}
+                <span className={`navTotal-total ${!totalProducts ? 'remove' : 'there'}`}>{totalProducts}</span>
+            </NavLink>
+        } else {
+            return <NavLink exact={nav.exact} activeClassName="active-route" onClick={turnOff} key={index} to={nav.to}>{nav.name}</NavLink>
+        }
+    })
 
     return (<nav className={`navMenu ${toggle
             ? 'activeNav'
             : ''}`}>
-        <StoreNavbar toggle={toggle} turnOff={turnOff}/> {navBar}
+        <StoreNavbar toggle={toggle} turnOff={turnOff}/>{navBar}
     </nav>)
 };
 
-const mapStateToProps = state => ({auth: state.auth, isAuthenticated: state.auth.isAuthenticated});
+const mapStateToProps = state => ({auth: state.auth, isAuthenticated: state.auth.isAuthenticated, total: state.total.data});
 
 export default connect(mapStateToProps)(NavBar);
