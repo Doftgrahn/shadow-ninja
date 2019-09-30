@@ -2,16 +2,23 @@
     overflow: hidden;
     position: relative;
     background-image: url("/images/ninja_page.svg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: auto;
     height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center, center;
+    @media screen and(min-width: 800px) {
+        height: 100vh;
+        background-attachment: fixed;
+    }
 
     .mainText {
         transition: 0.4s;
         position: absolute;
-        bottom: 36%;
-        right: 24%;
+        top: 10%;
+        @media screen and (min-width: 800px) {
+            bottom: 36%;
+            right: 24%;
+        }
 
         h1 {
             font-size: 42px;
@@ -26,19 +33,22 @@
         justify-content: center;
         text-align: center;
         align-items: center;
-        top: 70%;
-        bottom: 50%;
+        bottom: 10%;
         left: 50%;
-        right: 50%;
         transform: translate(-50%, -50%);
+        @media screen and (min-width: 800px) {
+            top: 70%;
+            bottom: 50%;
+            left: 50%;
+            right: 50%;
+        }
 
         button {
             margin: 5px;
             transition: 0.4s ease;
-            padding: 15px;
+            padding: 20px;
             width: 200px;
             background-color: $color-white;
-            font-size: 30px;
             //border: inset 1px #e1e1e1;
             outline: none;
             margin-top: 22px;
@@ -47,6 +57,9 @@
             border: black;
             letter-spacing: 4px;
             font-weight: 100;
+            @media screen and (min-width: 800px) {
+                font-size: 30px;
+            }
         }
     }
 

@@ -3,12 +3,18 @@
     align-items: center;
     position: relative;
     background-color: $color-orange;
+    justify-content: center;
+    padding: 0 20px;
+    margin-right: 10px;
 
     .searchContainer {
+        background-color: $color-orange;
         display: block;
         height: auto;
         position: relative;
-        height:100%;
+        display: flex;
+        align-items: center;
+        height: 100%;
         padding: 0 10px;
 
         svg {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 
 import Fade from 'react-reveal/Fade';
 
@@ -18,10 +18,11 @@ import PromoGame from './components/promoGame/promoGame';
 import SortGames from './components/sortGames/sortGames';
 import AllGames from './components/allGames/allGames';
 
+// import Sidebar from './sidebar/sidebar';
+
 // General Wrapper for GAMES
 const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, error, match}) => {
 
-console.log('skip store.jsx: ', skip);
 
 
 	const isInitialMount = useRef(true);
@@ -30,11 +31,10 @@ console.log('skip store.jsx: ', skip);
 	// fetch when filter or sort changes
 	useEffect(() => {
 		if(!isInitialMount.current) {
-			console.log('filter store.jsx');
 		dispatch(fetchProductsWithQuery(0, filter, sort))
 
 		}
-	}, [dispatch, filter, sort, skip]);
+	}, [dispatch, filter, sort]);
 
 	useEffect(() => {
 		// fetch on launch
@@ -43,10 +43,10 @@ console.log('skip store.jsx: ', skip);
 
 		}
 		else if(isInitialMount.current) {
-			dispatch(fetchProductsWithQuery(skip, filter, sort))
+			dispatch(fetchProductsWithQuery(0, filter, sort))
 			isInitialMount.current = false;
 		}
-	}, [dispatch, skip, filter, sort, products.length]);
+	}, [dispatch, filter, sort, products.length]);
 
 	// fetch when scroll is in bottom on page
 	useEffect(() => {
@@ -88,24 +88,26 @@ console.log('skip store.jsx: ', skip);
         </div>
     }
 
-    return (<main id="games" className="games">
-		<div ref={gamesWindow}>
-	        <PromoGame match={match} products={products}/>
-	        <SortGames/>
-	        <AllGames products={products} match={match}/>
-		</div>
+    return (<main id="games" className="games" ref={gamesWindow}>
+        <Fade>
+                <PromoGame match={match} products={products}/>
+                <div>
+                <SortGames/>
+                <AllGames products={products} match={match}/>
+            </div>
+        </Fade>
     </main>)
 }
 
 // state, can be retrieved through props or destructuring.
 const mapStateToProps = state => ({
-	isFetching: state.scrollBottom.isFetching,
-	filter: state.products.filter,
-	sort: state.products.sort,
-	skip: state.products.skip,
-	products: state.products.items,
-	loading: state.products.loading,
-	error: state.products.error
+    isFetching: state.scrollBottom.isFetching,
+    filter: state.products.filter,
+    sort: state.products.sort,
+    skip: state.products.skip,
+    products: state.products.items,
+    loading: state.products.loading,
+    error: state.products.error
 });
 
 export default connect(mapStateToProps)(Store);

@@ -14,10 +14,11 @@
         justify-content: space-between;
         align-items: center;
         color: #f7931e;
-        padding: 100px 20px;
+        padding:20px;
         align-items: center;
         @media screen and (min-width: 800px) {
             flex-direction: row;
+            padding: 100px 20px;
         }
     }
 
@@ -30,10 +31,16 @@
             margin: 10px;
             text-decoration: underline;
             color: $color-black;
+            text-align: left;
+            @media screen and (min-width: 800px) {
+                text-align: center;
+            }
         }
     }
 
     &_description {
+        margin: 20px;
+
         h3 {
             font-weight: 100;
             color: #333333;
@@ -49,8 +56,10 @@
 }
 
 .iconWrapper {
+    margin: 20px;
+
     .icon {
-        margin: 0 20px;
+        margin: 0 10px;
     }
 }
 

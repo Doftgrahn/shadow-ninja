@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import NavBar from './navBar/navBar';
 import Hamburger from './hamburger/hamburger';
 // import StoreNavbar from './storenavbar/storenavbar';
+import {Link} from "react-router-dom";
 
 import {ReactComponent as Logo} from './../../../components/icon/icon_ninja.svg';
 
@@ -13,7 +14,7 @@ const Header = () => {
 
     return (<header className="header">
         <div className="logo">
-            <Logo/>
+            <Link to="/"><Logo/></Link>
         </div>
 
         <NavBar toggle={toggle} turnOff={turnOff}/>
