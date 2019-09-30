@@ -14,7 +14,7 @@ const PromoBlock = ({products}) => {
     }, [dispatch])
 
     const renderPromo = products
-        .items
+        .items.slice(0, 6)
         .map((game, index) => {
 
             return (<Fade key={game._id} cascade={true}>
