@@ -1,0 +1,14 @@
+.easterEgg {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $color-gray;
+    margin-bottom: -40px;
+    border-top: 40px solid $color-orange;
+
+    a {
+        width: 100%;
+        text-decoration: underline;
+    }
+}

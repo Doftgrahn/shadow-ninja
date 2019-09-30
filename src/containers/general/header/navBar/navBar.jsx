@@ -34,9 +34,6 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
         }, {
             name: 'Checkout',
             to: '/checkout'
-        }, {
-            name: 'Snake',
-            to: '/snake'
         },
         toggleLogin
     ]
