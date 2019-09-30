@@ -22,7 +22,8 @@ const Game = ({match, history, error, loading, product}) => {
         return (<div>...Something Went Wrong, go out and get som sun.</div>)
     }
     if (loading) {
-        return <Loader/>
+        console.log(loading);
+        return <div className="loaderWrapper"><Loader/></div>
     }
 
     if (product) {
@@ -34,11 +35,21 @@ const Game = ({match, history, error, loading, product}) => {
 
             <div className="singleGame__container-description">
 
+                <h3>{f.title}</h3>
                 <div className="info">
-                    <h3>{f.title}</h3>
-                    <p>{f.category}</p>
-                    <p>€{f.price}</p>
-                    <p className="rating"> {f.rating} / 10</p>
+                    <p>Category:
+                        <span>
+                            {f.category}</span>
+                    </p>
+                    <p>Price:
+                        <span>
+                            €{f.price}</span>
+                    </p>
+                    <p className="rating">Rating:
+                        <span>
+                            {f.rating}
+                            / 10</span>
+                    </p>
                     <p className="desc">{f.info}</p>
                 </div>
                 <div className="game_btns">
@@ -57,6 +68,6 @@ const Game = ({match, history, error, loading, product}) => {
     }
 }
 
-const mapStateToProps = state => ({product: state.singleProduct.item, loading: state.products.loading, error: state.products.error});
+const mapStateToProps = state => ({product: state.singleProduct.item, loading: state.singleProduct.loading, error: state.singleProduct.error});
 
 export default connect(mapStateToProps)(Game);
