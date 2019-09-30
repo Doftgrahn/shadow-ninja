@@ -3,7 +3,7 @@ import React from 'react';
 const Glitch = () => {
 
     return (<section>
-        <p class="glitch" data-text="ShadowNinja">ShadowNinja</p>
+        <h1 className="glitch" data-text="ShadowNinja">ShadowNinja</h1>
     </section>)
 }
 

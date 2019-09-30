@@ -75,19 +75,17 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
 
     // If Connection is slow, or when loading. This will show.
     if (loading) {
-        return <Fade>
-            <Loader/>
-        </Fade>
+        return <div className="loaderWrapper">
+            <Fade>
+                <Loader/>
+            </Fade>
+        </div>
     }
 
-
-    return (
-    <main id="games" className="games">
-		<div ref={gamesWindow}>
-	        <PromoGame match={match} products={products}/>
-	        <SortGames />
-	        <AllGames match={match}/>
-		</div>
+    return (<main id="games" className="games" ref={gamesWindow}>
+        <PromoGame match={match} products={products}/>
+        <SortGames/>
+        <AllGames products={products} match={match}/>
     </main>)
 }
 

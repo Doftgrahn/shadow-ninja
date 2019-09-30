@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 import {connect} from 'react-redux';
 
@@ -6,18 +7,23 @@ import Fade from 'react-reveal/Fade';
 
 const Block = ({users}) => {
 
-const howmany =  users.users.flat().length;
-
+    const howmany = users
+        .users
+        .flat()
+        .length;
 
     return <section className="block">
 
         <div className="block__wrapper">
 
             <Fade left={true}>
-                <h1>We are a online community with over {howmany} users daily.</h1>
+                <h3>We are a online community with over {howmany}
+                    users daily.</h3>
             </Fade>
             <Fade right={true}>
-                <h1>Join now to be one of them.</h1>
+                <Link to="/login">
+                    <h3>Join now to be one of them.</h3>
+                </Link>
             </Fade>
         </div>
 

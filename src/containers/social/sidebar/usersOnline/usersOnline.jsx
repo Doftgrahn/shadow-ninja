@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 
 const UsersOnline = ({chat}) => {
 
-console.log(chat.number_online);
     const howManyIsOnline = chat
         .number_online
         .flat()

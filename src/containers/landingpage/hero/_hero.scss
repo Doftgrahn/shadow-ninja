@@ -1,0 +1,60 @@
+.hero {
+    overflow: hidden;
+    position: relative;
+    background-image: url("/images/ninja_page.svg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 100vh;
+
+    .mainText {
+        transition: 0.4s;
+        position: absolute;
+        bottom: 36%;
+        right: 24%;
+
+        h1 {
+            font-size: 42px;
+            font-weight: 100;
+        }
+    }
+
+    .toStoreBtn {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        top: 70%;
+        bottom: 50%;
+        left: 50%;
+        right: 50%;
+        font-weight: bold;
+        transform: translate(-50%, -50%);
+
+        button {
+            margin: 5px;
+            padding: 15px;
+            width: 200px;
+            background-color: dimgray;
+            border-radius: 5px;
+            font-size: 30px;
+            //border: inset 1px #e1e1e1;
+            outline: none;
+            margin-top: 22px;
+            color: #f7931e;
+            //333333
+            border: black;
+            font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
+            letter-spacing: 2px;
+        }
+    }
+
+    button:hover {
+        background-color: rgba(34, 32, 34, 0.8);
+        clear: both;
+        color: white;
+        border-color: rgb(43, 41, 41);
+    }
+}
