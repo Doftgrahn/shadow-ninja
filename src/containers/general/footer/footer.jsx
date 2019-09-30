@@ -19,6 +19,7 @@ const Footer = (isAuthenticated, auth,) => {
         }
     }
 
+
     const navBarData = [
         {
             name: 'Home',
@@ -55,9 +56,9 @@ const Footer = (isAuthenticated, auth,) => {
             </div>
 
             <div className="iconWrapper">
-                <SocialIcon className="icon" url="http://twitter.com" bgColor="#33333" fgColor="white"/>
-                <SocialIcon className="icon" url="http://facebook.com" bgColor="#33333" fgColor="white"/>
-                <SocialIcon className="icon" url="http://instagram.com" bgColor="#33333" fgColor="white"/>
+                <SocialIcon className="icon" url="http://twitter.com" bgColor="#333333" fgColor="white"/>
+                <SocialIcon className="icon" url="http://facebook.com" bgColor="#333333" fgColor="white"/>
+                <SocialIcon className="icon" url="http://instagram.com" bgColor="#333333" fgColor="white"/>
             </div>
         </div>
 
