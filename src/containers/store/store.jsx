@@ -16,6 +16,8 @@ import PromoGame from './components/promoGame/promoGame';
 import SortGames from './components/sortGames/sortGames';
 import AllGames from './components/allGames/allGames';
 
+import Sidebar from './sidebar/sidebar';
+
 // General Wrapper for GAMES
 const Store = ({
     dispatch,
@@ -91,9 +93,11 @@ const Store = ({
 
     return (<main id="games" className="games" ref={gamesWindow}>
         <Fade>
-            <PromoGame match={match} products={products}/>
-            <SortGames/>
-            <AllGames products={products} match={match}/>
+                <PromoGame match={match} products={products}/>
+                <div>
+                <SortGames/>
+                <AllGames products={products} match={match}/>
+            </div>
         </Fade>
     </main>)
 }
