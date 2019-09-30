@@ -1,5 +1,22 @@
 .store-nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: $color-orange;
 
+    .searchContainer {
+        display: block;
+        height: auto;
+        position: relative;
+        height:100%;
+        padding: 0 10px;
+
+        svg {
+            fill: $color-white;
+            width: 20px;
+            height: auto;
+        }
+    }
     // input{
     //   border-radius: 5px;
     //   font-size: 20px;
@@ -15,19 +32,18 @@ a.listItems {
 .listItems:hover {
     text-decoration: none;
 }
+
 .titleInput {
+    position: relative;
     color: white;
     font-size: 16px;
     text-align: left;
     background-color: $color-orange;
     outline: none;
-    border: 0px;
-
-    
+    border: 0;
 }
 
 .suggestedItems {
-    border-radius: 0 3px 3px 3px;
     min-width: 215px;
     // max-width: 215px;
     list-style-type: none;
@@ -38,7 +54,7 @@ a.listItems {
     li {
         display: block;
         padding: 0 5px;
-        color:white;
+        color: white;
         transition: all 0.2s ease-in-out;
 
         &:hover {

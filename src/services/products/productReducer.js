@@ -12,7 +12,8 @@ const initialState = {
   loading: false,
   error: null,
   sort: '',
-  filter: 'All'
+  filter: 'All',
+  skip: 0
 };
 
 export default function productReducer(
@@ -31,7 +32,9 @@ export default function productReducer(
     // When sucess
       return {
         ...state,
-		items: [...state.items, ...action.payload.products],
+		items: state.items.concat(action.payload.products),
+		// items: [...state.items, ...action.payload.products,
+		skip: state.items.concat(action.payload.products).length,
         loading: false,
         error: null
       };
@@ -39,6 +42,7 @@ export default function productReducer(
 	  return {
 		  ...state,
 		  items: action.payload.products,
+		  skip: action.payload.products.length,
 		  loading: false,
 		  error: null
 	  }
