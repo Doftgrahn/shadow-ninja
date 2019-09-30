@@ -13,7 +13,7 @@ export const changeFetchState = () => {
 
 	export const fetchDone = () => {
 		return dispatch => {
-			dispatch(scrollFetchBegin())
+			dispatch(scrollFetchSuccsess())
 		}
 	}
 
