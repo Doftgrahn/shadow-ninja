@@ -9,6 +9,7 @@ import {
 import {fetchDone} from '../infiniteScroll/scrollActions';
 const getProducts = (skip, filter, sort) => {
   const url = `/api/games?skip=${skip}&find=${filter}&sort=${sort}`;
+  console.log('see url: ', url);
   return fetch(url)
     .then(handleErrors)
     .then(res => {

@@ -9,7 +9,7 @@ import {fetchProducts, fetchProductsWithQuery} from '../../services/products/pro
 
 
 // import {} from '../../services/infiniteScroll/scrollActions'
-import {changeFetchState} from '../../services/infiniteScroll/scrollActions'
+import {changeFetchState, fetchDone} from '../../services/infiniteScroll/scrollActions'
 // Spinner, uses for loading Animation.
 import Loader from '../../components/loader/loader';
 
@@ -55,15 +55,12 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
 			const wrapper = gamesWindow.current
 			let isAtBottom = wrapper && (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
 
-			if (isAtBottom) {
+			if (isAtBottom && !isFetching) {
 				dispatch(changeFetchState())
-				if(isFetching) {
-					dispatch(fetchProducts(skip, filter, sort ))
-				} else if(!isFetching) {
-					return null
-				}
+				dispatch(fetchProducts(skip, filter, sort ))
+			} else if(isFetching) {
+				dispatch(fetchDone())
 			}
-
 		}
 		window.addEventListener('scroll', scrollEvent);
 		return () => window.removeEventListener('scroll', scrollEvent);
