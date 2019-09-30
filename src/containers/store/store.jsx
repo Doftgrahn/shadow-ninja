@@ -1,10 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 
 import Fade from 'react-reveal/Fade';
 
 // Redux ..
 import {connect} from "react-redux";
 import {fetchProducts, fetchProductsWithQuery} from '../../services/products/productActions';
+
 // import {} from '../../services/infiniteScroll/scrollActions'
 import {changeFetchState} from '../../services/infiniteScroll/scrollActions'
 // Spinner, uses for loading Animation.
@@ -21,34 +22,34 @@ const Store = ({
     isFetching,
     filter,
     sort,
+    skip,
     products,
     loading,
     error,
     match
 }) => {
-    const [skip, setSkip] = useState(0)
 
     const isInitialMount = useRef(true);
     const gamesWindow = useRef();
 
     // fetch when filter or sort changes
     useEffect((skip) => {
-        setSkip(skip = 0);
         if (!isInitialMount.current) {
             dispatch(fetchProductsWithQuery(skip, filter, sort))
 
-            setSkip(skip + 3)
         }
     }, [dispatch, filter, sort]);
 
     useEffect(() => {
         // fetch on launch
-        if (isInitialMount.current) {
+        if (products.length !== 0) {
+            isInitialMount.current = false;
+
+        } else if (isInitialMount.current) {
             dispatch(fetchProductsWithQuery(skip, filter, sort))
             isInitialMount.current = false;
-            setSkip(skip + 3)
         }
-    }, [dispatch, skip, filter, sort]);
+    }, [dispatch, skip, filter, sort, products.length]);
 
     // fetch when scroll is in bottom on page
     useEffect(() => {
@@ -60,7 +61,6 @@ const Store = ({
             if (isAtBottom) {
                 dispatch(changeFetchState())
                 if (isFetching) {
-                    setSkip(skip + 3)
                     dispatch(fetchProducts(skip, filter, sort))
                 } else if (!isFetching) {
                     return null
@@ -90,9 +90,11 @@ const Store = ({
     }
 
     return (<main id="games" className="games" ref={gamesWindow}>
-        <PromoGame match={match} products={products}/>
-        <SortGames/>
-        <AllGames products={products} match={match}/>
+        <Fade>
+            <PromoGame match={match} products={products}/>
+            <SortGames/>
+            <AllGames products={products} match={match}/>
+        </Fade>
     </main>)
 }
 
@@ -101,6 +103,7 @@ const mapStateToProps = state => ({
     isFetching: state.scrollBottom.isFetching,
     filter: state.products.filter,
     sort: state.products.sort,
+    skip: state.products.skip,
     products: state.products.items,
     loading: state.products.loading,
     error: state.products.error

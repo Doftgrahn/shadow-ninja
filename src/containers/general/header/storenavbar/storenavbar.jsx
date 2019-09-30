@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 
 import {connect} from 'react-redux';
 
+import {ReactComponent as Search} from './../../../../components/SVG_Icons/search/search.svg';
+
 const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
     const [filterValue, setfilterValue] = useState('');
 
@@ -37,11 +39,11 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
     // Only shows the suggestions to user if there is something written by the user
     if(filterValue === '') {
         return (<section className="store-nav">
-        <input style={{color:'black'}} value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/>
+            <input style={{color:'black'}} value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/><div className="searchContainer"><Search/></div>
         </section>)
     } else {
         return (<section className="store-nav">
-        <input style={{color:'black'}} value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/>
+        <input style={{color:'black'}} value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/><div className="searchContainer"><Search/></div>
         <ul className='suggestedItems'>
             {limitedAutoComplete}
         </ul>

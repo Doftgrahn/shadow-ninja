@@ -10,10 +10,16 @@
         height: 100px;
         padding: 10px;
         width: 100%;
-        color: black;
+        color: $color-black;
         outline: none;
         border: none;
         background: $color-white;
+        font-weight: 100;
+
+        &::placeholder {
+            font-weight: 100;
+            font-size: 16px;
+        }
     }
 
     .send_container {
@@ -25,9 +31,10 @@
         position: relative;
         //display: block;
         background: $color-white;
-        border-left: 1px solid black;
+        border-left: 1px solid $color-black;
 
         button {
+            font-weight: 100;
             position: absolute;
             margin: 0 auto;
             background: 0;
@@ -42,7 +49,7 @@
             align-items: center;
             outline: none;
             transform: scale(1);
-            transition: all .2s ease;
+            transition: all 0.2s ease;
 
             &:hover {
                 transform: scale(1.2);

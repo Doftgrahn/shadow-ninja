@@ -12,8 +12,9 @@ const Header = () => {
     const turnOff = () => setToggle(false);
 
     return (<header className="header">
-
-        <Logo className="logo"/>
+        <div className="logo">
+            <Logo/>
+        </div>
 
         <NavBar toggle={toggle} turnOff={turnOff}/>
 
@@ -22,10 +23,4 @@ const Header = () => {
     </header>)
 }
 
-/*
-<div className="icon_wrapper">
-         <Hero/>
-        </div>
-
-        */
 export default Header;

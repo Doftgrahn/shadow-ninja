@@ -1,119 +1,69 @@
 .footer {
-    text-align: left;
+    width: 100%;
     display: block;
-    display: flex;
-    
-    flex-direction: row;
-    justify-content: center;
-    padding: 21px;
-   
-    font-family:  "Segoe UI", "Roboto", "Oxygen",
-         "Cantarell", ;
-   // background-color: #0c0910;
-   background-color: #333333;
-    -blurradius : (20);
-   // background-color: 0 0 150px 100px rgba121, 54, 105, 0.6;
+    background-color: $color-orange;
+    border-top: 20px solid $color-dark-gray;
 
     &__wrapper {
-        max-width: 800px;
+        max-width: 1100px;
         width: 100%;
-        flex: 1 0 auto;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
         color: #f7931e;
-       .hr{
-           background-color:  #f7931e;
-       }
-      
-        h4 {
-            padding: 0;
+        padding:20px;
+        align-items: center;
+        @media screen and (min-width: 800px) {
+            flex-direction: row;
+            padding: 100px 20px;
+        }
+    }
+
+    .link__container {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            font-weight: 100;
+            margin: 10px;
+            text-decoration: underline;
+            color: $color-black;
             text-align: left;
-            padding-top: 20px;
-            font-size: 16px;
-            font-family:  "Segoe UI", "Roboto", "Oxygen",
-         "Cantarell", ;
-         letter-spacing: 1px;
-         color:  #f7931e;
+            @media screen and (min-width: 800px) {
+                text-align: center;
+            }
+        }
+    }
+
+    &_description {
+        margin: 20px;
+
+        h3 {
+            font-weight: 100;
+            color: #333333;
+            margin: 10px;
+        }
+
+        a {
+            margin: 10px;
+            color: $color-black;
+            text-decoration: underline;
         }
     }
 }
 
 .iconWrapper {
-    display: flex;
-    justify-content: center;
+    margin: 20px;
 
     .icon {
-        margin: 0 20px;
-       
+        margin: 0 10px;
     }
 }
-/*
-.icont {
-    margin-left: 290px;
-}
 
-.iconf {
-    margin-left: 50px;
-}
-
-.iconi {
-    margin-left: 50px;
-}
-*/
-
-.a {
+a {
     color: white;
-    font-size: 16px;
-    font-family: "Segoe UI", "Roboto", "Oxygen", "Cantarell",;
     letter-spacing: 1px;
 }
-
-.footer:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 10px;
-    height: 0;
-    margin: auto;
-    border-radius: 50%;
-    background: transparent;
-    display: block;
-   // box-shadow: 0 0 150px 100px rgba(95, 54, 105, 0.2), 200px 0 200px 150px rgba(255, 255, 255, 0.2), -250px 0 300px 150px rgba(255, 255, 255, 0.2), 550px 0 300px 200px rgba(255, 255, 255, 0.2), -550px 0 300px 200px rgba(255, 255, 255, 0.2);
-}
-@media only screen and (max-width: 850px) {
-    .iconWrapper {
-        display: flex;
-        justify-content: center;
-    }
-    .a{
-        display: flex;
-        justify-content: center;
-       
-    }
-    h4{
-        display: flex;
-        justify-content: center;
-        
-    }
-}
-//   @media only screen and (min-width: 601px) {
-//     .box {
-//       font-size: 80px;
-//     }
-//   }
-/*
-@media only screen and (max-width: 450px) {
-
-        h4{
-       margin-left: 110px;
-    }
-
-}
-
-@media only screen and (max-width: 450px) {
-
-    .a{
-   margin-left: 110px;
-}
-
-}
-*/
