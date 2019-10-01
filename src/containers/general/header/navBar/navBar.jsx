@@ -3,7 +3,8 @@ import {connect} from "react-redux";
 import StoreNavbar from '../storenavbar/storenavbar';
 import {NavLink} from "react-router-dom";
 
-const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
+
+const NavBar = ({toggle, turnOff, turnOffAndChangeState, isAuthenticated, auth, total}) => {
 
     let toggleLogin = {};
     if (isAuthenticated) {
@@ -17,6 +18,7 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
             to: '/Login'
         }
     }
+
 
     const totalProducts = total.productQuantity;
 
@@ -45,7 +47,9 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
                         ? 'remove'
                         : 'there'}`}>{totalProducts}</span>
             </NavLink>
-        } else {
+        } else if(nav.menu === 'Store'){
+			return <NavLink  exact={nav.exact} activeClassName="active-route" onClick={turnOffAndChangeState} key={index} to={nav.to}>{nav.name}</NavLink>
+		} else {
             return <NavLink exact={nav.exact} activeClassName="active-route" onClick={turnOff} key={index} to={nav.to}>{nav.name}</NavLink>
         }
     })
@@ -53,7 +57,7 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
     return (<nav className={`navMenu ${toggle
             ? 'activeNav'
             : ''}`}>
-        <StoreNavbar toggle={toggle} turnOff={turnOff}/>{navBar}
+        <StoreNavbar toggle={toggle} turnOff={turnOff} turnOffAndChangeState={turnOffAndChangeState} />{navBar}
     </nav>)
 };
 

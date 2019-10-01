@@ -43,8 +43,9 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
         </section>)
     } else {
         return (<section className="store-nav">
-        <input style={{color:'black'}} value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/><div className="searchContainer"><Search/></div>
-        <ul className='suggestedItems'>
+        <input style={{color:'black'}} value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/>
+		<div className="searchContainer"><Search/></div>
+		<ul className='suggestedItems'>
             {limitedAutoComplete}
         </ul>
         </section>)

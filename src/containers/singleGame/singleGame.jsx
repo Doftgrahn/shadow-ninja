@@ -4,8 +4,7 @@ import Game from './game';
 import Fade from 'react-reveal/Fade';
 
 
-const SingleGame = ({match, dispatch, products, loading, error}) => {
-
+const SingleGame = ({match, dispatch, products, loading, error, history}) => {
     return (<div className="singleGame">
     <Fade>
         <Route path={`${match.path}`} render={(props) => <Game {...props}/>}/>

@@ -14,13 +14,13 @@ import FilterCategory from '../filterCategory/filterCategory'
             title: 'Price - lowest first',
             value: 'lowestPrice'
         }, {
-            title: 'Price - heighest first',
+            title: 'Price - highest first',
             value: 'highestPrice'
         }, {
             title: 'Rating - lowest first',
             value: 'lowestRating'
         }, {
-            title: 'Rating - heighest first',
+            title: 'Rating - highest first',
             value: 'highestRating'
         }
     ];
