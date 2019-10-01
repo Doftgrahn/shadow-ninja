@@ -127,7 +127,6 @@ server.put("/api/addGameLibrary", (request, response) => {
 });
 require("./routes/getUsers")(server);
 
-
 /* Routing */
 
 // Passport middleware
@@ -141,14 +140,19 @@ server.use("/api/users", users);
 
 //get all user api/users
 
-server.get("*", (req, res) => {
-  res.sendFile(`${__dirname}/../build/index.html`);
+server.get("/*", (req, res) => {
+  res.sendFile(`${__dirname}/../build/index.html`, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 
+/*
 server.use((error, request, response, next) => {
   response.status(500).send("error 500 error");
-  next();
 });
+*/
 
 mongoose
   .connect(db, {useNewUrlParser: true})
