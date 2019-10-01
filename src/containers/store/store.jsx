@@ -41,7 +41,7 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
 	useEffect(() => {
 
 			// dispatch(changeFetchState())
-			dispatch(fetchProductsWithQuery(0, 'All', ''))
+			dispatch(fetchProductsWithQuery(0, filter, sort))
 
 
 	}, [dispatch, filter, sort]);
