@@ -7,26 +7,23 @@
 
     .room-btn {
         font-weight: 100;
-        -webkit-font-smoothing: antialiased;
-        outline: none;
-        color: $color-white;
-        padding: 10px;
         flex: 1;
-        margin: 0 0 4px;
         width: 100%;
-        border-radius: 0;
-        border: 0;
+        margin: 0 0 4px;
+        padding: 10px;
         cursor: pointer;
-        background: $color-gray;
         text-align: left;
-
-        //    border: 5px solid $color-dark-gray
+        color: $color-white;
+        border: 0;
+        border-radius: 0;
+        outline: none;
+        background: $color-gray;
+        -webkit-font-smoothing: antialiased;
     }
 
     .btn-active {
         font-weight: 100;
+        color: $color-dark-gray;
         background: $color-orange;
-        color:$color-dark-gray;
-        //border-right: 5px solid $color-dark-gray;
     }
 }

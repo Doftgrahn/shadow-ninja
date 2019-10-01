@@ -4,9 +4,9 @@
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    max-width: 1100px;
-    margin: 20px auto;
+    max-width: $width-content;
+    margin: $regular-spacing auto;
     background: $color-dark-gray;
-    padding: 0 20px;
+    padding: 0 $regular-spacing;
     border-top: 5px solid $color-orange;
 }

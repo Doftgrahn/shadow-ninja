@@ -14,10 +14,10 @@
     .mainText {
         transition: 0.4s;
         position: absolute;
-        top: 10%;
+        top: 7%;
         @media screen and (min-width: 800px) {
             bottom: 36%;
-            right: 24%;
+            right: 25%;
         }
 
         h1 {
@@ -46,15 +46,15 @@
         button {
             margin: 5px;
             transition: 0.4s ease;
-            padding: 20px;
+            padding: 11px;
             width: 200px;
-            background-color: $color-white;
+            background-color: rgba(255, 255, 255, 0.9);
             //border: inset 1px #e1e1e1;
             outline: none;
             margin-top: 22px;
-            color: #f7931e;
+            color: #333333;
             //333333
-            border: black;
+            border: $color-black;
             letter-spacing: 4px;
             font-weight: 100;
             @media screen and (min-width: 800px) {
@@ -65,7 +65,6 @@
 
     button:hover {
         background-color: rgba(34, 32, 34, 0.8);
-        clear: both;
         color: white;
         border-color: rgb(43, 41, 41);
     }

@@ -4,20 +4,19 @@
     display: flex;
     flex-direction: column;
 
-
     h3 {
         font-weight: 100;
         border: 0;
-        padding: 20px;
+        padding: $regular-spacing;
         text-transform: uppercase;
     }
+
     .logo__Wrapper {
         width: 100%;
         padding: 10px;
+
         p {
-            padding: 0 20px;
+            padding: 0 $regular-spacing;
         }
     }
-
-
 }
