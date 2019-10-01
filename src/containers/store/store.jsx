@@ -23,8 +23,6 @@ import AllGames from './components/allGames/allGames';
 // General Wrapper for GAMES
 const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, error, match}) => {
 
-
-
 	const isInitialMount = useRef(true);
 	const gamesWindow = useRef();
 
