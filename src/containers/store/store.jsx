@@ -38,6 +38,15 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
 	}, [dispatch, backFromSingleGame]);
 
 
+	useEffect(() => {
+
+			// dispatch(changeFetchState())
+			dispatch(fetchProductsWithQuery(0, 'All', ''))
+
+
+	}, [dispatch, filter, sort]);
+
+
 	// fetch when scroll is in bottom on page
 	useEffect(() => {
 		// listen addEventListener scroll
