@@ -50,12 +50,11 @@ a.listItems {
 }
 
 .suggestedItems {
-    min-width: 215px;
-    // max-width: 215px;
+    min-width: 269px;
     list-style-type: none;
     background-color: gray;
     position: absolute;
-    // z-index: infinity;
+    top: 100%;
 
     li {
         display: block;
