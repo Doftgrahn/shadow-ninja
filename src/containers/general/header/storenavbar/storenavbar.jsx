@@ -29,7 +29,7 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
 
     // Limits the new list to a max of 4 items to be suggested to the user
     // Links user to chosen title using matching of IDs
-    const limitedAutoComplete = newArray.slice(0, 4).map(x => (
+    const limitedAutoComplete = newArray.slice(0, 90).map(x => (
         <Link className='listItems' key={x._id} to={`/store/${x._id}`}>
         <li onClick={handleCleanse}>{x.title}</li>
         </Link>
