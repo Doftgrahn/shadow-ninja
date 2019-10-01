@@ -20,7 +20,11 @@
         padding: 50px;
         height: 50%;
         max-width: 1100px;
-
+        @media screen and (max-width: 800px ){
+        width: 90%;
+       
+          
+       }
 
         input {
           background-color: $color-orange;
@@ -30,9 +34,11 @@
           width: 300px;
           color: $color-dark-gray;
           font-weight: bold;
+          
         }
         input:focus {
           border: 2px solid blue;
+       
         }
 
         button {
