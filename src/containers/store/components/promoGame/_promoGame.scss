@@ -73,7 +73,7 @@
             color: $color-red;
             font-size: 40px;
             z-index: 1;
-            padding: 20px;
+            padding: $regular-spacing;
         }
     }
     @media screen and (min-width: 800px) {
