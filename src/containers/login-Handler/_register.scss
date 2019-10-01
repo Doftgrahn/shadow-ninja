@@ -1,340 +1,360 @@
-* {
-    /*font-size: 15px;*/
-    h2 {
-        color: $color-orange;
-        font-weight: 400;
-    }
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+select:-webkit-autofill,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:hover,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:hover {
+    transition: background-color 5000s ease-in-out 0s;
+    border: 1px solid $color-green;
+    -webkit-box-shadow: 0 0 0 1000px $color-gray inset;
+    -webkit-text-fill-color: $color-font-orange;
+}
 
-    .LogInWrapper {
-        display: flex;
-        justify-content: center;
-        margin-top: 100px;
-        margin-bottom: 100px;
-    }
+.LogInWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
 
-    .inerWrapper {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        background-color: $color-dark-gray;
-        padding: 50px;
-        height: 50%;
-        max-width: 1100px;
-        @media screen and (max-width: 800px ){
+.inerWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: $width-content;
+    height: 50%;
+    padding: 50px;
+    text-align: center;
+    background-color: $color-dark-gray;
+    @media screen and (max-width: 800px) {
         width: 90%;
-       
-          
-       }
-
-        input {
-          background-color: $color-orange;
-          border: none;
-          padding: 10px;
-          margin: 20px;
-          width: 300px;
-          color: $color-dark-gray;
-          font-weight: bold;
-          
-        }
-        input:focus {
-          border: 2px solid blue;
-       
-        }
-
-        button {
-            margin-top: 20px;
-            color: $color-dark-gray;
-            background-color: $color-orange;
-            padding: 10px;
-            width: 100px;
-            border-radius: 0 0 0 0;
-            border: none;
-            font-weight: bold;
-        }
-        button:hover {
-          background-color: $color-button-hover;
-          color: $color-white;
-          border: 1px solid orange;
-        }
-        ::placeholder {
-          font-weight: bold;
-          color: $color-dark-gray;
-        }
-        .dontHaveLogin {
-            margin-top: 20px;
-            border-top: solid 1px $color-orange;
-            width: 100%;
-            text-align: center;
-
-            i {
-              color: $color-orange;
-              margin: 20px;
-            }
-
-            p {
-              color: $color-white;
-              margin: 20px;
-            }
-            a {
-              color: $color-orange;
-              font-weight: bold;
-            }
-        }
     }
-    // Here starts the scss for the register
 
-    .regWrapper {
-        justify-content: center;
-        display: flex;
-        margin-bottom: 100px;
+    h2 {
+        font-weight: 100;
+        color: $color-font-orange;
+    }
 
-        input {
-          background-color: $color-orange;
-          border: none;
-          padding: 10px;
-          margin: 20px;
-          width: 300px;
-          color: $color-dark-gray;
-          font-weight: bold;
-        }
-        input:focus {
-          border: 2px solid blue;
-        }
+    input {
+        font-weight: bold;
+        width: 300px;
+        margin: 20px;
+        padding: 10px;
+        color: $color-dark-gray;
+        border: none;
+        background-color: $color-orange;
+    }
 
-        button {
-          margin-top: 20px;
-            color: $color-dark-gray;
-            background-color: $color-orange;
-            padding: 10px;
-            width: 100px;
-            border-radius: 0 0 0 0;
-            border: none;
-            font-weight: bold;
-        }
-        button:hover {
-          background-color: $color-button-hover;
-          color: $color-white;
-          border: 1px solid orange;
-        }
-        ::placeholder {
-          font-weight: bold;
-          color: $color-dark-gray;
-        }
+    input:focus {
+        border: 2px solid $color-blue;
+    }
+
+    button {
+        font-weight: 100;
+        width: 100px;
+        margin-top: $regular-spacing;
+        padding: 10px;
+        color: $color-dark-gray;
+        border: none;
+        border-radius: 0 0 0 0;
+        background-color: $color-orange;
+    }
+
+    button:hover {
+        color: $color-white;
+        border: 1px solid $color-orange;
+        background-color: $color-button-hover;
+    }
+
+    ::placeholder {
+        font-weight: 100;
+        color: $color-dark-gray;
+    }
+
+    .dontHaveLogin {
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+        border-top: solid 1px $color-orange;
 
         i {
-          color: $color-orange;
-          margin: 20px;
+            margin: 20px;
+            color: $color-orange;
         }
 
         p {
-          color: $color-white;
-          margin: 20px;
-        }
-        a {
-          color: $color-orange;
-          font-weight: bold;
-        }
-    }
-
-    .inerRegWrapper {
-
-        text-align: center;
-        margin-top: 15px;
-        background-color: #9A979D;
-        padding: 50px;
-        background-color: $color-dark-gray;
-        .logIn {
-            color: $color-orange;
-            margin-top: 20px;
-            border-top: solid 1px;
-            width: 100%;
-            text-align: center;
-        }
-    }
-
-
-
-    //sass for profile
-    .userMainContent {
-      display: flex;
-      margin: 20px;
-      justify-content: space-between;
-      max-width: 1100px;
-      width:100%;
-      margin: 0 auto;
-      min-height: 66vh;
-      @media screen and (max-width: 800px) {
-        flex-direction: column;
-        margin: 0px;
-      }
-      .userStatus {
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-        min-width: 40%;
-        height: 40%;
-        background-color: $color-dark-gray;
-        border-top: 1px solid $color-orange;
-        margin: 10px;
-        @media screen and (max-width: 800px) {
-          align-self: center;
-          width: 90%;
-          margin-top: 20px;
-          padding: 10px;
-        }
-        .userButton {
-          padding: 5px;
-          border: 1px solid black;
-          background-color: $color-orange;
-          color: $color-dark-gray;
-          border-radius: 0 0 0 0;
-          font-weight: bold;
-          width: 30%;
-          align-self: center;
-        }
-        .userButton:hover {
-            background-color: $color-button-hover;
+            margin: 20px;
             color: $color-white;
         }
-        b {
-          margin-bottom: 15px;
-          text-align: center;
-        }
-        .helloUser {
-          text-align: center;
-          margin: 5px;
-          b {
 
+        a {
+            font-weight: 100;
             color: $color-orange;
-          }
         }
-        .userImg {
-          align-self: center;
-          height: 120px;
-          width: 120px;
-          padding: 5px;
-
-        }
-        .addcurrency {
-          float: left;
-        }
-      }
-
-      .singlegames {
-        border-top: 1px solid $color-orange;
-        background-color: $color-dark-gray;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        margin-left: 20px;
-        height: 40%;
-          margin: 10px;
-        h2 {
-          color: $color-orange;
-          border-bottom: 3px solid $color-orange;
-          padding: 10px;
-
-        }
-        @media screen and (max-width: 800px) {
-          flex-direction: column;
-          margin: 19px;
-          width: auto;
-
-        }
-        .gameDisplay {
-          display: flex;
-          margin: 20px;
-          align-items: stretch;
-            h3 {
-            margin-top: 25px;
-            display: none;
-            background-color: white;
-          }
-          @media screen and (max-width: 800px) {
-            order: 1;
-            display: flex;
-            flex-direction: column;
-            align-self: center;
-            height: auto;
-            width: auto;
-
-              h3 {
-                border-left: 3px solid black;
-                border-top: 3px solid black;
-                border-right: 3px solid black;
-              background-color: $color-orange;
-              color: $color-dark-gray;
-              display: inline;
-              border-bottom: none;
-            }
-          }
-          .buttonDisplay {
-            background-color: $color-dark-gray;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: $color-gray;
-            @media screen and (max-width: 800px) {
-              background-color: $color-gray;
-              border-left: 3px solid black;
-              border-right: 3px solid black;
-              border-bottom: 3px solid black;
-              order: 2;
-              flex-direction: row;
-              width: 100%;
-              justify-content: center;
-            }
-          }
-          .image {
-            @media screen and (max-width: 800px) {
-              border-left: 3px solid black;
-              border-right: 3px solid black;
-            }
-            height: 100%;
-            width: 100%;
-          }
-        }
-      }
-      .emptyLibrary {
-        display: flex;
-        flex-direction: column;
-        background-color: $color-dark-gray;
-        height: 200px;
-        justify-content: center;
-
-        @media screen and (max-width: 800px) {
-          margin: 19px;
-
-        }
-        .shopButton {
-          font-size: 30px;
-          margin-top: 15px;
-          padding: 5px;
-          background-color: $color-orange;
-          border: none;
-          border-radius: 0 0 0 0;
-          width: auto;
-          align-self: center;
-        }
-        .shopButton:hover {
-          background-color: $color-button-hover;
-          color: $color-white;
-        }
-      }
-
-
-    }
-    .download {
-      height: 50px;
-      width: 50px;
-      margin: 15px;
-      @media screen and (max-width: 800px) {
-        height: 40px;
-        width: 40px;
-      }
     }
 }
+/* Here starts the scss for the register*/
+.regWrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+
+    input {
+        font-weight: 100;
+        width: 300px;
+        margin: 20px;
+        padding: 10px;
+        color: $color-dark-gray;
+        border: none;
+        background-color: $color-orange;
+    }
+
+    input:focus {
+        border: 2px solid $color-blue;
+    }
+
+    button {
+        font-weight: 100;
+        width: 100px;
+        margin-top: 20px;
+        padding: 10px;
+        color: $color-dark-gray;
+        border: none;
+        border-radius: 0 0 0 0;
+        background-color: $color-orange;
+    }
+
+    button:hover {
+        color: $color-white;
+        border: 1px solid $color-orange;
+        background-color: $color-button-hover;
+    }
+
+    ::placeholder {
+        font-weight: 100;
+        color: $color-dark-gray;
+    }
+
+    i {
+        margin: 20px;
+        color: $color-orange;
+    }
+
+    p {
+        margin: 20px;
+        color: $color-white;
+    }
+
+    a {
+        font-weight: 100;
+        color: $color-orange;
+    }
+}
+
+.inerRegWrapper {
+    margin-top: 15px;
+    padding: 50px;
+    text-align: center;
+    background-color: $color-orange;
+    background-color: $color-dark-gray;
+
+    .logIn {
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+        color: $color-orange;
+        border-top: solid 1px;
+    }
+}
+//sass for profile
+
+.userMainContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: $width-content;
+    min-height: 66vh;
+    margin: 20px auto;
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+        margin: 20px auto;
+    }
+
+    .userStatus {
+        display: flex;
+        flex-direction: column;
+        min-width: 40%;
+        height: 40%;
+        border-top: 1px solid $color-orange;
+        background-color: $color-dark-gray;
+        @media screen and (max-width: 800px) {
+            align-self: center;
+            width: 90%;
+            margin-top: 20px;
+        }
+
+        .userButton {
+            font-weight: 100;
+            align-self: center;
+            width: 30%;
+            padding: 5px;
+            color: $color-dark-gray;
+            border: 1px solid black;
+            border-radius: 0 0 0 0;
+            background-color: $color-orange;
+        }
+
+        .userButton:hover {
+            color: $color-white;
+            background-color: $color-button-hover;
+        }
+
+        b {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .helloUser {
+            margin: 5px;
+            text-align: center;
+
+            b {
+                color: $color-orange;
+            }
+        }
+
+        .userImg {
+            align-self: center;
+            width: 120px;
+            height: 120px;
+            padding: 5px;
+        }
+
+        .addcurrency {
+            float: left;
+        }
+    }
+
+    .singlegames {
+        display: flex;
+        flex-direction: column;
+        height: 40%;
+        margin: 10px 10px 10px 20px;
+        text-align: center;
+        border-top: 1px solid $color-orange;
+        background-color: $color-dark-gray;
+
+        h2 {
+            padding: 10px;
+            color: $color-orange;
+            border-bottom: 3px solid $color-orange;
+        }
+        @media screen and (max-width: 800px) {
+            flex-direction: column;
+            width: auto;
+            margin: 19px;
+        }
+
+        .gameDisplay {
+            display: flex;
+            align-items: stretch;
+            margin: 20px;
+
+            h3 {
+                display: none;
+                margin-top: 25px;
+                background-color: $color-white;
+            }
+            @media screen and (max-width: 800px) {
+                display: flex;
+                align-self: center;
+                flex-direction: column;
+                order: 1;
+                width: auto;
+                height: auto;
+
+                h3 {
+                    display: inline;
+                    color: $color-dark-gray;
+                    border-top: 3px solid $color-black;
+                    border-right: 3px solid $color-black;
+                    border-bottom: none;
+                    border-left: 3px solid $color-black;
+                    background-color: $color-orange;
+                }
+            }
+
+            .buttonDisplay {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: $color-dark-gray;
+                background-color: $color-gray;
+                @media screen and (max-width: 800px) {
+                    flex-direction: row;
+                    justify-content: center;
+                    order: 2;
+                    width: 100%;
+                    border-right: 3px solid $color-black;
+                    border-bottom: 3px solid $color-black;
+                    border-left: 3px solid $color-black;
+                    background-color: $color-gray;
+                }
+            }
+
+            .image {
+                width: 100%;
+                height: 100%;
+                @media screen and (max-width: 800px) {
+                    border-right: 3px solid $color-black;
+                    border-left: 3px solid $color-black;
+                }
+            }
+        }
+    }
+
+    .emptyLibrary {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 200px;
+        background-color: $color-dark-gray;
+        @media screen and (max-width: 800px) {
+            margin: 19px;
+        }
+
+        .shopButton {
+            font-size: 30px;
+            align-self: center;
+            width: auto;
+            margin-top: 15px;
+            padding: 5px;
+            border: none;
+            border-radius: 0 0 0 0;
+            background-color: $color-orange;
+        }
+
+        .shopButton:hover {
+            color: $color-white;
+            background-color: $color-button-hover;
+        }
+    }
+}
+
+.download {
+    width: 50px;
+    height: 50px;
+    margin: 15px;
+    @media screen and (max-width: 800px) {
+        width: 40px;
+        height: 40px;
+    }
+}
+
 .red-text {
-  color: red;
-  font-weight: bold;
+    font-weight: 100;
+    color: $color-red;
 }
