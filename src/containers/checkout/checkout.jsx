@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect}  from 'react';
 
 import Fade from 'react-reveal/Fade';
 
@@ -10,10 +10,21 @@ import AmountInCart from './components/amountInCart/amountinCart'
 import CartProduct from './components/cartProduct/cartProduct';
 import TotalPrice from './components/totalPrice/totalPrice';
 import CheckoutFinal from './components/checkoutFinal/CheckoutFinal';
+import  {isGameValidToBuy}  from '../../services/login/actions/authActions';
 
-//import {updateCart} from '../../services/total/totalAction';
 
-const Checkout = ({cart, total}) => {
+const Checkout = ({cart, total, auth, isPurchaseValid, isGameValidToBuy}) => {
+
+
+  let url = auth.user.id;
+  let userData = auth.user;
+
+
+
+  useEffect(() => {
+    isGameValidToBuy(url, userData, cart, total, isPurchaseValid);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
     const showPrice = () => {
         if (cart.length) {
@@ -37,6 +48,6 @@ const Checkout = ({cart, total}) => {
     </main>)
 }
 
-const mapStateToProps = state => ({cart: state.cart, total: state.total.data})
+const mapStateToProps = state => ({cart: state.cart, total: state.total.data, auth: state.auth, isPurchaseValid: state.isPurchaseValid})
 
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps, {isGameValidToBuy})(Checkout);

@@ -3,7 +3,7 @@ import React from "react";
 import {connect} from 'react-redux';
 
 // Shows total price
-const TotalPrice = ({cart, total}) => {
+const TotalPrice = ({cart, total, auth}) => {
 
     const {totalPrice} = total;
 
@@ -17,6 +17,6 @@ const TotalPrice = ({cart, total}) => {
     </div>);
 };
 
-const mapStateToProps = state => ({cart: state.cart, total: state.total.data})
+const mapStateToProps = state => ({cart: state.cart, total: state.total.data, auth: state.auth})
 
 export default connect(mapStateToProps)(TotalPrice);
