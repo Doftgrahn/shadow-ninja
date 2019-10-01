@@ -1,4 +1,4 @@
-    .game__container {
+.game__container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -19,9 +19,7 @@
 
     a {
         font-weight: 100;
-
         display: block;
-        //height: 100%;
         flex: 1;
     }
 
@@ -40,7 +38,7 @@
 
     h3 {
         font-weight: 100;
-        color:$color-black ;
+        color: $color-black;
         background: $color-orange;
         padding: 10px;
     }

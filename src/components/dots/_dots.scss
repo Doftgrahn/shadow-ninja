@@ -17,7 +17,7 @@
         height: 12px;
         border-radius: 50%;
         margin-right: 3px;
-        background: #303131;
+        background: $color-white;
         animation: wave 1.3s linear infinite;
 
         &:nth-child(2) {

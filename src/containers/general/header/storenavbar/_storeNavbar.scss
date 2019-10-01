@@ -53,7 +53,7 @@ a.listItems {
     min-width: 215px;
     // max-width: 215px;
     list-style-type: none;
-    background-color: gray;
+    background-color: $color-black;
     position: absolute;
     z-index: 10;
 
@@ -64,8 +64,7 @@ a.listItems {
         transition: all 0.2s ease-in-out;
 
         &:hover {
-            transform: scale(1.01);
-            background-color: $color-white;
+            text-decoration: underline;
         }
     }
 }

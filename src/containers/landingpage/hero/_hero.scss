@@ -6,7 +6,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center, center;
-    
     @media screen and(min-width: 800px) {
         height: 100vh;
         background-attachment: fixed;
@@ -28,7 +27,6 @@
     }
 
     .toStoreBtn {
-     
         position: absolute;
         display: flex;
         flex-direction: column;
@@ -50,15 +48,13 @@
             transition: 0.4s ease;
             padding: 11px;
             width: 200px;
-            background-color:   rgba(255, 255, 255, 0.9);
-            
+            background-color: rgba(255, 255, 255, 0.9);
             //border: inset 1px #e1e1e1;
             outline: none;
             margin-top: 22px;
-            color:  #333333;
+            color: #333333;
             //333333
-            border: black;
-            
+            border: $color-black;
             letter-spacing: 4px;
             font-weight: 100;
             @media screen and (min-width: 800px) {
@@ -69,7 +65,6 @@
 
     button:hover {
         background-color: rgba(34, 32, 34, 0.8);
-        clear: both;
         color: white;
         border-color: rgb(43, 41, 41);
     }
