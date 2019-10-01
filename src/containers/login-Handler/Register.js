@@ -20,6 +20,9 @@ class Register extends Component {
     };
   }
 
+  goBack = () =>  this.props.history.goBack()
+
+
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
@@ -131,9 +134,9 @@ return (
             <p>
             Already have an account? <Link to="/login">Login</Link>
             </p>
-            <Link to="/">
-            <i>Back to home</i>
-            </Link>
+            <button onClick={this.goBack} className="goBackBtn">
+            Go Back
+            </button>
             </div>
           </div>
         </div>
