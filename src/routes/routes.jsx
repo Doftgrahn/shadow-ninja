@@ -9,6 +9,7 @@ import Checkout from '../containers/checkout/checkout';
 import Register from '../containers/login-Handler/Register';
 import Login from '../containers/login-Handler/Login';
 import Profile from '../containers/userProfile/Profile'
+import InvalidCheckout from '../containers/invalidCheckout/invalidCheckout'
 import PrivateRoute from "./PrivateRoute";
 //import ForOFour from '../components/404/404';
 import PageNotFound from '../components/pagenotfound/Pagenotfound';
@@ -58,11 +59,17 @@ const Routes = () => {
             path: '/userProfile',
             Component: userProfile
         }, {
-            _id: 7,
+            _id: 8,
+            exact: false,
+            path: '/invalidCheckout',
+            Component: InvalidCheckout
+        }, {
+            _id: 9,
             exact: false,
             path: '*',
             Component: PageNotFound
         }
+
     ]
     const renderRoutes = allRoutes.map(r => {
         return <Route key={r._id} exact={r.exact} path={r.path} render={(props) => <r.Component {...props}/>}/>

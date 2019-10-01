@@ -51,7 +51,7 @@ render() {
                       <p className="helloUser">
                         Hey there, <b>{user.name.split(" ")[0]}</b>
                       </p>
-                      <b>Your currency: {user.currency}</b>
+                      <b>€: {user.currency}</b>
                       <button className="userButton" onClick={this.onUpdateClick} >Add currency</button>
                       <button className="userButton" onClick={this.onLogoutClick}>
                         Logout
