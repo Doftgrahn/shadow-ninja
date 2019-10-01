@@ -1,5 +1,6 @@
 .header {
-    overflow-x: hidden;
+    // Overflow-d kan ha löst dropdownMeny-problemet
+    // overflow-x: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
