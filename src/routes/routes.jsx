@@ -9,7 +9,6 @@ import Checkout from '../containers/checkout/checkout';
 import Register from '../containers/login-Handler/Register';
 import Login from '../containers/login-Handler/Login';
 import Profile from '../containers/userProfile/Profile'
-import InvalidCheckout from '../containers/invalidCheckout/invalidCheckout'
 import PrivateRoute from "./PrivateRoute";
 //import ForOFour from '../components/404/404';
 import PageNotFound from '../components/pagenotfound/Pagenotfound';
@@ -61,7 +60,7 @@ const Routes = () => {
             path: '/userProfile',
             Component: userProfile
         },{
-            id: 8,
+            _id: 8,
             exact: false,
             path: '/snake',
             Component: Snake

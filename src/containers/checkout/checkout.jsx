@@ -1,4 +1,4 @@
-import React, {Fragment, /*useEffect*/} from 'react';
+import React, {Fragment, useEffect} from 'react';
 
 import Fade from 'react-reveal/Fade';
 
@@ -15,17 +15,21 @@ import {isGameValidToBuy} from '../../services/login/actions/authActions';
 const Checkout = ({cart, total, auth, isPurchaseValid, isGameValidToBuy}) => {
     //const dispatch = useDispatch();
 
-    //let url = auth.user.id;
-    //let userData = auth.user;
+    let url = auth.user.id;
+    let userData = auth.user;
 
-/*
-    useEffect(() => {
 
-            dispatch(isGameValidToBuy(url, userData, cart, total, isPurchaseValid));
+  useEffect(() => {
 
-    }, [isGameValidToBuy,cart,total,userData, isPurchaseValid, url,dispatch]);
+    if(auth.isAuthenticated) {
+      isGameValidToBuy(url, userData, cart, total, isPurchaseValid);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-*/
+
+
+
     const showPrice = () => {
         if (cart.length) {
             return <CheckoutFinal/>

@@ -132,7 +132,7 @@ export const isGameValidToBuy = (url, userData, cart, total, isPurchaseValid,use
 
 //Update user library
 export const updateGames = (url, userData, cart, total, isPurchaseValid) => dispatch => {
-  let amountToLower = 0;
+  let amountToLower = total;
   let amountToAdd = false;
   let newPurchaseValid = true;
 
