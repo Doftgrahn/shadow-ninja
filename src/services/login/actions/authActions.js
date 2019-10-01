@@ -71,7 +71,7 @@ export const updateCurrency = (url, userData, amountToAdd, amountToLower) => dis
 };
 //Update user currency --------------------------------------------------------
 
-export const isGameValidToBuy = (url, userData, cart, total, isPurchaseValid) => dispatch => {
+export const isGameValidToBuy = (url, userData, cart, total, isPurchaseValid,user) => dispatch => {
   let currencyToLow = false;
   let moreThenOneCopy = false;
   let gameAlreadyInLibrary = false;
@@ -90,7 +90,7 @@ export const isGameValidToBuy = (url, userData, cart, total, isPurchaseValid) =>
     if(game.quantity > 1) {
       moreThenOneCopy = true;
     } else {
-      if( userData.gameLibrary.find(obj => obj.title === game.title)) {
+      if(userData && userData.gameLibrary.find(obj => obj.title === game.title)) {
         gameAlreadyInLibrary = true;
       } else {
         if( userData.currency < amountToLower ) {
