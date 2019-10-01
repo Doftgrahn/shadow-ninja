@@ -60,12 +60,9 @@ const Routes = () => {
             exact: false,
             path: '/userProfile',
             Component: userProfile
-        }, {
-            _id: 8,
+        },{
+            id: 8,
             exact: false,
-            path: '/invalidCheckout',
-            Component: InvalidCheckout
-        }, {
             path: '/snake',
             Component: Snake
         }, {
