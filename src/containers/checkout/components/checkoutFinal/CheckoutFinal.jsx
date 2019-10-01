@@ -21,13 +21,14 @@ const CheckoutFinal = ({cart, total, auth, isPurchaseValid, updateGames}) => {
     // Clears entire list. ( Redux. )
     const removeAll = () => (dispatch(clearProducts()))
 
-    let url = auth.user.id;
-    let userData = auth.user;
+
+    //let url = auth.user.id;
+    //let userData = auth.user;
     let isPurchaseValidrendering = auth.isPurchaseValid;
     const checkout = () => {
         const {productQuantity, totalPrice} = total;
         if (cart.length && hasAccepted && isPurchaseValidrendering) {
-            updateGames(url, userData, cart, total[1], isPurchaseValidrendering);
+            //updateGames(url, userData, cart, total[1], isPurchaseValidrendering);
             setIsValid(true)
             setHasAccepted(false);
             alert(`

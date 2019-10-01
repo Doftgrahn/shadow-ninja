@@ -50,11 +50,14 @@ render() {
                         <div className="userStatus__wrapper">
                       <Profileimg className="userImg"/>
 
+<div className="userStatus__wrapper-desc">
                       <p className="helloUser">
-                        Hey there, <span>{user.name.split(" ")[0]}</span>
+                        Hello <span>{user.name.split(" ")[0]}</span>
                       </p>
 
-                      <p>Your currency: <span>{user.currency}</span></p>
+                      <p className="helloUser">Your currency: <span>{user.currency}</span></p>
+
+                  </div>
 
                   </div>
                       <div className="userButton__wrapper">

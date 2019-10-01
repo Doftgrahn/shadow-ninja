@@ -11,7 +11,7 @@ const Hero = () => {
         <div className="mainText">
             {/*<Glitch/>*/}
             <Fade right={true}>
-            <h1>Shadow Ninja.</h1>
+            <h1 className="glitch" data-text="Shadow Ninja.">Shadow Ninja.</h1>
             </Fade>
 
         </div>

@@ -7,7 +7,7 @@ import {ReactComponent as Search} from './../../../../components/SVG_Icons/searc
 
 const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
     const [filterValue, setfilterValue] = useState('');
-
+    
     const blurInput = useRef();
     const blurList = useRef();
     // Sets state to the users input
@@ -31,7 +31,7 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
 
     // Limits the new list to a max of 4 items to be suggested to the user
     // Links user to chosen title using matching of IDs
-    const limitedAutoComplete = newArray.slice(0, 90).map(x => (
+    const limitedAutoComplete = newArray.slice(0, 5).map(x => (
         <Link  ref={blurList} className='listItems' key={x._id} to={`/store/${x._id}`}>
         <li onClick={handleCleanse}>{x.title}</li>
         </Link>
@@ -40,6 +40,7 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
     function looseFocus() {
         setfilterValue('')
     }    
+
 
 
     // Only shows the suggestions to user if there is something written by the user

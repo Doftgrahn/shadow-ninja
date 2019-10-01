@@ -87,7 +87,7 @@ module.exports = io => {
       };
 
       console.log("Socket.js  Message", socket.room);
-      socket.broadcast.to(socket.room).emit("updatechat", message);
+      socket.broadcast.emit("updatechat", message);
       //socket.emit("getUsers", users);
 
       //io.in(data.room).emit("updatechat", message);

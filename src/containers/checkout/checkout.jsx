@@ -1,31 +1,31 @@
-import React, {Fragment, useEffect}  from 'react';
+import React, {Fragment, /*useEffect*/} from 'react';
 
 import Fade from 'react-reveal/Fade';
 
 //Redux
-import {connect} from 'react-redux';
+import {connect, /*useDispatch*/} from 'react-redux';
 
 // Imported components.
 import AmountInCart from './components/amountInCart/amountinCart'
 import CartProduct from './components/cartProduct/cartProduct';
 import TotalPrice from './components/totalPrice/totalPrice';
 import CheckoutFinal from './components/checkoutFinal/CheckoutFinal';
-import  {isGameValidToBuy}  from '../../services/login/actions/authActions';
-
+import {isGameValidToBuy} from '../../services/login/actions/authActions';
 
 const Checkout = ({cart, total, auth, isPurchaseValid, isGameValidToBuy}) => {
+    //const dispatch = useDispatch();
 
+    //let url = auth.user.id;
+    //let userData = auth.user;
 
-  let url = auth.user.id;
-  let userData = auth.user;
+/*
+    useEffect(() => {
 
+            dispatch(isGameValidToBuy(url, userData, cart, total, isPurchaseValid));
 
+    }, [isGameValidToBuy,cart,total,userData, isPurchaseValid, url,dispatch]);
 
-  useEffect(() => {
-    isGameValidToBuy(url, userData, cart, total, isPurchaseValid);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+*/
     const showPrice = () => {
         if (cart.length) {
             return <CheckoutFinal/>
