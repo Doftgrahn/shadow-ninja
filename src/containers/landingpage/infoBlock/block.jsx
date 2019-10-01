@@ -17,7 +17,7 @@ const Block = ({users}) => {
         <div className="block__wrapper">
 
             <Fade left={true}>
-                <h3>We are an online community with over {howmany} users daily</h3>
+                <h3>We are an online community with over {howmany} registred users</h3>
             </Fade>
             <Fade right={true}>
                 <Link to="/login">
