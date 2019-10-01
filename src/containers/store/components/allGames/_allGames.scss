@@ -5,8 +5,12 @@
     justify-content: center;
     width: 100%;
     max-width: $width-content;
-    margin: $regular-spacing auto;
     background: $color-dark-gray;
-    padding: 0 $regular-spacing;
     border-top: 5px solid $color-orange;
+    margin: 10px auto;
+
+    @media screen and (min-width: 800px) {
+        margin: $regular-spacing auto;
+        padding: 0 $regular-spacing;
+    }
 }
