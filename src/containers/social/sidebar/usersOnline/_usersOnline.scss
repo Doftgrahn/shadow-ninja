@@ -1,25 +1,24 @@
 .usersonline {
     display: flex;
     flex-direction: column;
-    //padding: 20px;
-    //background: $color-orange;
-    //margin: 10px;
     text-align: left;
--webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
 
     h4 {
         text-align: center;
-        padding: 20px;
+        padding: $regular-spacing;
         text-transform: uppercase;
         border: 0;
         margin: 0;
         border: 0;
+        font-weight: 100;
     }
 
     &__container {
         text-align: left;
 
         p {
+            font-weight: 100;
             background: $color-gray;
             padding: 10px;
             margin: 0 0 4px;

@@ -1,11 +1,28 @@
 .store-nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    padding: 0 20px;
+    background-color: $color-orange;
 
-    // input{
-    //   border-radius: 5px;
-    //   font-size: 20px;
-    //   text-align: center;
-    //   margin-right: 10px;
-    // }
+    .searchContainer {
+        position: relative;
+        display: block;
+        display: flex;
+        align-items: center;
+        height: auto;
+        height: 100%;
+        padding: 0 10px;
+        background-color: $color-orange;
+
+        svg {
+            width: 20px;
+            height: auto;
+            fill: $color-white;
+        }
+    }
 }
 
 a.listItems {
@@ -15,35 +32,33 @@ a.listItems {
 .listItems:hover {
     text-decoration: none;
 }
-.titleInput {
-    color: white;
-    font-size: 16px;
-    text-align: left;
-    background-color: $color-orange;
-    outline: none;
-    border: 0px;
 
-    
+.titleInput {
+    font-size: 16px;
+    position: relative;
+    text-align: left;
+    color: $color-white;
+    border: 0;
+    outline: none;
+    background-color: $color-orange;
 }
 
 .suggestedItems {
-    border-radius: 0 3px 3px 3px;
-    min-width: 215px;
-    // max-width: 215px;
+    min-width: 269px;
     list-style-type: none;
-    background-color: gray;
+    background-color: $color-black;
     position: absolute;
-    z-index: 10;
+    top: 100%;
+
 
     li {
         display: block;
         padding: 0 5px;
-        color:white;
         transition: all 0.2s ease-in-out;
+        color: $color-white;
 
         &:hover {
-            transform: scale(1.01);
-            background-color: $color-white;
+            text-decoration: underline;
         }
     }
 }

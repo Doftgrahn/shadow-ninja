@@ -2,6 +2,7 @@
     min-height: 100vh;
     border-top: 40px solid $color-orange;
     margin: 0 auto;
+    background: $color-dark-gray;
     display: flex;
 
     &__wrapper {
@@ -15,16 +16,19 @@
         flex-direction: column;
 
         h1 {
+            font-weight: 100;
             text-align: center;
             letter-spacing: 2px;
         }
 
         h3 {
+            font-weight: 100;
             margin: 20px;
         }
 
         a {
-            color: white;
+            font-weight: 100;
+            color: $color-white;
             text-decoration: underline;
         }
     }

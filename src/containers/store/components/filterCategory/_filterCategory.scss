@@ -1,10 +1,14 @@
 .filterCategory {
 	display: inline-block;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
-.styleCategory, select {
-	color: black;
-	font-size: 1em;
-	width: 5em;
-	height: 2em;
-	margin: 0.3em;
+
+.styleCategory,
+select {
+	color: $color-black;
+	margin: 0 0.3em;
+	outline: none;
 }

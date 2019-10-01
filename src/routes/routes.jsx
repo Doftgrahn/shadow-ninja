@@ -13,7 +13,9 @@ import InvalidCheckout from '../containers/invalidCheckout/invalidCheckout'
 import PrivateRoute from "./PrivateRoute";
 //import ForOFour from '../components/404/404';
 import PageNotFound from '../components/pagenotfound/Pagenotfound';
-import userProfile from '../containers/userProfile/Profile'
+import userProfile from '../containers/userProfile/Profile';
+
+import Snake from '../components/snake/snake';
 
 const Routes = () => {
 
@@ -64,6 +66,9 @@ const Routes = () => {
             path: '/invalidCheckout',
             Component: InvalidCheckout
         }, {
+            path: '/snake',
+            Component: Snake
+        }, {
             _id: 9,
             exact: false,
             path: '*',
@@ -76,8 +81,7 @@ const Routes = () => {
     })
 
     return (<Switch >
-        <PrivateRoute exact={true} path="/userProfile" component={Profile}/>
-        {renderRoutes}
+        <PrivateRoute exact={true} path="/userProfile" component={Profile}/> {renderRoutes}
     </Switch>)
 }
 

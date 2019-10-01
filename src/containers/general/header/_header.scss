@@ -1,30 +1,33 @@
-
 .header {
-    overflow-x: hidden;
+    // Overflow-d kan ha löst dropdownMeny-problemet
+    // overflow-x: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
-    //background-color: #0c0910;
-    border-bottom: 1px solid #f7931e;
-   background-color: #333333;
+    flex-direction: row;
+    transition: 0.4s;
+    border-bottom: 10px solid $color-orange;
+    background-color: #333333;
+    width: 100%;
 
-
-    .icon_wrapper {
-        max-width: 140px;
-        width: 100%;
-    }
-    // h1 {
-    //     //display: block;
-    //     width: 100%;
-    //     font-size: 40px;
-    // }
     .logo {
-        padding: 10px;
-        width: 80px;
+        width: auto;
+        height: auto;
+        display: block;
+        padding: 10px 20px;
+
+        .cls-2 {
+            font-size: 120px;
+            font-weight: 50;
+        }
+
+        svg {
+            height: 60px;
+            height: 60px;
+            fill: $color-white;
+        }
     }
 
-    
     .navAndStorebar {
         display: flex;
     }

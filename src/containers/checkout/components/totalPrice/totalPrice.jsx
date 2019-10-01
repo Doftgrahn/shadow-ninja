@@ -10,7 +10,7 @@ const TotalPrice = ({cart, total, auth}) => {
     return (<div className="checkout__totalSum">
         {
             cart.length !== 0
-                ? (<h3>Total sum: €{totalPrice}
+                ? (<h3>Total: €{totalPrice}
                 </h3>)
                 : (<h3>Your Shopping Cart is Empty!</h3>)
         }

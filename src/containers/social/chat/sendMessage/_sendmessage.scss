@@ -1,48 +1,50 @@
 .sendInput {
-    //margin-top: 10px;
     display: flex;
-    justify-content: center;
     flex-direction: row;
+    justify-content: center;
 
     textarea {
-        flex: 1 100%;
-        resize: none;
+        font-weight: 100;
+        width: 100%;
         height: 100px;
         padding: 10px;
-        width: 100%;
-        color: black;
-        outline: none;
+        resize: none;
+        color: $color-black;
         border: none;
+        outline: none;
         background: $color-white;
+
+        &::placeholder {
+            font-size: 16px;
+            font-weight: 100;
+        }
     }
 
     .send_container {
-        width: 150px;
-        //cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         position: relative;
-        //display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        border-left: 0.5px solid $color-black;
         background: $color-white;
-        border-left: 1px solid black;
 
         button {
+            font-weight: 100;
             position: absolute;
-            margin: 0 auto;
-            background: 0;
-            height: 100%;
-            //display: block;
-            border: 0;
-            width: 100%;
-            padding: 0;
             display: flex;
+            align-items: center;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            outline: none;
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0;
+            transition: all 0.2s ease;
             transform: scale(1);
-            transition: all .2s ease;
+            border: 0;
+            outline: none;
+            background: 0;
 
             &:hover {
                 transform: scale(1.2);

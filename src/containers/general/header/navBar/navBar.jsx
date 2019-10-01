@@ -24,7 +24,7 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
         {
             name: 'Home',
             to: '/',
-            exact:true
+            exact: true
         }, {
             name: 'Store',
             to: '/store'
@@ -40,8 +40,10 @@ const NavBar = ({toggle, turnOff, isAuthenticated, auth, total}) => {
 
     const navBar = navBarData.map((nav, index) => {
         if (nav.name === 'Checkout') {
-            return <NavLink activeClassName="active-route" className="navTotal" onClick={turnOff} key={'hej'+index} to={nav.to}>{nav.name}
-                <span className={`navTotal-total ${!totalProducts ? 'remove' : 'there'}`}>{totalProducts}</span>
+            return <NavLink activeClassName="active-route" className="navTotal" onClick={turnOff} key={'hej' + index} to={nav.to}>{nav.name}
+                <span className={`navTotal-total ${ !totalProducts
+                        ? 'remove'
+                        : 'there'}`}>{totalProducts}</span>
             </NavLink>
         } else {
             return <NavLink exact={nav.exact} activeClassName="active-route" onClick={turnOff} key={index} to={nav.to}>{nav.name}</NavLink>

@@ -3,15 +3,16 @@
     position: fixed;
     //overflow: hidden;
     right: 0;
-    bottom: 40px;
+    bottom: 44px;
     //padding: 20px;
-    border-radius: 20px 0 0 20px;
+}
+.clickThatShait {
+    cursor: pointer;
 }
 
 .miniMeny {
     background: $color-orange;
     transition: 0.5s cubic-bezier(0.5, 0, 0.5, 1);
-    border-radius: 20px 0 0 20px;
     padding: 10px;
     position: relative;
     width: 60px;

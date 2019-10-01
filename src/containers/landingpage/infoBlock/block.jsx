@@ -17,12 +17,11 @@ const Block = ({users}) => {
         <div className="block__wrapper">
 
             <Fade left={true}>
-                <h3>We are a online community with over {howmany}
-                    users daily.</h3>
+                <h3>We are an online community with over {howmany} users daily</h3>
             </Fade>
             <Fade right={true}>
                 <Link to="/login">
-                    <h3>Join now to be one of them.</h3>
+                    <h3>Join now to be one of them</h3>
                 </Link>
             </Fade>
         </div>

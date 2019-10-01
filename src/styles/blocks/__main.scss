@@ -7,9 +7,11 @@
 
 //Landingpage
 @import '../../containers/landingpage/landingPage.scss';
+@import '../../containers/landingpage/hero/hero.scss';
 @import '../../containers/landingpage/infoBlock/block.scss';
 @import '../../containers/landingpage/promoBlock/promoBlock.scss';
 @import '../../containers/landingpage/promoChat/promoChat.scss';
+@import '../../containers/landingpage/easterEgg/easterEgg.scss';
 
 // login
 @import '../../containers/login-Handler/register.scss';
@@ -24,6 +26,7 @@
 @import '../../containers/store/components/sortGames/sortGames.scss';
 @import '../../containers/store/components/filterCategory/filterCategory.scss';
 /**/
+@import '../../containers/store/sidebar/sidebar.scss';
 
 
 

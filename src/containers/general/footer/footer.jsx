@@ -1,22 +1,72 @@
 import React from 'react';
-import {SocialIcon} from 'react-social-icons';
+import {connect} from "react-redux";
 
-const Footer = () => {
+import {SocialIcon} from 'react-social-icons';
+import {NavLink} from "react-router-dom";
+
+const Footer = (isAuthenticated, auth,) => {
+
+
+    let toggleLogin = {};
+    if (isAuthenticated) {
+        toggleLogin = {
+            name: 'Account',
+            to: '/userProfile'
+        };
+    } else {
+        toggleLogin = {
+            name: 'Login',
+            to: '/Login'
+        }
+    }
+
+
+    const navBarData = [
+        {
+            name: 'Home',
+            to: '/',
+            exact: true
+        }, {
+            name: 'Store',
+            to: '/store'
+        }, {
+            name: 'Social',
+            to: '/social'
+        }, {
+            name: 'Checkout',
+            to: '/checkout'
+        },
+        toggleLogin
+    ];
+
+    const navBar = navBarData.map((nav, index) => {
+
+        return <NavLink exact={nav.exact} activeClassName="active-route" key={index} to={nav.to}>{nav.name}</NavLink>
+    })
+
     return (<footer className="footer">
         <div className="footer__wrapper">
-            
-            <h4>Gmail adrese :<br/>
-            </h4>
-            <a className="a" href="intressantdokument.html#imail">ninja@jmail.com</a><br/><br/>
-            <div className="iconWrapper">
-                <SocialIcon className="icon" url="http://twitter.com" bgColor="#f7931e" fgColor="white"/>
-                <SocialIcon className="icon" url="http://facebook.com" bgColor="#f7931e" fgColor="white"/>
-                <SocialIcon className="icon" url="http://instagram.com" bgColor="#f7931e" fgColor="white"/>
+
+            <div className="link__container">
+                {navBar}
             </div>
 
+            <div className="footer_description">
+                <h3>Customer support</h3>
+                <a className="a" href="intressantdokument.html#imail">ninja@jmail.com</a>
+            </div>
+
+            <div className="iconWrapper">
+                <SocialIcon className="icon" url="http://twitter.com" bgColor="#333333" fgColor="white"/>
+                <SocialIcon className="icon" url="http://facebook.com" bgColor="#333333" fgColor="white"/>
+                <SocialIcon className="icon" url="http://instagram.com" bgColor="#333333" fgColor="white"/>
+            </div>
         </div>
 
     </footer>)
 }
 
-export default Footer;
+
+const mapStateToProps = state => ({auth: state.auth, isAuthenticated: state.auth.isAuthenticated, total: state.total.data});
+
+export default connect(mapStateToProps)(Footer);
