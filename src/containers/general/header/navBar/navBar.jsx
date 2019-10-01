@@ -9,7 +9,7 @@ const NavBar = ({toggle, turnOff, turnOffAndChangeState, isAuthenticated, auth, 
     let toggleLogin = {};
     if (isAuthenticated) {
         toggleLogin = {
-            name: 'Account',
+            name: `${auth.user.name}`,
             to: '/userProfile'
         };
     } else {
@@ -43,6 +43,7 @@ const NavBar = ({toggle, turnOff, turnOffAndChangeState, isAuthenticated, auth, 
     const navBar = navBarData.map((nav, index) => {
         if (nav.name === 'Checkout') {
             return <NavLink activeClassName="active-route" className="navTotal" onClick={turnOff} key={'hej' + index} to={nav.to}>{nav.name}
+
                 <span className={`navTotal-total ${ !totalProducts
                         ? 'remove'
                         : 'there'}`}>{totalProducts}</span>

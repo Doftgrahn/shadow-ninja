@@ -1,5 +1,4 @@
 import React from 'react';
-//import Glitch from '../../../components/glitch/glitch';
 
 import Fade from 'react-reveal/Fade';
 
@@ -9,9 +8,8 @@ const Hero = () => {
     return (<section className="hero">
 
         <div className="mainText">
-            {/*<Glitch/>*/}
             <Fade right={true}>
-            <h1>Shadow Ninja.</h1>
+                <h1>Shadow Ninja.</h1>
             </Fade>
 
         </div>

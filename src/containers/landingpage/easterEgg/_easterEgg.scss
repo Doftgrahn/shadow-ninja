@@ -1,11 +1,14 @@
 .easterEgg {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background: $color-gray;
     margin-bottom: -40px;
+    padding: 40px 0;
     border-top: 40px solid $color-orange;
+    @media screen and (min-width: 800px) {
+        height: 100vh;
+    }
 
     a {
         width: 100%;

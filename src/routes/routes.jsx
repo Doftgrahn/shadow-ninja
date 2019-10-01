@@ -59,7 +59,7 @@ const Routes = () => {
             exact: false,
             path: '/userProfile',
             Component: userProfile
-        }, {
+        },{
             _id: 8,
             exact: false,
             path: '/snake',
@@ -70,6 +70,7 @@ const Routes = () => {
             path: '*',
             Component: PageNotFound
         }
+
     ]
     const renderRoutes = allRoutes.map(r => {
         return <Route key={r._id} exact={r.exact} path={r.path} render={(props) => <r.Component {...props}/>}/>

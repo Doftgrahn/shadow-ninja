@@ -1,9 +1,13 @@
 .PromoChat {
-    min-height: 100vh;
     border-top: 40px solid $color-orange;
     margin: 0 auto;
     background: $color-dark-gray;
     display: flex;
+    padding: 40px 0;
+    @media screen and (min-width: 800px) {
+        min-height: 100vh;
+        padding: 0;
+    }
 
     &__wrapper {
         max-width: 1100px;
@@ -28,7 +32,7 @@
 
         a {
             font-weight: 100;
-            color: white;
+            color: $color-white;
             text-decoration: underline;
         }
     }

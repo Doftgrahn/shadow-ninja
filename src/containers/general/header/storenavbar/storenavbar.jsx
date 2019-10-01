@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {Link} from "react-router-dom";
 
 import {connect} from 'react-redux';
@@ -8,6 +8,8 @@ import {ReactComponent as Search} from './../../../../components/SVG_Icons/searc
 const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
     const [filterValue, setfilterValue] = useState('');
 
+    const blurInput = useRef();
+    const blurList = useRef();
     // Sets state to the users input
     const changeFilterValue = (event) => {
         setfilterValue(event.target.value)
@@ -29,11 +31,16 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
 
     // Limits the new list to a max of 4 items to be suggested to the user
     // Links user to chosen title using matching of IDs
-    const limitedAutoComplete = newArray.slice(0, 4).map(x => (
-        <Link className='listItems' key={x._id} to={`/store/${x._id}`}>
+    const limitedAutoComplete = newArray.slice(0, 5).map(x => (
+        <Link  ref={blurList} className='listItems' key={x._id} to={`/store/${x._id}`}>
         <li onClick={handleCleanse}>{x.title}</li>
         </Link>
         ))
+
+    function looseFocus() {
+        setfilterValue('')
+    }
+
 
 
     // Only shows the suggestions to user if there is something written by the user
@@ -43,9 +50,8 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
         </section>)
     } else {
         return (<section className="store-nav">
-        <input style={{color:'black'}} value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/>
-		<div className="searchContainer"><Search/></div>
-		<ul className='suggestedItems'>
+        <input ref={blurInput} style={{color:'black'}} value={filterValue} onChange={changeFilterValue} onBlur={looseFocus} className='titleInput' placeholder='Enter game title'/><div className="searchContainer"><Search/></div>
+        <ul ref={blurList} className='suggestedItems'>
             {limitedAutoComplete}
         </ul>
         </section>)

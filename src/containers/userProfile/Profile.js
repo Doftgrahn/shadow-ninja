@@ -46,16 +46,26 @@ render() {
                 <Fade>
                   <div className="userMainContent">
                     <div className="userStatus">
+
+                        <div className="userStatus__wrapper">
                       <Profileimg className="userImg"/>
 
+<div className="userStatus__wrapper-desc">
                       <p className="helloUser">
-                        Hey there, <b>{user.name.split(" ")[0]}</b>
+                        Hello <span>{user.name.split(" ")[0]}</span>
                       </p>
-                      <b>Your currency: {user.currency}</b>
+
+                      <p className="helloUser">Your currency: <span>{user.currency}</span></p>
+
+                  </div>
+
+                  </div>
+                      <div className="userButton__wrapper">
                       <button className="userButton" onClick={this.onUpdateClick} >Add currency</button>
                       <button className="userButton" onClick={this.onLogoutClick}>
                         Logout
                       </button>
+                      </div>
                   </div>
                     <GameLibrary />
                 </div>

@@ -13,6 +13,7 @@ const LandingPage = () => {
     return (<main className="landingpage">
         <Fade>
             <Hero/>
+
             <Block/>
             <PromoBlock/>
             <PromoChat/>

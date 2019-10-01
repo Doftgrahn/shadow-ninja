@@ -17,6 +17,11 @@ class Login extends Component {
     };
   }
 
+
+
+
+  goBack = () =>  this.props.history.goBack()
+
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/userProfile"); // push user to profile when they login
@@ -81,6 +86,7 @@ return (
                   error={errors.password}
                   id="password"
                   type="password"
+                  autoComplete="on"
                   className={classnames("", {
                   invalid: errors.password || errors.passwordincorrect
                 }) }
@@ -101,9 +107,9 @@ return (
                   <p>
                     Don't have an account? <Link to="/register">Register</Link>
                   </p>
-                  <Link to="/">
-                    <i>Back to home</i>
-                  </Link>
+                  <button className="goBackBtn" onClick={this.goBack}>
+                    Go Back
+                  </button>
               </div>
           </div>
         </div>
