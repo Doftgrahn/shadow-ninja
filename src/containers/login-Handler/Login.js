@@ -86,6 +86,7 @@ return (
                   error={errors.password}
                   id="password"
                   type="password"
+                  autoComplete="on"
                   className={classnames("", {
                   invalid: errors.password || errors.passwordincorrect
                 }) }

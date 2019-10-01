@@ -117,6 +117,7 @@ return (
                   error={errors.password2}
                   id="password2"
                   type="password"
+                  autoComplete="on"
                   className={classnames("", {
                   invalid: errors.password2
                   })}
