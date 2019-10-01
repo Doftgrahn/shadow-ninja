@@ -20,14 +20,13 @@ const CheckoutFinal = ({cart, total, auth, isPurchaseValid, updateGames}) => {
 
     // Clears entire list. ( Redux. )
     const removeAll = () => (dispatch(clearProducts()))
-
     let url = auth.user.id;
     let userData = auth.user;
     let isPurchaseValidrendering = auth.isPurchaseValid;
     const checkout = () => {
         const {productQuantity, totalPrice} = total;
         if (cart.length && hasAccepted && isPurchaseValidrendering) {
-            updateGames(url, userData, cart, total[1], isPurchaseValidrendering);
+            updateGames(url, userData, cart, total.totalPrice, isPurchaseValidrendering);
             setIsValid(true)
             setHasAccepted(false);
             alert(`
@@ -50,35 +49,41 @@ const CheckoutFinal = ({cart, total, auth, isPurchaseValid, updateGames}) => {
 
 
 
-    return (
-      <div className="checkout__final">
-        {
-          !isPurchaseValidrendering ?
-          (<InvalidCheckout />) : ( <div> <div className="checkout-wrapper">
-                <span>By clicking here you agree to our terms and permission</span>
-                <label className="checkbox-label">
-                    <input checked={hasAccepted} onChange={e => {
-                            setHasAccepted(e.target.checked)
-                            setIsValid(true)
 
-                        }} type="checkbox"/>
-                    <span className="checkbox-custom rectangular"/>
-                </label>
+
+    if (!auth.isAuthenticated) {
+      return <InvalidCheckout />
+    } else {
+      return (
+        <div className="checkout__final">
+          {
+            !isPurchaseValidrendering ?
+            (<InvalidCheckout />) : ( <div> <div className="checkout-wrapper">
+            <span>By clicking here you agree to our terms and permission</span>
+            <label className="checkbox-label">
+              <input checked={hasAccepted} onChange={e => {
+                  setHasAccepted(e.target.checked)
+                  setIsValid(true)
+
+                }} type="checkbox"/>
+                <span className="checkbox-custom rectangular"/>
+              </label>
 
             </div>
             <div className="checkout--button">
-                <button className="checkout-btn" onClick={checkout}>Checkout</button>
-                {
-                    !isValid
-                        ? <span className="error shake">You must accept our terms and permissions</span>
-                        : null
-                }
+              <button className="checkout-btn" onClick={checkout}>Checkout</button>
+              {
+                !isValid
+                ? <span className="error shake">You must accept our terms and permissions</span>
+                : null
+              }
             </div></div>)
-            }
+          }
         </div>
 
 
-    )
+      )
+    }
 }
 
 const mapStateToProps = state => ({cart: state.cart, total: state.total.data, auth: state.auth, isPurchaseValid: state.isPurchaseValid})

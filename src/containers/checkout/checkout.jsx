@@ -22,7 +22,11 @@ const Checkout = ({cart, total, auth, isPurchaseValid, isGameValidToBuy}) => {
 
 
   useEffect(() => {
-    isGameValidToBuy(url, userData, cart, total, isPurchaseValid);
+
+    if(auth.isAuthenticated) {
+      isGameValidToBuy(url, userData, cart, total, isPurchaseValid);
+
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
