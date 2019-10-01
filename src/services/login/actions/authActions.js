@@ -8,7 +8,8 @@ import {
   USER_LOADING,
   UPDATE_USER_CURRENCY,
   UPDATE_USER_LIBRARY,
-  CHANGE_PURCHASE_TRUE_FALSE
+  CHANGE_PURCHASE_TRUE_FALSE,
+  SHOW_ERROR_TO_USER
 } from "./types";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -70,67 +71,100 @@ export const updateCurrency = (url, userData, amountToAdd, amountToLower) => dis
 };
 //Update user currency --------------------------------------------------------
 
-//Update user library
-export const updateGames = (url, userData, cart, total, isPurchaseValid) => dispatch => {
+export const isGameValidToBuy = (url, userData, cart, total, isPurchaseValid,user) => dispatch => {
+  let currencyToLow = false;
+  let moreThenOneCopy = false;
+  let gameAlreadyInLibrary = false;
+
+
+
+  let newPurchaseValid = true;
   let amountToLower = 0;
-  let amountToAdd = false;
-  let newPurchaseValid = isPurchaseValid;
+  let test;
+  let errorMsg;
+
 
   cart.forEach(game => {
     let number = parseInt(game.price)
     amountToLower += number
     if(game.quantity > 1) {
-      console.log('Dont buy 2 copies of the same game! stupido!, change state to buy invalid')
-      newPurchaseValid = false;
+      moreThenOneCopy = true;
     } else {
-      if( userData.gameLibrary.find(obj => obj.title === game.title)) {
-        console.log('game exists, change state to buy invalid')
-        newPurchaseValid = false;
+      if(userData && userData.gameLibrary.find(obj => obj.title === game.title)) {
+        gameAlreadyInLibrary = true;
       } else {
-        console.log('game is ok to buy!')
+        if( userData.currency < amountToLower ) {
+          currencyToLow = true;
+        } else {
+          return;
+        }
+
       }
-
     }
-
   });
 
-  if(userData.currency < amountToLower || newPurchaseValid !== true) {
-    console.log('change state to not enough currency or newPurchaseValid = false')
-    return;
-  } else {
-    console.log('buying game')
-    let newData = {
-      ...userData,
-      gameLibrary: [...userData.gameLibrary, ...cart]
-    }
+  if (!currencyToLow && !moreThenOneCopy && !gameAlreadyInLibrary) {
+      dispatch(changePurchase(newPurchaseValid))
+      } else {
+        if (currencyToLow) {
+          test = false;
+          errorMsg = 'Your currency is to low'
+      }
+        if (moreThenOneCopy) {
+          test = false;
+          errorMsg = 'Dont buy more then 1 game'
+      }
+        if (gameAlreadyInLibrary) {
+          test = false;
+          errorMsg = 'You already own that game'
+      }
+    dispatch(changePurchase(test))
+    dispatch(showErrorToUser(errorMsg));
+  }
 
-    dispatch(changePurchase(newPurchaseValid))
-    dispatch(setUserGames(newData))
-    dispatch(updateCurrency(url, newData, amountToAdd, amountToLower))
-
-
-    // Total price is the amount to cut from the userData.currency
-    postData(`http://localhost:3000/api/addGameLibrary?id=${url}`)
-      .then(res => {
-        })
-        .catch(error => {console.error(error)});
-        function postData(url = '') {
-          return fetch(url, {
-            method: 'PUT',
-            body: JSON.stringify(cart), // data can be `string` or {object}!
-            headers:{
-              'Content-Type': 'application/json'
-            }
-          })
-            .then(response => console.log('final resp', response.json()));
-        }
-    };
 
 
 
 };
 
+
+
+
 //Update user library
+export const updateGames = (url, userData, cart, total, isPurchaseValid) => dispatch => {
+  let amountToLower = 0;
+  let amountToAdd = false;
+  let newPurchaseValid = true;
+
+        let newData = {
+          ...userData,
+          gameLibrary: [...userData.gameLibrary, ...cart]
+        }
+
+        dispatch(changePurchase(newPurchaseValid))
+        dispatch(setUserGames(newData))
+        dispatch(updateCurrency(url, newData, amountToAdd, amountToLower))
+
+
+        // Total price is the amount to cut from the userData.currency
+        postData(`http://localhost:3000/api/addGameLibrary?id=${url}`)
+          .then(res => {
+            })
+            .catch(error => {console.error(error)});
+            function postData(url = '') {
+              return fetch(url, {
+                method: 'PUT',
+                body: JSON.stringify(cart), // data can be `string` or {object}!
+                headers:{
+                  'Content-Type': 'application/json'
+                }
+              })
+                .then(response => console.log('final resp', response.json()));
+            }
+          };
+
+
+
 
 
 
@@ -168,12 +202,19 @@ export const setUserGames = userData => {
 };
 
 export const changePurchase = newPurchaseValid => {
-  console.log('inside change',newPurchaseValid)
   return {
     type: CHANGE_PURCHASE_TRUE_FALSE,
     payload: newPurchaseValid
   }
 }
+
+export const showErrorToUser = error => {
+  return {
+    type: SHOW_ERROR_TO_USER,
+    payload: error
+  }
+}
+
 
 
 // updateUserCurrency

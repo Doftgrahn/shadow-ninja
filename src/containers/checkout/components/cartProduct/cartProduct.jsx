@@ -18,16 +18,15 @@ const CartProduct = ({cart}) => {
     //const totalValue = product.price * product.quantity;
 
     // Removes product from Cart.
-    const remove = (product) => dispatch(removeProduct(product))
+    const remove = (product) => dispatch(removeProduct(product));
 
     // Adds quantity in shoppingCart
-    const addQuantity = (product) => dispatch(addProduct(product))
+    const addQuantity = (product) => dispatch(addProduct(product));
 
     // decreases quantiy in ShoppingCart
 
-    const decreaseQuant = (product) => dispatch(subQuant(product))
+    const decreaseQuant = (product) => dispatch(subQuant(product));
 
-    console.log(cart);
     const renderCartProducts = cart.map(product => {
 
         return (<div key={product._id} className="product__container">
@@ -38,9 +37,11 @@ const CartProduct = ({cart}) => {
             <div className="desc">
                 <h3>{product.title}</h3>
                 <div className="desc__info">
-                    <p>Price: <span>€{product.price}</span>
+                    <p>Price:
+                        <span>€{product.price}</span>
                     </p>
-                    <p>Quantity: <span>{product.quantity}</span>
+                    <p>Quantity:
+                        <span>{product.quantity}</span>
                     </p>
                 </div>
             </div>

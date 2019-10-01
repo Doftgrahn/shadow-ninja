@@ -1,20 +1,31 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, /*useEffect*/} from 'react';
 
 import Fade from 'react-reveal/Fade';
 
 //Redux
-import {connect} from 'react-redux';
+import {connect, /*useDispatch*/} from 'react-redux';
 
 // Imported components.
 import AmountInCart from './components/amountInCart/amountinCart'
 import CartProduct from './components/cartProduct/cartProduct';
 import TotalPrice from './components/totalPrice/totalPrice';
 import CheckoutFinal from './components/checkoutFinal/CheckoutFinal';
+import {isGameValidToBuy} from '../../services/login/actions/authActions';
 
-//import {updateCart} from '../../services/total/totalAction';
+const Checkout = ({cart, total, auth, isPurchaseValid, isGameValidToBuy}) => {
+    //const dispatch = useDispatch();
 
-const Checkout = ({cart, total}) => {
+    //let url = auth.user.id;
+    //let userData = auth.user;
 
+/*
+    useEffect(() => {
+
+            dispatch(isGameValidToBuy(url, userData, cart, total, isPurchaseValid));
+
+    }, [isGameValidToBuy,cart,total,userData, isPurchaseValid, url,dispatch]);
+
+*/
     const showPrice = () => {
         if (cart.length) {
             return <CheckoutFinal/>
@@ -37,6 +48,6 @@ const Checkout = ({cart, total}) => {
     </main>)
 }
 
-const mapStateToProps = state => ({cart: state.cart, total: state.total.data})
+const mapStateToProps = state => ({cart: state.cart, total: state.total.data, auth: state.auth, isPurchaseValid: state.isPurchaseValid})
 
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps, {isGameValidToBuy})(Checkout);

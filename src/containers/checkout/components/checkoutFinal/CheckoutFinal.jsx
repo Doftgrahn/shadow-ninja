@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
+
 import { updateGames } from "../../../../services/login/actions/authActions";
+import InvalidCheckout from '../../../invalidCheckout/invalidCheckout';
 //Redux
 import {connect} from 'react-redux';
 import {useDispatch} from 'react-redux'
@@ -19,18 +21,14 @@ const CheckoutFinal = ({cart, total, auth, isPurchaseValid, updateGames}) => {
     // Clears entire list. ( Redux. )
     const removeAll = () => (dispatch(clearProducts()))
 
+
+    //let url = auth.user.id;
+    //let userData = auth.user;
+    let isPurchaseValidrendering = auth.isPurchaseValid;
     const checkout = () => {
         const {productQuantity, totalPrice} = total;
-        // Add to user library
-        let url = auth.user.id;
-        let userData = auth.user;
-        let cart1 = cart;
-        let total1 = totalPrice;
-        let isPurchaseValid = auth.isPurchaseValid;
-        updateGames(url, userData, cart1, total1, isPurchaseValid)
-        //Add to user library
-        // If cart exists and checkbox is okay, send in stuff and delete entire state.
-        if (cart.length && hasAccepted) {
+        if (cart.length && hasAccepted && isPurchaseValidrendering) {
+            //updateGames(url, userData, cart, total[1], isPurchaseValidrendering);
             setIsValid(true)
             setHasAccepted(false);
             alert(`
@@ -44,34 +42,44 @@ const CheckoutFinal = ({cart, total, auth, isPurchaseValid, updateGames}) => {
         } else if (!cart.length) {
             //If Nothing exists in cart.
             alert('Fill that shiet!')
-        } else {
+         } else {
             // Show Error Message
             setIsValid(false);
         }
     };
 
-    return (<div className="checkout__final">
 
-        <div className="checkout-wrapper">
-            <span>By clicking here you agree to our terms and permission</span>
-            <label className="checkbox-label">
-                <input checked={hasAccepted} onChange={e => {
-                        setHasAccepted(e.target.checked)
-                        setIsValid(true)
-                    }} type="checkbox"/>
-                <span className="checkbox-custom rectangular"/>
-            </label>
 
-        </div>
-        <div className="checkout--button">
-            <button className="checkout-btn" onClick={checkout}>Checkout</button>
-            {
-                !isValid
-                    ? <span className="error shake">You must accept our terms and permissions</span>
-                    : null
+
+    return (
+      <div className="checkout__final">
+        {
+          !isPurchaseValidrendering ?
+          (<InvalidCheckout />) : ( <div> <div className="checkout-wrapper">
+                <span>By clicking here you agree to our terms and permission</span>
+                <label className="checkbox-label">
+                    <input checked={hasAccepted} onChange={e => {
+                            setHasAccepted(e.target.checked)
+                            setIsValid(true)
+
+                        }} type="checkbox"/>
+                    <span className="checkbox-custom rectangular"/>
+                </label>
+
+            </div>
+            <div className="checkout--button">
+                <button className="checkout-btn" onClick={checkout}>Checkout</button>
+                {
+                    !isValid
+                        ? <span className="error shake">You must accept our terms and permissions</span>
+                        : null
+                }
+            </div></div>)
             }
         </div>
-    </div>)
+
+
+    )
 }
 
 const mapStateToProps = state => ({cart: state.cart, total: state.total.data, auth: state.auth, isPurchaseValid: state.isPurchaseValid})
