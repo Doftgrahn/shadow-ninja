@@ -60,7 +60,7 @@ const Routes = () => {
             path: '/userProfile',
             Component: userProfile
         },{
-            id: 8,
+            _id: 8,
             exact: false,
             path: '/snake',
             Component: Snake
