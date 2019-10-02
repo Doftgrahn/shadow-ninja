@@ -4,8 +4,8 @@
     align-items: center;
     justify-content: center;
     margin-right: 10px;
-    padding: 0 20px;
-    background-color: $color-orange;
+    padding: 0 10px; //    background-color: $color-orange;
+    transition: 0.4s;
 
     .searchContainer {
         position: relative;
@@ -15,8 +15,8 @@
         height: auto;
         height: 100%;
         padding: 0 10px;
-        background-color: $color-orange;
-
+        cursor: pointer;
+        //background-color: $color-orange;
         svg {
             width: 20px;
             height: auto;
@@ -37,28 +37,61 @@ a.listItems {
     font-size: 16px;
     position: relative;
     text-align: left;
-    color: $color-white;
+    color: $color-black;
+    transform-origin: right;
     border: 0;
     outline: none;
     background-color: $color-orange;
+    transition: 0.4s;
 }
 
 .suggestedItems {
-    min-width: 269px;
+    width: 100%;
     list-style-type: none;
-    background-color: $color-black;
+    background-color: $color-orange;
+    z-index: 1;
     position: absolute;
     top: 100%;
-
+    transition: 0.4s;
+    padding: 5px 0;
+    @media screen and(min-width: 800px) {
+        background: $color-black;
+    }
 
     li {
+        border-bottom: 1px solid $color-orange;
+        transition: 0.4s;
         display: block;
-        padding: 0 5px;
+        padding: 5px 0;
         transition: all 0.2s ease-in-out;
         color: $color-white;
 
         &:hover {
             text-decoration: underline;
         }
+    }
+}
+
+.inputVisible {
+    background: 0;
+
+    .searchContainer {}
+
+    .titleInput {
+        transition: 0.4s;
+        transform: scale(0);
+        //width: 100%;
+        //position: relative;
+        //bottom: 500px;
+    }
+}
+
+.inputNotVisible {
+    .searchContainer {
+        background: 0;
+    }
+
+    .titleInput {
+        bottom: 0;
     }
 }
