@@ -34,7 +34,6 @@ const SendMessage = ({socket, user, chat}) => {
     }, [input, dispatch, socket, user.user])
 
     const send = () => {
-        console.log(chat.current_room);
         if (input && user.user) {
             dispatch(sendMessage(socket, input, user.user.name, chat.current_room, user.user.id))
             setInput('')
