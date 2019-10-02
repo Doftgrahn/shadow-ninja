@@ -7,9 +7,11 @@ const InvalidCheckout = ({auth}) => {
         {
             auth.isAuthenticated
                 ? (<p>{auth.errorMsg}!</p>)
-                : (<p>Logga in för att fullfölja ditt köp
+                : (
+                <div className="mustbeLoggedInIncheckout">
+                    <p>Log in to complete you purchase.</p>
                     <Link to="/login">Login</Link>
-                </p>)
+                </div>)
         }
     </section>)
 };
