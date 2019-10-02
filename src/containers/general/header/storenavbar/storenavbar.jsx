@@ -11,9 +11,15 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
     const {ref, isComponentVisible, setIsComponentVisible} = useComponentVisible(true);
     const [filterValue, setfilterValue] = useState('');
 
+    const [showMeny, setShowMeny] = useState(false);
+
+    const toggleMeny = () => setShowMeny(!showMeny);
+
     const handleCleanse = () => {
         setIsComponentVisible(true)
         setfilterValue('')
+        setShowMeny(false)
+        turnOff();
     }
     // Sets state to the users input
     const changeFilterValue = (event) => {
@@ -44,11 +50,11 @@ const StoreNavbar = ({toggle, turnOff, products, match, gameinfo}) => {
 
     // Only shows the suggestions to user if there is something written by the user
 
-    return (<section className="store-nav" ref={ref}>
-        <input style={{
-                color: 'black'
-            }} value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/>
-        <div className="searchContainer"><Search/></div>
+    return (<section className={`store-nav ${ !showMeny
+            ? 'inputVisible'
+            : 'inputNotVisible'}`} ref={ref}>
+        <input value={filterValue} onChange={changeFilterValue} className='titleInput' placeholder='Enter game title'/>
+        <div onClick={toggleMeny} className="searchContainer"><Search/></div>
         {
             filterValue && isComponentVisible
                 ? <ul className='suggestedItems'>
