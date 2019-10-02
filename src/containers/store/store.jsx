@@ -4,7 +4,7 @@ import Fade from 'react-reveal/Fade';
 
 // Redux ..
 import {connect} from "react-redux";
-import {fetchProducts, fetchProductsWithQuery, stateWithoutFetch} from '../../services/products/productActions';
+import {fetchProducts, fetchProductsWithQuery} from '../../services/products/productActions';
 
 
 
@@ -29,8 +29,8 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
 	useEffect(() => {
 
 		if (backFromSingleGame) {
-			dispatch(stateWithoutFetch())
-		} else{
+
+		} else {
 			dispatch(fetchProductsWithQuery(0, filter, sort))
 
 		}
@@ -80,7 +80,7 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
                 <PromoGame match={match} products={products}/>
                 <div>
                 <SortGames/>
-                <AllGames products={products} match={match}/>
+                <AllGames match={match}/>
             </div>
         </Fade>
     </main>)

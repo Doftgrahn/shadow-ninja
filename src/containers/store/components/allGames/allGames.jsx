@@ -1,4 +1,6 @@
 import React from 'react';
+//import {connect} from "react-redux";
+// import {fetchProducts} from '../../../../services/products/productActions';
 
 import OneGame from '../oneGame/oneGame';
 
@@ -9,5 +11,8 @@ const AllGames = ({match}) => {
         <OneGame match={match}/>
     </section>)
 }
+
+
+// state, can be retrieved through props or destructuring.
 
 export default AllGames;
