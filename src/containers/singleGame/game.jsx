@@ -6,13 +6,17 @@ import {useDispatch} from 'react-redux'
 
 import {addProduct} from '../../services/cart/cartAction';
 import {fetchSingleProduct} from '../../services/product/singleProductActions';
+import {setGameStateTrue} from '../../services/products/productActions';
 
 import RegularButton from '../../components/buttons/regular-button';
 import Loader from '../../components/loader/loader';
 
 const Game = ({match, history, error, loading, product}) => {
     const dispatch = useDispatch();
-    const goBack = history.goBack;
+    const goBack = () => {
+		dispatch(setGameStateTrue())
+		history.goBack();
+	}
 
     useEffect(() => {
         dispatch(fetchSingleProduct(match.params.id))
@@ -22,7 +26,6 @@ const Game = ({match, history, error, loading, product}) => {
         return (<div>...Something Went Wrong, go out and get som sun.</div>)
     }
     if (loading) {
-        console.log(loading);
         return <div className="loaderWrapper"><Loader/></div>
     }
 

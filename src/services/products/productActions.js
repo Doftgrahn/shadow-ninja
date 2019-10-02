@@ -4,7 +4,10 @@ import {
   FETCH_PRODUCTS_FETCHQUERY,
   FETCH_PRODUCTS_FAILURE,
   SORT_PRODUCTS,
-  FILTER_PRODUCTS
+  FILTER_PRODUCTS,
+  SET_PRODUCTS_TRUE,
+  SET_PRODUCTS_FALSE,
+  USE_STATE
 } from "./actionTypes";
 import {fetchDone} from '../infiniteScroll/scrollActions';
 const getProducts = (skip, filter, sort) => {
@@ -79,4 +82,16 @@ export const setSort = sort => ({
 export const setFilter = filter => ({
 	type: FILTER_PRODUCTS,
 	payload: filter
+})
+
+export const setGameStateTrue = () => ({
+	type:SET_PRODUCTS_TRUE
+})
+
+export const setGameStateFalse = () => ({
+	type:SET_PRODUCTS_FALSE
+})
+
+export const stateWithoutFetch = () => ({
+	type:USE_STATE
 })

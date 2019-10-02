@@ -21,30 +21,31 @@ import AllGames from './components/allGames/allGames';
 // import Sidebar from './sidebar/sidebar';
 
 // General Wrapper for GAMES
-const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, error, match}) => {
+const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, error, match, backFromSingleGame}) => {
 
-	const isInitialMount = useRef(true);
 	const gamesWindow = useRef();
 
-	// fetch when filter or sort changes
 	useEffect(() => {
-		if(!isInitialMount.current) {
-		dispatch(fetchProductsWithQuery(0, filter, sort))
+		if(!backFromSingleGame && !isFetching)  {
+			dispatch(changeFetchState())
+			dispatch(fetchProductsWithQuery(0, 'All', ''))
+
+		} else if(isFetching) {
+			dispatch(fetchDone())
+		} else if (backFromSingleGame) {
 
 		}
+	}, [dispatch, backFromSingleGame]);
+
+
+	useEffect(() => {
+
+			// dispatch(changeFetchState())
+			dispatch(fetchProductsWithQuery(0, filter, sort))
+
+
 	}, [dispatch, filter, sort]);
 
-	useEffect(() => {
-		// fetch on launch
-		if( products.length !== 0 ) {
-			isInitialMount.current = false;
-
-		}
-		else if(isInitialMount.current) {
-			dispatch(fetchProductsWithQuery(0, filter, sort))
-			isInitialMount.current = false;
-		}
-	}, [dispatch, filter, sort, products.length]);
 
 	// fetch when scroll is in bottom on page
 	useEffect(() => {
@@ -66,6 +67,7 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
 
 
 //If Theres an error loading the page.
+
     if (error) {
         return (<div>
             <Fade>
@@ -82,13 +84,12 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
             </Fade>
         </div>
     }
-
     return (<main id="games" className="games" ref={gamesWindow}>
         <Fade>
                 <PromoGame match={match} products={products}/>
                 <div>
                 <SortGames/>
-                <AllGames products={products} match={match}/>
+                <AllGames match={match}/>
             </div>
         </Fade>
     </main>)
@@ -97,6 +98,7 @@ const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, err
 // state, can be retrieved through props or destructuring.
 const mapStateToProps = state => ({
     isFetching: state.scrollBottom.isFetching,
+	backFromSingleGame: state.products.backFromSingleGame,
     filter: state.products.filter,
     sort: state.products.sort,
     skip: state.products.skip,

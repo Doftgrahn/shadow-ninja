@@ -8,8 +8,9 @@ import { addProduct } from '../../../../services/cart/cartAction'
 import {connect, useDispatch} from 'react-redux';
 
 // Renders ONE game, this send in to ALLGAMES component.
-const OneGame = ({products, match}) => {
-	const dispatch = useDispatch()
+const OneGame = ({products, match,loading}) => {
+	const dispatch = useDispatch();
+
 	return products.map((gameinfo) => {
 		return <section className="game__container" key={gameinfo._id}>
 			<Link to={`${match.url}/${gameinfo._id}`}>

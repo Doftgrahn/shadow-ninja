@@ -4,7 +4,10 @@ import {
   FETCH_PRODUCTS_FAILURE,
   FETCH_PRODUCTS_FETCHQUERY,
   SORT_PRODUCTS,
-  FILTER_PRODUCTS
+  FILTER_PRODUCTS,
+  SET_PRODUCTS_TRUE,
+  SET_PRODUCTS_FALSE,
+  USE_STATE
 } from './actionTypes';
 
 const initialState = {
@@ -13,7 +16,8 @@ const initialState = {
   error: null,
   sort: '',
   filter: 'All',
-  skip: 0
+  skip: 0,
+  backFromSingleGame: false
 };
 
 export default function productReducer(
@@ -25,27 +29,27 @@ export default function productReducer(
     //When loading.
       return {
         ...state,
+		items: [],
         loading: true,
         error: null
       };
     case FETCH_PRODUCTS_SUCCESS:
     // When sucess
-      return {
-        ...state,
-		items: state.items.concat(action.payload.products),
-		// items: [...state.items, ...action.payload.products,
-		skip: state.items.concat(action.payload.products).length,
-        loading: false,
-        error: null
-      };
-	  case FETCH_PRODUCTS_FETCHQUERY:
-	  return {
-		  ...state,
-		  items: action.payload.products,
-		  skip: action.payload.products.length,
-		  loading: false,
-		  error: null
-	  }
+		return {
+			...state,
+			items: [...state.items, ...action.payload.products],
+			skip: [...state.items, ...action.payload.products].length,
+			loading: false,
+			error: null
+		};
+	case FETCH_PRODUCTS_FETCHQUERY:
+		return {
+			...state,
+			items: action.payload.products,
+			skip: action.payload.products.length,
+			loading: false,
+			error: null
+		}
     case FETCH_PRODUCTS_FAILURE:
     // If failure.
       return {
@@ -64,6 +68,25 @@ export default function productReducer(
 				...state,
 				filter: action.payload
 			}
+		case SET_PRODUCTS_TRUE:
+			return {
+				...state,
+				backFromSingleGame: true
+			};
+		case SET_PRODUCTS_FALSE:
+			return {
+				...state,
+				backFromSingleGame: false
+			};
+		case USE_STATE:
+			return {
+				...state,
+				items: state.items,
+				sort: state.sort,
+				filter: state.filter,
+				skip: state.skip,
+				backFromSingleGame: false
+			};
 
 	    default:
 	      return state;
