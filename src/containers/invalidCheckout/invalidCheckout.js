@@ -3,16 +3,16 @@ import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
 
 const InvalidCheckout = ({auth}) => {
-  return (
-    <div>
-      {
-        auth.isAuthenticated ? (<div>You cant buy that right now.. {auth.errorMsg}</div>) : (<div>Logga in för att fullfölja ditt köp <Link to="/login">Login</Link></div>)
-      }
-    </div>
-  )
+    return (<section className="InvalidCheckout">
+        {
+            auth.isAuthenticated
+                ? (<p>{auth.errorMsg}!</p>)
+                : (<p>Logga in för att fullfölja ditt köp
+                    <Link to="/login">Login</Link>
+                </p>)
+        }
+    </section>)
 };
-
-
 
 const mapStateToProps = state => ({auth: state.auth})
 
