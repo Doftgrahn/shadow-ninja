@@ -7,4 +7,4 @@ export const SORT_PRODUCTS = 'SORT_PRODUCTS';
 export const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
 export const SET_PRODUCTS_TRUE = 'SET_PRODUCTS_TRUE';
 export const SET_PRODUCTS_FALSE = 'SET_PRODUCTS_FALSE';
-export const USE_STATE = 'USE_STATE'
+export const USE_STATE = 'USE_STATE';

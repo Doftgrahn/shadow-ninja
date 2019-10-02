@@ -4,6 +4,8 @@ import {
 	INFINITE_SCROLL_ERROR
 } from './actionTypes';
 
+import {FETCH_PRODUCTS_FETCHQUERY} from '../products/actionTypes';
+
 const initialState = {
 	isFetching: false,
 	error: null
@@ -14,7 +16,7 @@ export default function scrollReducer(
 	action
 ){
 	switch (action.type) {
-
+		case FETCH_PRODUCTS_FETCHQUERY:
 		case INFINITE_SCROLL_IN_PROGRESS:
 			return {
 				...state,

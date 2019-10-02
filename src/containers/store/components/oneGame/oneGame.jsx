@@ -9,6 +9,7 @@ import {connect, useDispatch} from 'react-redux';
 
 // Renders ONE game, this send in to ALLGAMES component.
 const OneGame = ({products, match}) => {
+	// console.log('products onegame: ', products);
 	const dispatch = useDispatch()
 	return products.map((gameinfo) => {
 		return <section className="game__container" key={gameinfo._id}>

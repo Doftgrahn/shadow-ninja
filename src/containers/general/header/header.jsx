@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux'
 // import StoreNavbar from './storenavbar/storenavbar';
 import {Link} from "react-router-dom";
 
-import {setGameStateFalse} from '../../../services/products/productActions';
+import { setGameStateFalse} from '../../../services/products/productActions';
 import {ReactComponent as Logo} from './../../../components/icon/icon_ninja.svg';
 
 const Header = () => {
@@ -20,7 +20,7 @@ const Header = () => {
 	};
 
     const turnOff = () => {
-		dispatch(setGameStateFalse())
+
 		setToggle(false)
 	};
 

@@ -4,7 +4,7 @@ import Fade from 'react-reveal/Fade';
 
 // Redux ..
 import {connect} from "react-redux";
-import {fetchProducts, fetchProductsWithQuery} from '../../services/products/productActions';
+import {fetchProducts, fetchProductsWithQuery, stateWithoutFetch} from '../../services/products/productActions';
 
 
 
@@ -23,28 +23,19 @@ import AllGames from './components/allGames/allGames';
 // General Wrapper for GAMES
 const Store = ({dispatch, isFetching, filter, sort, skip, products, loading, error, match, backFromSingleGame}) => {
 
+
 	const gamesWindow = useRef();
 
 	useEffect(() => {
-		if(!backFromSingleGame && !isFetching)  {
-			dispatch(changeFetchState())
-			dispatch(fetchProductsWithQuery(0, 'All', ''))
 
-		} else if(isFetching) {
-			dispatch(fetchDone())
-		} else if (backFromSingleGame) {
-
-		}
-	}, [dispatch, backFromSingleGame]);
-
-
-	useEffect(() => {
-
-			// dispatch(changeFetchState())
+		if (backFromSingleGame) {
+			dispatch(stateWithoutFetch())
+		} else{
 			dispatch(fetchProductsWithQuery(0, filter, sort))
 
+		}
 
-	}, [dispatch, filter, sort]);
+	}, [dispatch, backFromSingleGame, filter, sort]);
 
 
 	// fetch when scroll is in bottom on page

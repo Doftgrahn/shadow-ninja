@@ -1,17 +1,17 @@
-import React, {useEffect} from 'react';
+import React/*, {useEffect}*/ from 'react';
 
 import Fade from 'react-reveal/Fade';
 
-import {fetchProducts} from '../../../services/products/productActions';
+// import {fetchProducts} from '../../../services/products/productActions';
 
-import {connect, useDispatch} from 'react-redux';
+import {connect, /*useDispatch*/} from 'react-redux';
 
 const PromoBlock = ({products}) => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchProducts(0, 'All', 'highestRating'))
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(fetchProducts(0, 'All', 'highestRating'))
+    // }, [dispatch])
 
     const renderPromo = products
         .items.slice(0, 6)

@@ -19,7 +19,7 @@ const getProducts = (skip, filter, sort) => {
     });
 };
 
-// Function for Fetching.
+// Fetch on scroll event
 export const fetchProducts = (skip, filter, sort) => {
   return dispatch => {
     return getProducts(skip, filter, sort)
@@ -34,14 +34,16 @@ export const fetchProducts = (skip, filter, sort) => {
   };
 };
 
+// fetch on launch and filter and sort
 export const fetchProductsWithQuery = (skip, filter, sort) => {
 	return dispatch => {
 		dispatch(fetchProductsBegin());
 		return getProducts(skip, filter, sort)
 		.then(json => {
-			dispatch(fetchProductsQuery(json));
+			dispatch(fetchProductsQuery(json, filter, sort));
 			return json;
 		})
+		.then(dispatch(fetchDone()))
 		.catch(error => {
 			dispatch(fetchProductsFailure(error))
 		});
@@ -64,9 +66,9 @@ export const fetchProductsSuccess = (products) => ({
   payload: {products}
 });
 
-export const fetchProductsQuery = (products) => ({
+export const fetchProductsQuery = (products, filter, sort) => ({
   type: FETCH_PRODUCTS_FETCHQUERY,
-  payload: {products}
+  payload: {products, filter, sort}
 });
 
 export const fetchProductsFailure = error => ({

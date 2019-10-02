@@ -48,7 +48,7 @@ const NavBar = ({toggle, turnOff, turnOffAndChangeState, isAuthenticated, auth, 
                         ? 'remove'
                         : 'there'}`}>{totalProducts}</span>
             </NavLink>
-        } else if(nav.menu === 'Store'){
+        } else if(nav.name === 'Store'){
 			return <NavLink  exact={nav.exact} activeClassName="active-route" onClick={turnOffAndChangeState} key={index} to={nav.to}>{nav.name}</NavLink>
 		} else {
             return <NavLink exact={nav.exact} activeClassName="active-route" onClick={turnOff} key={index} to={nav.to}>{nav.name}</NavLink>
